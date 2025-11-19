@@ -11,6 +11,7 @@ METADATA := metadata.yaml
 
 # Source files in reading order
 SOURCES := \
+	../AI-GENERATED-DISCLAIMER.md \
 	00-INDEX.md \
 	01-architecture-overview.md \
 	02-core-data-structures.md \

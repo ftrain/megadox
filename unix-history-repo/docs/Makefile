@@ -30,7 +30,7 @@ APPENDICES := \
 	appendices/glossary.md
 
 # All markdown sources
-SOURCES := $(FRONTMATTER) $(CHAPTERS) $(APPENDICES)
+SOURCES := ../../AI-GENERATED-DISCLAIMER.md $(FRONTMATTER) $(CHAPTERS) $(APPENDICES)
 
 # Output files
 EPUB_FILE := $(OUTPUT_DIR)/$(PROJECT_NAME).epub

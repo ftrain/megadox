@@ -11,6 +11,7 @@ METADATA := metadata.yaml
 
 # Source files in reading order
 SOURCES := \
+	../AI-GENERATED-DISCLAIMER.md \
 	README.md \
 	00-introduction.md \
 	01-storage/storage-layer.md \
