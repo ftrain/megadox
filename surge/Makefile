@@ -83,10 +83,7 @@ $(EPUB_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata=title:"$(TITLE)" \
 		--metadata=author:"Surge Synth Team" \
 		--metadata=rights:"GPL-3.0" \
-		--output=$@ \
-	$(call print_info,Transforming TOC to use native <details> elements...)
-	@$(TRANSFORM_TOC) $@
-		$(SOURCES)
+		--output=$@ $(SOURCES)
 	$(call print_success,EPUB created: $@ ($$($(call show_size,$@))))
 	@echo ""
 
@@ -98,10 +95,7 @@ $(PDF_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_PDF) \
 		--metadata=title:"$(TITLE)" \
 		--metadata=author:"Surge Synth Team" \
-		--output=$@ \
-	$(call print_info,Transforming TOC to use native <details> elements...)
-	@$(TRANSFORM_TOC) $@
-		$(SOURCES)
+		--output=$@ $(SOURCES)
 	$(call print_success,PDF created: $@ ($$($(call show_size,$@))))
 	@if command -v pdfinfo > /dev/null 2>&1; then \
 		PAGES=$$(pdfinfo $@ 2>/dev/null | grep 'Pages:' | awk '{print $$2}'); \
@@ -120,9 +114,9 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata subtitle:"A Deep Dive into Software Synthesis" \
 		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
+		$(SOURCES)
 	$(call print_info,Transforming TOC to use native <details> elements...)
 	@$(TRANSFORM_TOC) $@
-		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))
 	@echo ""
 

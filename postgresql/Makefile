@@ -51,8 +51,6 @@ $(EPUB_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_EPUB) \
 		--metadata=title:"$(TITLE)" \
 		--output=$@ \
-	$(call print_info,Transforming TOC to use native <details> elements...)
-	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,EPUB created: $@ ($$($(call show_size,$@))))
 	@echo ""
@@ -65,8 +63,6 @@ $(PDF_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_PDF) \
 		--metadata=title:"$(TITLE)" \
 		--output=$@ \
-	$(call print_info,Transforming TOC to use native <details> elements...)
-	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,PDF created: $@ ($$($(call show_size,$@))))
 	@if command -v pdfinfo > /dev/null 2>&1; then \
