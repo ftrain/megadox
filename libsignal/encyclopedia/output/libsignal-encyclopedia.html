@@ -1,38 +1,2955 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Comprehensive Codebase Analysis" />
-  <meta name="author" content="Historical Research" />
-  <meta name="author" content="Community Documentation Project" />
-  <meta name="keywords" content="Signal
-Protocol, Cryptography, End-to-End Encryption, Post-Quantum
-Cryptography, Rust, Privacy, Security" />
-  <meta name="description" content="A comprehensive, scholarly encyclopedia documenting the libsignal cryptographic protocol library (version 0.86.5) from 2013-2025, covering historical context, cryptographic implementations, system architecture, and evolutionary patterns." />
-  <title>The libsignal Encyclopedia</title>
+  <title>libsignal Encyclopedia: Cryptographic Messaging Infrastructure</title>
   <link rel="stylesheet" href="../book-style.css" />
   <style>
     /* Inline critical CSS for faster loading */
     body { font-family: "Palatino", Georgia, serif; }
+    .book-nav {
+      background: #2c3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .book-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .book-nav a:hover { background: rgba(255,255,255,0.1); }
+    .book-nav .nav-left { display: flex; gap: 1rem; align-items: center; }
+    .book-nav .nav-right { display: flex; gap: 0.5rem; }
+    .download-btn {
+      background: #3498db;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .download-btn:hover { background: #2980b9; }
+    .pdf-btn { background: #e74c3c; }
+    .pdf-btn:hover { background: #c0392b; }
   </style>
 </head>
 <body>
+<nav class="book-nav">
+  <div class="nav-left">
+    <a href="../index.html">← All Books</a>
+    <span style="opacity: 0.7;">|</span>
+    <span style="font-weight: 600;">libsignal Encyclopedia:
+Cryptographic Messaging Infrastructure</span>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="download-btn" onclick="window.print(); return false;">🖨️ Print</a>
+    <a href="libsignal-encyclopedia.pdf" class="download-btn pdf-btn">📄 Download PDF</a>
+  </div>
+</nav>
+
 <div class="book-container">
   <nav class="toc-sidebar">
     <button class="toc-toggle" onclick="toggleTOC()">📖 Table of Contents</button>
     <div class="toc-content" id="toc-content">
-      <div class="toc-title">The libsignal Encyclopedia</div>
-true
+      <div class="toc-title">libsignal Encyclopedia: Cryptographic
+Messaging Infrastructure</div>
+<ul>
+<li><a href="#the-libsignal-encyclopedia"
+id="toc-the-libsignal-encyclopedia"><span
+class="toc-section-number">1</span> The libsignal Encyclopedia</a>
+<ul>
+<li><a
+href="#a-comprehensive-guide-to-signals-cryptographic-protocol-library"
+id="toc-a-comprehensive-guide-to-signals-cryptographic-protocol-library"><span
+class="toc-section-number">1.1</span> A Comprehensive Guide to Signal’s
+Cryptographic Protocol Library</a></li>
+<li><a href="#project-status" id="toc-project-status"><span
+class="toc-section-number">1.2</span> Project Status</a>
+<ul>
+<li><a href="#current-version" id="toc-current-version"><span
+class="toc-section-number">1.2.1</span> Current Version</a></li>
+<li><a href="#structure" id="toc-structure"><span
+class="toc-section-number">1.2.2</span> Structure</a></li>
+<li><a href="#research-completed" id="toc-research-completed"><span
+class="toc-section-number">1.2.3</span> Research Completed</a></li>
+<li><a href="#compilation-instructions"
+id="toc-compilation-instructions"><span
+class="toc-section-number">1.2.4</span> Compilation
+Instructions</a></li>
+<li><a href="#next-steps" id="toc-next-steps"><span
+class="toc-section-number">1.2.5</span> Next Steps</a></li>
+</ul></li>
+<li><a href="#contributing" id="toc-contributing"><span
+class="toc-section-number">1.3</span> Contributing</a></li>
+<li><a href="#license" id="toc-license"><span
+class="toc-section-number">1.4</span> License</a></li>
+</ul></li>
+<li><a href="#the-libsignal-encyclopedia-1"
+id="toc-the-libsignal-encyclopedia-1"><span
+class="toc-section-number">2</span> The libsignal Encyclopedia</a>
+<ul>
+<li><a
+href="#a-comprehensive-guide-to-signals-cryptographic-protocol-library-1"
+id="toc-a-comprehensive-guide-to-signals-cryptographic-protocol-library-1"><span
+class="toc-section-number">2.1</span> A Comprehensive Guide to Signal’s
+Cryptographic Protocol Library</a>
+<ul>
+<li><a href="#about-this-work" id="toc-about-this-work"><span
+class="toc-section-number">2.1.1</span> About This Work</a></li>
+</ul></li>
+<li><a href="#historical-context-and-significance"
+id="toc-historical-context-and-significance"><span
+class="toc-section-number">2.2</span> Historical Context and
+Significance</a>
+<ul>
+<li><a href="#the-privacy-revolution-2013-present"
+id="toc-the-privacy-revolution-2013-present"><span
+class="toc-section-number">2.2.1</span> The Privacy Revolution
+(2013-Present)</a></li>
+<li><a href="#from-whisper-systems-to-signal-foundation"
+id="toc-from-whisper-systems-to-signal-foundation"><span
+class="toc-section-number">2.2.2</span> From Whisper Systems to Signal
+Foundation</a></li>
+<li><a href="#the-rust-rewrite-2020"
+id="toc-the-rust-rewrite-2020"><span
+class="toc-section-number">2.2.3</span> The Rust Rewrite (2020)</a></li>
+<li><a href="#the-post-quantum-era-2023-2025"
+id="toc-the-post-quantum-era-2023-2025"><span
+class="toc-section-number">2.2.4</span> The Post-Quantum Era
+(2023-2025)</a></li>
+</ul></li>
+<li><a href="#scope-of-this-encyclopedia"
+id="toc-scope-of-this-encyclopedia"><span
+class="toc-section-number">2.3</span> Scope of This Encyclopedia</a>
+<ul>
+<li><a href="#what-youll-find-here" id="toc-what-youll-find-here"><span
+class="toc-section-number">2.3.1</span> What You’ll Find Here</a></li>
+</ul></li>
+<li><a href="#original-hardware-context"
+id="toc-original-hardware-context"><span
+class="toc-section-number">2.4</span> Original Hardware Context</a>
+<ul>
+<li><a href="#android-devices-2013-2014"
+id="toc-android-devices-2013-2014"><span
+class="toc-section-number">2.4.1</span> Android Devices
+(2013-2014)</a></li>
+<li><a href="#design-implications" id="toc-design-implications"><span
+class="toc-section-number">2.4.2</span> Design Implications</a></li>
+</ul></li>
+<li><a href="#philosophical-foundations"
+id="toc-philosophical-foundations"><span
+class="toc-section-number">2.5</span> Philosophical Foundations</a>
+<ul>
+<li><a href="#privacy-by-design" id="toc-privacy-by-design"><span
+class="toc-section-number">2.5.1</span> Privacy by Design</a></li>
+<li><a href="#usability-matters" id="toc-usability-matters"><span
+class="toc-section-number">2.5.2</span> Usability Matters</a></li>
+<li><a href="#cryptographic-integrity"
+id="toc-cryptographic-integrity"><span
+class="toc-section-number">2.5.3</span> Cryptographic Integrity</a></li>
+<li><a href="#community-and-independence"
+id="toc-community-and-independence"><span
+class="toc-section-number">2.5.4</span> Community and
+Independence</a></li>
+</ul></li>
+<li><a href="#how-to-use-this-encyclopedia"
+id="toc-how-to-use-this-encyclopedia"><span
+class="toc-section-number">2.6</span> How to Use This Encyclopedia</a>
+<ul>
+<li><a href="#for-cryptographers-and-security-researchers"
+id="toc-for-cryptographers-and-security-researchers"><span
+class="toc-section-number">2.6.1</span> For Cryptographers and Security
+Researchers</a></li>
+<li><a href="#for-software-engineers"
+id="toc-for-software-engineers"><span
+class="toc-section-number">2.6.2</span> For Software Engineers</a></li>
+<li><a href="#for-historians-and-social-scientists"
+id="toc-for-historians-and-social-scientists"><span
+class="toc-section-number">2.6.3</span> For Historians and Social
+Scientists</a></li>
+<li><a href="#for-application-developers"
+id="toc-for-application-developers"><span
+class="toc-section-number">2.6.4</span> For Application
+Developers</a></li>
+</ul></li>
+<li><a href="#acknowledgments" id="toc-acknowledgments"><span
+class="toc-section-number">2.7</span> Acknowledgments</a></li>
+<li><a href="#a-note-on-methodology"
+id="toc-a-note-on-methodology"><span
+class="toc-section-number">2.8</span> A Note on Methodology</a></li>
+<li><a href="#conventions-used-in-this-work"
+id="toc-conventions-used-in-this-work"><span
+class="toc-section-number">2.9</span> Conventions Used in This Work</a>
+<ul>
+<li><a href="#code-formatting" id="toc-code-formatting"><span
+class="toc-section-number">2.9.1</span> Code Formatting</a></li>
+<li><a href="#cross-references" id="toc-cross-references"><span
+class="toc-section-number">2.9.2</span> Cross-References</a></li>
+<li><a href="#commit-references" id="toc-commit-references"><span
+class="toc-section-number">2.9.3</span> Commit References</a></li>
+</ul></li>
+<li><a href="#license-and-usage" id="toc-license-and-usage"><span
+class="toc-section-number">2.10</span> License and Usage</a></li>
+<li><a href="#table-of-contents" id="toc-table-of-contents"><span
+class="toc-section-number">2.11</span> Table of Contents</a></li>
+</ul></li>
+<li><a href="#the-libsignal-encyclopedia-2"
+id="toc-the-libsignal-encyclopedia-2"><span
+class="toc-section-number">3</span> The libsignal Encyclopedia</a>
+<ul>
+<li><a href="#table-of-contents-1" id="toc-table-of-contents-1"><span
+class="toc-section-number">3.1</span> Table of Contents</a></li>
+<li><a href="#front-matter" id="toc-front-matter"><span
+class="toc-section-number">3.2</span> Front Matter</a></li>
+<li><a href="#part-i-history-and-context"
+id="toc-part-i-history-and-context"><span
+class="toc-section-number">3.3</span> Part I: History and Context</a>
+<ul>
+<li><a href="#chapter-1-historical-timeline-2013-2025"
+id="toc-chapter-1-historical-timeline-2013-2025"><span
+class="toc-section-number">3.3.1</span> Chapter 1: Historical Timeline
+(2013-2025)</a></li>
+</ul></li>
+<li><a href="#part-ii-cryptographic-foundations"
+id="toc-part-ii-cryptographic-foundations"><span
+class="toc-section-number">3.4</span> Part II: Cryptographic
+Foundations</a>
+<ul>
+<li><a href="#chapter-2-cryptographic-primitives"
+id="toc-chapter-2-cryptographic-primitives"><span
+class="toc-section-number">3.4.1</span> Chapter 2: Cryptographic
+Primitives</a></li>
+<li><a href="#chapter-3-the-signal-protocol"
+id="toc-chapter-3-the-signal-protocol"><span
+class="toc-section-number">3.4.2</span> Chapter 3: The Signal
+Protocol</a></li>
+<li><a href="#chapter-4-group-messaging"
+id="toc-chapter-4-group-messaging"><span
+class="toc-section-number">3.4.3</span> Chapter 4: Group
+Messaging</a></li>
+<li><a href="#chapter-5-sealed-sender"
+id="toc-chapter-5-sealed-sender"><span
+class="toc-section-number">3.4.4</span> Chapter 5: Sealed
+Sender</a></li>
+<li><a href="#chapter-6-zero-knowledge-cryptography"
+id="toc-chapter-6-zero-knowledge-cryptography"><span
+class="toc-section-number">3.4.5</span> Chapter 6: Zero-Knowledge
+Cryptography</a></li>
+</ul></li>
+<li><a href="#part-iii-system-architecture"
+id="toc-part-iii-system-architecture"><span
+class="toc-section-number">3.5</span> Part III: System Architecture</a>
+<ul>
+<li><a href="#chapter-7-codebase-structure"
+id="toc-chapter-7-codebase-structure"><span
+class="toc-section-number">3.5.1</span> Chapter 7: Codebase
+Structure</a></li>
+<li><a href="#chapter-8-language-bindings"
+id="toc-chapter-8-language-bindings"><span
+class="toc-section-number">3.5.2</span> Chapter 8: Language
+Bindings</a></li>
+<li><a href="#chapter-9-build-system-and-infrastructure"
+id="toc-chapter-9-build-system-and-infrastructure"><span
+class="toc-section-number">3.5.3</span> Chapter 9: Build System and
+Infrastructure</a></li>
+<li><a href="#chapter-10-testing-architecture"
+id="toc-chapter-10-testing-architecture"><span
+class="toc-section-number">3.5.4</span> Chapter 10: Testing
+Architecture</a></li>
+</ul></li>
+<li><a href="#part-iv-network-services"
+id="toc-part-iv-network-services"><span
+class="toc-section-number">3.6</span> Part IV: Network Services</a>
+<ul>
+<li><a href="#chapter-11-contact-discovery-cdsi"
+id="toc-chapter-11-contact-discovery-cdsi"><span
+class="toc-section-number">3.6.1</span> Chapter 11: Contact Discovery
+(CDSI)</a></li>
+<li><a href="#chapter-12-secure-value-recovery-svr"
+id="toc-chapter-12-secure-value-recovery-svr"><span
+class="toc-section-number">3.6.2</span> Chapter 12: Secure Value
+Recovery (SVR)</a></li>
+<li><a href="#chapter-13-chat-services"
+id="toc-chapter-13-chat-services"><span
+class="toc-section-number">3.6.3</span> Chapter 13: Chat
+Services</a></li>
+<li><a href="#chapter-14-key-transparency"
+id="toc-chapter-14-key-transparency"><span
+class="toc-section-number">3.6.4</span> Chapter 14: Key
+Transparency</a></li>
+</ul></li>
+<li><a href="#part-v-literate-programming-deep-dives"
+id="toc-part-v-literate-programming-deep-dives"><span
+class="toc-section-number">3.7</span> Part V: Literate Programming
+Deep-Dives</a>
+<ul>
+<li><a href="#chapter-15-session-establishment"
+id="toc-chapter-15-session-establishment"><span
+class="toc-section-number">3.7.1</span> Chapter 15: Session
+Establishment</a></li>
+<li><a href="#chapter-16-message-encryption-flow"
+id="toc-chapter-16-message-encryption-flow"><span
+class="toc-section-number">3.7.2</span> Chapter 16: Message Encryption
+Flow</a></li>
+<li><a href="#chapter-17-group-message-handling"
+id="toc-chapter-17-group-message-handling"><span
+class="toc-section-number">3.7.3</span> Chapter 17: Group Message
+Handling</a></li>
+<li><a href="#chapter-18-sealed-sender-operation"
+id="toc-chapter-18-sealed-sender-operation"><span
+class="toc-section-number">3.7.4</span> Chapter 18: Sealed Sender
+Operation</a></li>
+<li><a href="#chapter-19-zero-knowledge-proof-generation"
+id="toc-chapter-19-zero-knowledge-proof-generation"><span
+class="toc-section-number">3.7.5</span> Chapter 19: Zero-Knowledge Proof
+Generation</a></li>
+<li><a href="#chapter-20-network-request-flow"
+id="toc-chapter-20-network-request-flow"><span
+class="toc-section-number">3.7.6</span> Chapter 20: Network Request
+Flow</a></li>
+<li><a href="#chapter-21-message-backup-format"
+id="toc-chapter-21-message-backup-format"><span
+class="toc-section-number">3.7.7</span> Chapter 21: Message Backup
+Format</a></li>
+<li><a href="#chapter-22-device-transfer-protocol"
+id="toc-chapter-22-device-transfer-protocol"><span
+class="toc-section-number">3.7.8</span> Chapter 22: Device Transfer
+Protocol</a></li>
+</ul></li>
+<li><a href="#part-vi-evolution-and-patterns"
+id="toc-part-vi-evolution-and-patterns"><span
+class="toc-section-number">3.8</span> Part VI: Evolution and
+Patterns</a>
+<ul>
+<li><a href="#chapter-23-architectural-evolution"
+id="toc-chapter-23-architectural-evolution"><span
+class="toc-section-number">3.8.1</span> Chapter 23: Architectural
+Evolution</a></li>
+<li><a href="#chapter-24-development-patterns"
+id="toc-chapter-24-development-patterns"><span
+class="toc-section-number">3.8.2</span> Chapter 24: Development
+Patterns</a></li>
+<li><a href="#chapter-25-lessons-learned"
+id="toc-chapter-25-lessons-learned"><span
+class="toc-section-number">3.8.3</span> Chapter 25: Lessons
+Learned</a></li>
+</ul></li>
+<li><a href="#part-vii-reference-materials"
+id="toc-part-vii-reference-materials"><span
+class="toc-section-number">3.9</span> Part VII: Reference Materials</a>
+<ul>
+<li><a href="#appendix-a-comprehensive-glossary"
+id="toc-appendix-a-comprehensive-glossary"><span
+class="toc-section-number">3.9.1</span> Appendix A: Comprehensive
+Glossary</a></li>
+<li><a href="#appendix-b-complete-api-reference"
+id="toc-appendix-b-complete-api-reference"><span
+class="toc-section-number">3.9.2</span> Appendix B: Complete API
+Reference</a></li>
+<li><a href="#appendix-c-protocol-specifications"
+id="toc-appendix-c-protocol-specifications"><span
+class="toc-section-number">3.9.3</span> Appendix C: Protocol
+Specifications</a></li>
+<li><a href="#appendix-d-test-vector-catalog"
+id="toc-appendix-d-test-vector-catalog"><span
+class="toc-section-number">3.9.4</span> Appendix D: Test Vector
+Catalog</a></li>
+<li><a href="#appendix-e-build-and-deployment-guide"
+id="toc-appendix-e-build-and-deployment-guide"><span
+class="toc-section-number">3.9.5</span> Appendix E: Build and Deployment
+Guide</a></li>
+<li><a href="#appendix-f-security-audits-and-analysis"
+id="toc-appendix-f-security-audits-and-analysis"><span
+class="toc-section-number">3.9.6</span> Appendix F: Security Audits and
+Analysis</a></li>
+<li><a href="#appendix-g-bibliography"
+id="toc-appendix-g-bibliography"><span
+class="toc-section-number">3.9.7</span> Appendix G:
+Bibliography</a></li>
+<li><a href="#appendix-h-complete-index"
+id="toc-appendix-h-complete-index"><span
+class="toc-section-number">3.9.8</span> Appendix H: Complete
+Index</a></li>
+</ul></li>
+<li><a href="#colophon" id="toc-colophon"><span
+class="toc-section-number">3.10</span> Colophon</a></li>
+</ul></li>
+<li><a href="#chapter-1-historical-timeline-2013-2025-1"
+id="toc-chapter-1-historical-timeline-2013-2025-1"><span
+class="toc-section-number">4</span> Chapter 1: Historical Timeline
+(2013-2025)</a>
+<ul>
+<li><a href="#the-evolution-of-signal-protocol-and-libsignal"
+id="toc-the-evolution-of-signal-protocol-and-libsignal"><span
+class="toc-section-number">4.1</span> The Evolution of Signal Protocol
+and libsignal</a></li>
+<li><a href="#introduction-a-decade-of-encrypted-communications"
+id="toc-introduction-a-decade-of-encrypted-communications"><span
+class="toc-section-number">4.2</span> Introduction: A Decade of
+Encrypted Communications</a></li>
+<li><a href="#pre-history-cryptographic-foundations-2004-2012"
+id="toc-pre-history-cryptographic-foundations-2004-2012"><span
+class="toc-section-number">4.3</span> 1.1 Pre-History: Cryptographic
+Foundations (2004-2012)</a>
+<ul>
+<li><a href="#the-otr-era-2004-2009"
+id="toc-the-otr-era-2004-2009"><span
+class="toc-section-number">4.3.1</span> The OTR Era (2004-2009)</a></li>
+<li><a href="#the-mobile-revolution-2007-2012"
+id="toc-the-mobile-revolution-2007-2012"><span
+class="toc-section-number">4.3.2</span> The Mobile Revolution
+(2007-2012)</a></li>
+<li><a href="#whisper-systems-2010-2011"
+id="toc-whisper-systems-2010-2011"><span
+class="toc-section-number">4.3.3</span> Whisper Systems
+(2010-2011)</a></li>
+</ul></li>
+<li><a href="#the-privacy-awakening-2013-2014"
+id="toc-the-privacy-awakening-2013-2014"><span
+class="toc-section-number">4.4</span> 1.2 The Privacy Awakening
+(2013-2014)</a>
+<ul>
+<li><a href="#the-snowden-revelations-june-2013"
+id="toc-the-snowden-revelations-june-2013"><span
+class="toc-section-number">4.4.1</span> The Snowden Revelations (June
+2013)</a></li>
+<li><a href="#open-whisper-systems-founded-2013"
+id="toc-open-whisper-systems-founded-2013"><span
+class="toc-section-number">4.4.2</span> Open Whisper Systems Founded
+(2013)</a></li>
+<li><a href="#the-axolotl-protocol-february-2014"
+id="toc-the-axolotl-protocol-february-2014"><span
+class="toc-section-number">4.4.3</span> The Axolotl Protocol (February
+2014)</a></li>
+<li><a href="#merger-textsecure-redphone-signal-november-2014"
+id="toc-merger-textsecure-redphone-signal-november-2014"><span
+class="toc-section-number">4.4.4</span> Merger: TextSecure + RedPhone =
+Signal (November 2014)</a></li>
+</ul></li>
+<li><a href="#mass-adoption-era-2014-2016"
+id="toc-mass-adoption-era-2014-2016"><span
+class="toc-section-number">4.5</span> 1.3 Mass Adoption Era
+(2014-2016)</a>
+<ul>
+<li><a href="#whatsapp-partnership-november-2014---april-2016"
+id="toc-whatsapp-partnership-november-2014---april-2016"><span
+class="toc-section-number">4.5.1</span> WhatsApp Partnership (November
+2014 - April 2016)</a></li>
+<li><a href="#facebook-messenger-adoption-2016"
+id="toc-facebook-messenger-adoption-2016"><span
+class="toc-section-number">4.5.2</span> Facebook Messenger Adoption
+(2016)</a></li>
+<li><a href="#academic-recognition-2016-2017"
+id="toc-academic-recognition-2016-2017"><span
+class="toc-section-number">4.5.3</span> Academic Recognition
+(2016-2017)</a></li>
+</ul></li>
+<li><a href="#signal-foundation-era-2018-2020"
+id="toc-signal-foundation-era-2018-2020"><span
+class="toc-section-number">4.6</span> 1.4 Signal Foundation Era
+(2018-2020)</a>
+<ul>
+<li><a href="#nonprofit-foundation-established-february-2018"
+id="toc-nonprofit-foundation-established-february-2018"><span
+class="toc-section-number">4.6.1</span> Nonprofit Foundation Established
+(February 2018)</a></li>
+<li><a href="#protocol-maturation-2018-2019"
+id="toc-protocol-maturation-2018-2019"><span
+class="toc-section-number">4.6.2</span> Protocol Maturation
+(2018-2019)</a></li>
+</ul></li>
+<li><a href="#the-rust-rewrite-2020-1"
+id="toc-the-rust-rewrite-2020-1"><span
+class="toc-section-number">4.7</span> 1.5 The Rust Rewrite (2020)</a>
+<ul>
+<li><a href="#repository-creation-january-2020"
+id="toc-repository-creation-january-2020"><span
+class="toc-section-number">4.7.1</span> Repository Creation (January
+2020)</a></li>
+<li><a href="#the-pivot-to-signal-protocol-april-2020"
+id="toc-the-pivot-to-signal-protocol-april-2020"><span
+class="toc-section-number">4.7.2</span> The Pivot to Signal Protocol
+(April 2020)</a></li>
+<li><a href="#monorepo-consolidation-october-2020"
+id="toc-monorepo-consolidation-october-2020"><span
+class="toc-section-number">4.7.3</span> Monorepo Consolidation (October
+2020)</a></li>
+</ul></li>
+<li><a href="#modern-era-network-services-2021-2023"
+id="toc-modern-era-network-services-2021-2023"><span
+class="toc-section-number">4.8</span> 1.6 Modern Era: Network Services
+(2021-2023)</a>
+<ul>
+<li><a href="#expanding-beyond-protocol-2021"
+id="toc-expanding-beyond-protocol-2021"><span
+class="toc-section-number">4.8.1</span> Expanding Beyond Protocol
+(2021)</a></li>
+<li><a href="#contact-discovery-service---cdsi-2022-2023"
+id="toc-contact-discovery-service---cdsi-2022-2023"><span
+class="toc-section-number">4.8.2</span> Contact Discovery Service - CDSI
+(2022-2023)</a></li>
+<li><a href="#secure-value-recovery---svr-2023"
+id="toc-secure-value-recovery---svr-2023"><span
+class="toc-section-number">4.8.3</span> Secure Value Recovery - SVR
+(2023)</a></li>
+<li><a href="#libsignal-net-architecture-september-2023"
+id="toc-libsignal-net-architecture-september-2023"><span
+class="toc-section-number">4.8.4</span> libsignal-net Architecture
+(September 2023)</a></li>
+</ul></li>
+<li><a href="#post-quantum-transition-2023-2025"
+id="toc-post-quantum-transition-2023-2025"><span
+class="toc-section-number">4.9</span> 1.7 Post-Quantum Transition
+(2023-2025)</a>
+<ul>
+<li><a href="#the-quantum-threat" id="toc-the-quantum-threat"><span
+class="toc-section-number">4.9.1</span> The Quantum Threat</a></li>
+<li><a href="#kyberml-kem-integration-may-september-2023"
+id="toc-kyberml-kem-integration-may-september-2023"><span
+class="toc-section-number">4.9.2</span> Kyber/ML-KEM Integration
+(May-September 2023)</a></li>
+<li><a href="#pqxdh-announcement-september-19-2023"
+id="toc-pqxdh-announcement-september-19-2023"><span
+class="toc-section-number">4.9.3</span> PQXDH Announcement (September
+19, 2023)</a></li>
+<li><a href="#x3dh-deprecation-june-2024"
+id="toc-x3dh-deprecation-june-2024"><span
+class="toc-section-number">4.9.4</span> X3DH Deprecation (June
+2024)</a></li>
+<li><a href="#spqr-integration-march-october-2024"
+id="toc-spqr-integration-march-october-2024"><span
+class="toc-section-number">4.9.5</span> SPQR Integration (March-October
+2024)</a></li>
+<li><a href="#libcrux-migration-april-2024"
+id="toc-libcrux-migration-april-2024"><span
+class="toc-section-number">4.9.6</span> libcrux Migration (April
+2024)</a></li>
+</ul></li>
+<li><a href="#community-and-contributors-2020-2025"
+id="toc-community-and-contributors-2020-2025"><span
+class="toc-section-number">4.10</span> 1.8 Community and Contributors
+(2020-2025)</a>
+<ul>
+<li><a href="#development-community"
+id="toc-development-community"><span
+class="toc-section-number">4.10.1</span> Development Community</a></li>
+<li><a href="#development-practices"
+id="toc-development-practices"><span
+class="toc-section-number">4.10.2</span> Development Practices</a></li>
+<li><a href="#communication-channels"
+id="toc-communication-channels"><span
+class="toc-section-number">4.10.3</span> Communication Channels</a></li>
+<li><a href="#cultural-evolution" id="toc-cultural-evolution"><span
+class="toc-section-number">4.10.4</span> Cultural Evolution</a></li>
+<li><a href="#academic-collaboration"
+id="toc-academic-collaboration"><span
+class="toc-section-number">4.10.5</span> Academic Collaboration</a></li>
+<li><a href="#security-audits" id="toc-security-audits"><span
+class="toc-section-number">4.10.6</span> Security Audits</a></li>
+</ul></li>
+<li><a href="#technical-milestones-summary"
+id="toc-technical-milestones-summary"><span
+class="toc-section-number">4.11</span> 1.9 Technical Milestones
+Summary</a>
+<ul>
+<li><a href="#foundation-year" id="toc-foundation-year"><span
+class="toc-section-number">4.11.1</span> 2020: Foundation Year</a></li>
+<li><a href="#service-integration" id="toc-service-integration"><span
+class="toc-section-number">4.11.2</span> 2021: Service
+Integration</a></li>
+<li><a href="#network-services-foundation"
+id="toc-network-services-foundation"><span
+class="toc-section-number">4.11.3</span> 2022: Network Services
+Foundation</a></li>
+<li><a href="#transformation-year" id="toc-transformation-year"><span
+class="toc-section-number">4.11.4</span> 2023: Transformation
+Year</a></li>
+<li><a href="#post-quantum-maturation"
+id="toc-post-quantum-maturation"><span
+class="toc-section-number">4.11.5</span> 2024: Post-Quantum
+Maturation</a></li>
+<li><a href="#modern-era" id="toc-modern-era"><span
+class="toc-section-number">4.11.6</span> 2025: Modern Era</a></li>
+</ul></li>
+<li><a href="#architectural-evolution-timeline"
+id="toc-architectural-evolution-timeline"><span
+class="toc-section-number">4.12</span> 1.10 Architectural Evolution
+Timeline</a>
+<ul>
+<li><a href="#code-organization" id="toc-code-organization"><span
+class="toc-section-number">4.12.1</span> Code Organization</a></li>
+<li><a href="#cryptographic-library-evolution"
+id="toc-cryptographic-library-evolution"><span
+class="toc-section-number">4.12.2</span> Cryptographic Library
+Evolution</a></li>
+<li><a href="#protocol-upgrades" id="toc-protocol-upgrades"><span
+class="toc-section-number">4.12.3</span> Protocol Upgrades</a></li>
+</ul></li>
+<li><a href="#looking-forward-2025-and-beyond"
+id="toc-looking-forward-2025-and-beyond"><span
+class="toc-section-number">4.13</span> 1.11 Looking Forward: 2025 and
+Beyond</a>
+<ul>
+<li><a href="#current-state-november-2025"
+id="toc-current-state-november-2025"><span
+class="toc-section-number">4.13.1</span> Current State (November
+2025)</a></li>
+<li><a href="#ongoing-work" id="toc-ongoing-work"><span
+class="toc-section-number">4.13.2</span> Ongoing Work</a></li>
+<li><a href="#open-questions" id="toc-open-questions"><span
+class="toc-section-number">4.13.3</span> Open Questions</a></li>
+</ul></li>
+<li><a href="#historical-context-and-impact"
+id="toc-historical-context-and-impact"><span
+class="toc-section-number">4.14</span> 1.12 Historical Context and
+Impact</a>
+<ul>
+<li><a href="#the-broader-privacy-movement"
+id="toc-the-broader-privacy-movement"><span
+class="toc-section-number">4.14.1</span> The Broader Privacy
+Movement</a></li>
+<li><a href="#technical-influence" id="toc-technical-influence"><span
+class="toc-section-number">4.14.2</span> Technical Influence</a></li>
+<li><a href="#lessons-learned" id="toc-lessons-learned"><span
+class="toc-section-number">4.14.3</span> Lessons Learned</a></li>
+</ul></li>
+<li><a href="#conclusion-from-idealism-to-infrastructure"
+id="toc-conclusion-from-idealism-to-infrastructure"><span
+class="toc-section-number">4.15</span> Conclusion: From Idealism to
+Infrastructure</a></li>
+</ul></li>
+<li><a href="#chapter-2-cryptographic-primitives-1"
+id="toc-chapter-2-cryptographic-primitives-1"><span
+class="toc-section-number">5</span> Chapter 2: Cryptographic
+Primitives</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction"><span
+class="toc-section-number">5.1</span> Introduction</a></li>
+<li><a href="#symmetric-cryptography"
+id="toc-symmetric-cryptography"><span
+class="toc-section-number">5.2</span> 2.1 Symmetric Cryptography</a>
+<ul>
+<li><a href="#aes-256-cbc-legacy-compatibility"
+id="toc-aes-256-cbc-legacy-compatibility"><span
+class="toc-section-number">5.2.1</span> 2.1.1 AES-256-CBC: Legacy
+Compatibility</a></li>
+<li><a href="#aes-256-ctr-stream-cipher-mode"
+id="toc-aes-256-ctr-stream-cipher-mode"><span
+class="toc-section-number">5.2.2</span> 2.1.2 AES-256-CTR: Stream Cipher
+Mode</a></li>
+<li><a href="#aes-256-gcm-authenticated-encryption"
+id="toc-aes-256-gcm-authenticated-encryption"><span
+class="toc-section-number">5.2.3</span> 2.1.3 AES-256-GCM: Authenticated
+Encryption</a></li>
+<li><a href="#why-no-aes-gcm-siv" id="toc-why-no-aes-gcm-siv"><span
+class="toc-section-number">5.2.4</span> 2.1.4 Why No
+AES-GCM-SIV?</a></li>
+</ul></li>
+<li><a href="#hash-functions-and-key-derivation"
+id="toc-hash-functions-and-key-derivation"><span
+class="toc-section-number">5.3</span> 2.2 Hash Functions and Key
+Derivation</a>
+<ul>
+<li><a href="#hash-functions-sha-256-and-sha-512"
+id="toc-hash-functions-sha-256-and-sha-512"><span
+class="toc-section-number">5.3.1</span> 2.2.1 Hash Functions: SHA-256
+and SHA-512</a></li>
+<li><a href="#hmac-sha256-message-authentication"
+id="toc-hmac-sha256-message-authentication"><span
+class="toc-section-number">5.3.2</span> 2.2.2 HMAC-SHA256: Message
+Authentication</a></li>
+<li><a href="#hkdf-key-derivation-function"
+id="toc-hkdf-key-derivation-function"><span
+class="toc-section-number">5.3.3</span> 2.2.3 HKDF: Key Derivation
+Function</a></li>
+</ul></li>
+<li><a href="#elliptic-curve-cryptography"
+id="toc-elliptic-curve-cryptography"><span
+class="toc-section-number">5.4</span> 2.3 Elliptic Curve
+Cryptography</a>
+<ul>
+<li><a href="#curve25519-background"
+id="toc-curve25519-background"><span
+class="toc-section-number">5.4.1</span> 2.3.1 Curve25519
+Background</a></li>
+<li><a href="#x25519-diffie-hellman-key-agreement"
+id="toc-x25519-diffie-hellman-key-agreement"><span
+class="toc-section-number">5.4.2</span> 2.3.2 X25519: Diffie-Hellman Key
+Agreement</a></li>
+<li><a href="#xeddsa-signatures-from-x25519-keys"
+id="toc-xeddsa-signatures-from-x25519-keys"><span
+class="toc-section-number">5.4.3</span> 2.3.3 XEdDSA: Signatures from
+X25519 Keys</a></li>
+</ul></li>
+<li><a href="#hpke-hybrid-public-key-encryption"
+id="toc-hpke-hybrid-public-key-encryption"><span
+class="toc-section-number">5.5</span> 2.4 HPKE: Hybrid Public Key
+Encryption</a>
+<ul>
+<li><a href="#signals-hpke-configuration"
+id="toc-signals-hpke-configuration"><span
+class="toc-section-number">5.5.1</span> 2.4.1 Signal’s HPKE
+Configuration</a></li>
+<li><a href="#encryption-seal" id="toc-encryption-seal"><span
+class="toc-section-number">5.5.2</span> 2.4.2 Encryption (Seal)</a></li>
+<li><a href="#decryption-open" id="toc-decryption-open"><span
+class="toc-section-number">5.5.3</span> 2.4.3 Decryption (Open)</a></li>
+</ul></li>
+<li><a href="#post-quantum-cryptography"
+id="toc-post-quantum-cryptography"><span
+class="toc-section-number">5.6</span> 2.5 Post-Quantum Cryptography</a>
+<ul>
+<li><a href="#why-post-quantum" id="toc-why-post-quantum"><span
+class="toc-section-number">5.6.1</span> 2.5.1 Why Post-Quantum?</a></li>
+<li><a href="#kem-key-encapsulation-mechanism"
+id="toc-kem-key-encapsulation-mechanism"><span
+class="toc-section-number">5.6.2</span> 2.5.2 KEM (Key Encapsulation
+Mechanism)</a></li>
+<li><a href="#ml-kem-1024-implementation"
+id="toc-ml-kem-1024-implementation"><span
+class="toc-section-number">5.6.3</span> 2.5.3 ML-KEM-1024
+Implementation</a></li>
+<li><a href="#key-serialization" id="toc-key-serialization"><span
+class="toc-section-number">5.6.4</span> 2.5.4 Key Serialization</a></li>
+<li><a href="#example-usage" id="toc-example-usage"><span
+class="toc-section-number">5.6.5</span> 2.5.5 Example Usage</a></li>
+<li><a href="#hybrid-approach" id="toc-hybrid-approach"><span
+class="toc-section-number">5.6.6</span> 2.5.6 Hybrid Approach</a></li>
+</ul></li>
+<li><a href="#summary-and-security-properties"
+id="toc-summary-and-security-properties"><span
+class="toc-section-number">5.7</span> 2.6 Summary and Security
+Properties</a>
+<ul>
+<li><a href="#cryptographic-primitive-selection-rationale"
+id="toc-cryptographic-primitive-selection-rationale"><span
+class="toc-section-number">5.7.1</span> Cryptographic Primitive
+Selection Rationale</a></li>
+<li><a href="#cross-references-1" id="toc-cross-references-1"><span
+class="toc-section-number">5.7.2</span> Cross-References</a></li>
+<li><a href="#implementation-safety"
+id="toc-implementation-safety"><span
+class="toc-section-number">5.7.3</span> Implementation Safety</a></li>
+</ul></li>
+<li><a href="#code-provenance-and-dependencies"
+id="toc-code-provenance-and-dependencies"><span
+class="toc-section-number">5.8</span> 2.7 Code Provenance and
+Dependencies</a></li>
+<li><a href="#conclusion" id="toc-conclusion"><span
+class="toc-section-number">5.9</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-3-the-signal-protocol-implementation"
+id="toc-chapter-3-the-signal-protocol-implementation"><span
+class="toc-section-number">6</span> Chapter 3: The Signal Protocol
+Implementation</a>
+<ul>
+<li><a href="#a-deep-dive-into-pqxdh-double-ratchet-and-spqr"
+id="toc-a-deep-dive-into-pqxdh-double-ratchet-and-spqr"><span
+class="toc-section-number">6.1</span> A Deep Dive into PQXDH, Double
+Ratchet, and SPQR</a></li>
+<li><a href="#protocol-overview" id="toc-protocol-overview"><span
+class="toc-section-number">6.2</span> 3.1 Protocol Overview</a>
+<ul>
+<li><a href="#design-goals" id="toc-design-goals"><span
+class="toc-section-number">6.2.1</span> 3.1.1 Design Goals</a></li>
+<li><a href="#security-properties" id="toc-security-properties"><span
+class="toc-section-number">6.2.2</span> 3.1.2 Security
+Properties</a></li>
+<li><a href="#academic-analysis-and-formal-verification"
+id="toc-academic-analysis-and-formal-verification"><span
+class="toc-section-number">6.2.3</span> 3.1.3 Academic Analysis and
+Formal Verification</a></li>
+<li><a href="#evolution-from-axolotl-to-modern-signal-protocol"
+id="toc-evolution-from-axolotl-to-modern-signal-protocol"><span
+class="toc-section-number">6.2.4</span> 3.1.4 Evolution from Axolotl to
+Modern Signal Protocol</a></li>
+</ul></li>
+<li><a href="#x3dh-extended-triple-diffie-hellman"
+id="toc-x3dh-extended-triple-diffie-hellman"><span
+class="toc-section-number">6.3</span> 3.2 X3DH (Extended Triple
+Diffie-Hellman)</a>
+<ul>
+<li><a href="#the-core-idea" id="toc-the-core-idea"><span
+class="toc-section-number">6.3.1</span> 3.2.1 The Core Idea</a></li>
+<li><a href="#prekey-bundle-structure"
+id="toc-prekey-bundle-structure"><span
+class="toc-section-number">6.3.2</span> 3.2.2 PreKey Bundle
+Structure</a></li>
+<li><a href="#the-four-dh-operations-classical-x3dh"
+id="toc-the-four-dh-operations-classical-x3dh"><span
+class="toc-section-number">6.3.3</span> 3.2.3 The Four DH Operations
+(Classical X3DH)</a></li>
+<li><a href="#bobs-perspective-receiving-the-initial-message"
+id="toc-bobs-perspective-receiving-the-initial-message"><span
+class="toc-section-number">6.3.4</span> 3.2.4 Bob’s Perspective
+(Receiving the Initial Message)</a></li>
+<li><a href="#key-derivation" id="toc-key-derivation"><span
+class="toc-section-number">6.3.5</span> 3.2.5 Key Derivation</a></li>
+</ul></li>
+<li><a href="#pqxdh-post-quantum-x3dh"
+id="toc-pqxdh-post-quantum-x3dh"><span
+class="toc-section-number">6.4</span> 3.3 PQXDH (Post-Quantum X3DH)</a>
+<ul>
+<li><a href="#the-quantum-threat-1" id="toc-the-quantum-threat-1"><span
+class="toc-section-number">6.4.1</span> 3.3.1 The Quantum
+Threat</a></li>
+<li><a href="#hybrid-key-agreement-x25519-kyber1024"
+id="toc-hybrid-key-agreement-x25519-kyber1024"><span
+class="toc-section-number">6.4.2</span> 3.3.2 Hybrid Key Agreement:
+X25519 + Kyber1024</a></li>
+<li><a href="#kyber-integration-in-libsignal"
+id="toc-kyber-integration-in-libsignal"><span
+class="toc-section-number">6.4.3</span> 3.3.3 Kyber Integration in
+libsignal</a></li>
+<li><a href="#pqxdh-session-establishment"
+id="toc-pqxdh-session-establishment"><span
+class="toc-section-number">6.4.4</span> 3.3.4 PQXDH Session
+Establishment</a></li>
+<li><a href="#migration-from-x3dh" id="toc-migration-from-x3dh"><span
+class="toc-section-number">6.4.5</span> 3.3.5 Migration from
+X3DH</a></li>
+<li><a href="#security-analysis" id="toc-security-analysis"><span
+class="toc-section-number">6.4.6</span> 3.3.6 Security Analysis</a></li>
+</ul></li>
+<li><a href="#the-double-ratchet" id="toc-the-double-ratchet"><span
+class="toc-section-number">6.5</span> 3.4 The Double Ratchet</a>
+<ul>
+<li><a href="#key-hierarchy" id="toc-key-hierarchy"><span
+class="toc-section-number">6.5.1</span> 3.4.1 Key Hierarchy</a></li>
+<li><a href="#chain-key-and-message-key-derivation"
+id="toc-chain-key-and-message-key-derivation"><span
+class="toc-section-number">6.5.2</span> 3.4.2 Chain Key and Message Key
+Derivation</a></li>
+<li><a href="#message-key-structure"
+id="toc-message-key-structure"><span
+class="toc-section-number">6.5.3</span> 3.4.3 Message Key
+Structure</a></li>
+<li><a href="#root-key-and-dh-ratchet"
+id="toc-root-key-and-dh-ratchet"><span
+class="toc-section-number">6.5.4</span> 3.4.4 Root Key and DH
+Ratchet</a></li>
+<li><a href="#putting-it-all-together-sending-a-message"
+id="toc-putting-it-all-together-sending-a-message"><span
+class="toc-section-number">6.5.5</span> 3.4.5 Putting It All Together:
+Sending a Message</a></li>
+<li><a href="#receiving-a-message" id="toc-receiving-a-message"><span
+class="toc-section-number">6.5.6</span> 3.4.6 Receiving a
+Message</a></li>
+<li><a href="#out-of-order-message-handling"
+id="toc-out-of-order-message-handling"><span
+class="toc-section-number">6.5.7</span> 3.4.7 Out-of-Order Message
+Handling</a></li>
+</ul></li>
+<li><a href="#spqr-signal-post-quantum-ratchet"
+id="toc-spqr-signal-post-quantum-ratchet"><span
+class="toc-section-number">6.6</span> 3.5 SPQR (Signal Post-Quantum
+Ratchet)</a>
+<ul>
+<li><a href="#why-spqr" id="toc-why-spqr"><span
+class="toc-section-number">6.6.1</span> 3.5.1 Why SPQR?</a></li>
+<li><a href="#spqr-overview" id="toc-spqr-overview"><span
+class="toc-section-number">6.6.2</span> 3.5.2 SPQR Overview</a></li>
+<li><a href="#integration-with-double-ratchet"
+id="toc-integration-with-double-ratchet"><span
+class="toc-section-number">6.6.3</span> 3.5.3 Integration with Double
+Ratchet</a></li>
+<li><a href="#spqr-parameters" id="toc-spqr-parameters"><span
+class="toc-section-number">6.6.4</span> 3.5.4 SPQR Parameters</a></li>
+<li><a href="#sending-with-spqr" id="toc-sending-with-spqr"><span
+class="toc-section-number">6.6.5</span> 3.5.5 Sending with SPQR</a></li>
+<li><a href="#receiving-with-spqr" id="toc-receiving-with-spqr"><span
+class="toc-section-number">6.6.6</span> 3.5.6 Receiving with
+SPQR</a></li>
+<li><a href="#message-key-derivation-with-spqr"
+id="toc-message-key-derivation-with-spqr"><span
+class="toc-section-number">6.6.7</span> 3.5.7 Message Key Derivation
+with SPQR</a></li>
+<li><a href="#out-of-order-message-handling-with-spqr"
+id="toc-out-of-order-message-handling-with-spqr"><span
+class="toc-section-number">6.6.8</span> 3.5.8 Out-of-Order Message
+Handling with SPQR</a></li>
+<li><a href="#security-properties-1"
+id="toc-security-properties-1"><span
+class="toc-section-number">6.6.9</span> 3.5.9 Security
+Properties</a></li>
+</ul></li>
+<li><a href="#message-encryption-and-serialization"
+id="toc-message-encryption-and-serialization"><span
+class="toc-section-number">6.7</span> 3.6 Message Encryption and
+Serialization</a>
+<ul>
+<li><a href="#message-format" id="toc-message-format"><span
+class="toc-section-number">6.7.1</span> 3.6.1 Message Format</a></li>
+<li><a href="#signalmessage-structure"
+id="toc-signalmessage-structure"><span
+class="toc-section-number">6.7.2</span> 3.6.2 SignalMessage
+Structure</a></li>
+<li><a href="#signalmessage-construction"
+id="toc-signalmessage-construction"><span
+class="toc-section-number">6.7.3</span> 3.6.3 SignalMessage
+Construction</a></li>
+<li><a href="#mac-computation" id="toc-mac-computation"><span
+class="toc-section-number">6.7.4</span> 3.6.4 MAC Computation</a></li>
+<li><a href="#mac-verification" id="toc-mac-verification"><span
+class="toc-section-number">6.7.5</span> 3.6.5 MAC Verification</a></li>
+<li><a href="#prekeysignalmessage-structure"
+id="toc-prekeysignalmessage-structure"><span
+class="toc-section-number">6.7.6</span> 3.6.6 PreKeySignalMessage
+Structure</a></li>
+<li><a href="#encryption-flow-summary"
+id="toc-encryption-flow-summary"><span
+class="toc-section-number">6.7.7</span> 3.6.7 Encryption Flow
+Summary</a></li>
+<li><a href="#ciphertext-encryption-details"
+id="toc-ciphertext-encryption-details"><span
+class="toc-section-number">6.7.8</span> 3.6.8 Ciphertext Encryption
+Details</a></li>
+</ul></li>
+<li><a href="#security-analysis-and-properties"
+id="toc-security-analysis-and-properties"><span
+class="toc-section-number">6.8</span> 3.7 Security Analysis and
+Properties</a>
+<ul>
+<li><a href="#security-properties-summary"
+id="toc-security-properties-summary"><span
+class="toc-section-number">6.8.1</span> 3.7.1 Security Properties
+Summary</a></li>
+<li><a href="#threat-model" id="toc-threat-model"><span
+class="toc-section-number">6.8.2</span> 3.7.2 Threat Model</a></li>
+<li><a href="#academic-analysis" id="toc-academic-analysis"><span
+class="toc-section-number">6.8.3</span> 3.7.3 Academic Analysis</a></li>
+</ul></li>
+<li><a href="#cross-references-and-further-reading"
+id="toc-cross-references-and-further-reading"><span
+class="toc-section-number">6.9</span> 3.8 Cross-References and Further
+Reading</a></li>
+<li><a href="#conclusion-1" id="toc-conclusion-1"><span
+class="toc-section-number">6.10</span> 3.9 Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-4-language-bindings-architecture"
+id="toc-chapter-4-language-bindings-architecture"><span
+class="toc-section-number">7</span> Chapter 4: Language Bindings
+Architecture</a>
+<ul>
+<li><a href="#executive-summary" id="toc-executive-summary"><span
+class="toc-section-number">7.1</span> Executive Summary</a></li>
+<li><a href="#bridge-architecture-overview"
+id="toc-bridge-architecture-overview"><span
+class="toc-section-number">7.2</span> 1. Bridge Architecture
+Overview</a>
+<ul>
+<li><a href="#the-unified-bridge-design"
+id="toc-the-unified-bridge-design"><span
+class="toc-section-number">7.2.1</span> 1.1 The Unified Bridge
+Design</a></li>
+<li><a href="#procedural-macro-system-architecture"
+id="toc-procedural-macro-system-architecture"><span
+class="toc-section-number">7.2.2</span> 1.2 Procedural Macro System
+Architecture</a></li>
+<li><a href="#type-conversion-infrastructure"
+id="toc-type-conversion-infrastructure"><span
+class="toc-section-number">7.2.3</span> 1.3 Type Conversion
+Infrastructure</a></li>
+</ul></li>
+<li><a href="#javajni-bridge" id="toc-javajni-bridge"><span
+class="toc-section-number">7.3</span> 2. Java/JNI Bridge</a>
+<ul>
+<li><a href="#jni-entry-point-generation"
+id="toc-jni-entry-point-generation"><span
+class="toc-section-number">7.3.1</span> 2.1 JNI Entry Point
+Generation</a></li>
+<li><a href="#object-handle-management"
+id="toc-object-handle-management"><span
+class="toc-section-number">7.3.2</span> 2.2 Object Handle
+Management</a></li>
+<li><a href="#java-code-generation-pipeline"
+id="toc-java-code-generation-pipeline"><span
+class="toc-section-number">7.3.3</span> 2.3 Java Code Generation
+Pipeline</a></li>
+<li><a href="#complete-function-trace-aes256gcmsiv_new"
+id="toc-complete-function-trace-aes256gcmsiv_new"><span
+class="toc-section-number">7.3.4</span> 2.4 Complete Function Trace:
+Aes256GcmSiv_New</a></li>
+</ul></li>
+<li><a href="#swiftffi-bridge" id="toc-swiftffi-bridge"><span
+class="toc-section-number">7.4</span> 3. Swift/FFI Bridge</a>
+<ul>
+<li><a href="#c-ffi-layer" id="toc-c-ffi-layer"><span
+class="toc-section-number">7.4.1</span> 3.1 C FFI Layer</a></li>
+<li><a href="#cbindgen-configuration-and-header-generation"
+id="toc-cbindgen-configuration-and-header-generation"><span
+class="toc-section-number">7.4.2</span> 3.2 cbindgen Configuration and
+Header Generation</a></li>
+<li><a href="#swift-wrapper-patterns"
+id="toc-swift-wrapper-patterns"><span
+class="toc-section-number">7.4.3</span> 3.3 Swift Wrapper
+Patterns</a></li>
+<li><a href="#resource-management" id="toc-resource-management"><span
+class="toc-section-number">7.4.4</span> 3.4 Resource Management</a></li>
+<li><a href="#complete-function-trace-publickey.verifysignature"
+id="toc-complete-function-trace-publickey.verifysignature"><span
+class="toc-section-number">7.4.5</span> 3.5 Complete Function Trace:
+PublicKey.verifySignature</a></li>
+</ul></li>
+<li><a href="#node.jsneon-bridge" id="toc-node.jsneon-bridge"><span
+class="toc-section-number">7.5</span> 4. Node.js/Neon Bridge</a>
+<ul>
+<li><a href="#neon-framework-integration"
+id="toc-neon-framework-integration"><span
+class="toc-section-number">7.5.1</span> 4.1 Neon Framework
+Integration</a></li>
+<li><a href="#asyncpromise-support" id="toc-asyncpromise-support"><span
+class="toc-section-number">7.5.2</span> 4.2 Async/Promise
+Support</a></li>
+<li><a href="#typescript-definition-generation"
+id="toc-typescript-definition-generation"><span
+class="toc-section-number">7.5.3</span> 4.3 TypeScript Definition
+Generation</a></li>
+<li><a href="#npm-packaging" id="toc-npm-packaging"><span
+class="toc-section-number">7.5.4</span> 4.4 npm Packaging</a></li>
+<li><a href="#complete-async-function-trace-cdsilookup.complete"
+id="toc-complete-async-function-trace-cdsilookup.complete"><span
+class="toc-section-number">7.5.5</span> 4.5 Complete Async Function
+Trace: CdsiLookup.complete</a></li>
+</ul></li>
+<li><a href="#bridge-macro-deep-dive"
+id="toc-bridge-macro-deep-dive"><span
+class="toc-section-number">7.6</span> 5. Bridge Macro Deep-Dive</a>
+<ul>
+<li><a href="#type-mapping-tables" id="toc-type-mapping-tables"><span
+class="toc-section-number">7.6.1</span> 5.1 Type Mapping Tables</a></li>
+<li><a href="#macro-expansion-example"
+id="toc-macro-expansion-example"><span
+class="toc-section-number">7.6.2</span> 5.2 Macro Expansion
+Example</a></li>
+</ul></li>
+<li><a href="#error-handling-across-bridges"
+id="toc-error-handling-across-bridges"><span
+class="toc-section-number">7.7</span> 6. Error Handling Across
+Bridges</a>
+<ul>
+<li><a href="#panic-catching" id="toc-panic-catching"><span
+class="toc-section-number">7.7.1</span> 6.1 Panic Catching</a></li>
+<li><a href="#result-type-conversion"
+id="toc-result-type-conversion"><span
+class="toc-section-number">7.7.2</span> 6.2 Result Type
+Conversion</a></li>
+<li><a href="#error-propagation-example"
+id="toc-error-propagation-example"><span
+class="toc-section-number">7.7.3</span> 6.3 Error Propagation
+Example</a></li>
+</ul></li>
+<li><a href="#build-system-integration"
+id="toc-build-system-integration"><span
+class="toc-section-number">7.8</span> 7. Build System Integration</a>
+<ul>
+<li><a href="#feature-flags" id="toc-feature-flags"><span
+class="toc-section-number">7.8.1</span> 7.1 Feature Flags</a></li>
+<li><a href="#environment-variables-for-prefixes"
+id="toc-environment-variables-for-prefixes"><span
+class="toc-section-number">7.8.2</span> 7.2 Environment Variables for
+Prefixes</a></li>
+<li><a href="#platform-specific-compilation"
+id="toc-platform-specific-compilation"><span
+class="toc-section-number">7.8.3</span> 7.3 Platform-Specific
+Compilation</a></li>
+</ul></li>
+<li><a href="#advanced-topics" id="toc-advanced-topics"><span
+class="toc-section-number">7.9</span> 8. Advanced Topics</a>
+<ul>
+<li><a href="#callback-support" id="toc-callback-support"><span
+class="toc-section-number">7.9.1</span> 8.1 Callback Support</a></li>
+<li><a href="#custom-type-serialization"
+id="toc-custom-type-serialization"><span
+class="toc-section-number">7.9.2</span> 8.2 Custom Type
+Serialization</a></li>
+<li><a href="#zero-copy-optimization"
+id="toc-zero-copy-optimization"><span
+class="toc-section-number">7.9.3</span> 8.3 Zero-Copy
+Optimization</a></li>
+</ul></li>
+<li><a href="#conclusion-2" id="toc-conclusion-2"><span
+class="toc-section-number">7.10</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-5-zero-knowledge-cryptography"
+id="toc-chapter-5-zero-knowledge-cryptography"><span
+class="toc-section-number">8</span> Chapter 5: Zero-Knowledge
+Cryptography</a>
+<ul>
+<li><a href="#introduction-1" id="toc-introduction-1"><span
+class="toc-section-number">8.1</span> Introduction</a></li>
+<li><a href="#zero-knowledge-proofs-core-concepts"
+id="toc-zero-knowledge-proofs-core-concepts"><span
+class="toc-section-number">8.2</span> 1. Zero-Knowledge Proofs: Core
+Concepts</a>
+<ul>
+<li><a href="#what-are-zero-knowledge-proofs"
+id="toc-what-are-zero-knowledge-proofs"><span
+class="toc-section-number">8.2.1</span> What Are Zero-Knowledge
+Proofs?</a></li>
+<li><a href="#why-signal-uses-zero-knowledge-proofs"
+id="toc-why-signal-uses-zero-knowledge-proofs"><span
+class="toc-section-number">8.2.2</span> Why Signal Uses Zero-Knowledge
+Proofs</a></li>
+<li><a href="#privacy-properties" id="toc-privacy-properties"><span
+class="toc-section-number">8.2.3</span> Privacy Properties</a></li>
+</ul></li>
+<li><a href="#the-poksho-library" id="toc-the-poksho-library"><span
+class="toc-section-number">8.3</span> 2. The poksho Library</a>
+<ul>
+<li><a href="#overview" id="toc-overview"><span
+class="toc-section-number">8.3.1</span> Overview</a></li>
+<li><a href="#mathematical-foundation-group-homomorphisms"
+id="toc-mathematical-foundation-group-homomorphisms"><span
+class="toc-section-number">8.3.2</span> Mathematical Foundation: Group
+Homomorphisms</a></li>
+<li><a href="#sho-stateful-hash-object"
+id="toc-sho-stateful-hash-object"><span
+class="toc-section-number">8.3.3</span> SHO: Stateful Hash
+Object</a></li>
+<li><a href="#statements-and-proofs"
+id="toc-statements-and-proofs"><span
+class="toc-section-number">8.3.4</span> Statements and Proofs</a></li>
+<li><a href="#proof-generation-protocol"
+id="toc-proof-generation-protocol"><span
+class="toc-section-number">8.3.5</span> Proof Generation
+Protocol</a></li>
+<li><a href="#proof-verification" id="toc-proof-verification"><span
+class="toc-section-number">8.3.6</span> Proof Verification</a></li>
+<li><a href="#security-properties-2"
+id="toc-security-properties-2"><span
+class="toc-section-number">8.3.7</span> Security Properties</a></li>
+</ul></li>
+<li><a href="#ristretto-group-operations"
+id="toc-ristretto-group-operations"><span
+class="toc-section-number">8.4</span> 3. Ristretto Group Operations</a>
+<ul>
+<li><a href="#the-ristretto-group" id="toc-the-ristretto-group"><span
+class="toc-section-number">8.4.1</span> The Ristretto Group</a></li>
+<li><a href="#point-representation" id="toc-point-representation"><span
+class="toc-section-number">8.4.2</span> Point Representation</a></li>
+<li><a href="#cryptographic-operations"
+id="toc-cryptographic-operations"><span
+class="toc-section-number">8.4.3</span> Cryptographic
+Operations</a></li>
+<li><a href="#point-derivation" id="toc-point-derivation"><span
+class="toc-section-number">8.4.4</span> Point Derivation</a></li>
+</ul></li>
+<li><a href="#the-zkgroup-system" id="toc-the-zkgroup-system"><span
+class="toc-section-number">8.5</span> 4. The zkgroup System</a>
+<ul>
+<li><a href="#overview-1" id="toc-overview-1"><span
+class="toc-section-number">8.5.1</span> Overview</a></li>
+<li><a href="#system-parameters" id="toc-system-parameters"><span
+class="toc-section-number">8.5.2</span> System Parameters</a></li>
+<li><a href="#credential-structure" id="toc-credential-structure"><span
+class="toc-section-number">8.5.3</span> Credential Structure</a></li>
+<li><a href="#key-pairs" id="toc-key-pairs"><span
+class="toc-section-number">8.5.4</span> Key Pairs</a></li>
+<li><a href="#credential-issuance" id="toc-credential-issuance"><span
+class="toc-section-number">8.5.5</span> Credential Issuance</a></li>
+<li><a href="#profile-key-credentials"
+id="toc-profile-key-credentials"><span
+class="toc-section-number">8.5.6</span> Profile Key Credentials</a></li>
+<li><a href="#receipt-credentials" id="toc-receipt-credentials"><span
+class="toc-section-number">8.5.7</span> Receipt Credentials</a></li>
+</ul></li>
+<li><a href="#the-zkcredential-abstraction"
+id="toc-the-zkcredential-abstraction"><span
+class="toc-section-number">8.6</span> 5. The zkcredential
+Abstraction</a>
+<ul>
+<li><a href="#design-philosophy" id="toc-design-philosophy"><span
+class="toc-section-number">8.6.1</span> Design Philosophy</a></li>
+<li><a href="#architecture-overview"
+id="toc-architecture-overview"><span
+class="toc-section-number">8.6.2</span> Architecture Overview</a></li>
+<li><a href="#attribute-types" id="toc-attribute-types"><span
+class="toc-section-number">8.6.3</span> Attribute Types</a></li>
+<li><a href="#attribute-encryption" id="toc-attribute-encryption"><span
+class="toc-section-number">8.6.4</span> Attribute Encryption</a></li>
+<li><a href="#credential-system" id="toc-credential-system"><span
+class="toc-section-number">8.6.5</span> Credential System</a></li>
+<li><a href="#credential-issuance-1"
+id="toc-credential-issuance-1"><span
+class="toc-section-number">8.6.6</span> Credential Issuance</a></li>
+<li><a href="#credential-presentation"
+id="toc-credential-presentation"><span
+class="toc-section-number">8.6.7</span> Credential Presentation</a></li>
+</ul></li>
+<li><a href="#endorsements-lightweight-alternatives"
+id="toc-endorsements-lightweight-alternatives"><span
+class="toc-section-number">8.7</span> 6. Endorsements: Lightweight
+Alternatives</a>
+<ul>
+<li><a href="#motivation" id="toc-motivation"><span
+class="toc-section-number">8.7.1</span> Motivation</a></li>
+<li><a href="#endorsement-structure"
+id="toc-endorsement-structure"><span
+class="toc-section-number">8.7.2</span> Endorsement Structure</a></li>
+<li><a href="#issuance-protocol" id="toc-issuance-protocol"><span
+class="toc-section-number">8.7.3</span> Issuance Protocol</a></li>
+<li><a href="#client-verification" id="toc-client-verification"><span
+class="toc-section-number">8.7.4</span> Client Verification</a></li>
+<li><a href="#token-generation" id="toc-token-generation"><span
+class="toc-section-number">8.7.5</span> Token Generation</a></li>
+<li><a href="#combining-endorsements"
+id="toc-combining-endorsements"><span
+class="toc-section-number">8.7.6</span> Combining Endorsements</a></li>
+<li><a href="#group-send-endorsements"
+id="toc-group-send-endorsements"><span
+class="toc-section-number">8.7.7</span> Group Send Endorsements</a></li>
+</ul></li>
+<li><a href="#real-world-usage" id="toc-real-world-usage"><span
+class="toc-section-number">8.8</span> 7. Real-World Usage</a>
+<ul>
+<li><a href="#group-operations-with-zero-knowledge"
+id="toc-group-operations-with-zero-knowledge"><span
+class="toc-section-number">8.8.1</span> Group Operations with
+Zero-Knowledge</a></li>
+<li><a href="#receipt-verification-flow"
+id="toc-receipt-verification-flow"><span
+class="toc-section-number">8.8.2</span> Receipt Verification
+Flow</a></li>
+<li><a href="#profile-key-distribution"
+id="toc-profile-key-distribution"><span
+class="toc-section-number">8.8.3</span> Profile Key
+Distribution</a></li>
+<li><a href="#performance-characteristics"
+id="toc-performance-characteristics"><span
+class="toc-section-number">8.8.4</span> Performance
+Characteristics</a></li>
+</ul></li>
+<li><a href="#security-analysis-1" id="toc-security-analysis-1"><span
+class="toc-section-number">8.9</span> 8. Security Analysis</a>
+<ul>
+<li><a href="#cryptographic-assumptions"
+id="toc-cryptographic-assumptions"><span
+class="toc-section-number">8.9.1</span> Cryptographic
+Assumptions</a></li>
+<li><a href="#attack-resistance" id="toc-attack-resistance"><span
+class="toc-section-number">8.9.2</span> Attack Resistance</a></li>
+<li><a href="#privacy-guarantees" id="toc-privacy-guarantees"><span
+class="toc-section-number">8.9.3</span> Privacy Guarantees</a></li>
+</ul></li>
+<li><a href="#conclusion-3" id="toc-conclusion-3"><span
+class="toc-section-number">8.10</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-6-network-services"
+id="toc-chapter-6-network-services"><span
+class="toc-section-number">9</span> Chapter 6: Network Services</a>
+<ul>
+<li><a
+href="#contact-discovery-secure-value-recovery-chat-and-key-transparency"
+id="toc-contact-discovery-secure-value-recovery-chat-and-key-transparency"><span
+class="toc-section-number">9.1</span> Contact Discovery, Secure Value
+Recovery, Chat, and Key Transparency</a></li>
+<li><a href="#introduction-2" id="toc-introduction-2"><span
+class="toc-section-number">9.2</span> Introduction</a></li>
+<li><a href="#the-libsignal-net-architecture"
+id="toc-the-libsignal-net-architecture"><span
+class="toc-section-number">9.3</span> 6.1 The libsignal-net
+Architecture</a>
+<ul>
+<li><a href="#historical-context" id="toc-historical-context"><span
+class="toc-section-number">9.3.1</span> Historical Context</a></li>
+<li><a href="#directory-structure" id="toc-directory-structure"><span
+class="toc-section-number">9.3.2</span> Directory Structure</a></li>
+<li><a href="#connection-management"
+id="toc-connection-management"><span
+class="toc-section-number">9.3.3</span> Connection Management</a></li>
+<li><a href="#async-patterns-with-tokio"
+id="toc-async-patterns-with-tokio"><span
+class="toc-section-number">9.3.4</span> Async Patterns with
+Tokio</a></li>
+<li><a href="#route-types-and-failover"
+id="toc-route-types-and-failover"><span
+class="toc-section-number">9.3.5</span> Route Types and
+Failover</a></li>
+</ul></li>
+<li><a href="#contact-discovery-service-cdsi"
+id="toc-contact-discovery-service-cdsi"><span
+class="toc-section-number">9.4</span> 6.2 Contact Discovery Service
+(CDSI)</a>
+<ul>
+<li><a href="#privacy-problem" id="toc-privacy-problem"><span
+class="toc-section-number">9.4.1</span> Privacy Problem</a></li>
+<li><a href="#architecture-overview-1"
+id="toc-architecture-overview-1"><span
+class="toc-section-number">9.4.2</span> Architecture Overview</a></li>
+<li><a href="#protocol-flow" id="toc-protocol-flow"><span
+class="toc-section-number">9.4.3</span> Protocol Flow</a></li>
+<li><a href="#sgx-attestation" id="toc-sgx-attestation"><span
+class="toc-section-number">9.4.4</span> SGX Attestation</a></li>
+<li><a href="#serialization-format" id="toc-serialization-format"><span
+class="toc-section-number">9.4.5</span> Serialization Format</a></li>
+<li><a href="#error-handling" id="toc-error-handling"><span
+class="toc-section-number">9.4.6</span> Error Handling</a></li>
+<li><a href="#connection-establishment"
+id="toc-connection-establishment"><span
+class="toc-section-number">9.4.7</span> Connection
+Establishment</a></li>
+</ul></li>
+<li><a href="#secure-value-recovery-svr"
+id="toc-secure-value-recovery-svr"><span
+class="toc-section-number">9.5</span> 6.3 Secure Value Recovery
+(SVR)</a>
+<ul>
+<li><a href="#the-pin-problem" id="toc-the-pin-problem"><span
+class="toc-section-number">9.5.1</span> The PIN Problem</a></li>
+<li><a href="#evolution-svr2-svr3-svr-b"
+id="toc-evolution-svr2-svr3-svr-b"><span
+class="toc-section-number">9.5.2</span> Evolution: SVR2 → SVR3 →
+SVR-B</a></li>
+<li><a href="#svr-b-architecture" id="toc-svr-b-architecture"><span
+class="toc-section-number">9.5.3</span> SVR-B Architecture</a></li>
+<li><a href="#ppss-protocol" id="toc-ppss-protocol"><span
+class="toc-section-number">9.5.4</span> PPSS Protocol</a></li>
+<li><a href="#forward-secrecy-mechanism"
+id="toc-forward-secrecy-mechanism"><span
+class="toc-section-number">9.5.5</span> Forward Secrecy
+Mechanism</a></li>
+<li><a href="#restore-flow" id="toc-restore-flow"><span
+class="toc-section-number">9.5.6</span> Restore Flow</a></li>
+<li><a href="#error-prioritization" id="toc-error-prioritization"><span
+class="toc-section-number">9.5.7</span> Error Prioritization</a></li>
+</ul></li>
+<li><a href="#chat-services" id="toc-chat-services"><span
+class="toc-section-number">9.6</span> 6.4 Chat Services</a>
+<ul>
+<li><a href="#websocket-based-messaging"
+id="toc-websocket-based-messaging"><span
+class="toc-section-number">9.6.1</span> WebSocket-Based
+Messaging</a></li>
+<li><a href="#connection-establishment-1"
+id="toc-connection-establishment-1"><span
+class="toc-section-number">9.6.2</span> Connection
+Establishment</a></li>
+<li><a href="#chat-headers" id="toc-chat-headers"><span
+class="toc-section-number">9.6.3</span> Chat Headers</a></li>
+<li><a href="#websocket-message-protocol"
+id="toc-websocket-message-protocol"><span
+class="toc-section-number">9.6.4</span> WebSocket Message
+Protocol</a></li>
+<li><a href="#request-timeout-handling"
+id="toc-request-timeout-handling"><span
+class="toc-section-number">9.6.5</span> Request Timeout
+Handling</a></li>
+<li><a href="#error-handling-1" id="toc-error-handling-1"><span
+class="toc-section-number">9.6.6</span> Error Handling</a></li>
+<li><a href="#response-validation" id="toc-response-validation"><span
+class="toc-section-number">9.6.7</span> Response Validation</a></li>
+<li><a href="#listener-pattern" id="toc-listener-pattern"><span
+class="toc-section-number">9.6.8</span> Listener Pattern</a></li>
+</ul></li>
+<li><a href="#key-transparency" id="toc-key-transparency"><span
+class="toc-section-number">9.7</span> 6.5 Key Transparency</a>
+<ul>
+<li><a href="#the-trust-problem" id="toc-the-trust-problem"><span
+class="toc-section-number">9.7.1</span> The Trust Problem</a></li>
+<li><a href="#architecture-overview-2"
+id="toc-architecture-overview-2"><span
+class="toc-section-number">9.7.2</span> Architecture Overview</a></li>
+<li><a href="#merkle-tree-structure"
+id="toc-merkle-tree-structure"><span
+class="toc-section-number">9.7.3</span> Merkle Tree Structure</a></li>
+<li><a href="#vrf-for-deterministic-positioning"
+id="toc-vrf-for-deterministic-positioning"><span
+class="toc-section-number">9.7.4</span> VRF for Deterministic
+Positioning</a></li>
+<li><a href="#search-operation" id="toc-search-operation"><span
+class="toc-section-number">9.7.5</span> Search Operation</a></li>
+<li><a href="#monitoring" id="toc-monitoring"><span
+class="toc-section-number">9.7.6</span> Monitoring</a></li>
+<li><a href="#consistency-proofs" id="toc-consistency-proofs"><span
+class="toc-section-number">9.7.7</span> Consistency Proofs</a></li>
+<li><a href="#deployment-modes" id="toc-deployment-modes"><span
+class="toc-section-number">9.7.8</span> Deployment Modes</a></li>
+<li><a href="#signature-verification"
+id="toc-signature-verification"><span
+class="toc-section-number">9.7.9</span> Signature Verification</a></li>
+</ul></li>
+<li><a href="#security-properties-and-threat-model"
+id="toc-security-properties-and-threat-model"><span
+class="toc-section-number">9.8</span> 6.6 Security Properties and Threat
+Model</a>
+<ul>
+<li><a href="#cdsi-security" id="toc-cdsi-security"><span
+class="toc-section-number">9.8.1</span> CDSI Security</a></li>
+<li><a href="#svr-security" id="toc-svr-security"><span
+class="toc-section-number">9.8.2</span> SVR Security</a></li>
+<li><a href="#chat-security" id="toc-chat-security"><span
+class="toc-section-number">9.8.3</span> Chat Security</a></li>
+<li><a href="#key-transparency-security"
+id="toc-key-transparency-security"><span
+class="toc-section-number">9.8.4</span> Key Transparency
+Security</a></li>
+</ul></li>
+<li><a href="#lessons-learned-and-design-patterns"
+id="toc-lessons-learned-and-design-patterns"><span
+class="toc-section-number">9.9</span> 6.7 Lessons Learned and Design
+Patterns</a>
+<ul>
+<li><a href="#pattern-layered-abstraction"
+id="toc-pattern-layered-abstraction"><span
+class="toc-section-number">9.9.1</span> Pattern: Layered
+Abstraction</a></li>
+<li><a href="#pattern-failover-and-resilience"
+id="toc-pattern-failover-and-resilience"><span
+class="toc-section-number">9.9.2</span> Pattern: Failover and
+Resilience</a></li>
+<li><a href="#pattern-type-safe-protocols"
+id="toc-pattern-type-safe-protocols"><span
+class="toc-section-number">9.9.3</span> Pattern: Type-Safe
+Protocols</a></li>
+<li><a href="#pattern-forward-compatibility"
+id="toc-pattern-forward-compatibility"><span
+class="toc-section-number">9.9.4</span> Pattern: Forward
+Compatibility</a></li>
+<li><a href="#pattern-defense-in-depth"
+id="toc-pattern-defense-in-depth"><span
+class="toc-section-number">9.9.5</span> Pattern: Defense in
+Depth</a></li>
+</ul></li>
+<li><a href="#conclusion-4" id="toc-conclusion-4"><span
+class="toc-section-number">9.10</span> Conclusion</a></li>
+<li><a href="#references" id="toc-references"><span
+class="toc-section-number">9.11</span> References</a></li>
+<li><a href="#further-reading" id="toc-further-reading"><span
+class="toc-section-number">9.12</span> Further Reading</a></li>
+</ul></li>
+<li><a
+href="#chapter-7-literate-programming---session-establishment-walkthrough"
+id="toc-chapter-7-literate-programming---session-establishment-walkthrough"><span
+class="toc-section-number">10</span> Chapter 7: Literate Programming -
+Session Establishment Walkthrough</a>
+<ul>
+<li><a
+href="#a-complete-code-walkthrough-of-signal-protocol-session-creation"
+id="toc-a-complete-code-walkthrough-of-signal-protocol-session-creation"><span
+class="toc-section-number">10.1</span> A Complete Code Walkthrough of
+Signal Protocol Session Creation</a></li>
+<li><a href="#initial-setup-creating-protocol-stores"
+id="toc-initial-setup-creating-protocol-stores"><span
+class="toc-section-number">10.2</span> 1. Initial Setup: Creating
+Protocol Stores</a>
+<ul>
+<li><a href="#identity-key-generation"
+id="toc-identity-key-generation"><span
+class="toc-section-number">10.2.1</span> 1.1 Identity Key
+Generation</a></li>
+</ul></li>
+<li><a href="#prekey-generation-bobs-side"
+id="toc-prekey-generation-bobs-side"><span
+class="toc-section-number">10.3</span> 2. PreKey Generation (Bob’s
+Side)</a>
+<ul>
+<li><a href="#signed-prekey-generation"
+id="toc-signed-prekey-generation"><span
+class="toc-section-number">10.3.1</span> 2.1 Signed PreKey
+Generation</a></li>
+<li><a href="#kyber-prekey-generation"
+id="toc-kyber-prekey-generation"><span
+class="toc-section-number">10.3.2</span> 2.2 Kyber PreKey
+Generation</a></li>
+<li><a href="#one-time-prekey-optional"
+id="toc-one-time-prekey-optional"><span
+class="toc-section-number">10.3.3</span> 2.3 One-Time PreKey
+(Optional)</a></li>
+<li><a href="#creating-the-prekeybundle"
+id="toc-creating-the-prekeybundle"><span
+class="toc-section-number">10.3.4</span> 2.4 Creating the
+PreKeyBundle</a></li>
+</ul></li>
+<li><a href="#session-initiation-alices-side"
+id="toc-session-initiation-alices-side"><span
+class="toc-section-number">10.4</span> 3. Session Initiation (Alice’s
+Side)</a>
+<ul>
+<li><a href="#processing-the-prekey-bundle"
+id="toc-processing-the-prekey-bundle"><span
+class="toc-section-number">10.4.1</span> 3.1 Processing the PreKey
+Bundle</a></li>
+<li><a href="#pqxdh-building-the-shared-secret"
+id="toc-pqxdh-building-the-shared-secret"><span
+class="toc-section-number">10.4.2</span> 3.2 PQXDH: Building the Shared
+Secret</a></li>
+<li><a href="#key-derivation-1" id="toc-key-derivation-1"><span
+class="toc-section-number">10.4.3</span> 3.3 Key Derivation</a></li>
+<li><a href="#initialize-the-ratchet"
+id="toc-initialize-the-ratchet"><span
+class="toc-section-number">10.4.4</span> 3.4 Initialize the
+Ratchet</a></li>
+<li><a href="#create-the-session-state"
+id="toc-create-the-session-state"><span
+class="toc-section-number">10.4.5</span> 3.5 Create the Session
+State</a></li>
+<li><a href="#mark-as-unacknowledged-session"
+id="toc-mark-as-unacknowledged-session"><span
+class="toc-section-number">10.4.6</span> 3.6 Mark as Unacknowledged
+Session</a></li>
+</ul></li>
+<li><a href="#first-message-encryption"
+id="toc-first-message-encryption"><span
+class="toc-section-number">10.5</span> 4. First Message Encryption</a>
+<ul>
+<li><a href="#message-key-derivation"
+id="toc-message-key-derivation"><span
+class="toc-section-number">10.5.1</span> 4.1 Message Key
+Derivation</a></li>
+<li><a href="#aes-256-cbc-encryption"
+id="toc-aes-256-cbc-encryption"><span
+class="toc-section-number">10.5.2</span> 4.2 AES-256-CBC
+Encryption</a></li>
+<li><a href="#construct-prekeysignalmessage"
+id="toc-construct-prekeysignalmessage"><span
+class="toc-section-number">10.5.3</span> 4.3 Construct
+PreKeySignalMessage</a></li>
+<li><a href="#advance-the-chain-key"
+id="toc-advance-the-chain-key"><span
+class="toc-section-number">10.5.4</span> 4.4 Advance the Chain
+Key</a></li>
+</ul></li>
+<li><a href="#session-completion-bobs-side"
+id="toc-session-completion-bobs-side"><span
+class="toc-section-number">10.6</span> 5. Session Completion (Bob’s
+Side)</a>
+<ul>
+<li><a href="#receive-and-process-prekey-message"
+id="toc-receive-and-process-prekey-message"><span
+class="toc-section-number">10.6.1</span> 5.1 Receive and Process PreKey
+Message</a></li>
+<li><a href="#perform-the-same-dh-operations"
+id="toc-perform-the-same-dh-operations"><span
+class="toc-section-number">10.6.2</span> 5.2 Perform the Same DH
+Operations</a></li>
+<li><a href="#kyber-decapsulation" id="toc-kyber-decapsulation"><span
+class="toc-section-number">10.6.3</span> 5.3 Kyber
+Decapsulation</a></li>
+<li><a href="#derive-the-same-keys" id="toc-derive-the-same-keys"><span
+class="toc-section-number">10.6.4</span> 5.4 Derive the Same
+Keys</a></li>
+<li><a href="#initialize-bobs-session"
+id="toc-initialize-bobs-session"><span
+class="toc-section-number">10.6.5</span> 5.5 Initialize Bob’s
+Session</a></li>
+<li><a href="#decrypt-alices-message"
+id="toc-decrypt-alices-message"><span
+class="toc-section-number">10.6.6</span> 5.6 Decrypt Alice’s
+Message</a></li>
+<li><a href="#prekey-cleanup" id="toc-prekey-cleanup"><span
+class="toc-section-number">10.6.7</span> 5.7 PreKey Cleanup</a></li>
+</ul></li>
+<li><a href="#state-management-and-continued-communication"
+id="toc-state-management-and-continued-communication"><span
+class="toc-section-number">10.7</span> 6. State Management and Continued
+Communication</a>
+<ul>
+<li><a href="#session-storage" id="toc-session-storage"><span
+class="toc-section-number">10.7.1</span> 6.1 Session Storage</a></li>
+<li><a href="#subsequent-messages" id="toc-subsequent-messages"><span
+class="toc-section-number">10.7.2</span> 6.2 Subsequent
+Messages</a></li>
+<li><a href="#the-double-ratchet-in-action"
+id="toc-the-double-ratchet-in-action"><span
+class="toc-section-number">10.7.3</span> 6.3 The Double Ratchet in
+Action</a></li>
+<li><a href="#spqr-integration" id="toc-spqr-integration"><span
+class="toc-section-number">10.7.4</span> 6.4 SPQR Integration</a></li>
+</ul></li>
+<li><a href="#security-properties-summary-1"
+id="toc-security-properties-summary-1"><span
+class="toc-section-number">10.8</span> 7. Security Properties
+Summary</a>
+<ul>
+<li><a href="#confidentiality" id="toc-confidentiality"><span
+class="toc-section-number">10.8.1</span> 7.1 Confidentiality</a></li>
+<li><a href="#authentication" id="toc-authentication"><span
+class="toc-section-number">10.8.2</span> 7.2 Authentication</a></li>
+<li><a href="#forward-secrecy" id="toc-forward-secrecy"><span
+class="toc-section-number">10.8.3</span> 7.3 Forward Secrecy</a></li>
+<li><a href="#deniability" id="toc-deniability"><span
+class="toc-section-number">10.8.4</span> 7.4 Deniability</a></li>
+<li><a href="#metadata-protection" id="toc-metadata-protection"><span
+class="toc-section-number">10.8.5</span> 7.5 Metadata
+Protection</a></li>
+</ul></li>
+<li><a href="#error-handling-2" id="toc-error-handling-2"><span
+class="toc-section-number">10.9</span> 8. Error Handling</a>
+<ul>
+<li><a href="#signature-verification-failures"
+id="toc-signature-verification-failures"><span
+class="toc-section-number">10.9.1</span> 8.1 Signature Verification
+Failures</a></li>
+<li><a href="#missing-prekeys" id="toc-missing-prekeys"><span
+class="toc-section-number">10.9.2</span> 8.2 Missing PreKeys</a></li>
+<li><a href="#invalid-base-key" id="toc-invalid-base-key"><span
+class="toc-section-number">10.9.3</span> 8.3 Invalid Base Key</a></li>
+<li><a href="#session-not-found" id="toc-session-not-found"><span
+class="toc-section-number">10.9.4</span> 8.4 Session Not Found</a></li>
+</ul></li>
+<li><a href="#conclusion-5" id="toc-conclusion-5"><span
+class="toc-section-number">10.10</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-8-literate-programming---message-encryption-flow"
+id="toc-chapter-8-literate-programming---message-encryption-flow"><span
+class="toc-section-number">11</span> Chapter 8: Literate Programming -
+Message Encryption Flow</a>
+<ul>
+<li><a
+href="#a-complete-walkthrough-of-encrypting-and-decrypting-messages-in-an-established-session"
+id="toc-a-complete-walkthrough-of-encrypting-and-decrypting-messages-in-an-established-session"><span
+class="toc-section-number">11.1</span> A Complete Walkthrough of
+Encrypting and Decrypting Messages in an Established Session</a>
+<ul>
+<li><a href="#table-of-contents-2" id="toc-table-of-contents-2"><span
+class="toc-section-number">11.1.1</span> Table of Contents</a></li>
+</ul></li>
+<li><a href="#introduction-3" id="toc-introduction-3"><span
+class="toc-section-number">11.2</span> Introduction</a>
+<ul>
+<li><a href="#prerequisites" id="toc-prerequisites"><span
+class="toc-section-number">11.2.1</span> Prerequisites</a></li>
+<li><a href="#source-files-referenced"
+id="toc-source-files-referenced"><span
+class="toc-section-number">11.2.2</span> Source Files
+Referenced</a></li>
+</ul></li>
+<li><a href="#established-session-state"
+id="toc-established-session-state"><span
+class="toc-section-number">11.3</span> 1. Established Session State</a>
+<ul>
+<li><a href="#session-state-structure"
+id="toc-session-state-structure"><span
+class="toc-section-number">11.3.1</span> 1.1 Session State
+Structure</a></li>
+<li><a href="#root-key-structure" id="toc-root-key-structure"><span
+class="toc-section-number">11.3.2</span> 1.2 Root Key Structure</a></li>
+<li><a href="#chain-key-structure" id="toc-chain-key-structure"><span
+class="toc-section-number">11.3.3</span> 1.3 Chain Key
+Structure</a></li>
+<li><a href="#message-keys-derivation"
+id="toc-message-keys-derivation"><span
+class="toc-section-number">11.3.4</span> 1.4 Message Keys
+Derivation</a></li>
+</ul></li>
+<li><a href="#encrypting-a-message-alice-sends-to-bob"
+id="toc-encrypting-a-message-alice-sends-to-bob"><span
+class="toc-section-number">11.4</span> 2. Encrypting a Message (Alice
+Sends to Bob)</a>
+<ul>
+<li><a href="#entry-point-message_encrypt"
+id="toc-entry-point-message_encrypt"><span
+class="toc-section-number">11.4.1</span> 2.1 Entry Point:
+<code>message_encrypt</code></a></li>
+<li><a href="#post-quantum-ratchet-send"
+id="toc-post-quantum-ratchet-send"><span
+class="toc-section-number">11.4.2</span> 2.2 Post-Quantum Ratchet
+Send</a></li>
+<li><a href="#encrypt-the-plaintext"
+id="toc-encrypt-the-plaintext"><span
+class="toc-section-number">11.4.3</span> 2.3 Encrypt the
+Plaintext</a></li>
+<li><a href="#create-signalmessage" id="toc-create-signalmessage"><span
+class="toc-section-number">11.4.4</span> 2.4 Create
+SignalMessage</a></li>
+<li><a href="#mac-computation-1" id="toc-mac-computation-1"><span
+class="toc-section-number">11.4.5</span> 2.5 MAC Computation</a></li>
+<li><a href="#advance-chain-key" id="toc-advance-chain-key"><span
+class="toc-section-number">11.4.6</span> 2.6 Advance Chain Key</a></li>
+<li><a href="#store-updated-session"
+id="toc-store-updated-session"><span
+class="toc-section-number">11.4.7</span> 2.7 Store Updated
+Session</a></li>
+</ul></li>
+<li><a href="#decrypting-a-message-bob-receives"
+id="toc-decrypting-a-message-bob-receives"><span
+class="toc-section-number">11.5</span> 3. Decrypting a Message (Bob
+Receives)</a>
+<ul>
+<li><a href="#entry-point-message_decrypt_signal"
+id="toc-entry-point-message_decrypt_signal"><span
+class="toc-section-number">11.5.1</span> 3.1 Entry Point:
+<code>message_decrypt_signal</code></a></li>
+<li><a href="#decrypt-with-session-record"
+id="toc-decrypt-with-session-record"><span
+class="toc-section-number">11.5.2</span> 3.2 Decrypt with Session
+Record</a></li>
+<li><a href="#decrypt-with-single-session-state"
+id="toc-decrypt-with-single-session-state"><span
+class="toc-section-number">11.5.3</span> 3.3 Decrypt with Single Session
+State</a></li>
+<li><a href="#get-or-create-chain-key"
+id="toc-get-or-create-chain-key"><span
+class="toc-section-number">11.5.4</span> 3.4 Get or Create Chain
+Key</a></li>
+<li><a href="#get-or-create-message-key"
+id="toc-get-or-create-message-key"><span
+class="toc-section-number">11.5.5</span> 3.5 Get or Create Message
+Key</a></li>
+<li><a href="#post-quantum-ratchet-receive"
+id="toc-post-quantum-ratchet-receive"><span
+class="toc-section-number">11.5.6</span> 3.6 Post-Quantum Ratchet
+Receive</a></li>
+<li><a href="#verify-mac" id="toc-verify-mac"><span
+class="toc-section-number">11.5.7</span> 3.7 Verify MAC</a></li>
+<li><a href="#decrypt-ciphertext" id="toc-decrypt-ciphertext"><span
+class="toc-section-number">11.5.8</span> 3.8 Decrypt Ciphertext</a></li>
+</ul></li>
+<li><a href="#dh-ratchet-step" id="toc-dh-ratchet-step"><span
+class="toc-section-number">11.6</span> 4. DH Ratchet Step</a>
+<ul>
+<li><a href="#when-to-perform-dh-ratchet"
+id="toc-when-to-perform-dh-ratchet"><span
+class="toc-section-number">11.6.1</span> 4.1 When to Perform DH
+Ratchet</a></li>
+<li><a href="#dh-ratchet-mathematics"
+id="toc-dh-ratchet-mathematics"><span
+class="toc-section-number">11.6.2</span> 4.2 DH Ratchet
+Mathematics</a></li>
+<li><a href="#code-implementation" id="toc-code-implementation"><span
+class="toc-section-number">11.6.3</span> 4.3 Code
+Implementation</a></li>
+<li><a href="#security-properties-3"
+id="toc-security-properties-3"><span
+class="toc-section-number">11.6.4</span> 4.4 Security
+Properties</a></li>
+</ul></li>
+<li><a href="#out-of-order-messages"
+id="toc-out-of-order-messages"><span
+class="toc-section-number">11.7</span> 5. Out-of-Order Messages</a>
+<ul>
+<li><a href="#scenario-messages-arrive-out-of-order"
+id="toc-scenario-messages-arrive-out-of-order"><span
+class="toc-section-number">11.7.1</span> 5.1 Scenario: Messages Arrive
+Out of Order</a></li>
+<li><a href="#message-key-storage" id="toc-message-key-storage"><span
+class="toc-section-number">11.7.2</span> 5.2 Message Key
+Storage</a></li>
+<li><a href="#limits-and-dos-prevention"
+id="toc-limits-and-dos-prevention"><span
+class="toc-section-number">11.7.3</span> 5.3 Limits and DoS
+Prevention</a></li>
+<li><a href="#duplicate-message-detection"
+id="toc-duplicate-message-detection"><span
+class="toc-section-number">11.7.4</span> 5.4 Duplicate Message
+Detection</a></li>
+</ul></li>
+<li><a href="#spqr-integration-1" id="toc-spqr-integration-1"><span
+class="toc-section-number">11.8</span> 6. SPQR Integration</a>
+<ul>
+<li><a href="#spqr-design-goals" id="toc-spqr-design-goals"><span
+class="toc-section-number">11.8.1</span> 6.1 SPQR Design Goals</a></li>
+<li><a href="#spqr-state-structure" id="toc-spqr-state-structure"><span
+class="toc-section-number">11.8.2</span> 6.2 SPQR State
+Structure</a></li>
+<li><a href="#spqr-initialization" id="toc-spqr-initialization"><span
+class="toc-section-number">11.8.3</span> 6.3 SPQR
+Initialization</a></li>
+<li><a href="#spqr-send" id="toc-spqr-send"><span
+class="toc-section-number">11.8.4</span> 6.4 SPQR Send</a></li>
+<li><a href="#spqr-receive" id="toc-spqr-receive"><span
+class="toc-section-number">11.8.5</span> 6.5 SPQR Receive</a></li>
+<li><a href="#combined-key-derivation"
+id="toc-combined-key-derivation"><span
+class="toc-section-number">11.8.6</span> 6.6 Combined Key
+Derivation</a></li>
+<li><a href="#spqr-chain-parameters"
+id="toc-spqr-chain-parameters"><span
+class="toc-section-number">11.8.7</span> 6.7 SPQR Chain
+Parameters</a></li>
+</ul></li>
+<li><a href="#security-properties-4"
+id="toc-security-properties-4"><span
+class="toc-section-number">11.9</span> 7. Security Properties</a>
+<ul>
+<li><a href="#confidentiality-1" id="toc-confidentiality-1"><span
+class="toc-section-number">11.9.1</span> 7.1 Confidentiality</a></li>
+<li><a href="#authenticity" id="toc-authenticity"><span
+class="toc-section-number">11.9.2</span> 7.2 Authenticity</a></li>
+<li><a href="#forward-secrecy-1" id="toc-forward-secrecy-1"><span
+class="toc-section-number">11.9.3</span> 7.3 Forward Secrecy</a></li>
+<li><a href="#future-secrecy-break-in-recovery"
+id="toc-future-secrecy-break-in-recovery"><span
+class="toc-section-number">11.9.4</span> 7.4 Future Secrecy (Break-in
+Recovery)</a></li>
+<li><a href="#deniability-1" id="toc-deniability-1"><span
+class="toc-section-number">11.9.5</span> 7.5 Deniability</a></li>
+<li><a href="#replay-protection" id="toc-replay-protection"><span
+class="toc-section-number">11.9.6</span> 7.6 Replay Protection</a></li>
+<li><a href="#out-of-order-delivery"
+id="toc-out-of-order-delivery"><span
+class="toc-section-number">11.9.7</span> 7.7 Out-of-Order
+Delivery</a></li>
+<li><a href="#denial-of-service-resistance"
+id="toc-denial-of-service-resistance"><span
+class="toc-section-number">11.9.8</span> 7.8 Denial of Service
+Resistance</a></li>
+<li><a href="#post-quantum-security"
+id="toc-post-quantum-security"><span
+class="toc-section-number">11.9.9</span> 7.9 Post-Quantum
+Security</a></li>
+</ul></li>
+<li><a href="#conclusion-6" id="toc-conclusion-6"><span
+class="toc-section-number">11.10</span> Conclusion</a></li>
+<li><a href="#references-1" id="toc-references-1"><span
+class="toc-section-number">11.11</span> References</a></li>
+</ul></li>
+<li><a
+href="#chapter-9-literate-programming---group-messaging-deep-dive"
+id="toc-chapter-9-literate-programming---group-messaging-deep-dive"><span
+class="toc-section-number">12</span> Chapter 9: Literate Programming -
+Group Messaging Deep-Dive</a>
+<ul>
+<li><a href="#table-of-contents-3" id="toc-table-of-contents-3"><span
+class="toc-section-number">12.1</span> Table of Contents</a></li>
+<li><a href="#group-messaging-architecture"
+id="toc-group-messaging-architecture"><span
+class="toc-section-number">12.2</span> 1. Group Messaging
+Architecture</a>
+<ul>
+<li><a href="#the-problem-pairwise-sessions-at-scale"
+id="toc-the-problem-pairwise-sessions-at-scale"><span
+class="toc-section-number">12.2.1</span> The Problem: Pairwise Sessions
+at Scale</a></li>
+<li><a href="#the-solution-sender-keys"
+id="toc-the-solution-sender-keys"><span
+class="toc-section-number">12.2.2</span> The Solution: Sender
+Keys</a></li>
+<li><a href="#efficiency-comparison"
+id="toc-efficiency-comparison"><span
+class="toc-section-number">12.2.3</span> Efficiency Comparison</a></li>
+<li><a href="#security-trade-offs" id="toc-security-trade-offs"><span
+class="toc-section-number">12.2.4</span> Security Trade-offs</a></li>
+</ul></li>
+<li><a href="#sender-key-structure" id="toc-sender-key-structure"><span
+class="toc-section-number">12.3</span> 2. Sender Key Structure</a>
+<ul>
+<li><a href="#sendermessagekey-the-ephemeral-encryption-key"
+id="toc-sendermessagekey-the-ephemeral-encryption-key"><span
+class="toc-section-number">12.3.1</span> SenderMessageKey: The Ephemeral
+Encryption Key</a></li>
+<li><a href="#senderchainkey-the-ratcheting-mechanism"
+id="toc-senderchainkey-the-ratcheting-mechanism"><span
+class="toc-section-number">12.3.2</span> SenderChainKey: The Ratcheting
+Mechanism</a></li>
+<li><a href="#senderkeystate-the-complete-state"
+id="toc-senderkeystate-the-complete-state"><span
+class="toc-section-number">12.3.3</span> SenderKeyState: The Complete
+State</a></li>
+</ul></li>
+<li><a href="#sender-key-distribution"
+id="toc-sender-key-distribution"><span
+class="toc-section-number">12.4</span> 3. Sender Key Distribution</a>
+<ul>
+<li><a href="#senderkeydistributionmessage-structure"
+id="toc-senderkeydistributionmessage-structure"><span
+class="toc-section-number">12.4.1</span> SenderKeyDistributionMessage
+Structure</a></li>
+<li><a href="#creating-a-distribution-message"
+id="toc-creating-a-distribution-message"><span
+class="toc-section-number">12.4.2</span> Creating a Distribution
+Message</a></li>
+<li><a href="#processing-a-distribution-message"
+id="toc-processing-a-distribution-message"><span
+class="toc-section-number">12.4.3</span> Processing a Distribution
+Message</a></li>
+</ul></li>
+<li><a href="#group-encryption" id="toc-group-encryption"><span
+class="toc-section-number">12.5</span> 4. Group Encryption</a>
+<ul>
+<li><a href="#encryption-process" id="toc-encryption-process"><span
+class="toc-section-number">12.5.1</span> Encryption Process</a></li>
+<li><a href="#message-format-1" id="toc-message-format-1"><span
+class="toc-section-number">12.5.2</span> Message Format</a></li>
+<li><a href="#example-from-tests" id="toc-example-from-tests"><span
+class="toc-section-number">12.5.3</span> Example from Tests</a></li>
+</ul></li>
+<li><a href="#group-decryption" id="toc-group-decryption"><span
+class="toc-section-number">12.6</span> 5. Group Decryption</a>
+<ul>
+<li><a href="#decryption-process" id="toc-decryption-process"><span
+class="toc-section-number">12.6.1</span> Decryption Process</a></li>
+<li><a href="#handling-out-of-order-messages"
+id="toc-handling-out-of-order-messages"><span
+class="toc-section-number">12.6.2</span> Handling Out-of-Order
+Messages</a></li>
+<li><a href="#example-out-of-order-decryption-test"
+id="toc-example-out-of-order-decryption-test"><span
+class="toc-section-number">12.6.3</span> Example: Out-of-Order
+Decryption Test</a></li>
+</ul></li>
+<li><a href="#key-rotation" id="toc-key-rotation"><span
+class="toc-section-number">12.7</span> 6. Key Rotation</a>
+<ul>
+<li><a href="#when-to-rotate" id="toc-when-to-rotate"><span
+class="toc-section-number">12.7.1</span> When to Rotate</a></li>
+<li><a href="#how-rotation-works" id="toc-how-rotation-works"><span
+class="toc-section-number">12.7.2</span> How Rotation Works</a></li>
+<li><a href="#rotation-scenario" id="toc-rotation-scenario"><span
+class="toc-section-number">12.7.3</span> Rotation Scenario</a></li>
+<li><a href="#handling-rotation-race-conditions"
+id="toc-handling-rotation-race-conditions"><span
+class="toc-section-number">12.7.4</span> Handling Rotation Race
+Conditions</a></li>
+</ul></li>
+<li><a href="#multi-recipient-messages"
+id="toc-multi-recipient-messages"><span
+class="toc-section-number">12.8</span> 7. Multi-Recipient Messages</a>
+<ul>
+<li><a href="#the-problem-server-side-fanout"
+id="toc-the-problem-server-side-fanout"><span
+class="toc-section-number">12.8.1</span> The Problem: Server-Side
+Fanout</a></li>
+<li><a
+href="#the-solution-multi-recipient-sealed-sender-sealed-sender-v2"
+id="toc-the-solution-multi-recipient-sealed-sender-sealed-sender-v2"><span
+class="toc-section-number">12.8.2</span> The Solution: Multi-Recipient
+Sealed Sender (Sealed Sender v2)</a></li>
+<li><a href="#algorithmic-overview" id="toc-algorithmic-overview"><span
+class="toc-section-number">12.8.3</span> Algorithmic Overview</a></li>
+<li><a href="#wire-format" id="toc-wire-format"><span
+class="toc-section-number">12.8.4</span> Wire Format</a></li>
+<li><a href="#example-group-message-with-sealed-sender-v2"
+id="toc-example-group-message-with-sealed-sender-v2"><span
+class="toc-section-number">12.8.5</span> Example: Group Message with
+Sealed Sender v2</a></li>
+<li><a href="#performance-characteristics-1"
+id="toc-performance-characteristics-1"><span
+class="toc-section-number">12.8.6</span> Performance
+Characteristics</a></li>
+</ul></li>
+<li><a href="#summary" id="toc-summary"><span
+class="toc-section-number">12.9</span> Summary</a></li>
+</ul></li>
+<li><a href="#chapter-10-testing-architecture-1"
+id="toc-chapter-10-testing-architecture-1"><span
+class="toc-section-number">13</span> Chapter 10: Testing
+Architecture</a>
+<ul>
+<li><a href="#overview-2" id="toc-overview-2"><span
+class="toc-section-number">13.1</span> Overview</a></li>
+<li><a href="#testing-philosophy" id="toc-testing-philosophy"><span
+class="toc-section-number">13.2</span> 1. Testing Philosophy</a>
+<ul>
+<li><a href="#multi-layered-testing-strategy"
+id="toc-multi-layered-testing-strategy"><span
+class="toc-section-number">13.2.1</span> Multi-Layered Testing
+Strategy</a></li>
+<li><a href="#coverage-goals" id="toc-coverage-goals"><span
+class="toc-section-number">13.2.2</span> Coverage Goals</a></li>
+<li><a href="#quality-standards" id="toc-quality-standards"><span
+class="toc-section-number">13.2.3</span> Quality Standards</a></li>
+</ul></li>
+<li><a href="#unit-tests" id="toc-unit-tests"><span
+class="toc-section-number">13.3</span> 2. Unit Tests</a>
+<ul>
+<li><a href="#inline-test-organization"
+id="toc-inline-test-organization"><span
+class="toc-section-number">13.3.1</span> Inline Test
+Organization</a></li>
+<li><a href="#test-patterns-and-conventions"
+id="toc-test-patterns-and-conventions"><span
+class="toc-section-number">13.3.2</span> Test Patterns and
+Conventions</a></li>
+<li><a href="#async-test-patterns" id="toc-async-test-patterns"><span
+class="toc-section-number">13.3.3</span> Async Test Patterns</a></li>
+<li><a href="#unit-test-statistics" id="toc-unit-test-statistics"><span
+class="toc-section-number">13.3.4</span> Unit Test Statistics</a></li>
+</ul></li>
+<li><a href="#integration-tests" id="toc-integration-tests"><span
+class="toc-section-number">13.4</span> 3. Integration Tests</a>
+<ul>
+<li><a href="#session-tests" id="toc-session-tests"><span
+class="toc-section-number">13.4.1</span> Session Tests</a></li>
+<li><a href="#group-tests" id="toc-group-tests"><span
+class="toc-section-number">13.4.2</span> Group Tests</a></li>
+<li><a href="#sealed-sender-tests" id="toc-sealed-sender-tests"><span
+class="toc-section-number">13.4.3</span> Sealed Sender Tests</a></li>
+<li><a href="#test-structure-and-utilities"
+id="toc-test-structure-and-utilities"><span
+class="toc-section-number">13.4.4</span> Test Structure and
+Utilities</a></li>
+</ul></li>
+<li><a href="#property-based-testing"
+id="toc-property-based-testing"><span
+class="toc-section-number">13.5</span> 4. Property-Based Testing</a>
+<ul>
+<li><a href="#proptest-usage-examples"
+id="toc-proptest-usage-examples"><span
+class="toc-section-number">13.5.1</span> Proptest Usage
+Examples</a></li>
+<li><a href="#generator-strategies" id="toc-generator-strategies"><span
+class="toc-section-number">13.5.2</span> Generator Strategies</a></li>
+<li><a href="#invariant-testing" id="toc-invariant-testing"><span
+class="toc-section-number">13.5.3</span> Invariant Testing</a></li>
+</ul></li>
+<li><a href="#fuzz-testing" id="toc-fuzz-testing"><span
+class="toc-section-number">13.6</span> 5. Fuzz Testing</a>
+<ul>
+<li><a href="#fuzz-targets" id="toc-fuzz-targets"><span
+class="toc-section-number">13.6.1</span> Fuzz Targets</a></li>
+<li><a href="#libfuzzer-integration"
+id="toc-libfuzzer-integration"><span
+class="toc-section-number">13.6.2</span> libfuzzer Integration</a></li>
+<li><a href="#coverage-guided-fuzzing"
+id="toc-coverage-guided-fuzzing"><span
+class="toc-section-number">13.6.3</span> Coverage-Guided
+Fuzzing</a></li>
+</ul></li>
+<li><a href="#cross-language-testing"
+id="toc-cross-language-testing"><span
+class="toc-section-number">13.7</span> 6. Cross-Language Testing</a>
+<ul>
+<li><a href="#java-test-suite" id="toc-java-test-suite"><span
+class="toc-section-number">13.7.1</span> Java Test Suite</a></li>
+<li><a href="#swift-test-examples" id="toc-swift-test-examples"><span
+class="toc-section-number">13.7.2</span> Swift Test Examples</a></li>
+<li><a href="#node.js-tests" id="toc-node.js-tests"><span
+class="toc-section-number">13.7.3</span> Node.js Tests</a></li>
+<li><a href="#protocol-compatibility-tests"
+id="toc-protocol-compatibility-tests"><span
+class="toc-section-number">13.7.4</span> Protocol Compatibility
+Tests</a></li>
+</ul></li>
+<li><a href="#benchmarking" id="toc-benchmarking"><span
+class="toc-section-number">13.8</span> 7. Benchmarking</a>
+<ul>
+<li><a href="#criterion-usage" id="toc-criterion-usage"><span
+class="toc-section-number">13.8.1</span> Criterion Usage</a></li>
+<li><a href="#performance-tracking" id="toc-performance-tracking"><span
+class="toc-section-number">13.8.2</span> Performance Tracking</a></li>
+<li><a href="#code-examples" id="toc-code-examples"><span
+class="toc-section-number">13.8.3</span> Code Examples</a></li>
+</ul></li>
+<li><a href="#cicd-testing" id="toc-cicd-testing"><span
+class="toc-section-number">13.9</span> 8. CI/CD Testing</a>
+<ul>
+<li><a href="#github-actions-workflows"
+id="toc-github-actions-workflows"><span
+class="toc-section-number">13.9.1</span> GitHub Actions
+Workflows</a></li>
+<li><a href="#matrix-testing-strategy"
+id="toc-matrix-testing-strategy"><span
+class="toc-section-number">13.9.2</span> Matrix Testing
+Strategy</a></li>
+<li><a href="#platform-coverage" id="toc-platform-coverage"><span
+class="toc-section-number">13.9.3</span> Platform Coverage</a></li>
+</ul></li>
+<li><a href="#testing-best-practices"
+id="toc-testing-best-practices"><span
+class="toc-section-number">13.10</span> Testing Best Practices</a>
+<ul>
+<li><a href="#test-isolation" id="toc-test-isolation"><span
+class="toc-section-number">13.10.1</span> 1. Test Isolation</a></li>
+<li><a href="#error-path-testing" id="toc-error-path-testing"><span
+class="toc-section-number">13.10.2</span> 2. Error Path Testing</a></li>
+<li><a href="#deterministic-randomness"
+id="toc-deterministic-randomness"><span
+class="toc-section-number">13.10.3</span> 3. Deterministic
+Randomness</a></li>
+<li><a href="#timeout-protection" id="toc-timeout-protection"><span
+class="toc-section-number">13.10.4</span> 4. Timeout Protection</a></li>
+<li><a href="#platform-specific-testing"
+id="toc-platform-specific-testing"><span
+class="toc-section-number">13.10.5</span> 5. Platform-Specific
+Testing</a></li>
+</ul></li>
+<li><a href="#coverage-metrics" id="toc-coverage-metrics"><span
+class="toc-section-number">13.11</span> Coverage Metrics</a></li>
+<li><a href="#conclusion-7" id="toc-conclusion-7"><span
+class="toc-section-number">13.12</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-11-build-system-and-infrastructure"
+id="toc-chapter-11-build-system-and-infrastructure"><span
+class="toc-section-number">14</span> Chapter 11: Build System and
+Infrastructure</a>
+<ul>
+<li><a href="#overview-3" id="toc-overview-3"><span
+class="toc-section-number">14.1</span> Overview</a></li>
+<li><a href="#cargo-workspace-architecture"
+id="toc-cargo-workspace-architecture"><span
+class="toc-section-number">14.2</span> 1. Cargo Workspace
+Architecture</a>
+<ul>
+<li><a href="#workspace-configuration"
+id="toc-workspace-configuration"><span
+class="toc-section-number">14.2.1</span> 1.1 Workspace
+Configuration</a></li>
+<li><a href="#workspace-package-metadata"
+id="toc-workspace-package-metadata"><span
+class="toc-section-number">14.2.2</span> 1.2 Workspace Package
+Metadata</a></li>
+<li><a href="#workspace-dependencies"
+id="toc-workspace-dependencies"><span
+class="toc-section-number">14.2.3</span> 1.3 Workspace
+Dependencies</a></li>
+<li><a href="#crate-patches" id="toc-crate-patches"><span
+class="toc-section-number">14.2.4</span> 1.4 Crate Patches</a></li>
+<li><a href="#feature-flags-1" id="toc-feature-flags-1"><span
+class="toc-section-number">14.2.5</span> 1.5 Feature Flags</a></li>
+<li><a href="#workspace-lints" id="toc-workspace-lints"><span
+class="toc-section-number">14.2.6</span> 1.6 Workspace Lints</a></li>
+</ul></li>
+<li><a href="#cross-compilation-infrastructure"
+id="toc-cross-compilation-infrastructure"><span
+class="toc-section-number">14.3</span> 2. Cross-Compilation
+Infrastructure</a>
+<ul>
+<li><a href="#android-compilation-build_jni.sh"
+id="toc-android-compilation-build_jni.sh"><span
+class="toc-section-number">14.3.1</span> 2.1 Android Compilation
+(build_jni.sh)</a></li>
+<li><a href="#ios-and-macos-compilation-build_ffi.sh"
+id="toc-ios-and-macos-compilation-build_ffi.sh"><span
+class="toc-section-number">14.3.2</span> 2.2 iOS and macOS Compilation
+(build_ffi.sh)</a></li>
+<li><a href="#desktop-cross-compilation"
+id="toc-desktop-cross-compilation"><span
+class="toc-section-number">14.3.3</span> 2.3 Desktop
+Cross-Compilation</a></li>
+<li><a href="#build-helper-functions"
+id="toc-build-helper-functions"><span
+class="toc-section-number">14.3.4</span> 2.4 Build Helper
+Functions</a></li>
+</ul></li>
+<li><a href="#build-scripts-build.rs"
+id="toc-build-scripts-build.rs"><span
+class="toc-section-number">14.4</span> 3. Build Scripts (build.rs)</a>
+<ul>
+<li><a href="#protocol-buffer-compilation"
+id="toc-protocol-buffer-compilation"><span
+class="toc-section-number">14.4.1</span> 3.1 Protocol Buffer
+Compilation</a></li>
+<li><a href="#environment-variable-configuration"
+id="toc-environment-variable-configuration"><span
+class="toc-section-number">14.4.2</span> 3.2 Environment Variable
+Configuration</a></li>
+<li><a href="#build-script-best-practices"
+id="toc-build-script-best-practices"><span
+class="toc-section-number">14.4.3</span> 3.3 Build Script Best
+Practices</a></li>
+</ul></li>
+<li><a href="#cicd-pipeline" id="toc-cicd-pipeline"><span
+class="toc-section-number">14.5</span> 4. CI/CD Pipeline</a>
+<ul>
+<li><a href="#workflow-structure" id="toc-workflow-structure"><span
+class="toc-section-number">14.5.1</span> 4.1 Workflow Structure</a></li>
+<li><a href="#path-based-job-triggering"
+id="toc-path-based-job-triggering"><span
+class="toc-section-number">14.5.2</span> 4.2 Path-Based Job
+Triggering</a></li>
+<li><a href="#matrix-testing-strategy-1"
+id="toc-matrix-testing-strategy-1"><span
+class="toc-section-number">14.5.3</span> 4.3 Matrix Testing
+Strategy</a></li>
+<li><a href="#android-build-job" id="toc-android-build-job"><span
+class="toc-section-number">14.5.4</span> 4.4 Android Build Job</a></li>
+<li><a href="#cargo-cache-strategy" id="toc-cargo-cache-strategy"><span
+class="toc-section-number">14.5.5</span> 4.5 Cargo Cache
+Strategy</a></li>
+</ul></li>
+<li><a href="#docker-and-reproducible-builds"
+id="toc-docker-and-reproducible-builds"><span
+class="toc-section-number">14.6</span> 5. Docker and Reproducible
+Builds</a>
+<ul>
+<li><a href="#java-docker-environment"
+id="toc-java-docker-environment"><span
+class="toc-section-number">14.6.1</span> 5.1 Java Docker
+Environment</a></li>
+<li><a href="#node-docker-environment"
+id="toc-node-docker-environment"><span
+class="toc-section-number">14.6.2</span> 5.2 Node Docker
+Environment</a></li>
+<li><a href="#build-reproducibility-strategy"
+id="toc-build-reproducibility-strategy"><span
+class="toc-section-number">14.6.3</span> 5.3 Build Reproducibility
+Strategy</a></li>
+</ul></li>
+<li><a href="#release-process-automation"
+id="toc-release-process-automation"><span
+class="toc-section-number">14.7</span> 6. Release Process Automation</a>
+<ul>
+<li><a href="#version-synchronization-update_versions.py"
+id="toc-version-synchronization-update_versions.py"><span
+class="toc-section-number">14.7.1</span> 6.1 Version Synchronization
+(update_versions.py)</a></li>
+<li><a href="#release-preparation-prepare_release.py"
+id="toc-release-preparation-prepare_release.py"><span
+class="toc-section-number">14.7.2</span> 6.2 Release Preparation
+(prepare_release.py)</a></li>
+<li><a href="#rollback-safety" id="toc-rollback-safety"><span
+class="toc-section-number">14.7.3</span> 6.3 Rollback Safety</a></li>
+</ul></li>
+<li><a href="#code-size-tracking-and-optimization"
+id="toc-code-size-tracking-and-optimization"><span
+class="toc-section-number">14.8</span> 7. Code Size Tracking and
+Optimization</a>
+<ul>
+<li><a href="#automated-size-measurement"
+id="toc-automated-size-measurement"><span
+class="toc-section-number">14.8.1</span> 7.1 Automated Size
+Measurement</a></li>
+<li><a href="#size-optimization-strategies"
+id="toc-size-optimization-strategies"><span
+class="toc-section-number">14.8.2</span> 7.2 Size Optimization
+Strategies</a></li>
+<li><a href="#size-regression-detection"
+id="toc-size-regression-detection"><span
+class="toc-section-number">14.8.3</span> 7.3 Size Regression
+Detection</a></li>
+<li><a href="#platform-specific-size-targets"
+id="toc-platform-specific-size-targets"><span
+class="toc-section-number">14.8.4</span> 7.4 Platform-Specific Size
+Targets</a></li>
+</ul></li>
+<li><a href="#build-system-best-practices"
+id="toc-build-system-best-practices"><span
+class="toc-section-number">14.9</span> 8. Build System Best
+Practices</a>
+<ul>
+<li><a href="#incremental-build-performance"
+id="toc-incremental-build-performance"><span
+class="toc-section-number">14.9.1</span> 8.1 Incremental Build
+Performance</a></li>
+<li><a href="#cross-platform-compatibility"
+id="toc-cross-platform-compatibility"><span
+class="toc-section-number">14.9.2</span> 8.2 Cross-Platform
+Compatibility</a></li>
+<li><a href="#debugging-build-issues"
+id="toc-debugging-build-issues"><span
+class="toc-section-number">14.9.3</span> 8.3 Debugging Build
+Issues</a></li>
+<li><a href="#security-considerations"
+id="toc-security-considerations"><span
+class="toc-section-number">14.9.4</span> 8.4 Security
+Considerations</a></li>
+</ul></li>
+<li><a href="#summary-1" id="toc-summary-1"><span
+class="toc-section-number">14.10</span> Summary</a></li>
+</ul></li>
+<li><a href="#chapter-12-architectural-evolution-and-lessons-learned"
+id="toc-chapter-12-architectural-evolution-and-lessons-learned"><span
+class="toc-section-number">15</span> Chapter 12: Architectural Evolution
+and Lessons Learned</a>
+<ul>
+<li><a href="#how-libsignal-grew-from-prototype-to-production"
+id="toc-how-libsignal-grew-from-prototype-to-production"><span
+class="toc-section-number">15.1</span> How libsignal Grew from Prototype
+to Production</a></li>
+<li><a href="#introduction-six-years-of-continuous-evolution"
+id="toc-introduction-six-years-of-continuous-evolution"><span
+class="toc-section-number">15.2</span> Introduction: Six Years of
+Continuous Evolution</a></li>
+<li><a href="#major-refactorings-timeline"
+id="toc-major-refactorings-timeline"><span
+class="toc-section-number">15.3</span> 12.1 Major Refactorings
+Timeline</a>
+<ul>
+<li><a href="#january-2020-the-beginning-commit-e0bc82fa"
+id="toc-january-2020-the-beginning-commit-e0bc82fa"><span
+class="toc-section-number">15.3.1</span> January 2020: The Beginning
+(Commit e0bc82fa)</a></li>
+<li><a href="#april-may-2020-pivot-to-signal-protocol"
+id="toc-april-may-2020-pivot-to-signal-protocol"><span
+class="toc-section-number">15.3.2</span> April-May 2020: Pivot to Signal
+Protocol</a></li>
+<li><a href="#october-2020-the-great-monorepo-unification"
+id="toc-october-2020-the-great-monorepo-unification"><span
+class="toc-section-number">15.3.3</span> October 2020: The Great
+Monorepo Unification</a></li>
+<li><a href="#bridge-layer-unification"
+id="toc-bridge-layer-unification"><span
+class="toc-section-number">15.3.4</span> 2020-2021: Bridge Layer
+Unification</a></li>
+<li><a href="#september-2023-network-stack-introduction"
+id="toc-september-2023-network-stack-introduction"><span
+class="toc-section-number">15.3.5</span> September 2023: Network Stack
+Introduction</a></li>
+<li><a href="#post-quantum-migration"
+id="toc-post-quantum-migration"><span
+class="toc-section-number">15.3.6</span> 2023-2025: Post-Quantum
+Migration</a></li>
+</ul></li>
+<li><a href="#crypto-library-migrations"
+id="toc-crypto-library-migrations"><span
+class="toc-section-number">15.4</span> 12.2 Crypto Library
+Migrations</a>
+<ul>
+<li><a href="#curve25519-dalek-evolution"
+id="toc-curve25519-dalek-evolution"><span
+class="toc-section-number">15.4.1</span> curve25519-dalek
+Evolution</a></li>
+<li><a href="#rustcrypto-adoption" id="toc-rustcrypto-adoption"><span
+class="toc-section-number">15.4.2</span> RustCrypto Adoption</a></li>
+<li><a href="#libcrux-for-ml-kem-2024"
+id="toc-libcrux-for-ml-kem-2024"><span
+class="toc-section-number">15.4.3</span> libcrux for ML-KEM
+(2024)</a></li>
+<li><a href="#boringssl-integration-limited-use"
+id="toc-boringssl-integration-limited-use"><span
+class="toc-section-number">15.4.4</span> BoringSSL Integration (Limited
+Use)</a></li>
+</ul></li>
+<li><a href="#protocol-upgrades-1" id="toc-protocol-upgrades-1"><span
+class="toc-section-number">15.5</span> 12.3 Protocol Upgrades</a>
+<ul>
+<li><a href="#x3dh-to-pqxdh" id="toc-x3dh-to-pqxdh"><span
+class="toc-section-number">15.5.1</span> X3DH to PQXDH</a></li>
+<li><a href="#double-ratchet-to-spqr"
+id="toc-double-ratchet-to-spqr"><span
+class="toc-section-number">15.5.2</span> Double Ratchet to SPQR</a></li>
+<li><a href="#sealed-sender-v1-to-v2"
+id="toc-sealed-sender-v1-to-v2"><span
+class="toc-section-number">15.5.3</span> Sealed Sender v1 to v2</a></li>
+</ul></li>
+<li><a href="#asyncawait-adoption" id="toc-asyncawait-adoption"><span
+class="toc-section-number">15.6</span> 12.4 Async/Await Adoption</a>
+<ul>
+<li><a href="#early-callback-patterns-2020-2021"
+id="toc-early-callback-patterns-2020-2021"><span
+class="toc-section-number">15.6.1</span> Early Callback Patterns
+(2020-2021)</a></li>
+<li><a href="#future-based-apis-2021-2023"
+id="toc-future-based-apis-2021-2023"><span
+class="toc-section-number">15.6.2</span> Future-Based APIs
+(2021-2023)</a></li>
+<li><a href="#tokio-integration-2023-2024"
+id="toc-tokio-integration-2023-2024"><span
+class="toc-section-number">15.6.3</span> tokio Integration
+(2023-2024)</a></li>
+<li><a href="#cross-language-async-2023-2025"
+id="toc-cross-language-async-2023-2025"><span
+class="toc-section-number">15.6.4</span> Cross-Language Async
+(2023-2025)</a></li>
+</ul></li>
+<li><a href="#error-handling-evolution"
+id="toc-error-handling-evolution"><span
+class="toc-section-number">15.7</span> 12.5 Error Handling Evolution</a>
+<ul>
+<li><a href="#early-result-types-2020-2021"
+id="toc-early-result-types-2020-2021"><span
+class="toc-section-number">15.7.1</span> Early Result Types
+(2020-2021)</a></li>
+<li><a href="#bridge-error-conversion-2021-2023"
+id="toc-bridge-error-conversion-2021-2023"><span
+class="toc-section-number">15.7.2</span> Bridge Error Conversion
+(2021-2023)</a></li>
+<li><a href="#specialized-error-types-2023-2024"
+id="toc-specialized-error-types-2023-2024"><span
+class="toc-section-number">15.7.3</span> Specialized Error Types
+(2023-2024)</a></li>
+<li><a href="#error-context-enrichment-2024-2025"
+id="toc-error-context-enrichment-2024-2025"><span
+class="toc-section-number">15.7.4</span> Error Context Enrichment
+(2024-2025)</a></li>
+<li><a href="#intoffierror-trait-2025"
+id="toc-intoffierror-trait-2025"><span
+class="toc-section-number">15.7.5</span> IntoFfiError Trait
+(2025)</a></li>
+</ul></li>
+<li><a href="#type-safety-improvements"
+id="toc-type-safety-improvements"><span
+class="toc-section-number">15.8</span> 12.6 Type Safety Improvements</a>
+<ul>
+<li><a href="#newtype-patterns" id="toc-newtype-patterns"><span
+class="toc-section-number">15.8.1</span> NewType Patterns</a></li>
+<li><a href="#generic-bridge-functions"
+id="toc-generic-bridge-functions"><span
+class="toc-section-number">15.8.2</span> Generic Bridge
+Functions</a></li>
+<li><a href="#handle-management-evolution"
+id="toc-handle-management-evolution"><span
+class="toc-section-number">15.8.3</span> Handle Management
+Evolution</a></li>
+<li><a href="#lifetime-annotations" id="toc-lifetime-annotations"><span
+class="toc-section-number">15.8.4</span> Lifetime Annotations</a></li>
+</ul></li>
+<li><a href="#testing-maturity" id="toc-testing-maturity"><span
+class="toc-section-number">15.9</span> 12.7 Testing Maturity</a>
+<ul>
+<li><a href="#unit-test-growth-2020-2025"
+id="toc-unit-test-growth-2020-2025"><span
+class="toc-section-number">15.9.1</span> Unit Test Growth
+(2020-2025)</a></li>
+<li><a href="#property-based-testing-addition-2022-2024"
+id="toc-property-based-testing-addition-2022-2024"><span
+class="toc-section-number">15.9.2</span> Property-Based Testing Addition
+(2022-2024)</a></li>
+<li><a href="#fuzz-testing-integration-2020-2025"
+id="toc-fuzz-testing-integration-2020-2025"><span
+class="toc-section-number">15.9.3</span> Fuzz Testing Integration
+(2020-2025)</a></li>
+<li><a href="#cross-version-testing-2023-2024"
+id="toc-cross-version-testing-2023-2024"><span
+class="toc-section-number">15.9.4</span> Cross-Version Testing
+(2023-2024)</a></li>
+</ul></li>
+<li><a href="#lessons-learned-1" id="toc-lessons-learned-1"><span
+class="toc-section-number">15.10</span> 12.8 Lessons Learned</a>
+<ul>
+<li><a href="#what-worked-well" id="toc-what-worked-well"><span
+class="toc-section-number">15.10.1</span> What Worked Well</a></li>
+<li><a href="#challenges-overcome" id="toc-challenges-overcome"><span
+class="toc-section-number">15.10.2</span> Challenges Overcome</a></li>
+<li><a href="#design-patterns-that-emerged"
+id="toc-design-patterns-that-emerged"><span
+class="toc-section-number">15.10.3</span> Design Patterns That
+Emerged</a></li>
+<li><a href="#community-insights" id="toc-community-insights"><span
+class="toc-section-number">15.10.4</span> Community Insights</a></li>
+<li><a href="#future-looking-insights"
+id="toc-future-looking-insights"><span
+class="toc-section-number">15.10.5</span> Future-Looking
+Insights</a></li>
+</ul></li>
+<li><a href="#conclusion-a-living-architecture"
+id="toc-conclusion-a-living-architecture"><span
+class="toc-section-number">15.11</span> Conclusion: A Living
+Architecture</a></li>
+</ul></li>
+<li><a href="#chapter-13-literate-programming---sealed-sender-deep-dive"
+id="toc-chapter-13-literate-programming---sealed-sender-deep-dive"><span
+class="toc-section-number">16</span> Chapter 13: Literate Programming -
+Sealed Sender Deep-Dive</a>
+<ul>
+<li><a href="#metadata-protection-through-anonymous-envelope-encryption"
+id="toc-metadata-protection-through-anonymous-envelope-encryption"><span
+class="toc-section-number">16.1</span> Metadata Protection Through
+Anonymous Envelope Encryption</a>
+<ul>
+<li><a href="#table-of-contents-4" id="toc-table-of-contents-4"><span
+class="toc-section-number">16.1.1</span> Table of Contents</a></li>
+</ul></li>
+<li><a href="#introduction-4" id="toc-introduction-4"><span
+class="toc-section-number">16.2</span> Introduction</a>
+<ul>
+<li><a href="#prerequisites-1" id="toc-prerequisites-1"><span
+class="toc-section-number">16.2.1</span> Prerequisites</a></li>
+<li><a href="#source-files-referenced-1"
+id="toc-source-files-referenced-1"><span
+class="toc-section-number">16.2.2</span> Source Files
+Referenced</a></li>
+</ul></li>
+<li><a href="#the-metadata-protection-problem"
+id="toc-the-metadata-protection-problem"><span
+class="toc-section-number">16.3</span> 1. The Metadata Protection
+Problem</a>
+<ul>
+<li><a href="#what-metadata-reveals"
+id="toc-what-metadata-reveals"><span
+class="toc-section-number">16.3.1</span> 1.1 What Metadata
+Reveals</a></li>
+<li><a href="#why-sealed-sender-is-needed"
+id="toc-why-sealed-sender-is-needed"><span
+class="toc-section-number">16.3.2</span> 1.2 Why Sealed Sender is
+Needed</a></li>
+<li><a href="#privacy-properties-achieved"
+id="toc-privacy-properties-achieved"><span
+class="toc-section-number">16.3.3</span> 1.3 Privacy Properties
+Achieved</a></li>
+</ul></li>
+<li><a href="#server-certificates-establishing-trust"
+id="toc-server-certificates-establishing-trust"><span
+class="toc-section-number">16.4</span> 2. Server Certificates:
+Establishing Trust</a>
+<ul>
+<li><a href="#server-certificate-structure"
+id="toc-server-certificate-structure"><span
+class="toc-section-number">16.4.1</span> 2.1 Server Certificate
+Structure</a></li>
+<li><a href="#trust-model-and-known-certificates"
+id="toc-trust-model-and-known-certificates"><span
+class="toc-section-number">16.4.2</span> 2.2 Trust Model and Known
+Certificates</a></li>
+<li><a href="#certificate-validation-logic"
+id="toc-certificate-validation-logic"><span
+class="toc-section-number">16.4.3</span> 2.3 Certificate Validation
+Logic</a></li>
+<li><a href="#creating-server-certificates"
+id="toc-creating-server-certificates"><span
+class="toc-section-number">16.4.4</span> 2.4 Creating Server
+Certificates</a></li>
+</ul></li>
+<li><a href="#sender-certificates-identity-binding"
+id="toc-sender-certificates-identity-binding"><span
+class="toc-section-number">16.5</span> 3. Sender Certificates: Identity
+Binding</a>
+<ul>
+<li><a href="#sender-certificate-structure"
+id="toc-sender-certificate-structure"><span
+class="toc-section-number">16.5.1</span> 3.1 Sender Certificate
+Structure</a></li>
+<li><a href="#certificate-creation" id="toc-certificate-creation"><span
+class="toc-section-number">16.5.2</span> 3.2 Certificate
+Creation</a></li>
+<li><a href="#validation-with-multiple-trust-roots"
+id="toc-validation-with-multiple-trust-roots"><span
+class="toc-section-number">16.5.3</span> 3.3 Validation with Multiple
+Trust Roots</a></li>
+<li><a href="#lazy-loading-of-known-certificates"
+id="toc-lazy-loading-of-known-certificates"><span
+class="toc-section-number">16.5.4</span> 3.4 Lazy Loading of Known
+Certificates</a></li>
+</ul></li>
+<li><a href="#sealed-sender-v1-the-original-design"
+id="toc-sealed-sender-v1-the-original-design"><span
+class="toc-section-number">16.6</span> 4. Sealed Sender v1: The Original
+Design</a>
+<ul>
+<li><a href="#cryptographic-primitives-v1"
+id="toc-cryptographic-primitives-v1"><span
+class="toc-section-number">16.6.1</span> 4.1 Cryptographic Primitives
+(v1)</a></li>
+<li><a href="#encryption-flow-v1" id="toc-encryption-flow-v1"><span
+class="toc-section-number">16.6.2</span> 4.2 Encryption Flow
+(v1)</a></li>
+<li><a href="#two-layer-encryption-visual"
+id="toc-two-layer-encryption-visual"><span
+class="toc-section-number">16.6.3</span> 4.3 Two-Layer Encryption
+Visual</a></li>
+</ul></li>
+<li><a href="#sealed-sender-v2-chacha20-poly1305-migration"
+id="toc-sealed-sender-v2-chacha20-poly1305-migration"><span
+class="toc-section-number">16.7</span> 5. Sealed Sender v2:
+ChaCha20-Poly1305 Migration</a>
+<ul>
+<li><a href="#cryptographic-primitives-v2"
+id="toc-cryptographic-primitives-v2"><span
+class="toc-section-number">16.7.1</span> 5.1 Cryptographic Primitives
+(v2)</a></li>
+<li><a href="#key-differences-from-v1"
+id="toc-key-differences-from-v1"><span
+class="toc-section-number">16.7.2</span> 5.2 Key Differences from
+v1</a></li>
+<li><a href="#version-byte-encoding"
+id="toc-version-byte-encoding"><span
+class="toc-section-number">16.7.3</span> 5.3 Version Byte
+Encoding</a></li>
+</ul></li>
+<li><a href="#multi-layer-encryption-architecture"
+id="toc-multi-layer-encryption-architecture"><span
+class="toc-section-number">16.8</span> 6. Multi-Layer Encryption
+Architecture</a>
+<ul>
+<li><a href="#ephemeral-layer-server-can-decrypt"
+id="toc-ephemeral-layer-server-can-decrypt"><span
+class="toc-section-number">16.8.1</span> 6.1 Ephemeral Layer (Server Can
+Decrypt)</a></li>
+<li><a href="#static-layer-only-recipient"
+id="toc-static-layer-only-recipient"><span
+class="toc-section-number">16.8.2</span> 6.2 Static Layer (Only
+Recipient)</a></li>
+<li><a href="#complete-code-flow" id="toc-complete-code-flow"><span
+class="toc-section-number">16.8.3</span> 6.3 Complete Code Flow</a></li>
+</ul></li>
+<li><a href="#multi-recipient-sealed-sender-efficiency-at-scale"
+id="toc-multi-recipient-sealed-sender-efficiency-at-scale"><span
+class="toc-section-number">16.9</span> 7. Multi-Recipient Sealed Sender:
+Efficiency at Scale</a>
+<ul>
+<li><a href="#shared-payload-optimization"
+id="toc-shared-payload-optimization"><span
+class="toc-section-number">16.9.1</span> 7.1 Shared Payload
+Optimization</a></li>
+<li><a href="#per-recipient-header-computation"
+id="toc-per-recipient-header-computation"><span
+class="toc-section-number">16.9.2</span> 7.2 Per-Recipient Header
+Computation</a></li>
+<li><a href="#wire-format-sent-message"
+id="toc-wire-format-sent-message"><span
+class="toc-section-number">16.9.3</span> 7.3 Wire Format (Sent
+Message)</a></li>
+<li><a href="#efficiency-analysis" id="toc-efficiency-analysis"><span
+class="toc-section-number">16.9.4</span> 7.4 Efficiency
+Analysis</a></li>
+</ul></li>
+<li><a href="#decryption-flow-unwrapping-the-layers"
+id="toc-decryption-flow-unwrapping-the-layers"><span
+class="toc-section-number">16.10</span> 8. Decryption Flow: Unwrapping
+the Layers</a>
+<ul>
+<li><a href="#top-level-decryption-entry-point"
+id="toc-top-level-decryption-entry-point"><span
+class="toc-section-number">16.10.1</span> 8.1 Top-Level Decryption Entry
+Point</a></li>
+<li><a href="#version-detection-and-parsing"
+id="toc-version-detection-and-parsing"><span
+class="toc-section-number">16.10.2</span> 8.2 Version Detection and
+Parsing</a></li>
+<li><a href="#v1-decryption-layer-by-layer"
+id="toc-v1-decryption-layer-by-layer"><span
+class="toc-section-number">16.10.3</span> 8.3 V1 Decryption: Layer by
+Layer</a></li>
+<li><a href="#v2-decryption-recover-m-and-verify"
+id="toc-v2-decryption-recover-m-and-verify"><span
+class="toc-section-number">16.10.4</span> 8.4 V2 Decryption: Recover M
+and Verify</a></li>
+</ul></li>
+<li><a href="#security-analysis-and-migration-path"
+id="toc-security-analysis-and-migration-path"><span
+class="toc-section-number">16.11</span> 9. Security Analysis and
+Migration Path</a>
+<ul>
+<li><a href="#security-properties-summary-2"
+id="toc-security-properties-summary-2"><span
+class="toc-section-number">16.11.1</span> 9.1 Security Properties
+Summary</a></li>
+<li><a href="#attack-resistance-1" id="toc-attack-resistance-1"><span
+class="toc-section-number">16.11.2</span> 9.2 Attack Resistance</a></li>
+<li><a href="#performance-characteristics-2"
+id="toc-performance-characteristics-2"><span
+class="toc-section-number">16.11.3</span> 9.3 Performance
+Characteristics</a></li>
+<li><a href="#migration-strategy-v1-v2"
+id="toc-migration-strategy-v1-v2"><span
+class="toc-section-number">16.11.4</span> 9.4 Migration Strategy v1 →
+v2</a></li>
+<li><a href="#known-limitations" id="toc-known-limitations"><span
+class="toc-section-number">16.11.5</span> 9.5 Known Limitations</a></li>
+<li><a href="#future-directions" id="toc-future-directions"><span
+class="toc-section-number">16.11.6</span> 9.6 Future Directions</a></li>
+</ul></li>
+<li><a href="#conclusion-8" id="toc-conclusion-8"><span
+class="toc-section-number">16.12</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-14-message-backup-system"
+id="toc-chapter-14-message-backup-system"><span
+class="toc-section-number">17</span> Chapter 14: Message Backup
+System</a>
+<ul>
+<li><a href="#backup-architecture" id="toc-backup-architecture"><span
+class="toc-section-number">17.1</span> 1. Backup Architecture</a>
+<ul>
+<li><a href="#why-backups-are-needed"
+id="toc-why-backups-are-needed"><span
+class="toc-section-number">17.1.1</span> 1.1 Why Backups Are
+Needed</a></li>
+<li><a href="#design-goals-1" id="toc-design-goals-1"><span
+class="toc-section-number">17.1.2</span> 1.2 Design Goals</a></li>
+<li><a href="#privacy-properties-1" id="toc-privacy-properties-1"><span
+class="toc-section-number">17.1.3</span> 1.3 Privacy Properties</a></li>
+</ul></li>
+<li><a href="#backup-format" id="toc-backup-format"><span
+class="toc-section-number">17.2</span> 2. Backup Format</a>
+<ul>
+<li><a href="#protobuf-structure" id="toc-protobuf-structure"><span
+class="toc-section-number">17.2.1</span> 2.1 Protobuf Structure</a></li>
+<li><a href="#frame-based-format" id="toc-frame-based-format"><span
+class="toc-section-number">17.2.2</span> 2.2 Frame-Based Format</a></li>
+<li><a href="#ordering-rules" id="toc-ordering-rules"><span
+class="toc-section-number">17.2.3</span> 2.3 Ordering Rules</a></li>
+<li><a href="#incremental-mac" id="toc-incremental-mac"><span
+class="toc-section-number">17.2.4</span> 2.4 Incremental MAC</a></li>
+</ul></li>
+<li><a href="#backup-encryption" id="toc-backup-encryption"><span
+class="toc-section-number">17.3</span> 3. Backup Encryption</a>
+<ul>
+<li><a href="#backup-key-derivation"
+id="toc-backup-key-derivation"><span
+class="toc-section-number">17.3.1</span> 3.1 Backup Key
+Derivation</a></li>
+<li><a href="#encryption-scheme" id="toc-encryption-scheme"><span
+class="toc-section-number">17.3.2</span> 3.2 Encryption Scheme</a></li>
+<li><a href="#code-walkthrough" id="toc-code-walkthrough"><span
+class="toc-section-number">17.3.3</span> 3.3 Code Walkthrough</a></li>
+<li><a href="#forward-secrecy-metadata"
+id="toc-forward-secrecy-metadata"><span
+class="toc-section-number">17.3.4</span> 3.4 Forward Secrecy
+Metadata</a></li>
+</ul></li>
+<li><a href="#validation-framework" id="toc-validation-framework"><span
+class="toc-section-number">17.4</span> 4. Validation Framework</a>
+<ul>
+<li><a href="#validation-rules" id="toc-validation-rules"><span
+class="toc-section-number">17.4.1</span> 4.1 Validation Rules</a></li>
+<li><a href="#test-case-structure" id="toc-test-case-structure"><span
+class="toc-section-number">17.4.2</span> 4.2 Test Case
+Structure</a></li>
+<li><a href="#dir_test-usage" id="toc-dir_test-usage"><span
+class="toc-section-number">17.4.3</span> 4.3 dir_test Usage</a></li>
+<li><a href="#multi-threaded-processing"
+id="toc-multi-threaded-processing"><span
+class="toc-section-number">17.4.4</span> 4.4 Multi-Threaded
+Processing</a></li>
+</ul></li>
+<li><a href="#backup-contents" id="toc-backup-contents"><span
+class="toc-section-number">17.5</span> 5. Backup Contents</a>
+<ul>
+<li><a href="#account-data" id="toc-account-data"><span
+class="toc-section-number">17.5.1</span> 5.1 Account Data</a></li>
+<li><a href="#recipients" id="toc-recipients"><span
+class="toc-section-number">17.5.2</span> 5.2 Recipients</a></li>
+<li><a href="#chat-messages" id="toc-chat-messages"><span
+class="toc-section-number">17.5.3</span> 5.3 Chat Messages</a></li>
+<li><a href="#stickers-and-media" id="toc-stickers-and-media"><span
+class="toc-section-number">17.5.4</span> 5.4 Stickers and Media</a></li>
+<li><a href="#settings-and-preferences"
+id="toc-settings-and-preferences"><span
+class="toc-section-number">17.5.5</span> 5.5 Settings and
+Preferences</a></li>
+</ul></li>
+<li><a href="#exportimport-flow" id="toc-exportimport-flow"><span
+class="toc-section-number">17.6</span> 6. Export/Import Flow</a>
+<ul>
+<li><a href="#creating-backups" id="toc-creating-backups"><span
+class="toc-section-number">17.6.1</span> 6.1 Creating Backups</a></li>
+<li><a href="#restoring-from-backup"
+id="toc-restoring-from-backup"><span
+class="toc-section-number">17.6.2</span> 6.2 Restoring from
+Backup</a></li>
+<li><a href="#error-handling-3" id="toc-error-handling-3"><span
+class="toc-section-number">17.6.3</span> 6.3 Error Handling</a></li>
+</ul></li>
+<li><a href="#testing" id="toc-testing"><span
+class="toc-section-number">17.7</span> 7. Testing</a>
+<ul>
+<li><a href="#valid-test-cases" id="toc-valid-test-cases"><span
+class="toc-section-number">17.7.1</span> 7.1 Valid Test Cases</a></li>
+<li><a href="#invalid-test-cases" id="toc-invalid-test-cases"><span
+class="toc-section-number">17.7.2</span> 7.2 Invalid Test Cases</a></li>
+<li><a href="#encrypted-test-cases" id="toc-encrypted-test-cases"><span
+class="toc-section-number">17.7.3</span> 7.3 Encrypted Test
+Cases</a></li>
+<li><a href="#edge-cases" id="toc-edge-cases"><span
+class="toc-section-number">17.7.4</span> 7.4 Edge Cases</a></li>
+</ul></li>
+<li><a href="#security-properties-5"
+id="toc-security-properties-5"><span
+class="toc-section-number">17.8</span> Security Properties</a>
+<ul>
+<li><a href="#confidentiality-2" id="toc-confidentiality-2"><span
+class="toc-section-number">17.8.1</span> Confidentiality</a></li>
+<li><a href="#integrity" id="toc-integrity"><span
+class="toc-section-number">17.8.2</span> Integrity</a></li>
+<li><a href="#authentication-1" id="toc-authentication-1"><span
+class="toc-section-number">17.8.3</span> Authentication</a></li>
+<li><a href="#forward-secrecy-2" id="toc-forward-secrecy-2"><span
+class="toc-section-number">17.8.4</span> Forward Secrecy</a></li>
+<li><a href="#padding" id="toc-padding"><span
+class="toc-section-number">17.8.5</span> Padding</a></li>
+<li><a href="#deterministic-unknown-field-handling"
+id="toc-deterministic-unknown-field-handling"><span
+class="toc-section-number">17.8.6</span> Deterministic Unknown Field
+Handling</a></li>
+</ul></li>
+<li><a href="#conclusion-9" id="toc-conclusion-9"><span
+class="toc-section-number">17.9</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#comprehensive-glossary"
+id="toc-comprehensive-glossary"><span
+class="toc-section-number">18</span> Comprehensive Glossary</a>
+<ul>
+<li><a href="#the-libsignal-encyclopedia-3"
+id="toc-the-libsignal-encyclopedia-3"><span
+class="toc-section-number">18.1</span> The libsignal
+Encyclopedia</a></li>
+<li><a href="#a" id="toc-a"><span class="toc-section-number">18.2</span>
+A</a></li>
+<li><a href="#b" id="toc-b"><span class="toc-section-number">18.3</span>
+B</a></li>
+<li><a href="#c" id="toc-c"><span class="toc-section-number">18.4</span>
+C</a></li>
+<li><a href="#d" id="toc-d"><span class="toc-section-number">18.5</span>
+D</a></li>
+<li><a href="#e" id="toc-e"><span class="toc-section-number">18.6</span>
+E</a></li>
+<li><a href="#f" id="toc-f"><span class="toc-section-number">18.7</span>
+F</a></li>
+<li><a href="#g" id="toc-g"><span class="toc-section-number">18.8</span>
+G</a></li>
+<li><a href="#h" id="toc-h"><span class="toc-section-number">18.9</span>
+H</a></li>
+<li><a href="#i" id="toc-i"><span
+class="toc-section-number">18.10</span> I</a></li>
+<li><a href="#j" id="toc-j"><span
+class="toc-section-number">18.11</span> J</a></li>
+<li><a href="#k" id="toc-k"><span
+class="toc-section-number">18.12</span> K</a></li>
+<li><a href="#l" id="toc-l"><span
+class="toc-section-number">18.13</span> L</a></li>
+<li><a href="#m" id="toc-m"><span
+class="toc-section-number">18.14</span> M</a></li>
+<li><a href="#n" id="toc-n"><span
+class="toc-section-number">18.15</span> N</a></li>
+<li><a href="#o" id="toc-o"><span
+class="toc-section-number">18.16</span> O</a></li>
+<li><a href="#p" id="toc-p"><span
+class="toc-section-number">18.17</span> P</a></li>
+<li><a href="#q" id="toc-q"><span
+class="toc-section-number">18.18</span> Q</a></li>
+<li><a href="#r" id="toc-r"><span
+class="toc-section-number">18.19</span> R</a></li>
+<li><a href="#s" id="toc-s"><span
+class="toc-section-number">18.20</span> S</a></li>
+<li><a href="#t" id="toc-t"><span
+class="toc-section-number">18.21</span> T</a></li>
+<li><a href="#u" id="toc-u"><span
+class="toc-section-number">18.22</span> U</a></li>
+<li><a href="#v" id="toc-v"><span
+class="toc-section-number">18.23</span> V</a></li>
+<li><a href="#w" id="toc-w"><span
+class="toc-section-number">18.24</span> W</a></li>
+<li><a href="#x" id="toc-x"><span
+class="toc-section-number">18.25</span> X</a></li>
+<li><a href="#z" id="toc-z"><span
+class="toc-section-number">18.26</span> Z</a></li>
+<li><a href="#acronyms-quick-reference"
+id="toc-acronyms-quick-reference"><span
+class="toc-section-number">18.27</span> Acronyms Quick
+Reference</a></li>
+<li><a href="#symbol-conventions" id="toc-symbol-conventions"><span
+class="toc-section-number">18.28</span> Symbol Conventions</a></li>
+</ul></li>
+<li><a href="#libsignal-encyclopedia---research-data-summary"
+id="toc-libsignal-encyclopedia---research-data-summary"><span
+class="toc-section-number">19</span> Libsignal Encyclopedia - Research
+Data Summary</a>
+<ul>
+<li><a href="#codebase-statistics" id="toc-codebase-statistics"><span
+class="toc-section-number">19.1</span> Codebase Statistics</a></li>
+<li><a href="#top-contributors-by-commit-count"
+id="toc-top-contributors-by-commit-count"><span
+class="toc-section-number">19.2</span> Top Contributors (by commit
+count)</a></li>
+<li><a href="#major-milestones" id="toc-major-milestones"><span
+class="toc-section-number">19.3</span> Major Milestones</a>
+<ul>
+<li><a href="#foundation" id="toc-foundation"><span
+class="toc-section-number">19.3.1</span> 2020: Foundation</a></li>
+<li><a href="#expansion" id="toc-expansion"><span
+class="toc-section-number">19.3.2</span> 2021: Expansion</a></li>
+<li><a href="#network-services" id="toc-network-services"><span
+class="toc-section-number">19.3.3</span> 2022-2023: Network
+Services</a></li>
+<li><a href="#post-quantum-era" id="toc-post-quantum-era"><span
+class="toc-section-number">19.3.4</span> 2023-2025: Post-Quantum
+Era</a></li>
+</ul></li>
+<li><a href="#cryptographic-implementations"
+id="toc-cryptographic-implementations"><span
+class="toc-section-number">19.4</span> Cryptographic Implementations</a>
+<ul>
+<li><a href="#primitives" id="toc-primitives"><span
+class="toc-section-number">19.4.1</span> Primitives</a></li>
+<li><a href="#protocol-stack" id="toc-protocol-stack"><span
+class="toc-section-number">19.4.2</span> Protocol Stack</a></li>
+</ul></li>
+<li><a href="#architecture-layers" id="toc-architecture-layers"><span
+class="toc-section-number">19.5</span> Architecture Layers</a>
+<ul>
+<li><a href="#rust-core-24-crates" id="toc-rust-core-24-crates"><span
+class="toc-section-number">19.5.1</span> Rust Core (24 Crates)</a></li>
+<li><a href="#language-bindings" id="toc-language-bindings"><span
+class="toc-section-number">19.5.2</span> Language Bindings</a></li>
+</ul></li>
+<li><a href="#testing-infrastructure"
+id="toc-testing-infrastructure"><span
+class="toc-section-number">19.6</span> Testing Infrastructure</a>
+<ul>
+<li><a href="#test-types" id="toc-test-types"><span
+class="toc-section-number">19.6.1</span> Test Types</a></li>
+<li><a href="#test-data" id="toc-test-data"><span
+class="toc-section-number">19.6.2</span> Test Data</a></li>
+</ul></li>
+<li><a href="#build-system" id="toc-build-system"><span
+class="toc-section-number">19.7</span> Build System</a>
+<ul>
+<li><a href="#cross-compilation-targets"
+id="toc-cross-compilation-targets"><span
+class="toc-section-number">19.7.1</span> Cross-Compilation
+Targets</a></li>
+<li><a href="#cicd" id="toc-cicd"><span
+class="toc-section-number">19.7.2</span> CI/CD</a></li>
+<li><a href="#reproducible-builds" id="toc-reproducible-builds"><span
+class="toc-section-number">19.7.3</span> Reproducible Builds</a></li>
+</ul></li>
+<li><a href="#historical-context-1" id="toc-historical-context-1"><span
+class="toc-section-number">19.8</span> Historical Context</a>
+<ul>
+<li><a href="#origins-2010-2013" id="toc-origins-2010-2013"><span
+class="toc-section-number">19.8.1</span> Origins (2010-2013)</a></li>
+<li><a href="#mass-adoption-2014-2016"
+id="toc-mass-adoption-2014-2016"><span
+class="toc-section-number">19.8.2</span> Mass Adoption
+(2014-2016)</a></li>
+<li><a href="#foundation-era-2018-" id="toc-foundation-era-2018-"><span
+class="toc-section-number">19.8.3</span> Foundation Era (2018-)</a></li>
+<li><a href="#rust-era-2020-" id="toc-rust-era-2020-"><span
+class="toc-section-number">19.8.4</span> Rust Era (2020-)</a></li>
+</ul></li>
+<li><a href="#security-research" id="toc-security-research"><span
+class="toc-section-number">19.9</span> Security Research</a>
+<ul>
+<li><a href="#academic-analysis-1" id="toc-academic-analysis-1"><span
+class="toc-section-number">19.9.1</span> Academic Analysis</a></li>
+<li><a href="#known-security-audits"
+id="toc-known-security-audits"><span
+class="toc-section-number">19.9.2</span> Known Security Audits</a></li>
+</ul></li>
+<li><a href="#community" id="toc-community"><span
+class="toc-section-number">19.10</span> Community</a>
+<ul>
+<li><a href="#communication-channels-1"
+id="toc-communication-channels-1"><span
+class="toc-section-number">19.10.1</span> Communication
+Channels</a></li>
+<li><a href="#development-practices-1"
+id="toc-development-practices-1"><span
+class="toc-section-number">19.10.2</span> Development Practices</a></li>
+</ul></li>
+<li><a href="#mobile-hardware-context"
+id="toc-mobile-hardware-context"><span
+class="toc-section-number">19.11</span> Mobile Hardware Context</a>
+<ul>
+<li><a href="#constraints" id="toc-constraints"><span
+class="toc-section-number">19.11.1</span> 2013-2014 Constraints</a></li>
+<li><a href="#modern-capabilities-2025"
+id="toc-modern-capabilities-2025"><span
+class="toc-section-number">19.11.2</span> Modern Capabilities
+(2025)</a></li>
+</ul></li>
+<li><a href="#evolution-patterns" id="toc-evolution-patterns"><span
+class="toc-section-number">19.12</span> Evolution Patterns</a>
+<ul>
+<li><a href="#crypto-library-migrations-1"
+id="toc-crypto-library-migrations-1"><span
+class="toc-section-number">19.12.1</span> Crypto Library
+Migrations</a></li>
+<li><a href="#architectural-shifts" id="toc-architectural-shifts"><span
+class="toc-section-number">19.12.2</span> Architectural Shifts</a></li>
+<li><a href="#protocol-upgrades-2" id="toc-protocol-upgrades-2"><span
+class="toc-section-number">19.12.3</span> Protocol Upgrades</a></li>
+</ul></li>
+<li><a href="#file-count-summary" id="toc-file-count-summary"><span
+class="toc-section-number">19.13</span> File Count Summary</a></li>
+<li><a href="#dependencies" id="toc-dependencies"><span
+class="toc-section-number">19.14</span> Dependencies</a>
+<ul>
+<li><a href="#key-rust-crates" id="toc-key-rust-crates"><span
+class="toc-section-number">19.14.1</span> Key Rust Crates</a></li>
+<li><a href="#custom-forks" id="toc-custom-forks"><span
+class="toc-section-number">19.14.2</span> Custom Forks</a></li>
+</ul></li>
+</ul></li>
+</ul>
     </div>
   </nav>
 
   <main class="book-content">
     <header class="book-header">
-      <h1 class="book-title">The libsignal Encyclopedia</h1>
-      <p class="book-subtitle">A Comprehensive Guide to Signal’s
-Cryptographic Protocol Library</p>
+      <h1 class="book-title">libsignal Encyclopedia: Cryptographic
+Messaging Infrastructure</h1>
+      <p class="book-subtitle">A Comprehensive Guide to Signal's
+Cryptographic Protocol</p>
     </header>
 
     <div class="ai-notice">

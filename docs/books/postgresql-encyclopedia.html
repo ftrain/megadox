@@ -9,9 +9,51 @@
   <style>
     /* Inline critical CSS for faster loading */
     body { font-family: "Palatino", Georgia, serif; }
+    .book-nav {
+      background: #2c3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .book-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .book-nav a:hover { background: rgba(255,255,255,0.1); }
+    .book-nav .nav-left { display: flex; gap: 1rem; align-items: center; }
+    .book-nav .nav-right { display: flex; gap: 0.5rem; }
+    .download-btn {
+      background: #3498db;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .download-btn:hover { background: #2980b9; }
+    .pdf-btn { background: #e74c3c; }
+    .pdf-btn:hover { background: #c0392b; }
   </style>
 </head>
 <body>
+<nav class="book-nav">
+  <div class="nav-left">
+    <a href="../index.html">← All Books</a>
+    <span style="opacity: 0.7;">|</span>
+    <span style="font-weight: 600;">PostgreSQL Internals: An
+Encyclopedia</span>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="download-btn" onclick="window.print(); return false;">🖨️ Print</a>
+    <a href="postgresql-encyclopedia.pdf" class="download-btn pdf-btn">📄 Download PDF</a>
+  </div>
+</nav>
+
 <div class="book-container">
   <nav class="toc-sidebar">
     <button class="toc-toggle" onclick="toggleTOC()">📖 Table of Contents</button>
@@ -3044,6 +3086,7 @@ class="toc-section-number">18.12</span> Conclusion</a></li>
   <main class="book-content">
     <header class="book-header">
       <h1 class="book-title">PostgreSQL Internals: An Encyclopedia</h1>
+      <p class="book-subtitle">An In-Depth Exploration</p>
     </header>
 
     <div class="ai-notice">

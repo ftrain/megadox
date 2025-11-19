@@ -1,35 +1,2369 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Claude (AI Assistant)" />
-  <meta name="author" content="Based on the work of Ken Thompson and Dennis Ritchie" />
-  <title>The Genesis of Unix: A Complete Technical Reference to PDP-7 Unix</title>
+  <title>PDP-7 Unix: A Complete Reference</title>
   <link rel="stylesheet" href="../book-style.css" />
   <style>
     /* Inline critical CSS for faster loading */
     body { font-family: "Palatino", Georgia, serif; }
+    .book-nav {
+      background: #2c3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .book-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .book-nav a:hover { background: rgba(255,255,255,0.1); }
+    .book-nav .nav-left { display: flex; gap: 1rem; align-items: center; }
+    .book-nav .nav-right { display: flex; gap: 0.5rem; }
+    .download-btn {
+      background: #3498db;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    .download-btn:hover { background: #2980b9; }
+    .pdf-btn { background: #e74c3c; }
+    .pdf-btn:hover { background: #c0392b; }
   </style>
 </head>
 <body>
+<nav class="book-nav">
+  <div class="nav-left">
+    <a href="../index.html">← All Books</a>
+    <span style="opacity: 0.7;">|</span>
+    <span style="font-weight: 600;">PDP-7 Unix: A Complete
+Reference</span>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="download-btn" onclick="window.print(); return false;">🖨️ Print</a>
+    <a href="pdp7-unix-complete-reference.pdf" class="download-btn pdf-btn">📄 Download PDF</a>
+  </div>
+</nav>
+
 <div class="book-container">
   <nav class="toc-sidebar">
     <button class="toc-toggle" onclick="toggleTOC()">📖 Table of Contents</button>
     <div class="toc-content" id="toc-content">
-      <div class="toc-title">The Genesis of Unix: A Complete Technical
-Reference to PDP-7 Unix</div>
-true
+      <div class="toc-title">PDP-7 Unix: A Complete Reference</div>
+<ul>
+<li><a href="#frontmatter" id="toc-frontmatter">Frontmatter</a>
+<ul>
+<li><a href="#about-this-work" id="toc-about-this-work">About This
+Work</a></li>
+<li><a href="#purpose-and-scope" id="toc-purpose-and-scope">Purpose and
+Scope</a></li>
+<li><a href="#how-to-read-this-book" id="toc-how-to-read-this-book">How
+to Read This Book</a>
+<ul>
+<li><a href="#for-the-curious-reader"
+id="toc-for-the-curious-reader"><span
+class="toc-section-number">0.0.1</span> For the Curious Reader</a></li>
+<li><a href="#for-the-systems-programmer"
+id="toc-for-the-systems-programmer"><span
+class="toc-section-number">0.0.2</span> For the Systems
+Programmer</a></li>
+<li><a href="#for-the-programming-language-enthusiast"
+id="toc-for-the-programming-language-enthusiast"><span
+class="toc-section-number">0.0.3</span> For the Programming Language
+Enthusiast</a></li>
+<li><a href="#for-the-computer-historian"
+id="toc-for-the-computer-historian"><span
+class="toc-section-number">0.0.4</span> For the Computer
+Historian</a></li>
+<li><a href="#for-complete-mastery" id="toc-for-complete-mastery"><span
+class="toc-section-number">0.0.5</span> For Complete Mastery</a></li>
+</ul></li>
+<li><a href="#conventions-used" id="toc-conventions-used">Conventions
+Used</a>
+<ul>
+<li><a href="#code-formatting" id="toc-code-formatting"><span
+class="toc-section-number">0.0.6</span> Code Formatting</a></li>
+<li><a href="#cross-references" id="toc-cross-references"><span
+class="toc-section-number">0.0.7</span> Cross-References</a></li>
+<li><a href="#octal-notation" id="toc-octal-notation"><span
+class="toc-section-number">0.0.8</span> Octal Notation</a></li>
+<li><a href="#assembly-language-syntax"
+id="toc-assembly-language-syntax"><span
+class="toc-section-number">0.0.9</span> Assembly Language
+Syntax</a></li>
+</ul></li>
+<li><a href="#acknowledgments"
+id="toc-acknowledgments">Acknowledgments</a></li>
+<li><a href="#license-and-usage" id="toc-license-and-usage">License and
+Usage</a></li>
+<li><a href="#note-on-historical-accuracy"
+id="toc-note-on-historical-accuracy">Note on Historical
+Accuracy</a></li>
+<li><a href="#version-information" id="toc-version-information">Version
+Information</a></li>
+</ul></li>
+<li><a href="#introduction-and-historical-context"
+id="toc-introduction-and-historical-context"><span
+class="toc-section-number">1</span> Introduction and Historical
+Context</a>
+<ul>
+<li><a href="#the-birth-of-unix" id="toc-the-birth-of-unix"><span
+class="toc-section-number">1.1</span> The Birth of Unix</a>
+<ul>
+<li><a href="#the-multics-withdrawal"
+id="toc-the-multics-withdrawal"><span
+class="toc-section-number">1.1.1</span> The Multics Withdrawal</a></li>
+<li><a href="#space-travel-and-the-search-for-a-computer"
+id="toc-space-travel-and-the-search-for-a-computer"><span
+class="toc-section-number">1.1.2</span> Space Travel and the Search for
+a Computer</a></li>
+<li><a href="#from-game-to-operating-system"
+id="toc-from-game-to-operating-system"><span
+class="toc-section-number">1.1.3</span> From Game to Operating
+System</a></li>
+<li><a href="#the-four-week-creation"
+id="toc-the-four-week-creation"><span
+class="toc-section-number">1.1.4</span> The Four-Week Creation</a></li>
+<li><a href="#why-unix" id="toc-why-unix"><span
+class="toc-section-number">1.1.5</span> Why “Unix”?</a></li>
+</ul></li>
+<li><a href="#the-pdp-7-environment"
+id="toc-the-pdp-7-environment"><span
+class="toc-section-number">1.2</span> The PDP-7 Environment</a>
+<ul>
+<li><a href="#why-this-machine-mattered"
+id="toc-why-this-machine-mattered"><span
+class="toc-section-number">1.2.1</span> Why This Machine
+Mattered</a></li>
+<li><a href="#the-development-environment"
+id="toc-the-development-environment"><span
+class="toc-section-number">1.2.2</span> The Development
+Environment</a></li>
+</ul></li>
+<li><a href="#the-source-code-we-have-today"
+id="toc-the-source-code-we-have-today"><span
+class="toc-section-number">1.3</span> The Source Code We Have Today</a>
+<ul>
+<li><a href="#a-miraculous-preservation"
+id="toc-a-miraculous-preservation"><span
+class="toc-section-number">1.3.1</span> A Miraculous
+Preservation</a></li>
+<li><a href="#what-this-repository-represents"
+id="toc-what-this-repository-represents"><span
+class="toc-section-number">1.3.2</span> What This Repository
+Represents</a></li>
+</ul></li>
+<li><a href="#why-this-code-matters"
+id="toc-why-this-code-matters"><span
+class="toc-section-number">1.4</span> Why This Code Matters</a>
+<ul>
+<li><a href="#historical-significance"
+id="toc-historical-significance"><span
+class="toc-section-number">1.4.1</span> Historical Significance</a></li>
+<li><a href="#technical-significance"
+id="toc-technical-significance"><span
+class="toc-section-number">1.4.2</span> Technical Significance</a></li>
+<li><a href="#cultural-impact" id="toc-cultural-impact"><span
+class="toc-section-number">1.4.3</span> Cultural Impact</a></li>
+</ul></li>
+<li><a href="#the-evolution-path" id="toc-the-evolution-path"><span
+class="toc-section-number">1.5</span> The Evolution Path</a>
+<ul>
+<li><a href="#from-pdp-7-to-pdp-11" id="toc-from-pdp-7-to-pdp-11"><span
+class="toc-section-number">1.5.1</span> From PDP-7 to PDP-11</a></li>
+<li><a href="#the-invention-of-c" id="toc-the-invention-of-c"><span
+class="toc-section-number">1.5.2</span> The Invention of C</a></li>
+<li><a href="#the-explosive-growth" id="toc-the-explosive-growth"><span
+class="toc-section-number">1.5.3</span> The Explosive Growth</a></li>
+</ul></li>
+<li><a href="#reading-this-book-in-context"
+id="toc-reading-this-book-in-context"><span
+class="toc-section-number">1.6</span> Reading This Book in Context</a>
+<ul>
+<li><a href="#what-youll-learn" id="toc-what-youll-learn"><span
+class="toc-section-number">1.6.1</span> What You’ll Learn</a></li>
+<li><a href="#what-makes-this-code-special"
+id="toc-what-makes-this-code-special"><span
+class="toc-section-number">1.6.2</span> What Makes This Code
+Special</a></li>
+<li><a href="#the-challenge-and-the-reward"
+id="toc-the-challenge-and-the-reward"><span
+class="toc-section-number">1.6.3</span> The Challenge and the
+Reward</a></li>
+</ul></li>
+<li><a href="#document-structure" id="toc-document-structure"><span
+class="toc-section-number">1.7</span> Document Structure</a>
+<ul>
+<li><a href="#part-i-foundations-chapters-1-4"
+id="toc-part-i-foundations-chapters-1-4"><span
+class="toc-section-number">1.7.1</span> Part I: Foundations (Chapters
+1-4)</a></li>
+<li><a href="#part-ii-the-kernel-chapters-5-9"
+id="toc-part-ii-the-kernel-chapters-5-9"><span
+class="toc-section-number">1.7.2</span> Part II: The Kernel (Chapters
+5-9)</a></li>
+<li><a href="#part-iii-user-space-chapters-10-12"
+id="toc-part-iii-user-space-chapters-10-12"><span
+class="toc-section-number">1.7.3</span> Part III: User Space (Chapters
+10-12)</a></li>
+<li><a href="#part-iv-analysis-and-legacy-chapters-13-14"
+id="toc-part-iv-analysis-and-legacy-chapters-13-14"><span
+class="toc-section-number">1.7.4</span> Part IV: Analysis and Legacy
+(Chapters 13-14)</a></li>
+<li><a href="#appendices" id="toc-appendices"><span
+class="toc-section-number">1.7.5</span> Appendices</a></li>
+</ul></li>
+<li><a href="#begin-your-journey" id="toc-begin-your-journey"><span
+class="toc-section-number">1.8</span> Begin Your Journey</a></li>
+</ul></li>
+<li><a href="#chapter-2-pdp-7-hardware-architecture"
+id="toc-chapter-2-pdp-7-hardware-architecture"><span
+class="toc-section-number">2</span> Chapter 2: PDP-7 Hardware
+Architecture</a>
+<ul>
+<li><a href="#introduction" id="toc-introduction"><span
+class="toc-section-number">2.1</span> Introduction</a></li>
+<li><a href="#cpu-architecture" id="toc-cpu-architecture"><span
+class="toc-section-number">2.2</span> 1. CPU Architecture</a>
+<ul>
+<li><a href="#the-18-bit-word" id="toc-the-18-bit-word"><span
+class="toc-section-number">2.2.1</span> The 18-Bit Word</a></li>
+<li><a href="#register-set" id="toc-register-set"><span
+class="toc-section-number">2.2.2</span> Register Set</a></li>
+<li><a href="#auto-increment-registers"
+id="toc-auto-increment-registers"><span
+class="toc-section-number">2.2.3</span> Auto-Increment
+Registers</a></li>
+</ul></li>
+<li><a href="#instruction-set-architecture"
+id="toc-instruction-set-architecture"><span
+class="toc-section-number">2.3</span> 2. Instruction Set
+Architecture</a>
+<ul>
+<li><a href="#instruction-encoding-format"
+id="toc-instruction-encoding-format"><span
+class="toc-section-number">2.3.1</span> Instruction Encoding
+Format</a></li>
+<li><a href="#complete-16-instruction-set"
+id="toc-complete-16-instruction-set"><span
+class="toc-section-number">2.3.2</span> Complete 16-Instruction
+Set</a></li>
+<li><a href="#special-instructions" id="toc-special-instructions"><span
+class="toc-section-number">2.3.3</span> Special Instructions</a></li>
+</ul></li>
+<li><a href="#addressing-modes" id="toc-addressing-modes"><span
+class="toc-section-number">2.4</span> 3. Addressing Modes</a>
+<ul>
+<li><a href="#direct-addressing" id="toc-direct-addressing"><span
+class="toc-section-number">2.4.1</span> Direct Addressing</a></li>
+<li><a href="#indirect-addressing" id="toc-indirect-addressing"><span
+class="toc-section-number">2.4.2</span> Indirect Addressing</a></li>
+<li><a href="#auto-increment-addressing"
+id="toc-auto-increment-addressing"><span
+class="toc-section-number">2.4.3</span> Auto-Increment
+Addressing</a></li>
+<li><a href="#addressing-mode-comparison"
+id="toc-addressing-mode-comparison"><span
+class="toc-section-number">2.4.4</span> Addressing Mode
+Comparison</a></li>
+</ul></li>
+<li><a href="#memory-organization" id="toc-memory-organization"><span
+class="toc-section-number">2.5</span> 4. Memory Organization</a>
+<ul>
+<li><a href="#memory-map" id="toc-memory-map"><span
+class="toc-section-number">2.5.1</span> Memory Map</a></li>
+<li><a href="#special-memory-locations"
+id="toc-special-memory-locations"><span
+class="toc-section-number">2.5.2</span> Special Memory
+Locations</a></li>
+<li><a href="#word-vs.-byte-addressing"
+id="toc-word-vs.-byte-addressing"><span
+class="toc-section-number">2.5.3</span> Word vs. Byte
+Addressing</a></li>
+<li><a href="#character-packing" id="toc-character-packing"><span
+class="toc-section-number">2.5.4</span> Character Packing</a></li>
+<li><a href="#file-io-and-character-handling"
+id="toc-file-io-and-character-handling"><span
+class="toc-section-number">2.5.5</span> File I/O and Character
+Handling</a></li>
+</ul></li>
+<li><a href="#peripheral-devices" id="toc-peripheral-devices"><span
+class="toc-section-number">2.6</span> 5. Peripheral Devices</a>
+<ul>
+<li><a href="#device-overview" id="toc-device-overview"><span
+class="toc-section-number">2.6.1</span> Device Overview</a></li>
+<li><a href="#teletype-tty" id="toc-teletype-tty"><span
+class="toc-section-number">2.6.2</span> Teletype (TTY)</a></li>
+<li><a href="#paper-tape-reader-and-punch"
+id="toc-paper-tape-reader-and-punch"><span
+class="toc-section-number">2.6.3</span> Paper Tape Reader and
+Punch</a></li>
+<li><a href="#dectape-mass-storage" id="toc-dectape-mass-storage"><span
+class="toc-section-number">2.6.4</span> DECtape (Mass Storage)</a></li>
+<li><a href="#display-system-type-340"
+id="toc-display-system-type-340"><span
+class="toc-section-number">2.6.5</span> Display System (Type
+340)</a></li>
+<li><a href="#real-time-clock" id="toc-real-time-clock"><span
+class="toc-section-number">2.6.6</span> Real-Time Clock</a></li>
+</ul></li>
+<li><a href="#io-architecture" id="toc-io-architecture"><span
+class="toc-section-number">2.7</span> 6. I/O Architecture</a>
+<ul>
+<li><a href="#iot-inputoutput-transfer-instructions"
+id="toc-iot-inputoutput-transfer-instructions"><span
+class="toc-section-number">2.7.1</span> IOT (Input/Output Transfer)
+Instructions</a></li>
+<li><a href="#programmed-io" id="toc-programmed-io"><span
+class="toc-section-number">2.7.2</span> Programmed I/O</a></li>
+<li><a href="#interrupt-driven-io" id="toc-interrupt-driven-io"><span
+class="toc-section-number">2.7.3</span> Interrupt-Driven I/O</a></li>
+<li><a href="#data-transfer-mechanisms"
+id="toc-data-transfer-mechanisms"><span
+class="toc-section-number">2.7.4</span> Data Transfer
+Mechanisms</a></li>
+</ul></li>
+<li><a href="#technical-specifications"
+id="toc-technical-specifications"><span
+class="toc-section-number">2.8</span> 7. Technical Specifications</a>
+<ul>
+<li><a href="#complete-hardware-specifications"
+id="toc-complete-hardware-specifications"><span
+class="toc-section-number">2.8.1</span> Complete Hardware
+Specifications</a></li>
+<li><a href="#performance-characteristics"
+id="toc-performance-characteristics"><span
+class="toc-section-number">2.8.2</span> Performance
+Characteristics</a></li>
+<li><a href="#memory-bandwidth" id="toc-memory-bandwidth"><span
+class="toc-section-number">2.8.3</span> Memory Bandwidth</a></li>
+</ul></li>
+<li><a href="#assembly-language-syntax-1"
+id="toc-assembly-language-syntax-1"><span
+class="toc-section-number">2.9</span> 8. Assembly Language Syntax</a>
+<ul>
+<li><a href="#octal-notation-1" id="toc-octal-notation-1"><span
+class="toc-section-number">2.9.1</span> Octal Notation</a></li>
+<li><a href="#instruction-syntax" id="toc-instruction-syntax"><span
+class="toc-section-number">2.9.2</span> Instruction Syntax</a></li>
+<li><a href="#labels-and-symbols" id="toc-labels-and-symbols"><span
+class="toc-section-number">2.9.3</span> Labels and Symbols</a></li>
+<li><a href="#comments" id="toc-comments"><span
+class="toc-section-number">2.9.4</span> Comments</a></li>
+<li><a href="#assembler-directives" id="toc-assembler-directives"><span
+class="toc-section-number">2.9.5</span> Assembler Directives</a></li>
+</ul></li>
+<li><a href="#subroutine-linkage" id="toc-subroutine-linkage"><span
+class="toc-section-number">2.10</span> 9. Subroutine Linkage</a>
+<ul>
+<li><a href="#jms-mechanism" id="toc-jms-mechanism"><span
+class="toc-section-number">2.10.1</span> JMS Mechanism</a></li>
+<li><a href="#parameter-passing" id="toc-parameter-passing"><span
+class="toc-section-number">2.10.2</span> Parameter Passing</a></li>
+<li><a href="#return-values" id="toc-return-values"><span
+class="toc-section-number">2.10.3</span> Return Values</a></li>
+<li><a href="#non-reentrant-limitation"
+id="toc-non-reentrant-limitation"><span
+class="toc-section-number">2.10.4</span> Non-Reentrant
+Limitation</a></li>
+</ul></li>
+<li><a href="#hardware-constraints-and-their-impact-on-unix"
+id="toc-hardware-constraints-and-their-impact-on-unix"><span
+class="toc-section-number">2.11</span> 10. Hardware Constraints and
+Their Impact on Unix</a>
+<ul>
+<li><a href="#bit-architecture-impact"
+id="toc-bit-architecture-impact"><span
+class="toc-section-number">2.11.1</span> 18-Bit Architecture
+Impact</a></li>
+<li><a href="#memory-limitations" id="toc-memory-limitations"><span
+class="toc-section-number">2.11.2</span> Memory Limitations</a></li>
+<li><a href="#io-limitations" id="toc-io-limitations"><span
+class="toc-section-number">2.11.3</span> I/O Limitations</a></li>
+<li><a href="#performance-constraints"
+id="toc-performance-constraints"><span
+class="toc-section-number">2.11.4</span> Performance
+Constraints</a></li>
+<li><a href="#design-principles-emerging-from-constraints"
+id="toc-design-principles-emerging-from-constraints"><span
+class="toc-section-number">2.11.5</span> Design Principles Emerging from
+Constraints</a></li>
+</ul></li>
+<li><a href="#conclusion" id="toc-conclusion"><span
+class="toc-section-number">2.12</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-3-assembly-language-and-programming"
+id="toc-chapter-3-assembly-language-and-programming"><span
+class="toc-section-number">3</span> Chapter 3: Assembly Language and
+Programming</a>
+<ul>
+<li><a href="#introduction-1" id="toc-introduction-1"><span
+class="toc-section-number">3.1</span> Introduction</a>
+<ul>
+<li><a href="#why-assembly-for-unix"
+id="toc-why-assembly-for-unix"><span
+class="toc-section-number">3.1.1</span> Why Assembly for Unix?</a></li>
+<li><a href="#the-relationship-to-machine-code"
+id="toc-the-relationship-to-machine-code"><span
+class="toc-section-number">3.1.2</span> The Relationship to Machine
+Code</a></li>
+<li><a href="#the-unix-assembler-capabilities"
+id="toc-the-unix-assembler-capabilities"><span
+class="toc-section-number">3.1.3</span> The Unix Assembler
+Capabilities</a></li>
+<li><a href="#what-youll-learn-1" id="toc-what-youll-learn-1"><span
+class="toc-section-number">3.1.4</span> What You’ll Learn</a></li>
+</ul></li>
+<li><a href="#number-systems-and-notation"
+id="toc-number-systems-and-notation"><span
+class="toc-section-number">3.2</span> 1. Number Systems and Notation</a>
+<ul>
+<li><a href="#why-octal-for-18-bit-words"
+id="toc-why-octal-for-18-bit-words"><span
+class="toc-section-number">3.2.1</span> Why Octal for 18-Bit
+Words?</a></li>
+<li><a href="#octal-digit-values" id="toc-octal-digit-values"><span
+class="toc-section-number">3.2.2</span> Octal Digit Values</a></li>
+<li><a href="#converting-between-number-systems"
+id="toc-converting-between-number-systems"><span
+class="toc-section-number">3.2.3</span> Converting Between Number
+Systems</a></li>
+<li><a href="#common-octal-values-in-unix"
+id="toc-common-octal-values-in-unix"><span
+class="toc-section-number">3.2.4</span> Common Octal Values in
+Unix</a></li>
+<li><a href="#practice-exercises" id="toc-practice-exercises"><span
+class="toc-section-number">3.2.5</span> Practice Exercises</a></li>
+<li><a href="#twos-complement-negative-numbers"
+id="toc-twos-complement-negative-numbers"><span
+class="toc-section-number">3.2.6</span> Two’s Complement Negative
+Numbers</a></li>
+</ul></li>
+<li><a href="#basic-instruction-tutorial"
+id="toc-basic-instruction-tutorial"><span
+class="toc-section-number">3.3</span> 2. Basic Instruction Tutorial</a>
+<ul>
+<li><a href="#your-first-instruction-lac-load-ac"
+id="toc-your-first-instruction-lac-load-ac"><span
+class="toc-section-number">3.3.1</span> Your First Instruction: LAC
+(Load AC)</a></li>
+<li><a href="#dac-deposit-ac---storing-values"
+id="toc-dac-deposit-ac---storing-values"><span
+class="toc-section-number">3.3.2</span> DAC (Deposit AC) - Storing
+Values</a></li>
+<li><a href="#tad-twos-complement-add---addition"
+id="toc-tad-twos-complement-add---addition"><span
+class="toc-section-number">3.3.3</span> TAD (Two’s Complement Add) -
+Addition</a></li>
+<li><a href="#a-complete-example-increment-a-variable"
+id="toc-a-complete-example-increment-a-variable"><span
+class="toc-section-number">3.3.4</span> A Complete Example: Increment a
+Variable</a></li>
+<li><a href="#subtraction-using-twos-complement"
+id="toc-subtraction-using-twos-complement"><span
+class="toc-section-number">3.3.5</span> Subtraction Using Two’s
+Complement</a></li>
+<li><a href="#simple-arithmetic-examples"
+id="toc-simple-arithmetic-examples"><span
+class="toc-section-number">3.3.6</span> Simple Arithmetic
+Examples</a></li>
+<li><a href="#cla-clear-ac---starting-fresh"
+id="toc-cla-clear-ac---starting-fresh"><span
+class="toc-section-number">3.3.7</span> CLA (Clear AC) - Starting
+Fresh</a></li>
+<li><a href="#las-load-ac-with-switches---reading-input"
+id="toc-las-load-ac-with-switches---reading-input"><span
+class="toc-section-number">3.3.8</span> LAS (Load AC with Switches) -
+Reading Input</a></li>
+<li><a href="#practice-programs" id="toc-practice-programs"><span
+class="toc-section-number">3.3.9</span> Practice Programs</a></li>
+</ul></li>
+<li><a href="#addressing-modes-in-practice"
+id="toc-addressing-modes-in-practice"><span
+class="toc-section-number">3.4</span> 3. Addressing Modes in
+Practice</a>
+<ul>
+<li><a href="#direct-addressing-default-mode"
+id="toc-direct-addressing-default-mode"><span
+class="toc-section-number">3.4.1</span> Direct Addressing (Default
+Mode)</a></li>
+<li><a href="#indirect-addressing-i-suffix"
+id="toc-indirect-addressing-i-suffix"><span
+class="toc-section-number">3.4.2</span> Indirect Addressing (i
+Suffix)</a></li>
+<li><a href="#law-load-address-word---loading-addresses"
+id="toc-law-load-address-word---loading-addresses"><span
+class="toc-section-number">3.4.3</span> LAW (Load Address Word) -
+Loading Addresses</a></li>
+<li><a href="#auto-increment-addressing-locations-8-15"
+id="toc-auto-increment-addressing-locations-8-15"><span
+class="toc-section-number">3.4.4</span> Auto-Increment Addressing
+(Locations 8-15)</a></li>
+<li><a href="#array-processing-with-auto-increment"
+id="toc-array-processing-with-auto-increment"><span
+class="toc-section-number">3.4.5</span> Array Processing with
+Auto-Increment</a></li>
+<li><a href="#two-pointers-array-copy"
+id="toc-two-pointers-array-copy"><span
+class="toc-section-number">3.4.6</span> Two Pointers: Array
+Copy</a></li>
+<li><a href="#when-to-use-each-mode"
+id="toc-when-to-use-each-mode"><span
+class="toc-section-number">3.4.7</span> When to Use Each Mode</a></li>
+<li><a href="#all-eight-auto-increment-registers"
+id="toc-all-eight-auto-increment-registers"><span
+class="toc-section-number">3.4.8</span> All Eight Auto-Increment
+Registers</a></li>
+<li><a href="#real-unix-example-character-packing"
+id="toc-real-unix-example-character-packing"><span
+class="toc-section-number">3.4.9</span> Real Unix Example: Character
+Packing</a></li>
+</ul></li>
+<li><a href="#control-flow" id="toc-control-flow"><span
+class="toc-section-number">3.5</span> 4. Control Flow</a>
+<ul>
+<li><a href="#unconditional-jump-jmp"
+id="toc-unconditional-jump-jmp"><span
+class="toc-section-number">3.5.1</span> Unconditional Jump: JMP</a></li>
+<li><a href="#skip-instructions-building-conditional-logic"
+id="toc-skip-instructions-building-conditional-logic"><span
+class="toc-section-number">3.5.2</span> Skip Instructions: Building
+Conditional Logic</a></li>
+<li><a href="#conditional-execution-examples"
+id="toc-conditional-execution-examples"><span
+class="toc-section-number">3.5.3</span> Conditional Execution
+Examples</a></li>
+<li><a href="#sad-skip-if-ac-different---comparison"
+id="toc-sad-skip-if-ac-different---comparison"><span
+class="toc-section-number">3.5.4</span> SAD (Skip if AC Different) -
+Comparison</a></li>
+<li><a href="#skp-skip-unconditionally"
+id="toc-skp-skip-unconditionally"><span
+class="toc-section-number">3.5.5</span> SKP (Skip
+Unconditionally)</a></li>
+<li><a href="#isz-increment-and-skip-if-zero---counting-loops"
+id="toc-isz-increment-and-skip-if-zero---counting-loops"><span
+class="toc-section-number">3.5.6</span> ISZ (Increment and Skip if Zero)
+- Counting Loops</a></li>
+<li><a href="#complete-loop-examples"
+id="toc-complete-loop-examples"><span
+class="toc-section-number">3.5.7</span> Complete Loop Examples</a></li>
+<li><a href="#dzm-deposit-zero-to-memory---efficient-clearing"
+id="toc-dzm-deposit-zero-to-memory---efficient-clearing"><span
+class="toc-section-number">3.5.8</span> DZM (Deposit Zero to Memory) -
+Efficient Clearing</a></li>
+<li><a href="#jms-jump-to-subroutine---function-calls"
+id="toc-jms-jump-to-subroutine---function-calls"><span
+class="toc-section-number">3.5.9</span> JMS (Jump to Subroutine) -
+Function Calls</a></li>
+<li><a href="#subroutine-examples" id="toc-subroutine-examples"><span
+class="toc-section-number">3.5.10</span> Subroutine Examples</a></li>
+</ul></li>
+<li><a href="#data-structures" id="toc-data-structures"><span
+class="toc-section-number">3.6</span> 5. Data Structures</a>
+<ul>
+<li><a href="#constants" id="toc-constants"><span
+class="toc-section-number">3.6.1</span> Constants</a></li>
+<li><a href="#single-word-variables"
+id="toc-single-word-variables"><span
+class="toc-section-number">3.6.2</span> Single-Word Variables</a></li>
+<li><a href="#arrays-sequential-storage"
+id="toc-arrays-sequential-storage"><span
+class="toc-section-number">3.6.3</span> Arrays (Sequential
+Storage)</a></li>
+<li><a href="#structures-grouped-data"
+id="toc-structures-grouped-data"><span
+class="toc-section-number">3.6.4</span> Structures (Grouped
+Data)</a></li>
+<li><a href="#character-strings-packed"
+id="toc-character-strings-packed"><span
+class="toc-section-number">3.6.5</span> Character Strings
+(Packed)</a></li>
+<li><a href="#linked-lists-advanced"
+id="toc-linked-lists-advanced"><span
+class="toc-section-number">3.6.6</span> Linked Lists (Advanced)</a></li>
+</ul></li>
+<li><a href="#advanced-techniques" id="toc-advanced-techniques"><span
+class="toc-section-number">3.7</span> 6. Advanced Techniques</a>
+<ul>
+<li><a href="#multi-precision-arithmetic"
+id="toc-multi-precision-arithmetic"><span
+class="toc-section-number">3.7.1</span> Multi-Precision
+Arithmetic</a></li>
+<li><a href="#multiplication-by-shifting"
+id="toc-multiplication-by-shifting"><span
+class="toc-section-number">3.7.2</span> Multiplication by
+Shifting</a></li>
+<li><a href="#bit-manipulation" id="toc-bit-manipulation"><span
+class="toc-section-number">3.7.3</span> Bit Manipulation</a></li>
+<li><a href="#rotate-operations" id="toc-rotate-operations"><span
+class="toc-section-number">3.7.4</span> Rotate Operations</a></li>
+<li><a href="#optimized-character-handling"
+id="toc-optimized-character-handling"><span
+class="toc-section-number">3.7.5</span> Optimized Character
+Handling</a></li>
+<li><a href="#loop-unrolling-for-performance"
+id="toc-loop-unrolling-for-performance"><span
+class="toc-section-number">3.7.6</span> Loop Unrolling for
+Performance</a></li>
+</ul></li>
+<li><a href="#the-unix-assembler" id="toc-the-unix-assembler"><span
+class="toc-section-number">3.8</span> 7. The Unix Assembler</a>
+<ul>
+<li><a href="#two-pass-assembly-process"
+id="toc-two-pass-assembly-process"><span
+class="toc-section-number">3.8.1</span> Two-Pass Assembly
+Process</a></li>
+<li><a href="#symbol-table" id="toc-symbol-table"><span
+class="toc-section-number">3.8.2</span> Symbol Table</a></li>
+<li><a href="#forward-and-backward-references"
+id="toc-forward-and-backward-references"><span
+class="toc-section-number">3.8.3</span> Forward and Backward
+References</a></li>
+<li><a href="#expression-evaluation"
+id="toc-expression-evaluation"><span
+class="toc-section-number">3.8.4</span> Expression Evaluation</a></li>
+<li><a href="#assembler-directives-1"
+id="toc-assembler-directives-1"><span
+class="toc-section-number">3.8.5</span> Assembler Directives</a></li>
+<li><a href="#code-from-as.s" id="toc-code-from-as.s"><span
+class="toc-section-number">3.8.6</span> Code from as.s</a></li>
+<li><a href="#macro-expansion-sys" id="toc-macro-expansion-sys"><span
+class="toc-section-number">3.8.7</span> Macro Expansion (sys)</a></li>
+<li><a href="#linking-multiple-files"
+id="toc-linking-multiple-files"><span
+class="toc-section-number">3.8.8</span> Linking Multiple Files</a></li>
+</ul></li>
+<li><a href="#calling-conventions" id="toc-calling-conventions"><span
+class="toc-section-number">3.9</span> 8. Calling Conventions</a>
+<ul>
+<li><a href="#parameter-passing-1" id="toc-parameter-passing-1"><span
+class="toc-section-number">3.9.1</span> Parameter Passing</a></li>
+<li><a href="#return-values-1" id="toc-return-values-1"><span
+class="toc-section-number">3.9.2</span> Return Values</a></li>
+<li><a href="#register-usage-conventions"
+id="toc-register-usage-conventions"><span
+class="toc-section-number">3.9.3</span> Register Usage
+Conventions</a></li>
+<li><a href="#library-function-example"
+id="toc-library-function-example"><span
+class="toc-section-number">3.9.4</span> Library Function
+Example</a></li>
+</ul></li>
+<li><a href="#system-call-interface"
+id="toc-system-call-interface"><span
+class="toc-section-number">3.10</span> 9. System Call Interface</a>
+<ul>
+<li><a href="#the-sys-pseudo-operation"
+id="toc-the-sys-pseudo-operation"><span
+class="toc-section-number">3.10.1</span> The sys
+Pseudo-Operation</a></li>
+<li><a href="#system-call-conventions"
+id="toc-system-call-conventions"><span
+class="toc-section-number">3.10.2</span> System Call
+Conventions</a></li>
+<li><a href="#common-system-calls" id="toc-common-system-calls"><span
+class="toc-section-number">3.10.3</span> Common System Calls</a></li>
+<li><a href="#error-handling" id="toc-error-handling"><span
+class="toc-section-number">3.10.4</span> Error Handling</a></li>
+<li><a href="#complete-system-call-example"
+id="toc-complete-system-call-example"><span
+class="toc-section-number">3.10.5</span> Complete System Call
+Example</a></li>
+</ul></li>
+<li><a href="#complete-programs" id="toc-complete-programs"><span
+class="toc-section-number">3.11</span> 10. Complete Programs</a>
+<ul>
+<li><a href="#program-1-character-counter"
+id="toc-program-1-character-counter"><span
+class="toc-section-number">3.11.1</span> Program 1: Character
+Counter</a></li>
+<li><a href="#program-2-file-copier-cp"
+id="toc-program-2-file-copier-cp"><span
+class="toc-section-number">3.11.2</span> Program 2: File Copier
+(cp)</a></li>
+<li><a href="#program-3-line-counter-wc--l"
+id="toc-program-3-line-counter-wc--l"><span
+class="toc-section-number">3.11.3</span> Program 3: Line Counter (wc
+-l)</a></li>
+<li><a href="#program-4-simple-grep-search"
+id="toc-program-4-simple-grep-search"><span
+class="toc-section-number">3.11.4</span> Program 4: Simple grep
+(Search)</a></li>
+</ul></li>
+<li><a href="#debugging-assembly-code"
+id="toc-debugging-assembly-code"><span
+class="toc-section-number">3.12</span> 11. Debugging Assembly Code</a>
+<ul>
+<li><a href="#using-db.s-the-debugger"
+id="toc-using-db.s-the-debugger"><span
+class="toc-section-number">3.12.1</span> Using db.s (The
+Debugger)</a></li>
+<li><a href="#reading-core-dumps" id="toc-reading-core-dumps"><span
+class="toc-section-number">3.12.2</span> Reading Core Dumps</a></li>
+<li><a href="#common-assembly-errors"
+id="toc-common-assembly-errors"><span
+class="toc-section-number">3.12.3</span> Common Assembly Errors</a></li>
+<li><a href="#debugging-strategies" id="toc-debugging-strategies"><span
+class="toc-section-number">3.12.4</span> Debugging Strategies</a></li>
+</ul></li>
+<li><a href="#practical-tips-and-best-practices"
+id="toc-practical-tips-and-best-practices"><span
+class="toc-section-number">3.13</span> 12. Practical Tips and Best
+Practices</a>
+<ul>
+<li><a href="#code-organization" id="toc-code-organization"><span
+class="toc-section-number">3.13.1</span> Code Organization</a></li>
+<li><a href="#performance-optimization"
+id="toc-performance-optimization"><span
+class="toc-section-number">3.13.2</span> Performance
+Optimization</a></li>
+<li><a href="#memory-conservation" id="toc-memory-conservation"><span
+class="toc-section-number">3.13.3</span> Memory Conservation</a></li>
+<li><a href="#documentation" id="toc-documentation"><span
+class="toc-section-number">3.13.4</span> Documentation</a></li>
+</ul></li>
+<li><a href="#summary" id="toc-summary"><span
+class="toc-section-number">3.14</span> Summary</a></li>
+</ul></li>
+<li><a href="#chapter-4---system-architecture-overview"
+id="toc-chapter-4---system-architecture-overview"><span
+class="toc-section-number">4</span> Chapter 4 - System Architecture
+Overview</a>
+<ul>
+<li><a href="#the-big-picture" id="toc-the-big-picture"><span
+class="toc-section-number">4.1</span> 1. The Big Picture</a>
+<ul>
+<li><a href="#system-components-diagram"
+id="toc-system-components-diagram"><span
+class="toc-section-number">4.1.1</span> System Components
+Diagram</a></li>
+<li><a href="#data-flow-example-reading-a-file"
+id="toc-data-flow-example-reading-a-file"><span
+class="toc-section-number">4.1.2</span> Data Flow Example: Reading a
+File</a></li>
+</ul></li>
+<li><a href="#kernel-organization" id="toc-kernel-organization"><span
+class="toc-section-number">4.2</span> 2. Kernel Organization</a>
+<ul>
+<li><a href="#module-responsibilities"
+id="toc-module-responsibilities"><span
+class="toc-section-number">4.2.1</span> Module Responsibilities</a></li>
+<li><a href="#detailed-module-descriptions"
+id="toc-detailed-module-descriptions"><span
+class="toc-section-number">4.2.2</span> Detailed Module
+Descriptions</a></li>
+<li><a href="#why-s1-through-s9" id="toc-why-s1-through-s9"><span
+class="toc-section-number">4.2.3</span> Why s1 through s9?</a></li>
+</ul></li>
+<li><a href="#system-calls-overview"
+id="toc-system-calls-overview"><span
+class="toc-section-number">4.3</span> 3. System Calls Overview</a>
+<ul>
+<li><a href="#complete-system-call-reference"
+id="toc-complete-system-call-reference"><span
+class="toc-section-number">4.3.1</span> Complete System Call
+Reference</a></li>
+<li><a href="#system-call-categories"
+id="toc-system-call-categories"><span
+class="toc-section-number">4.3.2</span> System Call Categories</a></li>
+<li><a href="#calling-convention" id="toc-calling-convention"><span
+class="toc-section-number">4.3.3</span> Calling Convention</a></li>
+</ul></li>
+<li><a href="#file-system-architecture"
+id="toc-file-system-architecture"><span
+class="toc-section-number">4.4</span> 4. File System Architecture</a>
+<ul>
+<li><a href="#high-level-design" id="toc-high-level-design"><span
+class="toc-section-number">4.4.1</span> High-Level Design</a></li>
+<li><a href="#disk-layout" id="toc-disk-layout"><span
+class="toc-section-number">4.4.2</span> Disk Layout</a></li>
+<li><a href="#inode-structure" id="toc-inode-structure"><span
+class="toc-section-number">4.4.3</span> Inode Structure</a></li>
+<li><a href="#directory-structure" id="toc-directory-structure"><span
+class="toc-section-number">4.4.4</span> Directory Structure</a></li>
+<li><a href="#free-block-management"
+id="toc-free-block-management"><span
+class="toc-section-number">4.4.5</span> Free Block Management</a></li>
+<li><a href="#example-storing-a-200-word-file"
+id="toc-example-storing-a-200-word-file"><span
+class="toc-section-number">4.4.6</span> Example: Storing a 200-Word
+File</a></li>
+</ul></li>
+<li><a href="#process-model" id="toc-process-model"><span
+class="toc-section-number">4.5</span> 5. Process Model</a>
+<ul>
+<li><a href="#process-table-structure"
+id="toc-process-table-structure"><span
+class="toc-section-number">4.5.1</span> Process Table Structure</a></li>
+<li><a href="#user-data-structure" id="toc-user-data-structure"><span
+class="toc-section-number">4.5.2</span> User Data Structure</a></li>
+<li><a href="#process-states" id="toc-process-states"><span
+class="toc-section-number">4.5.3</span> Process States</a></li>
+<li><a href="#swapping-mechanism" id="toc-swapping-mechanism"><span
+class="toc-section-number">4.5.4</span> Swapping Mechanism</a></li>
+<li><a href="#process-lifecycle" id="toc-process-lifecycle"><span
+class="toc-section-number">4.5.5</span> Process Lifecycle</a></li>
+</ul></li>
+<li><a href="#memory-map-1" id="toc-memory-map-1"><span
+class="toc-section-number">4.6</span> 6. Memory Map</a>
+<ul>
+<li><a href="#complete-memory-layout"
+id="toc-complete-memory-layout"><span
+class="toc-section-number">4.6.1</span> Complete Memory Layout</a></li>
+<li><a href="#kernel-memory-organization"
+id="toc-kernel-memory-organization"><span
+class="toc-section-number">4.6.2</span> Kernel Memory
+Organization</a></li>
+<li><a href="#user-memory-layout" id="toc-user-memory-layout"><span
+class="toc-section-number">4.6.3</span> User Memory Layout</a></li>
+<li><a href="#special-memory-locations-1"
+id="toc-special-memory-locations-1"><span
+class="toc-section-number">4.6.4</span> Special Memory
+Locations</a></li>
+<li><a href="#memory-usage-analysis"
+id="toc-memory-usage-analysis"><span
+class="toc-section-number">4.6.5</span> Memory Usage Analysis</a></li>
+</ul></li>
+<li><a href="#device-io-architecture"
+id="toc-device-io-architecture"><span
+class="toc-section-number">4.7</span> 7. Device I/O Architecture</a>
+<ul>
+<li><a href="#device-list" id="toc-device-list"><span
+class="toc-section-number">4.7.1</span> Device List</a></li>
+<li><a href="#character-vs.-block-devices"
+id="toc-character-vs.-block-devices"><span
+class="toc-section-number">4.7.2</span> Character vs. Block
+Devices</a></li>
+<li><a href="#character-queue-implementation"
+id="toc-character-queue-implementation"><span
+class="toc-section-number">4.7.3</span> Character Queue
+Implementation</a></li>
+<li><a href="#buffering-strategy" id="toc-buffering-strategy"><span
+class="toc-section-number">4.7.4</span> Buffering Strategy</a></li>
+<li><a href="#interrupt-handling-overview"
+id="toc-interrupt-handling-overview"><span
+class="toc-section-number">4.7.5</span> Interrupt Handling
+Overview</a></li>
+<li><a href="#device-specific-handlers"
+id="toc-device-specific-handlers"><span
+class="toc-section-number">4.7.6</span> Device-Specific
+Handlers</a></li>
+</ul></li>
+<li><a href="#boot-and-initialization"
+id="toc-boot-and-initialization"><span
+class="toc-section-number">4.8</span> 8. Boot and Initialization</a>
+<ul>
+<li><a href="#cold-boot-sequence" id="toc-cold-boot-sequence"><span
+class="toc-section-number">4.8.1</span> Cold Boot Sequence</a></li>
+<li><a href="#full-boot-flowchart" id="toc-full-boot-flowchart"><span
+class="toc-section-number">4.8.2</span> Full Boot Flowchart</a></li>
+<li><a href="#installation-boot-s9.s-alternate-path"
+id="toc-installation-boot-s9.s-alternate-path"><span
+class="toc-section-number">4.8.3</span> Installation Boot (s9.s
+alternate path)</a></li>
+<li><a href="#shutdown-and-restart" id="toc-shutdown-and-restart"><span
+class="toc-section-number">4.8.4</span> Shutdown and Restart</a></li>
+</ul></li>
+<li><a href="#data-structures-1" id="toc-data-structures-1"><span
+class="toc-section-number">4.9</span> 9. Data Structures</a>
+<ul>
+<li><a href="#process-table-ulist" id="toc-process-table-ulist"><span
+class="toc-section-number">4.9.1</span> Process Table (ulist)</a></li>
+<li><a href="#user-data-structure-userdata"
+id="toc-user-data-structure-userdata"><span
+class="toc-section-number">4.9.2</span> User Data Structure
+(userdata)</a></li>
+<li><a href="#inode-structure-1" id="toc-inode-structure-1"><span
+class="toc-section-number">4.9.3</span> Inode Structure</a></li>
+<li><a href="#directory-entry-structure"
+id="toc-directory-entry-structure"><span
+class="toc-section-number">4.9.4</span> Directory Entry
+Structure</a></li>
+<li><a href="#file-descriptor-structure"
+id="toc-file-descriptor-structure"><span
+class="toc-section-number">4.9.5</span> File Descriptor
+Structure</a></li>
+<li><a href="#system-data-sysdata" id="toc-system-data-sysdata"><span
+class="toc-section-number">4.9.6</span> System Data (sysdata)</a></li>
+<li><a href="#constants-and-manifests"
+id="toc-constants-and-manifests"><span
+class="toc-section-number">4.9.7</span> Constants and Manifests</a></li>
+<li><a href="#memory-allocation-pattern"
+id="toc-memory-allocation-pattern"><span
+class="toc-section-number">4.9.8</span> Memory Allocation
+Pattern</a></li>
+</ul></li>
+<li><a href="#naming-conventions" id="toc-naming-conventions"><span
+class="toc-section-number">4.10</span> 10. Naming Conventions</a>
+<ul>
+<li><a href="#why-s1-through-s9-1" id="toc-why-s1-through-s9-1"><span
+class="toc-section-number">4.10.1</span> Why s1 through s9?</a></li>
+<li><a href="#symbol-naming-patterns"
+id="toc-symbol-naming-patterns"><span
+class="toc-section-number">4.10.2</span> Symbol Naming Patterns</a></li>
+<li><a href="#label-naming" id="toc-label-naming"><span
+class="toc-section-number">4.10.3</span> Label Naming</a></li>
+<li><a href="#octal-address-conventions"
+id="toc-octal-address-conventions"><span
+class="toc-section-number">4.10.4</span> Octal Address
+Conventions</a></li>
+<li><a href="#function-call-conventions"
+id="toc-function-call-conventions"><span
+class="toc-section-number">4.10.5</span> Function Call
+Conventions</a></li>
+<li><a href="#naming-evolution" id="toc-naming-evolution"><span
+class="toc-section-number">4.10.6</span> Naming Evolution</a></li>
+</ul></li>
+<li><a href="#size-and-complexity-analysis"
+id="toc-size-and-complexity-analysis"><span
+class="toc-section-number">4.11</span> 11. Size and Complexity
+Analysis</a>
+<ul>
+<li><a href="#line-counts-by-module"
+id="toc-line-counts-by-module"><span
+class="toc-section-number">4.11.1</span> Line Counts by Module</a></li>
+<li><a href="#functionality-density"
+id="toc-functionality-density"><span
+class="toc-section-number">4.11.2</span> Functionality Density</a></li>
+<li><a href="#functionality-per-line-metrics"
+id="toc-functionality-per-line-metrics"><span
+class="toc-section-number">4.11.3</span> Functionality per Line
+Metrics</a></li>
+<li><a href="#comparison-with-modern-systems"
+id="toc-comparison-with-modern-systems"><span
+class="toc-section-number">4.11.4</span> Comparison with Modern
+Systems</a></li>
+<li><a href="#code-reuse-analysis" id="toc-code-reuse-analysis"><span
+class="toc-section-number">4.11.5</span> Code Reuse Analysis</a></li>
+<li><a href="#complexity-metrics" id="toc-complexity-metrics"><span
+class="toc-section-number">4.11.6</span> Complexity Metrics</a></li>
+</ul></li>
+<li><a href="#reading-map" id="toc-reading-map"><span
+class="toc-section-number">4.12</span> 12. Reading Map</a>
+<ul>
+<li><a href="#what-to-read-first" id="toc-what-to-read-first"><span
+class="toc-section-number">4.12.1</span> What to Read First</a></li>
+<li><a href="#dependencies-between-modules"
+id="toc-dependencies-between-modules"><span
+class="toc-section-number">4.12.2</span> Dependencies Between
+Modules</a></li>
+<li><a href="#cross-reference-table"
+id="toc-cross-reference-table"><span
+class="toc-section-number">4.12.3</span> Cross-Reference Table</a></li>
+<li><a href="#reading-strategies" id="toc-reading-strategies"><span
+class="toc-section-number">4.12.4</span> Reading Strategies</a></li>
+<li><a href="#common-confusion-points"
+id="toc-common-confusion-points"><span
+class="toc-section-number">4.12.5</span> Common Confusion
+Points</a></li>
+<li><a href="#recommended-reading-order"
+id="toc-recommended-reading-order"><span
+class="toc-section-number">4.12.6</span> Recommended Reading
+Order</a></li>
+</ul></li>
+<li><a href="#conclusion-1" id="toc-conclusion-1"><span
+class="toc-section-number">4.13</span> Conclusion</a></li>
+</ul></li>
+<li><a href="#boot-and-initialization-1"
+id="toc-boot-and-initialization-1"><span
+class="toc-section-number">5</span> Boot and Initialization</a>
+<ul>
+<li><a href="#the-cold-start-bringing-unix-to-life"
+id="toc-the-cold-start-bringing-unix-to-life"><span
+class="toc-section-number">5.1</span> The Cold Start: Bringing Unix to
+Life</a>
+<ul>
+<li><a href="#historical-context-bootstrapping-in-1969"
+id="toc-historical-context-bootstrapping-in-1969"><span
+class="toc-section-number">5.1.1</span> Historical Context:
+Bootstrapping in 1969</a></li>
+</ul></li>
+<li><a href="#the-cold-boot-process-s9.s"
+id="toc-the-cold-boot-process-s9.s"><span
+class="toc-section-number">5.2</span> 6.1 The Cold Boot Process
+(s9.s)</a>
+<ul>
+<li><a href="#stage-1-disk-initialization"
+id="toc-stage-1-disk-initialization"><span
+class="toc-section-number">5.2.1</span> Stage 1: Disk
+Initialization</a></li>
+<li><a href="#stage-2-reading-files-from-paper-tape"
+id="toc-stage-2-reading-files-from-paper-tape"><span
+class="toc-section-number">5.2.2</span> Stage 2: Reading Files from
+Paper Tape</a></li>
+<li><a href="#stage-3-jump-to-system"
+id="toc-stage-3-jump-to-system"><span
+class="toc-section-number">5.2.3</span> Stage 3: Jump to System</a></li>
+</ul></li>
+<li><a href="#the-warm-boot-process-s8.s-coldentry"
+id="toc-the-warm-boot-process-s8.s-coldentry"><span
+class="toc-section-number">5.3</span> 6.2 The Warm Boot Process (s8.s
+coldentry)</a></li>
+<li><a href="#the-init-process-unixs-first-program"
+id="toc-the-init-process-unixs-first-program"><span
+class="toc-section-number">5.4</span> 6.3 The Init Process: Unix’s First
+Program</a>
+<ul>
+<li><a href="#forking-login-processes"
+id="toc-forking-login-processes"><span
+class="toc-section-number">5.4.1</span> Forking Login Processes</a></li>
+<li><a href="#the-login-sequence" id="toc-the-login-sequence"><span
+class="toc-section-number">5.4.2</span> The Login Sequence</a></li>
+<li><a href="#password-file-format" id="toc-password-file-format"><span
+class="toc-section-number">5.4.3</span> Password File Format</a></li>
+<li><a href="#setting-user-context" id="toc-setting-user-context"><span
+class="toc-section-number">5.4.4</span> Setting User Context</a></li>
+</ul></li>
+<li><a href="#memory-layout-during-boot"
+id="toc-memory-layout-during-boot"><span
+class="toc-section-number">5.5</span> 6.4 Memory Layout During Boot</a>
+<ul>
+<li><a href="#t0-power-on" id="toc-t0-power-on"><span
+class="toc-section-number">5.5.1</span> T+0: Power On</a></li>
+<li><a href="#t100ms-bootstrap-loaded"
+id="toc-t100ms-bootstrap-loaded"><span
+class="toc-section-number">5.5.2</span> T+100ms: Bootstrap
+Loaded</a></li>
+<li><a href="#t500ms-coldentry-running"
+id="toc-t500ms-coldentry-running"><span
+class="toc-section-number">5.5.3</span> T+500ms: Coldentry
+Running</a></li>
+<li><a href="#t5000ms-init-running" id="toc-t5000ms-init-running"><span
+class="toc-section-number">5.5.4</span> T+5000ms: Init Running</a></li>
+<li><a href="#t10000ms-user-logged-in-shell-running"
+id="toc-t10000ms-user-logged-in-shell-running"><span
+class="toc-section-number">5.5.5</span> T+10000ms: User Logged In, Shell
+Running</a></li>
+</ul></li>
+<li><a href="#historical-context-boot-processes-in-1969"
+id="toc-historical-context-boot-processes-in-1969"><span
+class="toc-section-number">5.6</span> 6.5 Historical Context: Boot
+Processes in 1969</a>
+<ul>
+<li><a href="#other-systems-boot-processes"
+id="toc-other-systems-boot-processes"><span
+class="toc-section-number">5.6.1</span> Other Systems’ Boot
+Processes</a></li>
+<li><a href="#what-made-pdp-7-unix-different"
+id="toc-what-made-pdp-7-unix-different"><span
+class="toc-section-number">5.6.2</span> What Made PDP-7 Unix
+Different</a></li>
+</ul></li>
+<li><a href="#the-evolution-of-unix-booting"
+id="toc-the-evolution-of-unix-booting"><span
+class="toc-section-number">5.7</span> 6.6 The Evolution of Unix
+Booting</a>
+<ul>
+<li><a href="#pdp-7-unix-1970" id="toc-pdp-7-unix-1970"><span
+class="toc-section-number">5.7.1</span> PDP-7 Unix (1970)</a></li>
+<li><a href="#unix-v1-1971---pdp-11"
+id="toc-unix-v1-1971---pdp-11"><span
+class="toc-section-number">5.7.2</span> Unix V1 (1971) - PDP-11</a></li>
+<li><a href="#unix-v6-1975---pdp-11"
+id="toc-unix-v6-1975---pdp-11"><span
+class="toc-section-number">5.7.3</span> Unix V6 (1975) - PDP-11</a></li>
+<li><a href="#unix-v7-1979---pdp-11"
+id="toc-unix-v7-1979---pdp-11"><span
+class="toc-section-number">5.7.4</span> Unix V7 (1979) - PDP-11</a></li>
+<li><a href="#modern-linux-2020s" id="toc-modern-linux-2020s"><span
+class="toc-section-number">5.7.5</span> Modern Linux (2020s)</a></li>
+</ul></li>
+<li><a href="#clever-optimizations" id="toc-clever-optimizations"><span
+class="toc-section-number">5.8</span> 6.7 Clever Optimizations</a>
+<ul>
+<li><a href="#re-entrance-guard" id="toc-re-entrance-guard"><span
+class="toc-section-number">5.8.1</span> Re-entrance Guard</a></li>
+<li><a href="#single-track-system-data"
+id="toc-single-track-system-data"><span
+class="toc-section-number">5.8.2</span> Single-Track System
+Data</a></li>
+<li><a href="#shared-buffer-space" id="toc-shared-buffer-space"><span
+class="toc-section-number">5.8.3</span> Shared Buffer Space</a></li>
+<li><a href="#init-as-inode-3" id="toc-init-as-inode-3"><span
+class="toc-section-number">5.8.4</span> Init as Inode 3</a></li>
+</ul></li>
+<li><a href="#lessons-from-pdp-7-boot-process"
+id="toc-lessons-from-pdp-7-boot-process"><span
+class="toc-section-number">5.9</span> 6.8 Lessons from PDP-7 Boot
+Process</a>
+<ul>
+<li><a href="#design-principles" id="toc-design-principles"><span
+class="toc-section-number">5.9.1</span> Design Principles</a></li>
+<li><a href="#modern-relevance" id="toc-modern-relevance"><span
+class="toc-section-number">5.9.2</span> Modern Relevance</a></li>
+<li><a href="#what-we-lost" id="toc-what-we-lost"><span
+class="toc-section-number">5.9.3</span> What We Lost</a></li>
+</ul></li>
+<li><a href="#hands-on-tracing-a-complete-boot"
+id="toc-hands-on-tracing-a-complete-boot"><span
+class="toc-section-number">5.10</span> 6.9 Hands-On: Tracing a Complete
+Boot</a></li>
+<li><a href="#conclusion-2" id="toc-conclusion-2"><span
+class="toc-section-number">5.11</span> 6.10 Conclusion</a></li>
+</ul></li>
+<li><a href="#chapter-7---file-system-implementation"
+id="toc-chapter-7---file-system-implementation"><span
+class="toc-section-number">6</span> Chapter 7 - File System
+Implementation</a>
+<ul>
+<li><a href="#revolutionary-design" id="toc-revolutionary-design"><span
+class="toc-section-number">6.1</span> 7.1 Revolutionary Design</a>
+<ul>
+<li><a href="#the-fundamental-innovation"
+id="toc-the-fundamental-innovation"><span
+class="toc-section-number">6.1.1</span> The Fundamental
+Innovation</a></li>
+<li><a href="#why-this-was-revolutionary"
+id="toc-why-this-was-revolutionary"><span
+class="toc-section-number">6.1.2</span> Why This Was
+Revolutionary</a></li>
+<li><a href="#comparison-with-contemporary-systems"
+id="toc-comparison-with-contemporary-systems"><span
+class="toc-section-number">6.1.3</span> Comparison with Contemporary
+Systems</a></li>
+</ul></li>
+<li><a href="#disk-layout-1" id="toc-disk-layout-1"><span
+class="toc-section-number">6.2</span> 7.2 Disk Layout</a>
+<ul>
+<li><a href="#complete-disk-organization"
+id="toc-complete-disk-organization"><span
+class="toc-section-number">6.2.1</span> Complete Disk
+Organization</a></li>
+<li><a href="#detailed-memory-map-diagram"
+id="toc-detailed-memory-map-diagram"><span
+class="toc-section-number">6.2.2</span> Detailed Memory Map
+Diagram</a></li>
+<li><a href="#why-this-layout" id="toc-why-this-layout"><span
+class="toc-section-number">6.2.3</span> Why This Layout?</a></li>
+<li><a href="#physical-block-addressing"
+id="toc-physical-block-addressing"><span
+class="toc-section-number">6.2.4</span> Physical Block
+Addressing</a></li>
+</ul></li>
+<li><a href="#inodes---the-heart-of-unix"
+id="toc-inodes---the-heart-of-unix"><span
+class="toc-section-number">6.3</span> 7.3 Inodes - The Heart of Unix</a>
+<ul>
+<li><a href="#inode-structure-12-words"
+id="toc-inode-structure-12-words"><span
+class="toc-section-number">6.3.1</span> Inode Structure (12
+Words)</a></li>
+<li><a href="#field-by-field-analysis"
+id="toc-field-by-field-analysis"><span
+class="toc-section-number">6.3.2</span> Field-by-Field Analysis</a></li>
+<li><a href="#complete-inode-code-analysis"
+id="toc-complete-inode-code-analysis"><span
+class="toc-section-number">6.3.3</span> Complete inode Code
+Analysis</a></li>
+<li><a href="#example-inode-a-text-file"
+id="toc-example-inode-a-text-file"><span
+class="toc-section-number">6.3.4</span> Example Inode: A Text
+File</a></li>
+</ul></li>
+<li><a href="#directories" id="toc-directories"><span
+class="toc-section-number">6.4</span> 7.4 Directories</a>
+<ul>
+<li><a href="#directory-entry-structure-8-words"
+id="toc-directory-entry-structure-8-words"><span
+class="toc-section-number">6.4.1</span> Directory Entry Structure (8
+Words)</a></li>
+<li><a href="#filename-encoding" id="toc-filename-encoding"><span
+class="toc-section-number">6.4.2</span> Filename Encoding</a></li>
+<li><a href="#example-directory-root-directory"
+id="toc-example-directory-root-directory"><span
+class="toc-section-number">6.4.3</span> Example Directory: Root
+Directory “/”</a></li>
+<li><a href="#directory-operations-code"
+id="toc-directory-operations-code"><span
+class="toc-section-number">6.4.4</span> Directory Operations
+Code</a></li>
+</ul></li>
+<li><a href="#free-block-management-1"
+id="toc-free-block-management-1"><span
+class="toc-section-number">6.5</span> 7.5 Free Block Management</a>
+<ul>
+<li><a href="#free-block-list-structure"
+id="toc-free-block-list-structure"><span
+class="toc-section-number">6.5.1</span> Free Block List
+Structure</a></li>
+<li><a href="#visual-representation"
+id="toc-visual-representation"><span
+class="toc-section-number">6.5.2</span> Visual Representation</a></li>
+<li><a href="#allocation-algorithm-alloc"
+id="toc-allocation-algorithm-alloc"><span
+class="toc-section-number">6.5.3</span> Allocation Algorithm
+(alloc)</a></li>
+<li><a href="#free-algorithm-free" id="toc-free-algorithm-free"><span
+class="toc-section-number">6.5.4</span> Free Algorithm (free)</a></li>
+<li><a href="#why-this-design" id="toc-why-this-design"><span
+class="toc-section-number">6.5.5</span> Why This Design?</a></li>
+</ul></li>
+<li><a href="#file-operations" id="toc-file-operations"><span
+class="toc-section-number">6.6</span> 7.6 File Operations</a>
+<ul>
+<li><a href="#open---opening-a-file"
+id="toc-open---opening-a-file"><span
+class="toc-section-number">6.6.1</span> 7.6.1 open - Opening a
+File</a></li>
+<li><a href="#read---reading-from-a-file"
+id="toc-read---reading-from-a-file"><span
+class="toc-section-number">6.6.2</span> 7.6.2 read - Reading from a
+File</a></li>
+<li><a href="#write---writing-to-a-file"
+id="toc-write---writing-to-a-file"><span
+class="toc-section-number">6.6.3</span> 7.6.3 write - Writing to a
+File</a></li>
+<li><a href="#creat---creating-a-file"
+id="toc-creat---creating-a-file"><span
+class="toc-section-number">6.6.4</span> 7.6.4 creat - Creating a
+File</a></li>
+<li><a href="#link---creating-hard-links"
+id="toc-link---creating-hard-links"><span
+class="toc-section-number">6.6.5</span> 7.6.5 link - Creating Hard
+Links</a></li>
+<li><a href="#unlink---removing-directory-entries"
+id="toc-unlink---removing-directory-entries"><span
+class="toc-section-number">6.6.6</span> 7.6.6 unlink - Removing
+Directory Entries</a></li>
+</ul></li>
+<li><a href="#path-name-lookup" id="toc-path-name-lookup"><span
+class="toc-section-number">6.7</span> 7.7 Path Name Lookup</a>
+<ul>
+<li><a href="#namei-algorithm" id="toc-namei-algorithm"><span
+class="toc-section-number">6.7.1</span> namei Algorithm</a></li>
+<li><a href="#execution-trace-opening-ddkenprog.s"
+id="toc-execution-trace-opening-ddkenprog.s"><span
+class="toc-section-number">6.7.2</span> Execution Trace: Opening
+“/dd/ken/prog.s”</a></li>
+</ul></li>
+<li><a href="#buffer-cache" id="toc-buffer-cache"><span
+class="toc-section-number">6.8</span> 7.8 Buffer Cache</a>
+<ul>
+<li><a href="#buffer-cache-structure"
+id="toc-buffer-cache-structure"><span
+class="toc-section-number">6.8.1</span> Buffer Cache Structure</a></li>
+<li><a href="#dskrd-with-caching" id="toc-dskrd-with-caching"><span
+class="toc-section-number">6.8.2</span> dskrd with Caching</a></li>
+<li><a href="#performance-impact" id="toc-performance-impact"><span
+class="toc-section-number">6.8.3</span> Performance Impact</a></li>
+</ul></li>
+<li><a href="#large-files" id="toc-large-files"><span
+class="toc-section-number">6.9</span> 7.9 Large Files</a>
+<ul>
+<li><a href="#direct-vs.-indirect-blocks"
+id="toc-direct-vs.-indirect-blocks"><span
+class="toc-section-number">6.9.1</span> Direct vs. Indirect
+Blocks</a></li>
+<li><a href="#maximum-file-size" id="toc-maximum-file-size"><span
+class="toc-section-number">6.9.2</span> Maximum File Size</a></li>
+<li><a href="#implementation-get_block_addr"
+id="toc-implementation-get_block_addr"><span
+class="toc-section-number">6.9.3</span> Implementation:
+get_block_addr</a></li>
+</ul></li>
+<li><a href="#file-permissions" id="toc-file-permissions"><span
+class="toc-section-number">6.10</span> 7.10 File Permissions</a>
+<ul>
+<li><a href="#permission-bit-layout"
+id="toc-permission-bit-layout"><span
+class="toc-section-number">6.10.1</span> Permission Bit Layout</a></li>
+<li><a href="#permission-check-algorithm"
+id="toc-permission-check-algorithm"><span
+class="toc-section-number">6.10.2</span> Permission Check
+Algorithm</a></li>
+<li><a href="#setuid-implementation"
+id="toc-setuid-implementation"><span
+class="toc-section-number">6.10.3</span> Setuid Implementation</a></li>
+</ul></li>
+<li><a href="#historical-context" id="toc-historical-context"><span
+class="toc-section-number">6.11</span> 7.11 Historical Context</a>
+<ul>
+<li><a href="#file-systems" id="toc-file-systems"><span
+class="toc-section-number">6.11.1</span> 1969 File Systems</a></li>
+<li><a href="#comparison-table" id="toc-comparison-table"><span
+class="toc-section-number">6.11.2</span> Comparison Table</a></li>
+<li><a href="#influence-on-modern-file-systems"
+id="toc-influence-on-modern-file-systems"><span
+class="toc-section-number">6.11.3</span> Influence on Modern File
+Systems</a></li>
+<li><a href="#what-changed-what-didnt"
+id="toc-what-changed-what-didnt"><span
+class="toc-section-number">6.11.4</span> What Changed, What
+Didn’t</a></li>
+</ul></li>
+<li><a href="#complete-example-creating-and-reading-a-file"
+id="toc-complete-example-creating-and-reading-a-file"><span
+class="toc-section-number">6.12</span> 7.12 Complete Example: Creating
+and Reading a File</a>
+<ul>
+<li><a href="#scenario" id="toc-scenario"><span
+class="toc-section-number">6.12.1</span> Scenario</a></li>
+<li><a href="#step-by-step-execution"
+id="toc-step-by-step-execution"><span
+class="toc-section-number">6.12.2</span> Step-by-Step Execution</a></li>
+</ul></li>
+<li><a href="#summary-1" id="toc-summary-1"><span
+class="toc-section-number">6.13</span> Summary</a></li>
+</ul></li>
+<li><a href="#chapter-8---process-management"
+id="toc-chapter-8---process-management"><span
+class="toc-section-number">7</span> Chapter 8 - Process Management</a>
+<ul>
+<li><a href="#the-process-abstraction"
+id="toc-the-process-abstraction"><span
+class="toc-section-number">7.1</span> 8.1 The Process Abstraction</a>
+<ul>
+<li><a href="#what-is-a-process-in-pdp-7-unix"
+id="toc-what-is-a-process-in-pdp-7-unix"><span
+class="toc-section-number">7.1.1</span> What is a Process in PDP-7
+Unix?</a></li>
+<li><a href="#the-revolutionary-concept-in-1969"
+id="toc-the-revolutionary-concept-in-1969"><span
+class="toc-section-number">7.1.2</span> The Revolutionary Concept in
+1969</a></li>
+<li><a href="#comparison-with-batch-jobs"
+id="toc-comparison-with-batch-jobs"><span
+class="toc-section-number">7.1.3</span> Comparison with Batch
+Jobs</a></li>
+</ul></li>
+<li><a href="#process-table" id="toc-process-table"><span
+class="toc-section-number">7.2</span> 8.2 Process Table</a>
+<ul>
+<li><a href="#the-ulist-structure" id="toc-the-ulist-structure"><span
+class="toc-section-number">7.2.1</span> The ulist Structure</a></li>
+<li><a href="#maximum-10-processes" id="toc-maximum-10-processes"><span
+class="toc-section-number">7.2.2</span> Maximum 10 Processes</a></li>
+<li><a href="#the-state-field-2-bits"
+id="toc-the-state-field-2-bits"><span
+class="toc-section-number">7.2.3</span> The State Field (2
+bits)</a></li>
+<li><a href="#pid-allocation" id="toc-pid-allocation"><span
+class="toc-section-number">7.2.4</span> PID Allocation</a></li>
+<li><a href="#complete-process-table-structure-analysis"
+id="toc-complete-process-table-structure-analysis"><span
+class="toc-section-number">7.2.5</span> Complete Process Table Structure
+Analysis</a></li>
+<li><a href="#finding-a-free-process-slot"
+id="toc-finding-a-free-process-slot"><span
+class="toc-section-number">7.2.6</span> Finding a Free Process
+Slot</a></li>
+</ul></li>
+<li><a href="#user-data-structure-1"
+id="toc-user-data-structure-1"><span
+class="toc-section-number">7.3</span> 8.3 User Data Structure</a>
+<ul>
+<li><a href="#the-userdata-structure-64-words"
+id="toc-the-userdata-structure-64-words"><span
+class="toc-section-number">7.3.1</span> The userdata Structure (64
+words)</a></li>
+<li><a href="#saved-registers" id="toc-saved-registers"><span
+class="toc-section-number">7.3.2</span> Saved Registers</a></li>
+<li><a href="#file-descriptors-30-slots"
+id="toc-file-descriptors-30-slots"><span
+class="toc-section-number">7.3.3</span> File Descriptors (30
+slots)</a></li>
+<li><a href="#current-directory" id="toc-current-directory"><span
+class="toc-section-number">7.3.4</span> Current Directory</a></li>
+<li><a href="#uid-and-pid" id="toc-uid-and-pid"><span
+class="toc-section-number">7.3.5</span> UID and PID</a></li>
+<li><a href="#full-code-walkthrough-saving-context"
+id="toc-full-code-walkthrough-saving-context"><span
+class="toc-section-number">7.3.6</span> Full Code Walkthrough: Saving
+Context</a></li>
+<li><a href="#restoring-context-on-return"
+id="toc-restoring-context-on-return"><span
+class="toc-section-number">7.3.7</span> Restoring Context on
+Return</a></li>
+<li><a href="#complete-memory-layout-of-userdata"
+id="toc-complete-memory-layout-of-userdata"><span
+class="toc-section-number">7.3.8</span> Complete Memory Layout of
+userdata</a></li>
+</ul></li>
+<li><a href="#process-states-1" id="toc-process-states-1"><span
+class="toc-section-number">7.4</span> 8.4 Process States</a>
+<ul>
+<li><a href="#state-definitions" id="toc-state-definitions"><span
+class="toc-section-number">7.4.1</span> State Definitions</a></li>
+<li><a href="#state-0-not-used-free-slot"
+id="toc-state-0-not-used-free-slot"><span
+class="toc-section-number">7.4.2</span> State 0: Not Used (Free
+Slot)</a></li>
+<li><a href="#state-1-in-memory-ready"
+id="toc-state-1-in-memory-ready"><span
+class="toc-section-number">7.4.3</span> State 1: In Memory,
+Ready</a></li>
+<li><a href="#state-2-in-memory-not-ready-blocked"
+id="toc-state-2-in-memory-not-ready-blocked"><span
+class="toc-section-number">7.4.4</span> State 2: In Memory, Not Ready
+(Blocked)</a></li>
+<li><a href="#state-3-on-disk-ready-swapped-out"
+id="toc-state-3-on-disk-ready-swapped-out"><span
+class="toc-section-number">7.4.5</span> State 3: On Disk, Ready (Swapped
+Out)</a></li>
+<li><a href="#state-transitions" id="toc-state-transitions"><span
+class="toc-section-number">7.4.6</span> State Transitions</a></li>
+<li><a href="#state-checking-in-system-calls"
+id="toc-state-checking-in-system-calls"><span
+class="toc-section-number">7.4.7</span> State Checking in System
+Calls</a></li>
+<li><a href="#complete-state-example"
+id="toc-complete-state-example"><span
+class="toc-section-number">7.4.8</span> Complete State Example</a></li>
+</ul></li>
+<li><a href="#process-creation---fork"
+id="toc-process-creation---fork"><span
+class="toc-section-number">7.5</span> 8.5 Process Creation - fork()</a>
+<ul>
+<li><a href="#the-fork-concept" id="toc-the-fork-concept"><span
+class="toc-section-number">7.5.1</span> The fork() Concept</a></li>
+<li><a href="#complete-fork-implementation"
+id="toc-complete-fork-implementation"><span
+class="toc-section-number">7.5.2</span> Complete fork()
+Implementation</a></li>
+<li><a href="#parentchild-relationship"
+id="toc-parentchild-relationship"><span
+class="toc-section-number">7.5.3</span> Parent/Child
+Relationship</a></li>
+<li><a href="#memory-copying-via-swapping"
+id="toc-memory-copying-via-swapping"><span
+class="toc-section-number">7.5.4</span> Memory Copying via
+Swapping</a></li>
+<li><a href="#process-table-setup" id="toc-process-table-setup"><span
+class="toc-section-number">7.5.5</span> Process Table Setup</a></li>
+<li><a href="#return-value-difference"
+id="toc-return-value-difference"><span
+class="toc-section-number">7.5.6</span> Return Value Difference</a></li>
+<li><a href="#full-annotated-fork-code-with-comments"
+id="toc-full-annotated-fork-code-with-comments"><span
+class="toc-section-number">7.5.7</span> Full Annotated fork() Code with
+Comments</a></li>
+<li><a href="#execution-trace-example"
+id="toc-execution-trace-example"><span
+class="toc-section-number">7.5.8</span> Execution Trace Example</a></li>
+</ul></li>
+<li><a href="#process-termination---exit"
+id="toc-process-termination---exit"><span
+class="toc-section-number">7.6</span> 8.6 Process Termination -
+exit()</a>
+<ul>
+<li><a href="#what-exit-does" id="toc-what-exit-does"><span
+class="toc-section-number">7.6.1</span> What exit() Does</a></li>
+<li><a href="#complete-exit-implementation"
+id="toc-complete-exit-implementation"><span
+class="toc-section-number">7.6.2</span> Complete exit()
+Implementation</a></li>
+<li><a href="#cleanup-operations" id="toc-cleanup-operations"><span
+class="toc-section-number">7.6.3</span> Cleanup Operations</a></li>
+<li><a href="#message-to-parent" id="toc-message-to-parent"><span
+class="toc-section-number">7.6.4</span> Message to Parent</a></li>
+<li><a href="#process-table-cleanup"
+id="toc-process-table-cleanup"><span
+class="toc-section-number">7.6.5</span> Process Table Cleanup</a></li>
+<li><a href="#no-return-path" id="toc-no-return-path"><span
+class="toc-section-number">7.6.6</span> No Return Path</a></li>
+<li><a href="#complete-execution-trace"
+id="toc-complete-execution-trace"><span
+class="toc-section-number">7.6.7</span> Complete Execution
+Trace</a></li>
+<li><a href="#orphaned-processes" id="toc-orphaned-processes"><span
+class="toc-section-number">7.6.8</span> Orphaned Processes</a></li>
+</ul></li>
+<li><a href="#process-swapping" id="toc-process-swapping"><span
+class="toc-section-number">7.7</span> 8.7 Process Swapping</a>
+<ul>
+<li><a href="#why-swapping" id="toc-why-swapping"><span
+class="toc-section-number">7.7.1</span> Why Swapping?</a></li>
+<li><a href="#swap-algorithm-in-s1.s"
+id="toc-swap-algorithm-in-s1.s"><span
+class="toc-section-number">7.7.2</span> Swap Algorithm in s1.s</a></li>
+<li><a href="#quantum-based-preemption"
+id="toc-quantum-based-preemption"><span
+class="toc-section-number">7.7.3</span> Quantum-Based
+Preemption</a></li>
+<li><a href="#disk-tracks-0600007000"
+id="toc-disk-tracks-0600007000"><span
+class="toc-section-number">7.7.4</span> Disk Tracks 06000/07000</a></li>
+<li><a href="#complete-swapping-implementation"
+id="toc-complete-swapping-implementation"><span
+class="toc-section-number">7.7.5</span> Complete Swapping
+Implementation</a></li>
+<li><a href="#performance-analysis" id="toc-performance-analysis"><span
+class="toc-section-number">7.7.6</span> Performance Analysis</a></li>
+<li><a href="#complete-execution-trace-1"
+id="toc-complete-execution-trace-1"><span
+class="toc-section-number">7.7.7</span> Complete Execution
+Trace</a></li>
+</ul></li>
+<li><a href="#scheduling" id="toc-scheduling"><span
+class="toc-section-number">7.8</span> 8.8 Scheduling</a>
+<ul>
+<li><a href="#simple-round-robin" id="toc-simple-round-robin"><span
+class="toc-section-number">7.8.1</span> Simple Round-Robin</a></li>
+<li><a href="#quantum-30-clock-ticks"
+id="toc-quantum-30-clock-ticks"><span
+class="toc-section-number">7.8.2</span> Quantum = 30 Clock
+Ticks</a></li>
+<li><a href="#no-priorities" id="toc-no-priorities"><span
+class="toc-section-number">7.8.3</span> No Priorities</a></li>
+<li><a href="#the-lookfor-function---complete-code"
+id="toc-the-lookfor-function---complete-code"><span
+class="toc-section-number">7.8.4</span> The lookfor Function - Complete
+Code</a></li>
+<li><a href="#idle-loop" id="toc-idle-loop"><span
+class="toc-section-number">7.8.5</span> Idle Loop</a></li>
+<li><a href="#complete-scheduling-example"
+id="toc-complete-scheduling-example"><span
+class="toc-section-number">7.8.6</span> Complete Scheduling
+Example</a></li>
+</ul></li>
+<li><a href="#inter-process-communication"
+id="toc-inter-process-communication"><span
+class="toc-section-number">7.9</span> 8.9 Inter-Process
+Communication</a>
+<ul>
+<li><a href="#smes---send-message" id="toc-smes---send-message"><span
+class="toc-section-number">7.9.1</span> smes - Send Message</a></li>
+<li><a href="#rmes---receive-message-blocking"
+id="toc-rmes---receive-message-blocking"><span
+class="toc-section-number">7.9.2</span> rmes - Receive Message
+(Blocking)</a></li>
+<li><a href="#message-queue-structure"
+id="toc-message-queue-structure"><span
+class="toc-section-number">7.9.3</span> Message Queue Structure</a></li>
+<li><a href="#use-in-init" id="toc-use-in-init"><span
+class="toc-section-number">7.9.4</span> Use in init</a></li>
+<li><a href="#full-ipc-implementation"
+id="toc-full-ipc-implementation"><span
+class="toc-section-number">7.9.5</span> Full IPC Implementation</a></li>
+<li><a href="#message-passing-execution-trace"
+id="toc-message-passing-execution-trace"><span
+class="toc-section-number">7.9.6</span> Message-Passing Execution
+Trace</a></li>
+</ul></li>
+<li><a href="#context-switching" id="toc-context-switching"><span
+class="toc-section-number">7.10</span> 8.10 Context Switching</a>
+<ul>
+<li><a href="#saverestore-mechanism"
+id="toc-saverestore-mechanism"><span
+class="toc-section-number">7.10.1</span> Save/Restore Mechanism</a></li>
+<li><a href="#register-preservation"
+id="toc-register-preservation"><span
+class="toc-section-number">7.10.2</span> Register Preservation</a></li>
+<li><a href="#userkernel-mode-transition"
+id="toc-userkernel-mode-transition"><span
+class="toc-section-number">7.10.3</span> User/Kernel Mode
+Transition</a></li>
+<li><a href="#complete-code-analysis"
+id="toc-complete-code-analysis"><span
+class="toc-section-number">7.10.4</span> Complete Code Analysis</a></li>
+<li><a href="#context-switch-timeline"
+id="toc-context-switch-timeline"><span
+class="toc-section-number">7.10.5</span> Context Switch
+Timeline</a></li>
+</ul></li>
+<li><a href="#the-complete-process-lifecycle"
+id="toc-the-complete-process-lifecycle"><span
+class="toc-section-number">7.11</span> 8.11 The Complete Process
+Lifecycle</a>
+<ul>
+<li><a href="#stage-0-before-fork" id="toc-stage-0-before-fork"><span
+class="toc-section-number">7.11.1</span> Stage 0: Before fork</a></li>
+<li><a href="#stage-1-fork-called" id="toc-stage-1-fork-called"><span
+class="toc-section-number">7.11.2</span> Stage 1: Fork Called</a></li>
+<li><a href="#stage-2-child-copied" id="toc-stage-2-child-copied"><span
+class="toc-section-number">7.11.3</span> Stage 2: Child Copied</a></li>
+<li><a href="#stage-3-child-swapped-out"
+id="toc-stage-3-child-swapped-out"><span
+class="toc-section-number">7.11.4</span> Stage 3: Child Swapped
+Out</a></li>
+<li><a href="#stage-4-parent-returns"
+id="toc-stage-4-parent-returns"><span
+class="toc-section-number">7.11.5</span> Stage 4: Parent
+Returns</a></li>
+<li><a href="#stage-5-parent-waits" id="toc-stage-5-parent-waits"><span
+class="toc-section-number">7.11.6</span> Stage 5: Parent Waits</a></li>
+<li><a href="#stage-6-child-scheduled"
+id="toc-stage-6-child-scheduled"><span
+class="toc-section-number">7.11.7</span> Stage 6: Child
+Scheduled</a></li>
+<li><a href="#stage-7-child-executes"
+id="toc-stage-7-child-executes"><span
+class="toc-section-number">7.11.8</span> Stage 7: Child
+Executes</a></li>
+<li><a href="#stage-8-child-exits" id="toc-stage-8-child-exits"><span
+class="toc-section-number">7.11.9</span> Stage 8: Child Exits</a></li>
+<li><a href="#stage-9-parent-wakes" id="toc-stage-9-parent-wakes"><span
+class="toc-section-number">7.11.10</span> Stage 9: Parent Wakes</a></li>
+<li><a href="#memory-diagrams-at-each-stage"
+id="toc-memory-diagrams-at-each-stage"><span
+class="toc-section-number">7.11.11</span> Memory Diagrams at Each
+Stage</a></li>
+<li><a href="#process-table-state-transitions"
+id="toc-process-table-state-transitions"><span
+class="toc-section-number">7.11.12</span> Process Table State
+Transitions</a></li>
+</ul></li>
+<li><a href="#historical-context-1" id="toc-historical-context-1"><span
+class="toc-section-number">7.12</span> 8.12 Historical Context</a>
+<ul>
+<li><a href="#multiprogramming-in-1969"
+id="toc-multiprogramming-in-1969"><span
+class="toc-section-number">7.12.1</span> Multiprogramming in
+1969</a></li>
+<li><a href="#pdp-7-unix-process-management-compared"
+id="toc-pdp-7-unix-process-management-compared"><span
+class="toc-section-number">7.12.2</span> PDP-7 Unix Process Management
+Compared</a></li>
+<li><a href="#how-unix-differed" id="toc-how-unix-differed"><span
+class="toc-section-number">7.12.3</span> How Unix Differed</a></li>
+<li><a href="#influence-on-modern-operating-systems"
+id="toc-influence-on-modern-operating-systems"><span
+class="toc-section-number">7.12.4</span> Influence on Modern Operating
+Systems</a></li>
+<li><a href="#the-genius-of-simplicity"
+id="toc-the-genius-of-simplicity"><span
+class="toc-section-number">7.12.5</span> The Genius of
+Simplicity</a></li>
+</ul></li>
+<li><a href="#summary-2" id="toc-summary-2"><span
+class="toc-section-number">7.13</span> Summary</a></li>
+</ul></li>
+<li><a
+href="#chapter-10---development-tools-building-a-self-hosting-system"
+id="toc-chapter-10---development-tools-building-a-self-hosting-system"><span
+class="toc-section-number">8</span> Chapter 10 - Development Tools:
+Building a Self-Hosting System</a>
+<ul>
+<li><a href="#the-self-hosting-achievement"
+id="toc-the-self-hosting-achievement"><span
+class="toc-section-number">8.1</span> 10.1 The Self-Hosting
+Achievement</a>
+<ul>
+<li><a href="#what-self-hosting-means"
+id="toc-what-self-hosting-means"><span
+class="toc-section-number">8.1.1</span> What Self-Hosting Means</a></li>
+<li><a href="#why-it-was-revolutionary-in-1969"
+id="toc-why-it-was-revolutionary-in-1969"><span
+class="toc-section-number">8.1.2</span> Why It Was Revolutionary in
+1969</a></li>
+<li><a href="#industry-context-other-systems-in-1969"
+id="toc-industry-context-other-systems-in-1969"><span
+class="toc-section-number">8.1.3</span> Industry Context: Other Systems
+in 1969</a></li>
+<li><a href="#the-virtuous-cycle-better-tools-enable-better-tools"
+id="toc-the-virtuous-cycle-better-tools-enable-better-tools"><span
+class="toc-section-number">8.1.4</span> The Virtuous Cycle: Better Tools
+Enable Better Tools</a></li>
+</ul></li>
+<li><a href="#the-assembler-as.s" id="toc-the-assembler-as.s"><span
+class="toc-section-number">8.2</span> 10.2 The Assembler (as.s)</a>
+<ul>
+<li><a href="#complete-two-pass-assembly-algorithm"
+id="toc-complete-two-pass-assembly-algorithm"><span
+class="toc-section-number">8.2.1</span> Complete Two-Pass Assembly
+Algorithm</a></li>
+<li><a href="#main-assembly-loop" id="toc-main-assembly-loop"><span
+class="toc-section-number">8.2.2</span> Main Assembly Loop</a></li>
+<li><a href="#symbol-table-implementation"
+id="toc-symbol-table-implementation"><span
+class="toc-section-number">8.2.3</span> Symbol Table
+Implementation</a></li>
+<li><a href="#character-packing-getsc-and-putsc"
+id="toc-character-packing-getsc-and-putsc"><span
+class="toc-section-number">8.2.4</span> Character Packing: getsc and
+putsc</a></li>
+<li><a href="#expression-evaluation-1"
+id="toc-expression-evaluation-1"><span
+class="toc-section-number">8.2.5</span> Expression Evaluation</a></li>
+<li><a href="#forward-and-backward-references-1"
+id="toc-forward-and-backward-references-1"><span
+class="toc-section-number">8.2.6</span> Forward and Backward
+References</a></li>
+<li><a href="#object-file-format" id="toc-object-file-format"><span
+class="toc-section-number">8.2.7</span> Object File Format</a></li>
+<li><a href="#historical-context-why-write-an-assembler-in-assembly"
+id="toc-historical-context-why-write-an-assembler-in-assembly"><span
+class="toc-section-number">8.2.8</span> Historical Context: Why Write an
+Assembler in Assembly?</a></li>
+<li><a href="#comparison-to-other-1969-assemblers"
+id="toc-comparison-to-other-1969-assemblers"><span
+class="toc-section-number">8.2.9</span> Comparison to Other 1969
+Assemblers</a></li>
+<li><a href="#complete-example-assembling-a-simple-program"
+id="toc-complete-example-assembling-a-simple-program"><span
+class="toc-section-number">8.2.10</span> Complete Example: Assembling a
+Simple Program</a></li>
+</ul></li>
+<li><a href="#the-editor-ed1.s-ed2.s"
+id="toc-the-editor-ed1.s-ed2.s"><span
+class="toc-section-number">8.3</span> 10.3 The Editor (ed1.s +
+ed2.s)</a>
+<ul>
+<li><a href="#why-line-based-editing-in-1969"
+id="toc-why-line-based-editing-in-1969"><span
+class="toc-section-number">8.3.1</span> Why Line-Based Editing in
+1969?</a></li>
+<li><a href="#command-set-and-implementation"
+id="toc-command-set-and-implementation"><span
+class="toc-section-number">8.3.2</span> Command Set and
+Implementation</a></li>
+<li><a href="#the-append-command-adding-text"
+id="toc-the-append-command-adding-text"><span
+class="toc-section-number">8.3.3</span> The Append Command: Adding
+Text</a></li>
+<li><a href="#temporary-file-usage-the-disk-buffer"
+id="toc-temporary-file-usage-the-disk-buffer"><span
+class="toc-section-number">8.3.4</span> Temporary File Usage: The Disk
+Buffer</a></li>
+<li><a href="#search-and-substitution-algorithms"
+id="toc-search-and-substitution-algorithms"><span
+class="toc-section-number">8.3.5</span> Search and Substitution
+Algorithms</a></li>
+<li><a href="#pattern-compilation" id="toc-pattern-compilation"><span
+class="toc-section-number">8.3.6</span> Pattern Compilation</a></li>
+<li><a href="#historical-context-what-editors-existed-in-1969"
+id="toc-historical-context-what-editors-existed-in-1969"><span
+class="toc-section-number">8.3.7</span> Historical Context: What Editors
+Existed in 1969?</a></li>
+<li><a href="#the-ed-legacy-modern-tools-descended-from-ed"
+id="toc-the-ed-legacy-modern-tools-descended-from-ed"><span
+class="toc-section-number">8.3.8</span> The Ed Legacy: Modern Tools
+Descended from Ed</a></li>
+</ul></li>
+<li><a href="#the-debugger-db.s" id="toc-the-debugger-db.s"><span
+class="toc-section-number">8.4</span> 10.4 The Debugger (db.s)</a>
+<ul>
+<li><a href="#symbolic-debugging-concepts"
+id="toc-symbolic-debugging-concepts"><span
+class="toc-section-number">8.4.1</span> Symbolic Debugging
+Concepts</a></li>
+<li><a href="#core-dump-analysis" id="toc-core-dump-analysis"><span
+class="toc-section-number">8.4.2</span> Core Dump Analysis</a></li>
+<li><a href="#memory-examination-modes"
+id="toc-memory-examination-modes"><span
+class="toc-section-number">8.4.3</span> Memory Examination
+Modes</a></li>
+<li><a href="#expression-evaluation-2"
+id="toc-expression-evaluation-2"><span
+class="toc-section-number">8.4.4</span> Expression Evaluation</a></li>
+<li><a href="#complete-code-walkthrough-print-symbol"
+id="toc-complete-code-walkthrough-print-symbol"><span
+class="toc-section-number">8.4.5</span> Complete Code Walkthrough: Print
+Symbol</a></li>
+<li><a href="#why-debugging-was-so-hard-in-1969"
+id="toc-why-debugging-was-so-hard-in-1969"><span
+class="toc-section-number">8.4.6</span> Why Debugging Was So Hard in
+1969</a></li>
+<li><a href="#modern-debugging-tools-descended-from-db"
+id="toc-modern-debugging-tools-descended-from-db"><span
+class="toc-section-number">8.4.7</span> Modern Debugging Tools Descended
+from db</a></li>
+</ul></li>
+<li><a href="#the-loader-ald.s" id="toc-the-loader-ald.s"><span
+class="toc-section-number">8.5</span> 10.5 The Loader (ald.s)</a>
+<ul>
+<li><a href="#card-reader-input-format"
+id="toc-card-reader-input-format"><span
+class="toc-section-number">8.5.1</span> Card Reader Input
+Format</a></li>
+<li><a href="#binary-format-parsing"
+id="toc-binary-format-parsing"><span
+class="toc-section-number">8.5.2</span> Binary Format Parsing</a></li>
+<li><a href="#checksum-verification"
+id="toc-checksum-verification"><span
+class="toc-section-number">8.5.3</span> Checksum Verification</a></li>
+<li><a href="#complete-implementation-analysis"
+id="toc-complete-implementation-analysis"><span
+class="toc-section-number">8.5.4</span> Complete Implementation
+Analysis</a></li>
+<li><a href="#physical-punched-cards-in-1969"
+id="toc-physical-punched-cards-in-1969"><span
+class="toc-section-number">8.5.5</span> Physical Punched Cards in
+1969</a></li>
+</ul></li>
+<li><a href="#the-development-workflow"
+id="toc-the-development-workflow"><span
+class="toc-section-number">8.6</span> 10.6 The Development Workflow</a>
+<ul>
+<li><a href="#write-code-in-ed" id="toc-write-code-in-ed"><span
+class="toc-section-number">8.6.1</span> Write Code in ed</a></li>
+<li><a href="#assemble-with-as" id="toc-assemble-with-as"><span
+class="toc-section-number">8.6.2</span> Assemble with as</a></li>
+<li><a href="#test-and-debug" id="toc-test-and-debug"><span
+class="toc-section-number">8.6.3</span> Test and Debug</a></li>
+<li><a href="#complete-example-workflow"
+id="toc-complete-example-workflow"><span
+class="toc-section-number">8.6.4</span> Complete Example
+Workflow</a></li>
+<li><a href="#comparison-to-modern-ides"
+id="toc-comparison-to-modern-ides"><span
+class="toc-section-number">8.6.5</span> Comparison to Modern
+IDEs</a></li>
+<li><a href="#what-made-this-revolutionary"
+id="toc-what-made-this-revolutionary"><span
+class="toc-section-number">8.6.6</span> What Made This
+Revolutionary</a></li>
+</ul></li>
+<li><a href="#conclusion-celebrating-the-achievement"
+id="toc-conclusion-celebrating-the-achievement"><span
+class="toc-section-number">8.7</span> Conclusion: Celebrating the
+Achievement</a></li>
+</ul></li>
+<li><a href="#chapter-11---user-utilities-the-unix-philosophy-emerges"
+id="toc-chapter-11---user-utilities-the-unix-philosophy-emerges"><span
+class="toc-section-number">9</span> Chapter 11 - User Utilities: The
+Unix Philosophy Emerges</a>
+<ul>
+<li><a href="#the-unix-philosophy-in-code"
+id="toc-the-unix-philosophy-in-code"><span
+class="toc-section-number">9.1</span> 11.1 The Unix Philosophy in
+Code</a>
+<ul>
+<li><a href="#the-constraints-that-shaped-philosophy"
+id="toc-the-constraints-that-shaped-philosophy"><span
+class="toc-section-number">9.1.1</span> The Constraints That Shaped
+Philosophy</a></li>
+<li><a href="#contrast-with-1969-computing-culture"
+id="toc-contrast-with-1969-computing-culture"><span
+class="toc-section-number">9.1.2</span> Contrast with 1969 Computing
+Culture</a></li>
+<li><a href="#the-unix-difference" id="toc-the-unix-difference"><span
+class="toc-section-number">9.1.3</span> The Unix Difference</a></li>
+<li><a href="#the-cultural-impact" id="toc-the-cultural-impact"><span
+class="toc-section-number">9.1.4</span> The Cultural Impact</a></li>
+</ul></li>
+<li><a href="#file-viewing-and-manipulation"
+id="toc-file-viewing-and-manipulation"><span
+class="toc-section-number">9.2</span> 11.2 File Viewing and
+Manipulation</a>
+<ul>
+<li><a href="#cat.s---concatenate-files"
+id="toc-cat.s---concatenate-files"><span
+class="toc-section-number">9.2.1</span> cat.s - Concatenate
+Files</a></li>
+<li><a href="#cp.s---copy-files" id="toc-cp.s---copy-files"><span
+class="toc-section-number">9.2.2</span> cp.s - Copy Files</a></li>
+<li><a href="#chmod.s---change-file-mode"
+id="toc-chmod.s---change-file-mode"><span
+class="toc-section-number">9.2.3</span> chmod.s - Change File
+Mode</a></li>
+<li><a href="#chown.s---change-owner"
+id="toc-chown.s---change-owner"><span
+class="toc-section-number">9.2.4</span> chown.s - Change Owner</a></li>
+<li><a href="#chrm.s---changeremove-utility"
+id="toc-chrm.s---changeremove-utility"><span
+class="toc-section-number">9.2.5</span> chrm.s - Change/Remove
+Utility</a></li>
+</ul></li>
+<li><a href="#system-utilities" id="toc-system-utilities"><span
+class="toc-section-number">9.3</span> 11.3 System Utilities</a>
+<ul>
+<li><a href="#check.s---file-system-checker"
+id="toc-check.s---file-system-checker"><span
+class="toc-section-number">9.3.1</span> check.s - File System
+Checker</a></li>
+<li><a href="#init.s---system-initialization-and-login"
+id="toc-init.s---system-initialization-and-login"><span
+class="toc-section-number">9.3.2</span> init.s - System Initialization
+and Login</a></li>
+<li><a href="#maksys.s---system-installation"
+id="toc-maksys.s---system-installation"><span
+class="toc-section-number">9.3.3</span> maksys.s - System
+Installation</a></li>
+<li><a href="#trysys.s---system-loader"
+id="toc-trysys.s---system-loader"><span
+class="toc-section-number">9.3.4</span> trysys.s - System
+Loader</a></li>
+</ul></li>
+<li><a href="#disk-utilities" id="toc-disk-utilities"><span
+class="toc-section-number">9.4</span> 11.4 Disk Utilities</a>
+<ul>
+<li><a href="#dsksav.s-dskres.s---disk-backuprestore"
+id="toc-dsksav.s-dskres.s---disk-backuprestore"><span
+class="toc-section-number">9.4.1</span> dsksav.s / dskres.s - Disk
+Backup/Restore</a></li>
+</ul></li>
+<li><a href="#common-patterns" id="toc-common-patterns"><span
+class="toc-section-number">9.5</span> 11.5 Common Patterns</a>
+<ul>
+<li><a href="#pattern-1-argument-parsing"
+id="toc-pattern-1-argument-parsing"><span
+class="toc-section-number">9.5.1</span> Pattern 1: Argument
+Parsing</a></li>
+<li><a href="#pattern-2-character-packingunpacking"
+id="toc-pattern-2-character-packingunpacking"><span
+class="toc-section-number">9.5.2</span> Pattern 2: Character
+Packing/Unpacking</a></li>
+<li><a href="#pattern-3-buffered-io"
+id="toc-pattern-3-buffered-io"><span
+class="toc-section-number">9.5.3</span> Pattern 3: Buffered I/O</a></li>
+<li><a href="#pattern-4-error-reporting"
+id="toc-pattern-4-error-reporting"><span
+class="toc-section-number">9.5.4</span> Pattern 4: Error
+Reporting</a></li>
+<li><a href="#pattern-5-octal-parsing"
+id="toc-pattern-5-octal-parsing"><span
+class="toc-section-number">9.5.5</span> Pattern 5: Octal
+Parsing</a></li>
+<li><a href="#pattern-6-self-modifying-code"
+id="toc-pattern-6-self-modifying-code"><span
+class="toc-section-number">9.5.6</span> Pattern 6: Self-Modifying
+Code</a></li>
+<li><a href="#pattern-7-word-aligned-string-storage"
+id="toc-pattern-7-word-aligned-string-storage"><span
+class="toc-section-number">9.5.7</span> Pattern 7: Word-Aligned String
+Storage</a></li>
+</ul></li>
+<li><a href="#the-minimalist-aesthetic"
+id="toc-the-minimalist-aesthetic"><span
+class="toc-section-number">9.6</span> 11.6 The Minimalist Aesthetic</a>
+<ul>
+<li><a href="#lines-of-code-comparison"
+id="toc-lines-of-code-comparison"><span
+class="toc-section-number">9.6.1</span> Lines of Code
+Comparison</a></li>
+<li><a href="#why-less-was-more" id="toc-why-less-was-more"><span
+class="toc-section-number">9.6.2</span> Why Less Was More</a></li>
+<li><a href="#the-constraint-driven-design-process"
+id="toc-the-constraint-driven-design-process"><span
+class="toc-section-number">9.6.3</span> The Constraint-Driven Design
+Process</a></li>
+<li><a href="#cultural-impact-on-modern-software"
+id="toc-cultural-impact-on-modern-software"><span
+class="toc-section-number">9.6.4</span> Cultural Impact on Modern
+Software</a></li>
+</ul></li>
+<li><a href="#historical-context-2" id="toc-historical-context-2"><span
+class="toc-section-number">9.7</span> 11.7 Historical Context</a>
+<ul>
+<li><a href="#what-utilities-existed-on-other-1969-systems"
+id="toc-what-utilities-existed-on-other-1969-systems"><span
+class="toc-section-number">9.7.1</span> What Utilities Existed on Other
+1969 Systems?</a></li>
+<li><a href="#the-batch-processing-era"
+id="toc-the-batch-processing-era"><span
+class="toc-section-number">9.7.2</span> The Batch Processing
+Era</a></li>
+<li><a href="#time-sharing-system-commands"
+id="toc-time-sharing-system-commands"><span
+class="toc-section-number">9.7.3</span> Time-Sharing System
+Commands</a></li>
+<li><a href="#how-unix-utilities-differed"
+id="toc-how-unix-utilities-differed"><span
+class="toc-section-number">9.7.4</span> How Unix Utilities
+Differed</a></li>
+<li><a href="#the-lasting-influence-on-command-line-culture"
+id="toc-the-lasting-influence-on-command-line-culture"><span
+class="toc-section-number">9.7.5</span> The Lasting Influence on
+Command-Line Culture</a></li>
+<li><a href="#from-necessity-to-philosophy"
+id="toc-from-necessity-to-philosophy"><span
+class="toc-section-number">9.7.6</span> From Necessity to
+Philosophy</a></li>
+<li><a href="#the-irony-of-success" id="toc-the-irony-of-success"><span
+class="toc-section-number">9.7.7</span> The Irony of Success</a></li>
+<li><a href="#modern-lessons" id="toc-modern-lessons"><span
+class="toc-section-number">9.7.8</span> Modern Lessons</a></li>
+<li><a href="#conclusion-philosophy-from-pragmatism"
+id="toc-conclusion-philosophy-from-pragmatism"><span
+class="toc-section-number">9.7.9</span> Conclusion: Philosophy from
+Pragmatism</a></li>
+</ul></li>
+</ul></li>
+<li><a
+href="#chapter-12-the-b-language-system-unixs-first-high-level-language"
+id="toc-chapter-12-the-b-language-system-unixs-first-high-level-language"><span
+class="toc-section-number">10</span> Chapter 12: The B Language System —
+Unix’s First High-Level Language</a>
+<ul>
+<li><a href="#b-language-origins" id="toc-b-language-origins"><span
+class="toc-section-number">10.1</span> 12.1 B Language Origins</a>
+<ul>
+<li><a href="#ken-thompsons-creation-1969"
+id="toc-ken-thompsons-creation-1969"><span
+class="toc-section-number">10.1.1</span> Ken Thompson’s Creation
+(1969)</a></li>
+<li><a href="#evolution-from-bcpl" id="toc-evolution-from-bcpl"><span
+class="toc-section-number">10.1.2</span> Evolution from BCPL</a></li>
+<li><a href="#precursor-to-c" id="toc-precursor-to-c"><span
+class="toc-section-number">10.1.3</span> Precursor to C</a></li>
+<li><a href="#why-a-high-level-language"
+id="toc-why-a-high-level-language"><span
+class="toc-section-number">10.1.4</span> Why a High-Level
+Language?</a></li>
+<li><a href="#historical-context-3" id="toc-historical-context-3"><span
+class="toc-section-number">10.1.5</span> Historical Context</a></li>
+</ul></li>
+<li><a href="#b-language-syntax" id="toc-b-language-syntax"><span
+class="toc-section-number">10.2</span> 12.2 B Language Syntax</a>
+<ul>
+<li><a href="#based-on-actual-.b-files"
+id="toc-based-on-actual-.b-files"><span
+class="toc-section-number">10.2.1</span> Based on Actual .b
+Files</a></li>
+<li><a href="#untyped-language" id="toc-untyped-language"><span
+class="toc-section-number">10.2.2</span> Untyped Language</a></li>
+<li><a href="#blocks-vs" id="toc-blocks-vs"><span
+class="toc-section-number">10.2.3</span> Blocks: <code>$(</code>
+<code>$)</code> vs <code>{</code> <code>}</code></a></li>
+<li><a href="#external-declarations-extrn"
+id="toc-external-declarations-extrn"><span
+class="toc-section-number">10.2.4</span> External Declarations:
+<code>extrn</code></a></li>
+<li><a href="#control-flow-1" id="toc-control-flow-1"><span
+class="toc-section-number">10.2.5</span> Control Flow</a></li>
+<li><a href="#example-programs" id="toc-example-programs"><span
+class="toc-section-number">10.2.6</span> Example Programs</a></li>
+</ul></li>
+<li><a href="#the-b-interpreter-bi.s"
+id="toc-the-b-interpreter-bi.s"><span
+class="toc-section-number">10.3</span> 12.3 The B Interpreter (bi.s)</a>
+<ul>
+<li><a href="#stack-based-execution"
+id="toc-stack-based-execution"><span
+class="toc-section-number">10.3.1</span> Stack-Based Execution</a></li>
+<li><a href="#virtual-machine-model"
+id="toc-virtual-machine-model"><span
+class="toc-section-number">10.3.2</span> Virtual Machine Model</a></li>
+<li><a href="#instruction-format-18-bits"
+id="toc-instruction-format-18-bits"><span
+class="toc-section-number">10.3.3</span> Instruction Format (18
+bits)</a></li>
+<li><a href="#complete-implementation"
+id="toc-complete-implementation"><span
+class="toc-section-number">10.3.4</span> Complete
+Implementation</a></li>
+</ul></li>
+<li><a href="#b-operations" id="toc-b-operations"><span
+class="toc-section-number">10.4</span> 12.4 B Operations</a>
+<ul>
+<li><a href="#autop---auto-variables"
+id="toc-autop---auto-variables"><span
+class="toc-section-number">10.4.1</span> autop - Auto Variables</a></li>
+<li><a href="#binop---binary-operations"
+id="toc-binop---binary-operations"><span
+class="toc-section-number">10.4.2</span> binop - Binary
+Operations</a></li>
+<li><a href="#consop---constants" id="toc-consop---constants"><span
+class="toc-section-number">10.4.3</span> consop - Constants</a></li>
+<li><a href="#ifop---conditionals" id="toc-ifop---conditionals"><span
+class="toc-section-number">10.4.4</span> ifop - Conditionals</a></li>
+<li><a href="#traop---transfers-goto-function-calls"
+id="toc-traop---transfers-goto-function-calls"><span
+class="toc-section-number">10.4.5</span> traop - Transfers (goto,
+function calls)</a></li>
+<li><a href="#unaop---unary-operations"
+id="toc-unaop---unary-operations"><span
+class="toc-section-number">10.4.6</span> unaop - Unary
+Operations</a></li>
+<li><a href="#extop---external-references"
+id="toc-extop---external-references"><span
+class="toc-section-number">10.4.7</span> extop - External
+References</a></li>
+<li><a href="#aryop---arrays" id="toc-aryop---arrays"><span
+class="toc-section-number">10.4.8</span> aryop - Arrays</a></li>
+</ul></li>
+<li><a href="#b-runtime-support-bc.s"
+id="toc-b-runtime-support-bc.s"><span
+class="toc-section-number">10.5</span> 12.5 B Runtime Support (bc.s)</a>
+<ul>
+<li><a href="#instruction-tracing" id="toc-instruction-tracing"><span
+class="toc-section-number">10.5.1</span> Instruction Tracing</a></li>
+<li><a href="#display-buffer-management"
+id="toc-display-buffer-management"><span
+class="toc-section-number">10.5.2</span> Display Buffer
+Management</a></li>
+<li><a href="#histogram-collection" id="toc-histogram-collection"><span
+class="toc-section-number">10.5.3</span> Histogram Collection</a></li>
+<li><a href="#octal-output" id="toc-octal-output"><span
+class="toc-section-number">10.5.4</span> Octal Output</a></li>
+<li><a href="#stack-validation" id="toc-stack-validation"><span
+class="toc-section-number">10.5.5</span> Stack Validation</a></li>
+</ul></li>
+<li><a href="#b-library-bl.s" id="toc-b-library-bl.s"><span
+class="toc-section-number">10.6</span> 12.6 B Library (bl.s)</a>
+<ul>
+<li><a href="#array---array-allocation"
+id="toc-array---array-allocation"><span
+class="toc-section-number">10.6.1</span> .array - Array
+Allocation</a></li>
+<li><a href="#read---character-input"
+id="toc-read---character-input"><span
+class="toc-section-number">10.6.2</span> .read - Character
+Input</a></li>
+<li><a href="#write---word-output" id="toc-write---word-output"><span
+class="toc-section-number">10.6.3</span> .write - Word Output</a></li>
+<li><a href="#flush---buffer-flush" id="toc-flush---buffer-flush"><span
+class="toc-section-number">10.6.4</span> .flush - Buffer Flush</a></li>
+<li><a href="#buffered-io-implementation"
+id="toc-buffered-io-implementation"><span
+class="toc-section-number">10.6.5</span> Buffered I/O
+Implementation</a></li>
+</ul></li>
+<li><a href="#example-programs-1" id="toc-example-programs-1"><span
+class="toc-section-number">10.7</span> 12.7 Example Programs</a>
+<ul>
+<li><a href="#lcase.b---lowercase-converter-1"
+id="toc-lcase.b---lowercase-converter-1"><span
+class="toc-section-number">10.7.1</span> lcase.b - Lowercase
+Converter</a></li>
+<li><a href="#ind.b---indentation-tool-1"
+id="toc-ind.b---indentation-tool-1"><span
+class="toc-section-number">10.7.2</span> ind.b - Indentation
+Tool</a></li>
+</ul></li>
+<li><a href="#b-vs-c" id="toc-b-vs-c"><span
+class="toc-section-number">10.8</span> 12.8 B vs C</a>
+<ul>
+<li><a href="#what-b-lacked" id="toc-what-b-lacked"><span
+class="toc-section-number">10.8.1</span> What B Lacked</a></li>
+<li><a href="#why-c-was-needed" id="toc-why-c-was-needed"><span
+class="toc-section-number">10.8.2</span> Why C Was Needed</a></li>
+<li><a href="#evolution-path" id="toc-evolution-path"><span
+class="toc-section-number">10.8.3</span> Evolution Path</a></li>
+</ul></li>
+<li><a href="#bs-legacy" id="toc-bs-legacy"><span
+class="toc-section-number">10.9</span> 12.9 B’s Legacy</a>
+<ul>
+<li><a href="#influence-on-c" id="toc-influence-on-c"><span
+class="toc-section-number">10.9.1</span> Influence on C</a></li>
+<li><a href="#concepts-that-survived"
+id="toc-concepts-that-survived"><span
+class="toc-section-number">10.9.2</span> Concepts That Survived</a></li>
+<li><a href="#what-disappeared" id="toc-what-disappeared"><span
+class="toc-section-number">10.9.3</span> What Disappeared</a></li>
+<li><a href="#historical-significance-1"
+id="toc-historical-significance-1"><span
+class="toc-section-number">10.9.4</span> Historical
+Significance</a></li>
+</ul></li>
+<li><a href="#programming-in-b" id="toc-programming-in-b"><span
+class="toc-section-number">10.10</span> 12.10 Programming in B</a>
+<ul>
+<li><a href="#writing-b-programs" id="toc-writing-b-programs"><span
+class="toc-section-number">10.10.1</span> Writing B Programs</a></li>
+<li><a href="#compilationinterpretation"
+id="toc-compilationinterpretation"><span
+class="toc-section-number">10.10.2</span>
+Compilation/Interpretation</a></li>
+<li><a href="#debugging" id="toc-debugging"><span
+class="toc-section-number">10.10.3</span> Debugging</a></li>
+<li><a href="#performance" id="toc-performance"><span
+class="toc-section-number">10.10.4</span> Performance</a></li>
+</ul></li>
+<li><a href="#historical-context-4" id="toc-historical-context-4"><span
+class="toc-section-number">10.11</span> 12.11 Historical Context</a>
+<ul>
+<li><a href="#high-level-languages" id="toc-high-level-languages"><span
+class="toc-section-number">10.11.1</span> 1969 High-Level
+Languages</a></li>
+<li><a href="#bcpl-algol-fortran" id="toc-bcpl-algol-fortran"><span
+class="toc-section-number">10.11.2</span> BCPL, ALGOL, FORTRAN</a></li>
+<li><a href="#why-b-was-different" id="toc-why-b-was-different"><span
+class="toc-section-number">10.11.3</span> Why B Was Different</a></li>
+<li><a href="#impact-on-portability"
+id="toc-impact-on-portability"><span
+class="toc-section-number">10.11.4</span> Impact on Portability</a></li>
+</ul></li>
+<li><a href="#conclusion-bs-place-in-computing-history"
+id="toc-conclusion-bs-place-in-computing-history"><span
+class="toc-section-number">10.12</span> Conclusion: B’s Place in
+Computing History</a></li>
+</ul></li>
+<li><a
+href="#chapter-14-legacy-and-impact-how-8000-lines-changed-the-world"
+id="toc-chapter-14-legacy-and-impact-how-8000-lines-changed-the-world"><span
+class="toc-section-number">11</span> Chapter 14: Legacy and Impact — How
+8,000 Lines Changed the World</a>
+<ul>
+<li><a href="#from-pdp-7-to-world-domination"
+id="toc-from-pdp-7-to-world-domination"><span
+class="toc-section-number">11.1</span> 14.1 From PDP-7 to World
+Domination</a>
+<ul>
+<li><a href="#the-pdp-11-port-1970-1971"
+id="toc-the-pdp-11-port-1970-1971"><span
+class="toc-section-number">11.1.1</span> The PDP-11 Port
+(1970-1971)</a></li>
+<li><a href="#the-invention-of-c-1972"
+id="toc-the-invention-of-c-1972"><span
+class="toc-section-number">11.1.2</span> The Invention of C
+(1972)</a></li>
+<li><a href="#research-unix-evolution-1971-1979"
+id="toc-research-unix-evolution-1971-1979"><span
+class="toc-section-number">11.1.3</span> Research Unix Evolution
+(1971-1979)</a></li>
+</ul></li>
+<li><a href="#the-unix-family-tree" id="toc-the-unix-family-tree"><span
+class="toc-section-number">11.2</span> 14.2 The Unix Family Tree</a>
+<ul>
+<li><a href="#bsd-unix-1977-1995" id="toc-bsd-unix-1977-1995"><span
+class="toc-section-number">11.2.1</span> BSD Unix (1977-1995)</a></li>
+<li><a href="#system-v-1983-1992" id="toc-system-v-1983-1992"><span
+class="toc-section-number">11.2.2</span> System V (1983-1992)</a></li>
+<li><a href="#the-open-source-revolution"
+id="toc-the-open-source-revolution"><span
+class="toc-section-number">11.2.3</span> The Open Source
+Revolution</a></li>
+<li><a href="#the-mobile-era-unix-in-your-pocket"
+id="toc-the-mobile-era-unix-in-your-pocket"><span
+class="toc-section-number">11.2.4</span> The Mobile Era: Unix in Your
+Pocket</a></li>
+</ul></li>
+<li><a href="#unix-concepts-in-modern-systems"
+id="toc-unix-concepts-in-modern-systems"><span
+class="toc-section-number">11.3</span> 14.3 Unix Concepts in Modern
+Systems</a>
+<ul>
+<li><a href="#ubiquitous-ideas-from-pdp-7-unix"
+id="toc-ubiquitous-ideas-from-pdp-7-unix"><span
+class="toc-section-number">11.3.1</span> Ubiquitous Ideas from PDP-7
+Unix</a></li>
+<li><a href="#modern-implementations-whats-the-same-what-evolved"
+id="toc-modern-implementations-whats-the-same-what-evolved"><span
+class="toc-section-number">11.3.2</span> Modern Implementations: What’s
+the Same, What Evolved</a></li>
+</ul></li>
+<li><a href="#cultural-impact-1" id="toc-cultural-impact-1"><span
+class="toc-section-number">11.4</span> 14.4 Cultural Impact</a>
+<ul>
+<li><a href="#the-unix-philosophy" id="toc-the-unix-philosophy"><span
+class="toc-section-number">11.4.1</span> The Unix Philosophy</a></li>
+<li><a href="#worse-is-better-vs.-the-right-thing"
+id="toc-worse-is-better-vs.-the-right-thing"><span
+class="toc-section-number">11.4.2</span> “Worse is Better” vs. “The
+Right Thing”</a></li>
+<li><a href="#how-this-shaped-software-engineering"
+id="toc-how-this-shaped-software-engineering"><span
+class="toc-section-number">11.4.3</span> How This Shaped Software
+Engineering</a></li>
+<li><a href="#the-open-source-movement"
+id="toc-the-open-source-movement"><span
+class="toc-section-number">11.4.4</span> The Open Source
+Movement</a></li>
+<li><a href="#software-engineering-practices"
+id="toc-software-engineering-practices"><span
+class="toc-section-number">11.4.5</span> Software Engineering
+Practices</a></li>
+</ul></li>
+<li><a href="#market-impact" id="toc-market-impact"><span
+class="toc-section-number">11.5</span> 14.5 Market Impact</a>
+<ul>
+<li><a href="#the-minicomputer-era-1970s"
+id="toc-the-minicomputer-era-1970s"><span
+class="toc-section-number">11.5.1</span> The Minicomputer Era
+(1970s)</a></li>
+<li><a href="#the-workstation-era-1980s"
+id="toc-the-workstation-era-1980s"><span
+class="toc-section-number">11.5.2</span> The Workstation Era
+(1980s)</a></li>
+<li><a href="#the-server-era-1990s-present"
+id="toc-the-server-era-1990s-present"><span
+class="toc-section-number">11.5.3</span> The Server Era
+(1990s-present)</a></li>
+<li><a href="#the-mobile-era-2000s-present"
+id="toc-the-mobile-era-2000s-present"><span
+class="toc-section-number">11.5.4</span> The Mobile Era
+(2000s-present)</a></li>
+</ul></li>
+<li><a href="#educational-impact" id="toc-educational-impact"><span
+class="toc-section-number">11.6</span> 14.6 Educational Impact</a>
+<ul>
+<li><a href="#unix-in-computer-science-education"
+id="toc-unix-in-computer-science-education"><span
+class="toc-section-number">11.6.1</span> Unix in Computer Science
+Education</a></li>
+<li><a href="#this-pdp-7-code-as-historical-artifact"
+id="toc-this-pdp-7-code-as-historical-artifact"><span
+class="toc-section-number">11.6.2</span> This PDP-7 Code as Historical
+Artifact</a></li>
+</ul></li>
+<li><a href="#economic-impact" id="toc-economic-impact"><span
+class="toc-section-number">11.7</span> 14.7 Economic Impact</a>
+<ul>
+<li><a href="#companies-built-on-unix"
+id="toc-companies-built-on-unix"><span
+class="toc-section-number">11.7.1</span> Companies Built on
+Unix</a></li>
+<li><a href="#market-valuations" id="toc-market-valuations"><span
+class="toc-section-number">11.7.2</span> Market Valuations</a></li>
+<li><a href="#jobs-created" id="toc-jobs-created"><span
+class="toc-section-number">11.7.3</span> Jobs Created</a></li>
+<li><a href="#industries-enabled" id="toc-industries-enabled"><span
+class="toc-section-number">11.7.4</span> Industries Enabled</a></li>
+<li><a href="#estimated-total-economic-impact"
+id="toc-estimated-total-economic-impact"><span
+class="toc-section-number">11.7.5</span> Estimated Total Economic
+Impact</a></li>
+</ul></li>
+<li><a href="#technical-debt-and-lessons"
+id="toc-technical-debt-and-lessons"><span
+class="toc-section-number">11.8</span> 14.8 Technical Debt and
+Lessons</a>
+<ul>
+<li><a href="#what-aged-well" id="toc-what-aged-well"><span
+class="toc-section-number">11.8.1</span> What Aged Well</a></li>
+<li><a href="#what-didnt-age-well" id="toc-what-didnt-age-well"><span
+class="toc-section-number">11.8.2</span> What Didn’t Age Well</a></li>
+<li><a href="#lessons-for-today" id="toc-lessons-for-today"><span
+class="toc-section-number">11.8.3</span> Lessons for Today</a></li>
+</ul></li>
+<li><a href="#the-preservation-effort"
+id="toc-the-preservation-effort"><span
+class="toc-section-number">11.9</span> 14.9 The Preservation Effort</a>
+<ul>
+<li><a href="#the-unix-heritage-society"
+id="toc-the-unix-heritage-society"><span
+class="toc-section-number">11.9.1</span> The Unix Heritage
+Society</a></li>
+<li><a href="#running-pdp-7-unix-today"
+id="toc-running-pdp-7-unix-today"><span
+class="toc-section-number">11.9.2</span> Running PDP-7 Unix
+Today</a></li>
+</ul></li>
+<li><a href="#conclusion-the-longest-lasting-code"
+id="toc-conclusion-the-longest-lasting-code"><span
+class="toc-section-number">11.10</span> 14.10 Conclusion: The
+Longest-Lasting Code</a>
+<ul>
+<li><a href="#perspective" id="toc-perspective"><span
+class="toc-section-number">11.10.1</span> Perspective</a></li>
+<li><a href="#the-thompson-and-ritchie-legacy"
+id="toc-the-thompson-and-ritchie-legacy"><span
+class="toc-section-number">11.10.2</span> The Thompson and Ritchie
+Legacy</a></li>
+<li><a href="#looking-forward" id="toc-looking-forward"><span
+class="toc-section-number">11.10.3</span> Looking Forward</a></li>
+<li><a href="#final-reflection-8000-lines-that-changed-the-world"
+id="toc-final-reflection-8000-lines-that-changed-the-world"><span
+class="toc-section-number">11.10.4</span> Final Reflection: 8,000 Lines
+That Changed the World</a></li>
+</ul></li>
+<li><a href="#references-and-further-reading"
+id="toc-references-and-further-reading"><span
+class="toc-section-number">11.11</span> References and Further
+Reading</a></li>
+</ul></li>
+<li><a href="#glossary" id="toc-glossary"><span
+class="toc-section-number">12</span> Glossary</a></li>
+</ul>
     </div>
   </nav>
 
   <main class="book-content">
     <header class="book-header">
-      <h1 class="book-title">The Genesis of Unix: A Complete Technical
-Reference to PDP-7 Unix</h1>
-      <p class="book-subtitle">An Encyclopedic Guide to the Birth of
-Modern Operating Systems</p>
+      <h1 class="book-title">PDP-7 Unix: A Complete Reference</h1>
+      <p class="book-subtitle">The Original Unix System on the PDP-7</p>
     </header>
 
     <div class="ai-notice">

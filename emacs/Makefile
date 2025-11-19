@@ -89,11 +89,13 @@ $(PDF_FILE): $(SOURCES) $(METADATA) | $(OUTPUT_DIR)
 	@echo ""
 
 # Build HTML
-$(HTML_FILE): $(SOURCES) $(METADATA) | $(OUTPUT_DIR)
+$(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	$(call print_header,Building HTML: $(TITLE))
 	$(call print_info,Processing $(words $(SOURCES)) source files...)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_HTML) \
-		--metadata-file=$(METADATA) \
+		--metadata title:"$(TITLE)" \
+		--metadata subtitle:"An Encyclopedic Guide to the Architecture and Implementation" \
+		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
 		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))

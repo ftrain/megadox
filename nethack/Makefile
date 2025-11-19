@@ -77,7 +77,9 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	$(call print_header,Building HTML: $(TITLE))
 	$(call print_info,Processing $(words $(SOURCES)) source files...)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_HTML) \
-		--metadata=title:"$(TITLE)" \
+		--metadata title:"$(TITLE)" \
+		--metadata subtitle:"A Complete Guide to the Legendary Roguelike" \
+		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
 		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))

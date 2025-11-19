@@ -78,7 +78,9 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 	$(call print_header,Building HTML: $(TITLE))
 	$(call print_info,Processing $(words $(SOURCES)) source files...)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_HTML) \
-		--metadata=title:"$(TITLE)" \
+		--metadata title:"$(TITLE)" \
+		--metadata subtitle:"An In-Depth Exploration" \
+		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
 		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))
