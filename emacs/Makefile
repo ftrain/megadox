@@ -1,36 +1,47 @@
-# Makefile for PDP-7 Unix Documentation
+# Makefile for GNU Emacs Internals Documentation
 # Generates elegant EPUB and PDF from markdown sources
 
 # Project configuration
-PROJECT_NAME := pdp7-unix-complete-reference
-TITLE := PDP-7 Unix: A Complete Reference
+PROJECT_NAME := gnu-emacs-internals
+TITLE := GNU Emacs Internals: An Encyclopedic Guide
 
 # Output configuration
 OUTPUT_DIR := output
 METADATA := metadata.yaml
 
 # Source files in reading order
-FRONTMATTER := 00-frontmatter.md
-README := README.md
-
-CHAPTERS := \
-	chapters/01-introduction.md \
-	chapters/02-hardware.md \
-	chapters/03-assembly.md \
-	chapters/04-architecture.md \
-	chapters/05-boot-initialization.md \
-	chapters/06-filesystem.md \
-	chapters/07-process-management.md \
-	chapters/08-development-tools.md \
-	chapters/09-user-utilities.md \
-	chapters/10-b-language.md \
-	chapters/11-legacy.md
-
-APPENDICES := \
-	appendices/glossary.md
-
-# All markdown sources
-SOURCES := $(FRONTMATTER) $(CHAPTERS) $(APPENDICES)
+SOURCES := \
+	README.md \
+	00-introduction/01-welcome.md \
+	00-introduction/README.md \
+	01-architecture/README.md \
+	01-architecture/02-design-philosophy.md \
+	02-core-subsystems/01-buffer-management.md \
+	02-core-subsystems/02-display-engine.md \
+	02-core-subsystems/03-keyboard-events.md \
+	02-core-subsystems/04-process-io.md \
+	02-core-subsystems/05-file-io-encoding.md \
+	03-elisp-runtime/01-interpreter-core.md \
+	03-elisp-runtime/02-memory-management.md \
+	04-major-subsystems/01-org-mode.md \
+	04-major-subsystems/02-gnus.md \
+	04-major-subsystems/03-version-control.md \
+	04-major-subsystems/04-cedet.md \
+	04-major-subsystems/05-calc.md \
+	05-display-engine/README.md \
+	06-platform-support/01-abstraction-layer.md \
+	07-window-systems/01-x11-integration.md \
+	08-elisp-library/01-standard-library.md \
+	09-text-processing/01-search-and-regex.md \
+	17-development/01-build-and-testing.md \
+	18-development-practices/01-coding-evolution.md \
+	19-industry-context/01-technology-trends.md \
+	20-comparative-analysis/README.md \
+	20-comparative-analysis/01-editor-comparison.md \
+	ARCHITECTURE.md \
+	BUILD.md \
+	GLOSSARY.md \
+	INDEX.md
 
 # Output files
 EPUB_FILE := $(OUTPUT_DIR)/$(PROJECT_NAME).epub
@@ -38,7 +49,7 @@ PDF_FILE := $(OUTPUT_DIR)/$(PROJECT_NAME).pdf
 HTML_FILE := $(OUTPUT_DIR)/$(PROJECT_NAME).html
 
 # Include common build infrastructure
-include ../../build.mk
+include ../build.mk
 
 # Default target
 all: check-deps $(EPUB_FILE) $(PDF_FILE)

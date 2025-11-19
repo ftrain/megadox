@@ -1,36 +1,35 @@
-# Makefile for PDP-7 Unix Documentation
+# Makefile for libsignal Encyclopedia
 # Generates elegant EPUB and PDF from markdown sources
 
 # Project configuration
-PROJECT_NAME := pdp7-unix-complete-reference
-TITLE := PDP-7 Unix: A Complete Reference
+PROJECT_NAME := libsignal-encyclopedia
+TITLE := libsignal Encyclopedia: Cryptographic Messaging Infrastructure
 
 # Output configuration
 OUTPUT_DIR := output
 METADATA := metadata.yaml
 
 # Source files in reading order
-FRONTMATTER := 00-frontmatter.md
-README := README.md
-
-CHAPTERS := \
-	chapters/01-introduction.md \
-	chapters/02-hardware.md \
-	chapters/03-assembly.md \
-	chapters/04-architecture.md \
-	chapters/05-boot-initialization.md \
-	chapters/06-filesystem.md \
-	chapters/07-process-management.md \
-	chapters/08-development-tools.md \
-	chapters/09-user-utilities.md \
-	chapters/10-b-language.md \
-	chapters/11-legacy.md
-
-APPENDICES := \
-	appendices/glossary.md
-
-# All markdown sources
-SOURCES := $(FRONTMATTER) $(CHAPTERS) $(APPENDICES)
+SOURCES := \
+	README.md \
+	00-INTRODUCTION.md \
+	01-TABLE-OF-CONTENTS.md \
+	02-CHAPTER-01-HISTORICAL-TIMELINE.md \
+	03-CHAPTER-02-CRYPTOGRAPHIC-PRIMITIVES.md \
+	04-CHAPTER-03-SIGNAL-PROTOCOL.md \
+	05-CHAPTER-04-LANGUAGE-BINDINGS.md \
+	06-CHAPTER-05-ZERO-KNOWLEDGE.md \
+	07-CHAPTER-06-NETWORK-SERVICES.md \
+	08-CHAPTER-07-SESSION-ESTABLISHMENT.md \
+	09-CHAPTER-08-MESSAGE-ENCRYPTION.md \
+	10-CHAPTER-09-GROUP-MESSAGING.md \
+	11-CHAPTER-10-TESTING-ARCHITECTURE.md \
+	12-CHAPTER-11-BUILD-SYSTEM.md \
+	13-CHAPTER-12-ARCHITECTURAL-EVOLUTION.md \
+	14-CHAPTER-13-SEALED-SENDER.md \
+	15-CHAPTER-14-MESSAGE-BACKUP.md \
+	GLOSSARY.md \
+	RESEARCH-DATA-SUMMARY.md
 
 # Output files
 EPUB_FILE := $(OUTPUT_DIR)/$(PROJECT_NAME).epub

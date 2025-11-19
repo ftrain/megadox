@@ -1,0 +1,282 @@
+/* NetHack Encyclopedia EPUB Stylesheet */
+
+/* Body and Typography */
+body {
+    font-family: "Georgia", "DejaVu Serif", serif;
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 1em;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Headings */
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.3em;
+    page-break-before: always;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-top: 1.3em;
+    margin-bottom: 0.6em;
+    border-bottom: 1px solid #666;
+    padding-bottom: 0.2em;
+}
+
+h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+    color: #444;
+}
+
+h4 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: #555;
+}
+
+h5, h6 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 0.8em;
+    margin-bottom: 0.3em;
+    color: #666;
+}
+
+/* Paragraphs */
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: justify;
+    orphans: 3;
+    widows: 3;
+}
+
+/* Links */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 2em;
+}
+
+li {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+/* Definition lists */
+dl {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+dd {
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+}
+
+/* Code and Preformatted Text */
+code {
+    font-family: "Consolas", "DejaVu Sans Mono", monospace;
+    font-size: 0.9em;
+    background-color: #f5f5f5;
+    padding: 0.1em 0.3em;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+pre {
+    font-family: "Consolas", "DejaVu Sans Mono", monospace;
+    font-size: 0.85em;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    overflow-x: auto;
+    line-height: 1.4;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    page-break-inside: avoid;
+}
+
+thead {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    font-weight: bold;
+    background-color: #e8e8e8;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 1em 2em;
+    padding: 0.5em 1em;
+    border-left: 4px solid #ccc;
+    background-color: #f9f9f9;
+    font-style: italic;
+}
+
+/* Horizontal Rules */
+hr {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin: 2em 0;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+/* Figure captions */
+figure {
+    margin: 1em 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #666;
+    margin-top: 0.5em;
+}
+
+/* Table of Contents */
+nav#toc {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 2em 0;
+}
+
+nav#toc h2 {
+    margin-top: 0;
+    border-bottom: none;
+}
+
+nav#toc ul {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+nav#toc li {
+    margin: 0.3em 0;
+}
+
+nav#toc a {
+    color: #333;
+}
+
+/* Page breaks */
+.page-break {
+    page-break-after: always;
+}
+
+/* Special NetHack-specific styles */
+.monster-entry {
+    margin: 1em 0;
+    padding: 0.8em;
+    background-color: #f9f9f9;
+    border-left: 4px solid #0066cc;
+}
+
+.item-entry {
+    margin: 1em 0;
+    padding: 0.8em;
+    background-color: #f9f9f9;
+    border-left: 4px solid #cc6600;
+}
+
+.stats {
+    font-family: "Consolas", "DejaVu Sans Mono", monospace;
+    font-size: 0.9em;
+}
+
+/* Title page */
+.title-page {
+    text-align: center;
+    margin-top: 3em;
+}
+
+.title-page h1 {
+    font-size: 2.5em;
+    border-bottom: none;
+}
+
+.title-page .author {
+    font-size: 1.2em;
+    margin-top: 2em;
+}
+
+.title-page .date {
+    font-size: 1em;
+    margin-top: 1em;
+    color: #666;
+}
+
+/* Ensure good typography on e-readers */
+@media screen {
+    body {
+        max-width: 40em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

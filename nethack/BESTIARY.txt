@@ -1,0 +1,870 @@
+================================================================================
+NETHACK COMPLETE BESTIARY
+================================================================================
+
+Total Monsters: 394
+
+
+================================================================================
+MONSTERS BY CATEGORY (Symbol)
+================================================================================
+
+Ghosts [ ] - 2 monsters:
+  - ghost                          Lv:10 AC: -5 Spd: 3 MR:50%
+  - shade                          Lv:12 AC: 10 Spd:10 MR: 0%
+
+Demons [&] - 29 monsters:
+  - incubus/succubus/amorous demon Lv: 6 AC:  0 Spd:12 MR:70%
+  - horned devil                   Lv: 6 AC: -5 Spd: 9 MR:50%
+  - erinys                         Lv: 7 AC:  2 Spd:12 MR:30%
+  - marilith                       Lv: 7 AC: -6 Spd:12 MR:80%
+  - djinni                         Lv: 7 AC:  4 Spd:12 MR:30%
+  - water demon                    Lv: 8 AC: -4 Spd:12 MR:30%
+  - barbed devil                   Lv: 8 AC:  0 Spd:12 MR:35%
+  - vrock                          Lv: 8 AC:  0 Spd:12 MR:50%
+  - hezrou                         Lv: 9 AC: -2 Spd: 6 MR:55%
+  - bone devil                     Lv: 9 AC: -1 Spd:15 MR:40%
+  - ice devil                      Lv:11 AC: -4 Spd: 6 MR:55%
+  - nalfeshnee                     Lv:11 AC: -1 Spd: 9 MR:65%
+  - pit fiend                      Lv:13 AC: -3 Spd: 6 MR:65%
+  - sandestin                      Lv:13 AC:  4 Spd:12 MR:60%
+  - balrog                         Lv:16 AC: -2 Spd: 5 MR:75%
+  - Minion of Huhetotl             Lv:16 AC: -2 Spd:12 MR:75%
+  - Nalzok                         Lv:16 AC: -2 Spd:12 MR:85%
+  - Death                          Lv:30 AC: -5 Spd:12 MR:100%
+  - Pestilence                     Lv:30 AC: -5 Spd:12 MR:100%
+  - Famine                         Lv:30 AC: -5 Spd:12 MR:100%
+  - Juiblex                        Lv:50 AC: -7 Spd: 3 MR:65%
+  - Yeenoghu                       Lv:56 AC: -5 Spd:18 MR:80%
+  - mail daemon                    Lv:56 AC: 10 Spd:24 MR:127%
+  - Orcus                          Lv:66 AC: -6 Spd: 9 MR:85%
+  - Geryon                         Lv:72 AC: -3 Spd: 3 MR:75%
+  - Dispater                       Lv:78 AC: -2 Spd:15 MR:80%
+  - Baalzebub                      Lv:89 AC: -5 Spd: 9 MR:85%
+  - Asmodeus                       Lv:105 AC: -7 Spd:12 MR:90%
+  - Demogorgon                     Lv:106 AC: -8 Spd:15 MR:95%
+
+Golems ['] - 11 monsters:
+  - straw golem                    Lv: 3 AC: 10 Spd:12 MR: 0%
+  - paper golem                    Lv: 3 AC: 10 Spd:12 MR: 0%
+  - rope golem                     Lv: 4 AC:  8 Spd: 9 MR: 0%
+  - gold golem                     Lv: 5 AC:  6 Spd: 9 MR: 0%
+  - leather golem                  Lv: 6 AC:  6 Spd: 6 MR: 0%
+  - wood golem                     Lv: 7 AC:  4 Spd: 3 MR: 0%
+  - flesh golem                    Lv: 9 AC:  9 Spd: 8 MR:30%
+  - clay golem                     Lv:11 AC:  7 Spd: 7 MR:40%
+  - stone golem                    Lv:14 AC:  5 Spd: 6 MR:50%
+  - glass golem                    Lv:16 AC:  1 Spd: 6 MR:50%
+  - iron golem                     Lv:18 AC:  3 Spd: 6 MR:60%
+
+Lizards [:] - 8 monsters:
+  - newt                           Lv: 0 AC:  8 Spd: 6 MR: 0%
+  - gecko                          Lv: 1 AC:  8 Spd: 6 MR: 0%
+  - iguana                         Lv: 2 AC:  7 Spd: 6 MR: 0%
+  - baby crocodile                 Lv: 3 AC:  7 Spd: 6 MR: 0%
+  - lizard                         Lv: 5 AC:  6 Spd: 6 MR:10%
+  - chameleon                      Lv: 6 AC:  6 Spd: 5 MR:10%
+  - crocodile                      Lv: 6 AC:  5 Spd: 9 MR: 0%
+  - salamander                     Lv: 8 AC: -1 Spd:12 MR: 0%
+
+Eels [;] - 6 monsters:
+  - jellyfish                      Lv: 3 AC:  6 Spd: 3 MR: 0%
+  - piranha                        Lv: 5 AC:  4 Spd:18 MR: 0%
+  - giant eel                      Lv: 5 AC: -1 Spd: 9 MR: 0%
+  - shark                          Lv: 7 AC:  2 Spd:12 MR: 0%
+  - electric eel                   Lv: 7 AC: -3 Spd:10 MR: 0%
+  - kraken                         Lv:20 AC:  6 Spd: 3 MR: 0%
+
+Humans & NPCs [@] - 76 monsters:
+  - human                          Lv: 0 AC: 10 Spd:12 MR: 0%
+  - elf                            Lv: 0 AC: 10 Spd:12 MR: 2%
+  - Wizard of Yendor               Lv: 0 AC:  0 Spd: 0 MR: 0%
+  - wererat                        Lv: 2 AC: 10 Spd:12 MR:10%
+  - werejackal                     Lv: 2 AC: 10 Spd:12 MR:10%
+  - Woodland-elf                   Lv: 4 AC: 10 Spd:12 MR:10%
+  - werewolf                       Lv: 5 AC: 10 Spd:12 MR:20%
+  - Green-elf                      Lv: 5 AC: 10 Spd:12 MR:10%
+  - student                        Lv: 5 AC: 10 Spd:12 MR:10%
+  - chieftain                      Lv: 5 AC: 10 Spd:12 MR:10%
+  - neanderthal                    Lv: 5 AC: 10 Spd:12 MR:10%
+  - High-elf                       Lv: 5 AC: 10 Spd:12 MR:10%
+  - attendant                      Lv: 5 AC: 10 Spd:12 MR:10%
+  - page                           Lv: 5 AC: 10 Spd:12 MR:10%
+  - abbot                          Lv: 5 AC: 10 Spd:12 MR:20%
+  - acolyte                        Lv: 5 AC: 10 Spd:12 MR:20%
+  - hunter                         Lv: 5 AC: 10 Spd:12 MR:10%
+  - thug                           Lv: 5 AC: 10 Spd:12 MR:10%
+  - ninja                          Lv: 5 AC: 10 Spd:12 MR:10%
+  - roshi                          Lv: 5 AC: 10 Spd:12 MR:10%
+  - guide                          Lv: 5 AC: 10 Spd:12 MR:20%
+  - warrior                        Lv: 5 AC: 10 Spd:12 MR:10%
+  - apprentice                     Lv: 5 AC: 10 Spd:12 MR:30%
+  - Grey-elf                       Lv: 6 AC: 10 Spd:12 MR:10%
+  - soldier                        Lv: 6 AC: 10 Spd:10 MR: 0%
+  - watchman                       Lv: 6 AC: 10 Spd:10 MR: 0%
+  - elf-lord/elf-lady/elf-noble    Lv: 8 AC: 10 Spd:12 MR:20%
+  - sergeant                       Lv: 8 AC: 10 Spd:10 MR: 5%
+  - Elvenking/Elvenqueen/elven monarch Lv: 9 AC: 10 Spd:12 MR:25%
+  - doppelganger                   Lv: 9 AC:  5 Spd:12 MR:20%
+  - lieutenant                     Lv:10 AC: 10 Spd:10 MR:15%
+  - watch captain                  Lv:10 AC: 10 Spd:10 MR:15%
+  - archeologist                   Lv:10 AC: 10 Spd:12 MR: 1%
+  - barbarian                      Lv:10 AC: 10 Spd:12 MR: 1%
+  - caveman/cavewoman/cave dweller Lv:10 AC: 10 Spd:12 MR: 0%
+  - healer                         Lv:10 AC: 10 Spd:12 MR: 1%
+  - knight                         Lv:10 AC: 10 Spd:12 MR: 1%
+  - monk                           Lv:10 AC: 10 Spd:12 MR: 2%
+  - priest/priestess/cleric        Lv:10 AC: 10 Spd:12 MR: 2%
+  - ranger                         Lv:10 AC: 10 Spd:12 MR: 2%
+  - rogue                          Lv:10 AC: 10 Spd:12 MR: 1%
+  - samurai                        Lv:10 AC: 10 Spd:12 MR: 1%
+  - tourist                        Lv:10 AC: 10 Spd:12 MR: 1%
+  - valkyrie                       Lv:10 AC: 10 Spd:12 MR: 1%
+  - wizard                         Lv:10 AC: 10 Spd:12 MR: 3%
+  - nurse                          Lv:11 AC:  0 Spd: 6 MR: 0%
+  - shopkeeper                     Lv:12 AC:  0 Spd:16 MR:50%
+  - guard                          Lv:12 AC: 10 Spd:12 MR:40%
+  - prisoner                       Lv:12 AC: 10 Spd:12 MR: 0%
+  - Oracle                         Lv:12 AC:  0 Spd: 0 MR:50%
+  - priest/priestess/aligned cleric Lv:12 AC: 10 Spd:12 MR:50%
+  - captain                        Lv:12 AC: 10 Spd:10 MR:15%
+  - Master Assassin                Lv:15 AC:  0 Spd:12 MR:30%
+  - Ashikaga Takauji               Lv:15 AC:  0 Spd:12 MR:40%
+  - Dark One                       Lv:15 AC:  0 Spd:12 MR:80%
+  - Thoth Amon                     Lv:16 AC:  0 Spd:12 MR:10%
+  - Medusa                         Lv:20 AC:  2 Spd:12 MR:50%
+  - Croesus                        Lv:20 AC:  0 Spd:15 MR:40%
+  - Lord Carnarvon                 Lv:20 AC:  0 Spd:15 MR:90%
+  - Pelias                         Lv:20 AC:  0 Spd:15 MR:90%
+  - Shaman Karnov                  Lv:20 AC:  0 Spd:15 MR:90%
+  - Earendil                       Lv:20 AC:  0 Spd:12 MR:50%
+  - Elwing                         Lv:20 AC:  0 Spd:12 MR:50%
+  - Hippocrates                    Lv:20 AC:  0 Spd:15 MR:90%
+  - King Arthur                    Lv:20 AC:  0 Spd:15 MR:90%
+  - Orion                          Lv:20 AC:  0 Spd:15 MR:90%
+  - Master of Thieves              Lv:20 AC:  0 Spd:15 MR:90%
+  - Lord Sato                      Lv:20 AC:  0 Spd:15 MR:90%
+  - Twoflower                      Lv:20 AC: 10 Spd:15 MR:90%
+  - Norn                           Lv:20 AC:  0 Spd:15 MR:90%
+  - Neferet the Green              Lv:20 AC:  0 Spd:15 MR:90%
+  - high priest/high priestess/high cleric Lv:25 AC:  7 Spd:15 MR:70%
+  - Grand Master                   Lv:25 AC:  0 Spd:15 MR:90%
+  - Arch Priest                    Lv:25 AC:  7 Spd:15 MR:90%
+  - Master Kaen                    Lv:25 AC:-10 Spd:12 MR:10%
+  - Charon                         Lv:76 AC: -5 Spd:18 MR:120%
+
+Angels [A] - 5 monsters:
+  - couatl                         Lv: 8 AC:  5 Spd:10 MR:30%
+  - Aleax                          Lv:10 AC:  0 Spd: 8 MR:30%
+  - Angel                          Lv:14 AC: -4 Spd:10 MR:55%
+  - ki-rin                         Lv:16 AC: -5 Spd:18 MR:90%
+  - Archon                         Lv:19 AC: -6 Spd:16 MR:80%
+
+Bats [B] - 4 monsters:
+  - bat                            Lv: 0 AC:  8 Spd:22 MR: 0%
+  - giant bat                      Lv: 2 AC:  7 Spd:22 MR: 0%
+  - raven                          Lv: 4 AC:  6 Spd:20 MR: 0%
+  - vampire bat                    Lv: 5 AC:  6 Spd:20 MR: 0%
+
+Centaurs [C] - 3 monsters:
+  - plains centaur                 Lv: 4 AC:  4 Spd:18 MR: 0%
+  - forest centaur                 Lv: 5 AC:  3 Spd:18 MR:10%
+  - mountain centaur               Lv: 6 AC:  2 Spd:20 MR:10%
+
+Dragons [D] - 24 monsters:
+  - baby gray dragon               Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby gold dragon               Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby silver dragon             Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby shimmering dragon         Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby red dragon                Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby white dragon              Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby orange dragon             Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby black dragon              Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby blue dragon               Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby green dragon              Lv:12 AC:  2 Spd: 9 MR:10%
+  - baby yellow dragon             Lv:12 AC:  2 Spd: 9 MR:10%
+  - gray dragon                    Lv:15 AC: -1 Spd: 9 MR:20%
+  - gold dragon                    Lv:15 AC: -1 Spd: 9 MR:20%
+  - silver dragon                  Lv:15 AC: -1 Spd: 9 MR:20%
+  - shimmering dragon              Lv:15 AC: -1 Spd: 9 MR:20%
+  - red dragon                     Lv:15 AC: -1 Spd: 9 MR:20%
+  - white dragon                   Lv:15 AC: -1 Spd: 9 MR:20%
+  - orange dragon                  Lv:15 AC: -1 Spd: 9 MR:20%
+  - black dragon                   Lv:15 AC: -1 Spd: 9 MR:20%
+  - blue dragon                    Lv:15 AC: -1 Spd: 9 MR:20%
+  - green dragon                   Lv:15 AC: -1 Spd: 9 MR:20%
+  - yellow dragon                  Lv:15 AC: -1 Spd: 9 MR:20%
+  - Ixoth                          Lv:15 AC: -1 Spd:12 MR:20%
+  - Chromatic Dragon               Lv:16 AC:  0 Spd:12 MR:30%
+
+Elementals [E] - 5 monsters:
+  - stalker                        Lv: 8 AC:  3 Spd:12 MR: 0%
+  - air elemental                  Lv: 8 AC:  2 Spd:36 MR:30%
+  - fire elemental                 Lv: 8 AC:  2 Spd:12 MR:30%
+  - earth elemental                Lv: 8 AC:  2 Spd: 6 MR:30%
+  - water elemental                Lv: 8 AC:  2 Spd: 6 MR:30%
+
+Fungi [F] - 7 monsters:
+  - lichen                         Lv: 0 AC:  9 Spd: 1 MR: 0%
+  - brown mold                     Lv: 1 AC:  9 Spd: 0 MR: 0%
+  - yellow mold                    Lv: 1 AC:  9 Spd: 0 MR: 0%
+  - green mold                     Lv: 1 AC:  9 Spd: 0 MR: 0%
+  - red mold                       Lv: 1 AC:  9 Spd: 0 MR: 0%
+  - shrieker                       Lv: 3 AC:  7 Spd: 1 MR: 0%
+  - violet fungus                  Lv: 3 AC:  7 Spd: 1 MR: 0%
+
+Gnomes [G] - 4 monsters:
+  - gnome                          Lv: 1 AC: 10 Spd: 6 MR: 4%
+  - gnome lord/gnome lady/gnome leader Lv: 3 AC: 10 Spd: 8 MR: 4%
+  - gnomish wizard                 Lv: 3 AC:  4 Spd:10 MR:10%
+  - gnome king/gnome queen/gnome ruler Lv: 5 AC: 10 Spd:10 MR:20%
+
+Giants [H] - 11 monsters:
+  - giant                          Lv: 6 AC:  0 Spd: 6 MR: 0%
+  - stone giant                    Lv: 6 AC:  0 Spd: 6 MR: 0%
+  - hill giant                     Lv: 8 AC:  6 Spd:10 MR: 0%
+  - fire giant                     Lv: 9 AC:  4 Spd:12 MR: 5%
+  - frost giant                    Lv:10 AC:  3 Spd:12 MR:10%
+  - ettin                          Lv:10 AC:  3 Spd:12 MR: 0%
+  - minotaur                       Lv:15 AC:  6 Spd:15 MR: 0%
+  - Lord Surtur                    Lv:15 AC:  2 Spd:12 MR:50%
+  - storm giant                    Lv:16 AC:  3 Spd:12 MR:10%
+  - titan                          Lv:16 AC: -3 Spd:18 MR:70%
+  - Cyclops                        Lv:18 AC:  0 Spd:12 MR: 0%
+
+Jabberwocks [J] - 2 monsters:
+  - jabberwock                     Lv:15 AC: -2 Spd:12 MR:50%
+  - vorpal jabberwock              Lv:20 AC: -2 Spd:12 MR:50%
+
+Kops [K] - 4 monsters:
+  - Keystone Kop                   Lv: 1 AC: 10 Spd: 6 MR:10%
+  - Kop Sergeant                   Lv: 2 AC: 10 Spd: 8 MR:10%
+  - Kop Lieutenant                 Lv: 3 AC: 10 Spd:10 MR:20%
+  - Kop Kaptain                    Lv: 4 AC: 10 Spd:12 MR:20%
+
+Liches [L] - 4 monsters:
+  - lich                           Lv:11 AC:  0 Spd: 6 MR:30%
+  - demilich                       Lv:14 AC: -2 Spd: 9 MR:60%
+  - master lich                    Lv:17 AC: -4 Spd: 9 MR:90%
+  - arch-lich                      Lv:25 AC: -6 Spd: 9 MR:90%
+
+Mummies [M] - 8 monsters:
+  - kobold mummy                   Lv: 3 AC:  6 Spd: 8 MR:20%
+  - gnome mummy                    Lv: 4 AC:  6 Spd:10 MR:20%
+  - orc mummy                      Lv: 5 AC:  5 Spd:10 MR:20%
+  - dwarf mummy                    Lv: 5 AC:  5 Spd:10 MR:20%
+  - elf mummy                      Lv: 6 AC:  4 Spd:12 MR:30%
+  - human mummy                    Lv: 6 AC:  4 Spd:12 MR:30%
+  - ettin mummy                    Lv: 7 AC:  4 Spd:12 MR:30%
+  - giant mummy                    Lv: 8 AC:  3 Spd:14 MR:30%
+
+Nagas [N] - 8 monsters:
+  - red naga hatchling             Lv: 3 AC:  6 Spd:10 MR: 0%
+  - black naga hatchling           Lv: 3 AC:  6 Spd:10 MR: 0%
+  - golden naga hatchling          Lv: 3 AC:  6 Spd:10 MR: 0%
+  - guardian naga hatchling        Lv: 3 AC:  6 Spd:10 MR: 0%
+  - red naga                       Lv: 6 AC:  4 Spd:12 MR: 0%
+  - black naga                     Lv: 8 AC:  2 Spd:14 MR:10%
+  - golden naga                    Lv:10 AC:  2 Spd:14 MR:70%
+  - guardian naga                  Lv:12 AC:  0 Spd:16 MR:50%
+
+Ogres [O] - 3 monsters:
+  - ogre                           Lv: 5 AC:  5 Spd:10 MR: 0%
+  - ogre lord/ogre lady/ogre leader Lv: 7 AC:  3 Spd:12 MR:30%
+  - ogre king/ogre queen/ogre tyrant Lv: 9 AC:  4 Spd:14 MR:60%
+
+Puddings [P] - 4 monsters:
+  - gray ooze                      Lv: 3 AC:  8 Spd: 1 MR: 0%
+  - brown pudding                  Lv: 5 AC:  8 Spd: 3 MR: 0%
+  - green slime                    Lv: 6 AC:  6 Spd: 6 MR: 0%
+  - black pudding                  Lv:10 AC:  6 Spd: 6 MR: 0%
+
+Quantum Mechanics [Q] - 2 monsters:
+  - quantum mechanic               Lv: 7 AC:  3 Spd:12 MR:10%
+  - genetic engineer               Lv:12 AC:  3 Spd:12 MR:10%
+
+Rust Monsters [R] - 2 monsters:
+  - rust monster                   Lv: 5 AC:  2 Spd:18 MR: 0%
+  - disenchanter                   Lv:12 AC:-10 Spd:12 MR: 0%
+
+Snakes [S] - 6 monsters:
+  - garter snake                   Lv: 1 AC:  8 Spd: 8 MR: 0%
+  - snake                          Lv: 4 AC:  3 Spd:15 MR: 0%
+  - water moccasin                 Lv: 4 AC:  3 Spd:15 MR: 0%
+  - python                         Lv: 6 AC:  5 Spd: 3 MR: 0%
+  - pit viper                      Lv: 6 AC:  2 Spd:15 MR: 0%
+  - cobra                          Lv: 6 AC:  2 Spd:18 MR: 0%
+
+Trolls [T] - 5 monsters:
+  - troll                          Lv: 7 AC:  4 Spd:12 MR: 0%
+  - ice troll                      Lv: 9 AC:  2 Spd:10 MR:20%
+  - rock troll                     Lv: 9 AC:  0 Spd:12 MR: 0%
+  - water troll                    Lv:11 AC:  4 Spd:14 MR:40%
+  - Olog-hai                       Lv:13 AC: -4 Spd:12 MR: 0%
+
+Umber Hulks [U] - 1 monsters:
+  - umber hulk                     Lv: 9 AC:  2 Spd: 6 MR:25%
+
+Vampires [V] - 4 monsters:
+  - vampire                        Lv:10 AC:  1 Spd:12 MR:25%
+  - vampire lord/vampire lady/vampire leader Lv:12 AC:  0 Spd:14 MR:50%
+  - vampire mage                   Lv:20 AC: -4 Spd:14 MR:50%
+  - Vlad the Impaler               Lv:28 AC: -6 Spd:26 MR:80%
+
+Wraiths [W] - 3 monsters:
+  - barrow wight                   Lv: 3 AC:  5 Spd:12 MR: 5%
+  - wraith                         Lv: 6 AC:  4 Spd:12 MR:15%
+  - Nazgul                         Lv:13 AC:  0 Spd:12 MR:25%
+
+Xorns [X] - 1 monsters:
+  - xorn                           Lv: 8 AC: -2 Spd: 9 MR:20%
+
+Yetis [Y] - 6 monsters:
+  - monkey                         Lv: 2 AC:  6 Spd:12 MR: 0%
+  - ape                            Lv: 4 AC:  6 Spd:12 MR: 0%
+  - owlbear                        Lv: 5 AC:  5 Spd:12 MR: 0%
+  - yeti                           Lv: 5 AC:  6 Spd:15 MR: 0%
+  - carnivorous ape                Lv: 6 AC:  6 Spd:12 MR: 0%
+  - sasquatch                      Lv: 7 AC:  6 Spd:15 MR: 0%
+
+Zombies [Z] - 10 monsters:
+  - kobold zombie                  Lv: 0 AC: 10 Spd: 6 MR: 0%
+  - gnome zombie                   Lv: 1 AC: 10 Spd: 6 MR: 0%
+  - orc zombie                     Lv: 2 AC:  9 Spd: 6 MR: 0%
+  - dwarf zombie                   Lv: 2 AC:  9 Spd: 6 MR: 0%
+  - elf zombie                     Lv: 3 AC:  9 Spd: 6 MR: 0%
+  - ghoul                          Lv: 3 AC: 10 Spd: 6 MR: 0%
+  - human zombie                   Lv: 4 AC:  8 Spd: 6 MR: 0%
+  - ettin zombie                   Lv: 6 AC:  6 Spd: 8 MR: 0%
+  - giant zombie                   Lv: 8 AC:  6 Spd: 8 MR: 0%
+  - skeleton                       Lv:12 AC:  4 Spd: 8 MR: 0%
+
+Ants & Insects [a] - 6 monsters:
+  - killer bee                     Lv: 1 AC: -1 Spd:18 MR: 0%
+  - giant ant                      Lv: 2 AC:  3 Spd:18 MR: 0%
+  - soldier ant                    Lv: 3 AC:  3 Spd:18 MR: 0%
+  - fire ant                       Lv: 3 AC:  3 Spd:18 MR:10%
+  - giant beetle                   Lv: 5 AC:  4 Spd: 6 MR: 0%
+  - queen bee                      Lv: 9 AC: -4 Spd:24 MR: 0%
+
+Blobs [b] - 3 monsters:
+  - acid blob                      Lv: 1 AC:  8 Spd: 3 MR: 0%
+  - quivering blob                 Lv: 5 AC:  8 Spd: 1 MR: 0%
+  - gelatinous cube                Lv: 6 AC:  8 Spd: 6 MR: 0%
+
+Cockatrices [c] - 3 monsters:
+  - chickatrice                    Lv: 4 AC:  8 Spd: 4 MR:30%
+  - cockatrice                     Lv: 5 AC:  6 Spd: 6 MR:30%
+  - pyrolisk                       Lv: 6 AC:  6 Spd: 6 MR:30%
+
+Dogs & Canines [d] - 16 monsters:
+  - jackal                         Lv: 0 AC:  7 Spd:12 MR: 0%
+  - fox                            Lv: 0 AC:  7 Spd:15 MR: 0%
+  - coyote                         Lv: 1 AC:  7 Spd:12 MR: 0%
+  - werejackal                     Lv: 2 AC:  7 Spd:12 MR:10%
+  - little dog                     Lv: 2 AC:  6 Spd:18 MR: 0%
+  - dingo                          Lv: 4 AC:  5 Spd:16 MR: 0%
+  - dog                            Lv: 4 AC:  5 Spd:16 MR: 0%
+  - wolf                           Lv: 5 AC:  4 Spd:12 MR: 0%
+  - werewolf                       Lv: 5 AC:  4 Spd:12 MR:20%
+  - winter wolf cub                Lv: 5 AC:  4 Spd:12 MR: 0%
+  - large dog                      Lv: 6 AC:  4 Spd:15 MR: 0%
+  - warg                           Lv: 7 AC:  4 Spd:12 MR: 0%
+  - winter wolf                    Lv: 7 AC:  4 Spd:12 MR:20%
+  - hell hound pup                 Lv: 7 AC:  4 Spd:12 MR:20%
+  - hell hound                     Lv:12 AC:  2 Spd:14 MR:20%
+  - Cerberus                       Lv:12 AC:  2 Spd:10 MR:20%
+
+Eyes & Floating Orbs [e] - 6 monsters:
+  - gas spore                      Lv: 1 AC: 10 Spd: 3 MR: 0%
+  - floating eye                   Lv: 2 AC:  9 Spd: 1 MR:10%
+  - freezing sphere                Lv: 6 AC:  4 Spd:13 MR: 0%
+  - flaming sphere                 Lv: 6 AC:  4 Spd:13 MR: 0%
+  - shocking sphere                Lv: 6 AC:  4 Spd:13 MR: 0%
+  - beholder                       Lv: 6 AC:  4 Spd: 3 MR: 0%
+
+Felines [f] - 8 monsters:
+  - kitten                         Lv: 2 AC:  6 Spd:18 MR: 0%
+  - housecat                       Lv: 4 AC:  5 Spd:16 MR: 0%
+  - jaguar                         Lv: 4 AC:  6 Spd:15 MR: 0%
+  - lynx                           Lv: 5 AC:  6 Spd:15 MR: 0%
+  - panther                        Lv: 5 AC:  6 Spd:15 MR: 0%
+  - large cat                      Lv: 6 AC:  4 Spd:15 MR: 0%
+  - tiger                          Lv: 6 AC:  6 Spd:12 MR: 0%
+  - displacer beast                Lv:12 AC:-10 Spd:12 MR: 0%
+
+Gremlins [g] - 3 monsters:
+  - gremlin                        Lv: 5 AC:  2 Spd:12 MR:25%
+  - gargoyle                       Lv: 6 AC: -4 Spd:10 MR: 0%
+  - winged gargoyle                Lv: 9 AC: -2 Spd:15 MR: 0%
+
+Humanoids [h] - 7 monsters:
+  - hobbit                         Lv: 1 AC: 10 Spd: 9 MR: 0%
+  - dwarf                          Lv: 2 AC: 10 Spd: 6 MR:10%
+  - bugbear                        Lv: 3 AC:  5 Spd: 9 MR: 0%
+  - dwarf lord/dwarf lady/dwarf leader Lv: 4 AC: 10 Spd: 6 MR:10%
+  - dwarf king/dwarf queen/dwarf ruler Lv: 6 AC: 10 Spd: 6 MR:20%
+  - mind flayer                    Lv: 9 AC:  5 Spd:12 MR:90%
+  - master mind flayer             Lv:13 AC:  0 Spd:12 MR:90%
+
+Imps & Minor Demons [i] - 6 monsters:
+  - manes                          Lv: 1 AC:  7 Spd: 3 MR: 0%
+  - homunculus                     Lv: 2 AC:  6 Spd:12 MR:10%
+  - imp                            Lv: 3 AC:  2 Spd:12 MR:20%
+  - lemure                         Lv: 3 AC:  7 Spd: 3 MR: 0%
+  - quasit                         Lv: 3 AC:  2 Spd:15 MR:20%
+  - tengu                          Lv: 6 AC:  5 Spd:13 MR:30%
+
+Jellies [j] - 3 monsters:
+  - blue jelly                     Lv: 4 AC:  8 Spd: 0 MR:10%
+  - spotted jelly                  Lv: 5 AC:  8 Spd: 0 MR:10%
+  - ochre jelly                    Lv: 6 AC:  8 Spd: 3 MR:20%
+
+Kobolds [k] - 4 monsters:
+  - kobold                         Lv: 0 AC: 10 Spd: 6 MR: 0%
+  - large kobold                   Lv: 1 AC: 10 Spd: 6 MR: 0%
+  - kobold lord/kobold lady/kobold leader Lv: 2 AC: 10 Spd: 6 MR: 0%
+  - kobold shaman                  Lv: 2 AC:  6 Spd: 6 MR:10%
+
+Leprechauns [l] - 1 monsters:
+  - leprechaun                     Lv: 5 AC:  8 Spd:15 MR:20%
+
+Mimics [m] - 3 monsters:
+  - small mimic                    Lv: 7 AC:  7 Spd: 3 MR: 0%
+  - large mimic                    Lv: 8 AC:  7 Spd: 3 MR:10%
+  - giant mimic                    Lv: 9 AC:  7 Spd: 3 MR:20%
+
+Nymphs [n] - 3 monsters:
+  - wood nymph                     Lv: 3 AC:  9 Spd:12 MR:20%
+  - water nymph                    Lv: 3 AC:  9 Spd:12 MR:20%
+  - mountain nymph                 Lv: 3 AC:  9 Spd:12 MR:20%
+
+Orcs [o] - 9 monsters:
+  - goblin                         Lv: 0 AC: 10 Spd: 6 MR: 0%
+  - hobgoblin                      Lv: 1 AC: 10 Spd: 9 MR: 0%
+  - orc                            Lv: 1 AC: 10 Spd: 9 MR: 0%
+  - hill orc                       Lv: 2 AC: 10 Spd: 9 MR: 0%
+  - Mordor orc                     Lv: 3 AC: 10 Spd: 5 MR: 0%
+  - Uruk-hai                       Lv: 3 AC: 10 Spd: 7 MR: 0%
+  - orc shaman                     Lv: 3 AC:  5 Spd: 9 MR:10%
+  - orc-captain                    Lv: 5 AC: 10 Spd: 5 MR: 0%
+  - Goblin King                    Lv:15 AC: 10 Spd:12 MR: 0%
+
+Piercers [p] - 3 monsters:
+  - rock piercer                   Lv: 3 AC:  3 Spd: 1 MR: 0%
+  - iron piercer                   Lv: 5 AC:  0 Spd: 1 MR: 0%
+  - glass piercer                  Lv: 7 AC:  0 Spd: 1 MR: 0%
+
+Quadrupeds [q] - 7 monsters:
+  - rothe                          Lv: 2 AC:  7 Spd: 9 MR: 0%
+  - mumak                          Lv: 5 AC:  0 Spd: 9 MR: 0%
+  - leocrotta                      Lv: 6 AC:  4 Spd:18 MR:10%
+  - wumpus                         Lv: 8 AC:  2 Spd: 3 MR:10%
+  - titanothere                    Lv:12 AC:  6 Spd:12 MR: 0%
+  - baluchitherium                 Lv:14 AC:  5 Spd:12 MR: 0%
+  - mastodon                       Lv:20 AC:  5 Spd:12 MR: 0%
+
+Rodents [r] - 6 monsters:
+  - sewer rat                      Lv: 0 AC:  7 Spd:12 MR: 0%
+  - giant rat                      Lv: 1 AC:  7 Spd:10 MR: 0%
+  - rabid rat                      Lv: 2 AC:  6 Spd:12 MR: 0%
+  - wererat                        Lv: 2 AC:  6 Spd:12 MR:10%
+  - rock mole                      Lv: 3 AC:  0 Spd: 3 MR:20%
+  - woodchuck                      Lv: 3 AC:  0 Spd: 3 MR:20%
+
+Spiders [s] - 5 monsters:
+  - cave spider                    Lv: 1 AC:  3 Spd:12 MR: 0%
+  - centipede                      Lv: 2 AC:  3 Spd: 4 MR: 0%
+  - giant spider                   Lv: 5 AC:  4 Spd:15 MR: 0%
+  - scorpion                       Lv: 5 AC:  3 Spd:15 MR: 0%
+  - Scorpius                       Lv:15 AC: 10 Spd:12 MR: 0%
+
+Trappers [t] - 2 monsters:
+  - lurker above                   Lv:10 AC:  3 Spd: 3 MR: 0%
+  - trapper                        Lv:12 AC:  3 Spd: 3 MR: 0%
+
+Unicorns [u] - 6 monsters:
+  - pony                           Lv: 3 AC:  6 Spd:16 MR: 0%
+  - white unicorn                  Lv: 4 AC:  2 Spd:24 MR:70%
+  - gray unicorn                   Lv: 4 AC:  2 Spd:24 MR:70%
+  - black unicorn                  Lv: 4 AC:  2 Spd:24 MR:70%
+  - horse                          Lv: 5 AC:  5 Spd:20 MR: 0%
+  - warhorse                       Lv: 7 AC:  4 Spd:24 MR: 0%
+
+Vortices [v] - 6 monsters:
+  - fog cloud                      Lv: 3 AC:  0 Spd: 1 MR: 0%
+  - dust vortex                    Lv: 4 AC:  2 Spd:20 MR:30%
+  - ice vortex                     Lv: 5 AC:  2 Spd:20 MR:30%
+  - energy vortex                  Lv: 6 AC:  2 Spd:20 MR:30%
+  - steam vortex                   Lv: 7 AC:  2 Spd:22 MR:30%
+  - fire vortex                    Lv: 8 AC:  2 Spd:22 MR:30%
+
+Worms [w] - 4 monsters:
+  - baby long worm                 Lv: 5 AC:  5 Spd: 3 MR: 0%
+  - baby purple worm               Lv: 8 AC:  5 Spd: 3 MR: 0%
+  - long worm                      Lv: 9 AC:  5 Spd: 3 MR:10%
+  - purple worm                    Lv:15 AC:  6 Spd: 9 MR:20%
+
+Xan [x] - 2 monsters:
+  - grid bug                       Lv: 0 AC:  9 Spd:12 MR: 0%
+  - xan                            Lv: 7 AC: -4 Spd:18 MR: 0%
+
+Lights [y] - 2 monsters:
+  - yellow light                   Lv: 3 AC:  0 Spd:15 MR: 0%
+  - black light                    Lv: 5 AC:  0 Spd:15 MR: 0%
+
+Zruty [z] - 1 monsters:
+  - zruty                          Lv: 9 AC:  3 Spd: 8 MR: 0%
+
+Worm Tails [~] - 1 monsters:
+  - long worm tail                 Lv: 0 AC:  0 Spd: 0 MR: 0%
+
+================================================================================
+UNIQUE MONSTERS & BOSSES
+================================================================================
+
+Total Unique Monsters: 55
+
+
+Wizard of Yendor [@]
+  Level: 0, AC: 0, Speed: 0, MR: 0%
+  Resistances: fire, poison
+  Special: prince
+
+kobold lord/kobold lady/kobold leader [k]
+  Level: 2, AC: 10, Speed: 6, MR: 0%
+  Resistances: poison
+  Special: lord
+
+gnome lord/gnome lady/gnome leader [G]
+  Level: 3, AC: 10, Speed: 8, MR: 4%
+  Special: lord
+
+dwarf lord/dwarf lady/dwarf leader [h]
+  Level: 4, AC: 10, Speed: 6, MR: 10%
+  Special: lord
+
+gnome king/gnome queen/gnome ruler [G]
+  Level: 5, AC: 10, Speed: 10, MR: 20%
+  Special: prince
+
+dwarf king/dwarf queen/dwarf ruler [h]
+  Level: 6, AC: 10, Speed: 6, MR: 20%
+  Special: prince
+
+ogre lord/ogre lady/ogre leader [O]
+  Level: 7, AC: 3, Speed: 12, MR: 30%
+  Special: lord
+
+couatl [A]
+  Level: 8, AC: 5, Speed: 10, MR: 30%
+  Resistances: poison
+  Special: minion
+
+elf-lord/elf-lady/elf-noble [@]
+  Level: 8, AC: 10, Speed: 12, MR: 20%
+  Resistances: sleep
+  Special: lord
+
+queen bee [a]
+  Level: 9, AC: -4, Speed: 24, MR: 0%
+  Resistances: poison
+  Special: prince
+
+winged gargoyle [g]
+  Level: 9, AC: -2, Speed: 15, MR: 0%
+  Resistances: petrification
+  Special: lord
+
+ogre king/ogre queen/ogre tyrant [O]
+  Level: 9, AC: 4, Speed: 14, MR: 60%
+  Special: prince
+
+Elvenking/Elvenqueen/elven monarch [@]
+  Level: 9, AC: 10, Speed: 12, MR: 25%
+  Resistances: sleep
+  Special: prince
+
+Aleax [A]
+  Level: 10, AC: 0, Speed: 8, MR: 30%
+  Resistances: cold, sleep, electricity, poison
+  Special: minion
+
+Cerberus [d]
+  Level: 12, AC: 2, Speed: 10, MR: 20%
+  Resistances: fire
+
+vampire lord/vampire lady/vampire leader [V]
+  Level: 12, AC: 0, Speed: 14, MR: 50%
+  Resistances: sleep, poison
+  Special: undead, lord
+
+priest/priestess/aligned cleric [@]
+  Level: 12, AC: 10, Speed: 12, MR: 50%
+  Resistances: electricity
+  Special: lord
+
+Angel [A]
+  Level: 14, AC: -4, Speed: 10, MR: 55%
+  Resistances: cold, sleep, electricity, poison
+  Special: minion
+
+Ixoth [D]
+  Level: 15, AC: -1, Speed: 12, MR: 20%
+  Resistances: fire, petrification
+
+Scorpius [s]
+  Level: 15, AC: 10, Speed: 12, MR: 0%
+  Resistances: poison, petrification
+
+Ashikaga Takauji [@]
+  Level: 15, AC: 0, Speed: 12, MR: 40%
+  Resistances: petrification
+
+Lord Surtur [H]
+  Level: 15, AC: 2, Speed: 12, MR: 50%
+  Resistances: fire, petrification
+
+ki-rin [A]
+  Level: 16, AC: -5, Speed: 18, MR: 90%
+  Resistances: poison
+  Special: lord, minion
+
+Thoth Amon [@]
+  Level: 16, AC: 0, Speed: 12, MR: 10%
+  Resistances: poison, petrification
+
+Nalzok [&]
+  Level: 16, AC: -2, Speed: 12, MR: 85%
+  Resistances: fire, poison, petrification
+  Special: demon
+
+Archon [A]
+  Level: 19, AC: -6, Speed: 16, MR: 80%
+  Resistances: fire, cold, sleep, electricity, poison
+  Special: lord, minion
+
+vampire mage [V]
+  Level: 20, AC: -4, Speed: 14, MR: 50%
+  Resistances: sleep, poison
+  Special: undead, lord
+
+Medusa [@]
+  Level: 20, AC: 2, Speed: 12, MR: 50%
+  Resistances: poison, petrification
+
+Croesus [@]
+  Level: 20, AC: 0, Speed: 15, MR: 40%
+  Special: prince
+
+Lord Carnarvon [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+Pelias [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+  Resistances: poison
+
+Shaman Karnov [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+Earendil [@]
+  Level: 20, AC: 0, Speed: 12, MR: 50%
+  Resistances: sleep
+
+Elwing [@]
+  Level: 20, AC: 0, Speed: 12, MR: 50%
+  Resistances: sleep
+
+Hippocrates [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+  Resistances: poison
+
+King Arthur [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+Orion [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+Lord Sato [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+Twoflower [@]
+  Level: 20, AC: 10, Speed: 15, MR: 90%
+
+Neferet the Green [@]
+  Level: 20, AC: 0, Speed: 15, MR: 90%
+
+high priest/high priestess/high cleric [@]
+  Level: 25, AC: 7, Speed: 15, MR: 70%
+  Resistances: fire, sleep, electricity, poison
+  Special: prince, minion
+
+Master Kaen [@]
+  Level: 25, AC: -10, Speed: 12, MR: 10%
+  Resistances: poison, petrification
+
+Vlad the Impaler [V]
+  Level: 28, AC: -6, Speed: 26, MR: 80%
+  Resistances: sleep, poison
+  Special: undead, prince
+
+Death [&]
+  Level: 30, AC: -5, Speed: 12, MR: 100%
+  Resistances: fire, cold, sleep, electricity, poison, petrification
+
+Pestilence [&]
+  Level: 30, AC: -5, Speed: 12, MR: 100%
+  Resistances: fire, cold, sleep, electricity, poison, petrification
+
+Famine [&]
+  Level: 30, AC: -5, Speed: 12, MR: 100%
+  Resistances: fire, cold, sleep, electricity, poison, petrification
+
+Juiblex [&]
+  Level: 50, AC: -7, Speed: 3, MR: 65%
+  Resistances: fire, poison, acid, petrification
+  Special: demon, lord, wants amulet
+
+Yeenoghu [&]
+  Level: 56, AC: -5, Speed: 18, MR: 80%
+  Resistances: fire, poison
+  Special: demon, lord, wants amulet
+
+Orcus [&]
+  Level: 66, AC: -6, Speed: 9, MR: 85%
+  Resistances: fire, poison
+  Special: demon, prince, wants amulet
+
+Geryon [&]
+  Level: 72, AC: -3, Speed: 3, MR: 75%
+  Resistances: fire, poison
+  Special: demon, prince, wants amulet
+
+Charon [@]
+  Level: 76, AC: -5, Speed: 18, MR: 120%
+  Resistances: fire, cold, poison, petrification
+
+Dispater [&]
+  Level: 78, AC: -2, Speed: 15, MR: 80%
+  Resistances: fire, poison
+  Special: demon, prince, wants amulet
+
+Baalzebub [&]
+  Level: 89, AC: -5, Speed: 9, MR: 85%
+  Resistances: fire, poison
+  Special: demon, prince, wants amulet
+
+Asmodeus [&]
+  Level: 105, AC: -7, Speed: 12, MR: 90%
+  Resistances: fire, cold, poison
+  Special: demon, prince, wants amulet
+
+Demogorgon [&]
+  Level: 106, AC: -8, Speed: 15, MR: 95%
+  Resistances: fire, poison
+  Special: demon, prince, wants amulet
+
+================================================================================
+FRIENDLY NPCs & SHOPKEEPERS
+================================================================================
+
+Total NPCs: 44
+
+  - Arch Priest                    [@] Lv:25 (Peaceful)
+  - Charon                         [@] Lv:76 (Peaceful)
+  - Earendil                       [@] Lv:20 (Peaceful)
+  - Elwing                         [@] Lv:20 (Peaceful)
+  - Grand Master                   [@] Lv:25 (Peaceful)
+  - High-elf                       [@] Lv: 5 (Peaceful)
+  - Hippocrates                    [@] Lv:20 (Peaceful)
+  - King Arthur                    [@] Lv:20 (Peaceful)
+  - Lord Carnarvon                 [@] Lv:20 (Peaceful)
+  - Lord Sato                      [@] Lv:20 (Peaceful)
+  - Master of Thieves              [@] Lv:20 (Peaceful)
+  - Neferet the Green              [@] Lv:20 (Peaceful)
+  - Norn                           [@] Lv:20 (Peaceful)
+  - Oracle                         [@] Lv:12 (Special)
+  - Orion                          [@] Lv:20 (Peaceful)
+  - Pelias                         [@] Lv:20 (Peaceful)
+  - Shaman Karnov                  [@] Lv:20 (Peaceful)
+  - Twoflower                      [@] Lv:20 (Peaceful)
+  - abbot                          [@] Lv: 5 (Peaceful)
+  - acolyte                        [@] Lv: 5 (Peaceful)
+  - apprentice                     [@] Lv: 5 (Peaceful)
+  - attendant                      [@] Lv: 5 (Peaceful)
+  - chieftain                      [@] Lv: 5 (Peaceful)
+  - guard                          [@] Lv:12 (Peaceful)
+  - guardian naga                  [N] Lv:12 (Special)
+  - guardian naga hatchling        [N] Lv: 3 (Special)
+  - guide                          [@] Lv: 5 (Peaceful)
+  - high priest/high priestess/high cleric [@] Lv:25 (Special)
+  - hunter                         [@] Lv: 5 (Peaceful)
+  - mail daemon                    [&] Lv:56 (Peaceful)
+  - neanderthal                    [@] Lv: 5 (Peaceful)
+  - nurse                          [@] Lv:11 (Special)
+  - page                           [@] Lv: 5 (Peaceful)
+  - priest/priestess/aligned cleric [@] Lv:12 (Peaceful)
+  - priest/priestess/cleric        [@] Lv:10 (Special)
+  - roshi                          [@] Lv: 5 (Peaceful)
+  - shopkeeper                     [@] Lv:12 (Peaceful)
+  - soldier                        [@] Lv: 6 (Special)
+  - soldier ant                    [a] Lv: 3 (Special)
+  - student                        [@] Lv: 5 (Peaceful)
+  - thug                           [@] Lv: 5 (Peaceful)
+  - warrior                        [@] Lv: 5 (Peaceful)
+  - watch captain                  [@] Lv:10 (Peaceful)
+  - watchman                       [@] Lv: 6 (Peaceful)
+
+================================================================================
+MONSTERS BY SPECIAL ABILITIES
+================================================================================
+
+Teleporters (11):
+  - Wizard of Yendor               Lv: 0
+  - wood nymph                     Lv: 3
+  - water nymph                    Lv: 3
+  - mountain nymph                 Lv: 3
+  - leprechaun                     Lv: 5
+  - tengu                          Lv: 6
+  - quantum mechanic               Lv: 7
+  - genetic engineer               Lv:12
+  - Death                          Lv:30
+  - Pestilence                     Lv:30
+  - Famine                         Lv:30
+
+Shapechangers (7):
+  - chameleon                      Lv: 6
+  - doppelganger                   Lv: 9
+  - vampire                        Lv:10
+  - vampire lord/vampire lady/vampire leader Lv:12
+  - sandestin                      Lv:13
+  - vampire mage                   Lv:20
+  - Vlad the Impaler               Lv:28
+
+================================================================================
+MONSTERS BY DIFFICULTY TIER
+================================================================================
+
+Early Game (164 monsters)
+
+Mid Game (149 monsters)
+
+Late Game (62 monsters)
+
+Endgame (19 monsters)
+
+================================================================================
+BESTIARY STATISTICS
+================================================================================
+
+Total unique monster types: 394
+Total attacks defined: 0
+Average monster level: 9.7
+Average AC: 4.1
+Highest level: 106
+Lowest level: 0
+
+Undead monsters: 30
+Demons: 23
+Dragons: 24
+Giants: 8

@@ -1,0 +1,230 @@
+================================================================================
+NETHACK MONSTER CATALOG - FILE LOCATIONS
+================================================================================
+
+GENERATED DOCUMENTATION FILES:
+================================================================================
+
+1. /home/user/NetHack/README_BESTIARY.md
+   - Quick reference guide and summary
+   - Overview of all 394 monsters
+   - Top 10 most powerful monsters
+   - Key source file locations
+
+2. /home/user/NetHack/MONSTER_CATALOG_COMPLETE.md
+   - Comprehensive documentation (100+ pages)
+   - Complete monster structure definition
+   - All attack and damage types
+   - Monster flags and properties
+   - Monster generation system
+   - AI and behavior systems
+   - Complete categorization
+
+3. /home/user/NetHack/BESTIARY.txt
+   - Formatted bestiary report
+   - Monsters categorized by symbol
+   - Unique monsters and bosses
+   - Special abilities catalog
+   - NPCs and shopkeepers
+   - Difficulty tiers
+   - Statistics summary
+
+4. /home/user/NetHack/monsters_database.json
+   - Machine-readable JSON database
+   - All 394 monsters with complete stats
+   - Attacks, resistances, flags
+   - Searchable and parseable
+
+5. /home/user/NetHack/monster_parser.py
+   - Python script to extract monster data
+   - Parses monsters.h definitions
+   - Generates JSON database
+
+6. /home/user/NetHack/analyze_bestiary.py
+   - Python script to analyze monsters
+   - Categorizes by various criteria
+   - Generates bestiary report
+
+7. /home/user/NetHack/CATALOG_FILES.txt
+   - This file - index of all generated files
+
+NETHACK SOURCE FILES (MONSTER DEFINITIONS):
+================================================================================
+
+Core Definition Files:
+----------------------
+/home/user/NetHack/include/monsters.h (3,927 lines)
+   - Complete monster definitions using MON() macros
+   - All 394 monster entries
+   - Stats, attacks, flags for each monster
+
+/home/user/NetHack/src/monst.c (89 lines)
+   - Monster data initialization
+   - Converts monsters.h into runtime array
+
+/home/user/NetHack/include/permonst.h (86 lines)
+   - Monster structure definition (struct permonst)
+   - Defines all fields for monster data
+   - Attack structure definition
+
+/home/user/NetHack/include/monflag.h (220 lines)
+   - Monster flag definitions
+   - M1_*, M2_*, M3_* flags
+   - Resistances (MR_* flags)
+   - Sounds (MS_* enums)
+   - Sizes (MZ_* defines)
+   - Generation flags (G_* defines)
+
+/home/user/NetHack/include/monattk.h (115 lines)
+   - Attack type definitions (AT_*)
+   - Damage type definitions (AD_*)
+   - Attack distance macros
+
+Monster Behavior & AI Files:
+----------------------------
+/home/user/NetHack/src/monmove.c (2,800+ lines)
+   - Monster movement AI
+   - Pathfinding algorithms
+   - Door/trap interaction
+   - Special movement (teleport, phase, etc.)
+   - Item searching behavior
+
+/home/user/NetHack/src/mon.c (5,500+ lines)
+   - Monster actions and core functions
+   - Combat calculations
+   - Monster death and revival
+   - Shapeshifting system
+   - Monster-to-monster combat
+   - Status effects
+
+/home/user/NetHack/src/makemon.c (2,200+ lines)
+   - Monster generation/creation
+   - Level-appropriate spawning
+   - Group spawning logic
+   - Monster inventory assignment
+   - Special placements
+
+/home/user/NetHack/src/mondata.c (1,800+ lines)
+   - Monster data query functions
+   - Resistance checks
+   - Attack type queries
+   - Monster property functions
+
+Additional Monster Files:
+------------------------
+/home/user/NetHack/include/mondata.h
+   - Function prototypes for monster queries
+
+/home/user/NetHack/src/mhitm.c
+   - Monster-to-monster combat
+
+/home/user/NetHack/src/mhitu.c
+   - Monster-to-player combat
+
+/home/user/NetHack/src/mthrowu.c
+   - Monster ranged attacks
+
+/home/user/NetHack/src/mcastu.c
+   - Monster spellcasting
+
+/home/user/NetHack/src/minion.c
+   - Demon and minion handling
+
+/home/user/NetHack/src/polyself.c
+   - Polymorph system (includes monster forms)
+
+Data Files:
+----------
+/home/user/NetHack/dat/bogusmon.txt
+   - Hallucinatory monster names (549 lines)
+   - Used when hallucinating
+
+/home/user/NetHack/dat/quest.lua
+/home/user/NetHack/dat/*-goal.lua
+/home/user/NetHack/dat/*-loca.lua
+   - Quest level definitions
+   - Quest leader and nemesis placements
+
+MONSTER STATISTICS:
+================================================================================
+
+Total Monsters: 394
+Monster Categories (by symbol): 46
+Level Range: 0 to 106
+Speed Range: 0 to 36
+AC Range: -10 to +10
+
+Breakdown by Type:
+  @ (Humans/NPCs):        76 monsters
+  & (Demons):             29 monsters
+  D (Dragons):            24 monsters
+  d (Dogs/Canines):       16 monsters
+  H (Giants):             11 monsters
+  ' (Golems):             11 monsters
+  Z (Zombies):            10 monsters
+  o (Orcs):                9 monsters
+  M (Mummies):             8 monsters
+  f (Felines):             8 monsters
+
+Special Categories:
+  Unique/Named Monsters:  36+
+  Demon Lords/Princes:     8
+  Quest Leaders:          13
+  Quest Nemeses:          13
+  Dragons (all ages):     18
+  Lycanthropes:            3
+  Undead:                40+
+  Golems:                 11
+  Elementals:              4
+
+Top 10 Most Powerful:
+  1. Demogorgon      (Lv 106)
+  2. Asmodeus        (Lv 105)
+  3. Baalzebub       (Lv  89)
+  4. Dispater        (Lv  78)
+  5. Charon          (Lv  76)
+  6. Geryon          (Lv  72)
+  7. Orcus           (Lv  66)
+  8. Yeenoghu        (Lv  56)
+  9. Juiblex         (Lv  50)
+  10. Four Horsemen  (Lv  30)
+
+MONSTER PROPERTIES DEFINED:
+================================================================================
+
+Attack Types:       28 types (AT_CLAW, AT_BITE, AT_KICK, etc.)
+Damage Types:       43 types (AD_FIRE, AD_COLD, AD_STON, etc.)
+Resistances:         8 core types + Magic Resistance
+Monster Flags:     100+ behavioral flags (M1_*, M2_*, M3_*)
+Sounds:             45 different sound types (MS_*)
+Sizes:               6 size categories (MZ_TINY to MZ_GIGANTIC)
+Generation Flags:    8 flags controlling spawning
+
+USAGE EXAMPLES:
+================================================================================
+
+View complete bestiary:
+  $ cat /home/user/NetHack/BESTIARY.txt | less
+
+Search for high-level monsters:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[] | select(.level > 50)'
+
+Find all demons:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[] | select(.symbol == "&")'
+
+Find monsters that can petrify:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[] | select(.attacks[].damage_type == "petrify")'
+
+Find all unique monsters:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[] | select(.flags[] | contains("proper name"))'
+
+List all monster symbols:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[].symbol' | sort -u
+
+Count monsters by level:
+  $ cat /home/user/NetHack/monsters_database.json | jq '.[].level' | sort -n | uniq -c
+
+================================================================================
+Generated: 2025-11-19
+Source: NetHack 3.7
+================================================================================

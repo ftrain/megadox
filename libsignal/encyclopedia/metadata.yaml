@@ -1,0 +1,28 @@
+---
+title: The libsignal Encyclopedia
+subtitle: A Comprehensive Guide to Signal's Cryptographic Protocol Library
+author:
+  - Comprehensive Codebase Analysis
+  - Historical Research
+  - Community Documentation Project
+date: November 2025
+lang: en-US
+rights: Documentation of libsignal (AGPLv3)
+keywords:
+  - Signal Protocol
+  - Cryptography
+  - End-to-End Encryption
+  - Post-Quantum Cryptography
+  - Rust
+  - Privacy
+  - Security
+description: |
+  A comprehensive, scholarly encyclopedia documenting the libsignal
+  cryptographic protocol library (version 0.86.5) from 2013-2025,
+  covering historical context, cryptographic implementations,
+  system architecture, and evolutionary patterns.
+publisher: Community Documentation Project
+toc: true
+toc-depth: 3
+numbersections: true
+---

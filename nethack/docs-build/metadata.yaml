@@ -1,0 +1,116 @@
+---
+title: "The NetHack Encyclopedia: A Comprehensive Guide"
+subtitle: "Complete Monster Catalog, Item Compendium, and Game Mechanics"
+author:
+  - "NetHack DevTeam"
+  - "Compiled by Claude AI"
+date: "2025-11-19"
+version: "NetHack 3.7"
+publisher: "NetHack Community Documentation Project"
+rights: "NetHack General Public License - See LICENSE for details"
+language: en-US
+
+abstract: |
+  The NetHack Encyclopedia is a comprehensive guide to NetHack 3.7, one of the most
+  complex and engaging roguelike games ever created. This encyclopedia documents all
+  394 monsters, hundreds of items, game mechanics, and systems that make NetHack a
+  legendary gaming experience.
+
+  This volume includes:
+  - Complete Monster Catalog & Bestiary with detailed statistics
+  - Comprehensive Item Compendium covering weapons, armor, magical items, and artifacts
+  - Game mechanics, monster AI behavior, and generation systems
+  - Cross-referenced entries for easy navigation
+
+  Whether you're a new adventurer or a seasoned dungeon crawler, this encyclopedia
+  serves as your ultimate reference guide to the Mazes of Menace.
+
+keywords:
+  - NetHack
+  - Roguelike
+  - Game Guide
+  - Monster Catalog
+  - Item Compendium
+  - RPG
+  - Dungeon Crawler
+
+# Document class and formatting options
+documentclass: book
+classoption:
+  - 11pt
+  - twoside
+  - openright
+
+# Geometry for print-quality PDF
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1.25in
+  - right=1in
+  - bindingoffset=0.25in
+
+# Table of contents configuration
+toc: true
+toc-depth: 3
+toc-title: "Table of Contents"
+lof: false  # List of figures
+lot: false  # List of tables
+
+# Section numbering
+numbersections: true
+secnumdepth: 3
+
+# Typography and fonts
+mainfont: "DejaVu Serif"
+sansfont: "DejaVu Sans"
+monofont: "DejaVu Sans Mono"
+mathfont: "DejaVu Math TeX Gyre"
+fontsize: 11pt
+linestretch: 1.2
+
+# Code block formatting
+listings: true
+listings-no-page-break: false
+listings-disable-line-numbers: false
+
+# Link styling
+linkcolor: blue
+urlcolor: blue
+toccolor: black
+citecolor: blue
+
+# PDF metadata
+subject: "NetHack 3.7 Complete Encyclopedia and Game Guide"
+creator: "Pandoc with XeLaTeX"
+
+# Header and footer
+header-includes: |
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[LE,RO]{\thepage}
+  \fancyhead[LO]{\rightmark}
+  \fancyhead[RE]{\leftmark}
+  \fancyfoot[C]{}
+  \usepackage{graphicx}
+  \usepackage{hyperref}
+  \hypersetup{
+    pdftitle={The NetHack Encyclopedia},
+    pdfauthor={NetHack DevTeam},
+    pdfsubject={NetHack 3.7 Complete Guide},
+    pdfkeywords={NetHack, Roguelike, Game Guide},
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+  }
+
+# EPUB-specific metadata
+epub-cover-image: null
+epub-metadata: |
+  <dc:publisher>NetHack Community Documentation Project</dc:publisher>
+  <dc:rights>NetHack General Public License</dc:rights>
+
+# Bibliography (if needed in future)
+# bibliography: references.bib
+# csl: chicago-author-date.csl
+---

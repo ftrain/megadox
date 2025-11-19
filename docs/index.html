@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megadox - Encyclopedia Collection</title>
+    <meta name="description" content="A comprehensive collection of technical documentation covering Emacs, libsignal, Unix history, PostgreSQL, and NetHack">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --serif: "Palatino", "Palatino Linotype", "Hoefler Text", Georgia, serif;
+            --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            --mono: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --text: #2c3e50;
+            --border: #bdc3c7;
+        }
+
+        body {
+            font-family: var(--serif);
+            line-height: 1.6;
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15), 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .book-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .book-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .book-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.875rem;
+            color: #7f8c8d;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .stat-icon {
+            font-size: 1rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-family: var(--sans);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn-epub {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-epub:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-pdf {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-pdf:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: #7f8c8d;
+            font-size: 0.875rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .about-section p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        code {
+            font-family: var(--mono);
+            background: var(--light);
+            padding: 0.125rem 0.25rem;
+            border-radius: 3px;
+            font-size: 0.875em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Megadox</h1>
+            <p class="subtitle">Encyclopedia Collection</p>
+            <p class="tagline">Comprehensive technical documentation, beautifully compiled</p>
+        </header>
+
+        <div class="about-section">
+            <h2>About This Collection</h2>
+            <p>
+                Megadox is a curated collection of encyclopedic documentation covering some of the most influential
+                software projects in computing history. Each volume has been meticulously researched, analyzed, and
+                compiled into elegant EPUB and PDF formats, perfect for deep technical reading and reference.
+            </p>
+        </div>
+
+        <div class="books-grid">
+            <div class="book-card">
+                <h3 class="book-title">GNU Emacs Internals</h3>
+                <p class="book-description">
+                    An encyclopedic guide to the architecture and implementation of GNU Emacs, covering the C core,
+                    Elisp runtime, display engine, and all major subsystems. A complete reference for understanding
+                    one of the most powerful text editors ever created.
+                </p>
+                <div class="book-stats">
+                    <span class="stat"><span class="stat-icon">📄</span> <span id="emacs-pages">~500+ pages</span></span>
+                    <span class="stat"><span class="stat-icon">💾</span> <span id="emacs-size">Multiple MB</span></span>
+                </div>
+                <div class="download-buttons">
+                    <a href="books/gnu-emacs-internals.epub" class="btn btn-epub">Download EPUB (740KB)</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <h3 class="book-title">libsignal Encyclopedia</h3>
+                <p class="book-description">
+                    A comprehensive guide to Signal's cryptographic protocol library, documenting the mathematical
+                    foundations, protocol specifications, implementation details, and architectural evolution of
+                    the most trusted end-to-end encryption system.
+                </p>
+                <div class="book-stats">
+                    <span class="stat"><span class="stat-icon">📄</span> <span id="libsignal-pages">~300+ pages</span></span>
+                    <span class="stat"><span class="stat-icon">💾</span> <span id="libsignal-size">Multiple MB</span></span>
+                </div>
+                <div class="download-buttons">
+                    <a href="books/libsignal-encyclopedia.epub" class="btn btn-epub">Download EPUB (416KB)</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <h3 class="book-title">PDP-7 Unix: A Complete Reference</h3>
+                <p class="book-description">
+                    The definitive guide to the original Unix system running on the PDP-7. Explore the assembly code,
+                    filesystem, process management, and development tools that birthed the Unix philosophy and changed
+                    computing forever.
+                </p>
+                <div class="book-stats">
+                    <span class="stat"><span class="stat-icon">📄</span> <span id="unix-pages">~250+ pages</span></span>
+                    <span class="stat"><span class="stat-icon">💾</span> <span id="unix-size">Multiple MB</span></span>
+                </div>
+                <div class="download-buttons">
+                    <a href="books/pdp7-unix-complete-reference.epub" class="btn btn-epub">Download EPUB (350KB)</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <h3 class="book-title">PostgreSQL Internals</h3>
+                <p class="book-description">
+                    An in-depth exploration of PostgreSQL's architecture, from the storage layer and query processing
+                    to transaction management, replication, and the extension system. Essential reading for database
+                    developers and architects.
+                </p>
+                <div class="book-stats">
+                    <span class="stat"><span class="stat-icon">📄</span> <span id="postgres-pages">~400+ pages</span></span>
+                    <span class="stat"><span class="stat-icon">💾</span> <span id="postgres-size">Multiple MB</span></span>
+                </div>
+                <div class="download-buttons">
+                    <a href="books/postgresql-encyclopedia.epub" class="btn btn-epub">Download EPUB (489KB)</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <h3 class="book-title">NetHack Encyclopedia</h3>
+                <p class="book-description">
+                    A complete guide to NetHack, covering the bestiary, item compendium, game mechanics, dungeon
+                    generation, codebase architecture, and cultural history of this legendary roguelike game that
+                    has captivated players for decades.
+                </p>
+                <div class="book-stats">
+                    <span class="stat"><span class="stat-icon">📄</span> <span id="nethack-pages">~200+ pages</span></span>
+                    <span class="stat"><span class="stat-icon">💾</span> <span id="nethack-size">Multiple MB</span></span>
+                </div>
+                <div class="download-buttons">
+                    <a href="books/nethack-encyclopedia.epub" class="btn btn-epub">Download EPUB (153KB)</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                Built with <a href="https://pandoc.org/">Pandoc</a> and meticulous care.<br>
+                All documentation compiled using XeLaTeX with elegant typography.<br>
+                <a href="https://github.com/anthropics/megadox">View on GitHub</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
