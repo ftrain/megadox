@@ -100,6 +100,13 @@ body {
     margin-top: 0.5rem;
     border-left: 2px solid rgba(52, 152, 219, 0.15);
     margin-left: 0.5rem;
+    display: none; /* Collapsed by default */
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#TOC ul ul.expanded {
+    display: block;
 }
 
 #TOC ul ul ul {
@@ -109,6 +116,23 @@ body {
 #TOC li {
     margin-bottom: 0.5rem;
     line-height: 1.4;
+    position: relative;
+}
+
+/* Toggle button for items with children */
+#TOC li.has-children > .toc-toggle {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.25rem;
+    user-select: none;
+    color: var(--accent);
+    font-weight: bold;
+    transition: transform 0.2s ease;
+}
+
+#TOC li.has-children.expanded > .toc-toggle {
+    transform: rotate(90deg);
 }
 
 #TOC > ul > li > a {
@@ -129,7 +153,7 @@ body {
 #TOC a {
     color: var(--primary);
     text-decoration: none;
-    display: block;
+    display: inline-block;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
     transition: all 0.2s ease;
@@ -138,6 +162,30 @@ body {
 #TOC a:hover {
     background: rgba(52, 152, 219, 0.1);
     color: var(--accent);
+}
+
+/* Expand/collapse all button */
+.toc-controls {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.toc-control-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    background: white;
+    color: var(--primary);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--sans);
+    transition: all 0.2s ease;
+}
+
+.toc-control-btn:hover {
+    background: var(--light-bg);
+    border-color: var(--accent);
 }
 
 /* Search container */

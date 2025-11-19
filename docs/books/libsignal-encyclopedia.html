@@ -60,6 +60,14 @@ Cryptographic Messaging Infrastructure</span>
     <div class="toc-content" id="toc-content">
       <div class="toc-title">libsignal Encyclopedia: Cryptographic
 Messaging Infrastructure</div>
+      <div class="search-container">
+        <input type="text" id="search-input" placeholder="🔍 Search..." class="search-input">
+        <div id="search-results" class="search-results"></div>
+      </div>
+      <div class="toc-controls">
+        <button class="toc-control-btn" onclick="expandAllTOC()">Expand All</button>
+        <button class="toc-control-btn" onclick="collapseAllTOC()">Collapse All</button>
+      </div>
 <ul>
 <li><a href="#the-libsignal-encyclopedia"
 id="toc-the-libsignal-encyclopedia"><span
@@ -2953,9 +2961,11 @@ Cryptographic Protocol</p>
     </header>
 
     <div class="ai-notice">
-      <strong>📝 AI-Generated Documentation:</strong> This encyclopedia was entirely generated using Claude (Anthropic's AI),
-      from source code analysis to documentation writing. It represents a comprehensive exploration of the codebase,
-      compiled with attention to technical accuracy, historical context, and educational value.
+      <strong>📝 AI-Generated Documentation:</strong> This encyclopedia was entirely created by Claude (Anthropic AI) through comprehensive source code analysis,
+      historical research, and community documentation review. Starting from the actual codebase, Claude examined thousands of source files,
+      traced git history, and synthesized documentation that explains not just <em>what</em> the code does, but <em>why</em> it exists
+      and <em>how</em> it evolved. The result is a deep, systematic exploration compiled with attention to technical accuracy,
+      historical context, and educational value.
     </div>
 
 <h1 data-number="1" id="the-libsignal-encyclopedia"><span
@@ -23287,6 +23297,7 @@ documentation of libsignal.</p>
   </main>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script>
   // Mobile TOC toggle
   function toggleTOC() {
@@ -23313,6 +23324,182 @@ documentation of libsignal.</p>
           behavior: 'smooth',
           block: 'start'
         });
+      }
+    });
+  });
+
+  // Search functionality
+  let searchIndex = [];
+  let fuse = null;
+
+  // Build search index from all headings and paragraphs
+  function buildSearchIndex() {
+    const content = document.querySelector('.book-content');
+    const items = [];
+
+    // Index all headings
+    content.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((heading, idx) => {
+      const id = heading.id || `heading-`;
+      if (!heading.id) heading.id = id;
+
+      items.push({
+        id: id,
+        title: heading.textContent,
+        content: heading.textContent,
+        type: 'heading',
+        level: heading.tagName
+      });
+
+      // Also index the paragraph after each heading for context
+      let next = heading.nextElementSibling;
+      if (next && (next.tagName === 'P' || next.tagName === 'DIV')) {
+        items.push({
+          id: id,
+          title: heading.textContent,
+          content: next.textContent.substring(0, 200),
+          type: 'content',
+          level: heading.tagName
+        });
+      }
+    });
+
+    // Index code blocks
+    content.querySelectorAll('pre code').forEach((code, idx) => {
+      const pre = code.closest('pre');
+      const id = pre.id || `code-`;
+      if (!pre.id) pre.id = id;
+
+      items.push({
+        id: id,
+        title: 'Code: ' + code.textContent.substring(0, 50) + '...',
+        content: code.textContent,
+        type: 'code'
+      });
+    });
+
+    searchIndex = items;
+
+    // Initialize Fuse.js
+    fuse = new Fuse(searchIndex, {
+      keys: ['title', 'content'],
+      threshold: 0.3,
+      includeScore: true,
+      minMatchCharLength: 2
+    });
+  }
+
+  // Perform search
+  function performSearch(query) {
+    const resultsDiv = document.getElementById('search-results');
+
+    if (!query || query.length < 2) {
+      resultsDiv.innerHTML = '';
+      resultsDiv.style.display = 'none';
+      return;
+    }
+
+    const results = fuse.search(query);
+
+    if (results.length === 0) {
+      resultsDiv.innerHTML = '<div class="search-no-results">No results found</div>';
+      resultsDiv.style.display = 'block';
+      return;
+    }
+
+    // Display top 10 results
+    const html = results.slice(0, 10).map(result => {
+      const item = result.item;
+      const typeIcon = item.type === 'heading' ? '📄' : item.type === 'code' ? '💻' : '📝';
+      return '<a href="#' + item.id + '" class="search-result-item" onclick="closeSearchOnMobile()">' +
+        '<span class="search-result-icon">' + typeIcon + '</span>' +
+        '<span class="search-result-title">' + highlightMatch(item.title, query) + '</span>' +
+        '</a>';
+    }).join('');
+
+    resultsDiv.innerHTML = html;
+    resultsDiv.style.display = 'block';
+  }
+
+  // Highlight matching text
+  function highlightMatch(text, query) {
+    const regex = new RegExp('(' + query + ')', 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  // Close search results on mobile
+  function closeSearchOnMobile() {
+    if (window.innerWidth < 1024) {
+      document.getElementById('search-results').style.display = 'none';
+      document.getElementById('search-input').value = '';
+      document.getElementById('toc-content').classList.remove('active');
+    }
+  }
+
+  // Initialize collapsible TOC
+  function initCollapsibleTOC() {
+    const toc = document.getElementById('TOC');
+    if (!toc) return;
+
+    // Find all list items that have children
+    toc.querySelectorAll('li').forEach(li => {
+      const childUl = li.querySelector('ul');
+      if (childUl) {
+        li.classList.add('has-children');
+
+        // Create toggle button
+        const toggle = document.createElement('span');
+        toggle.className = 'toc-toggle';
+        toggle.textContent = '▶';
+        toggle.onclick = function(e) {
+          e.stopPropagation();
+          li.classList.toggle('expanded');
+          childUl.classList.toggle('expanded');
+        };
+
+        // Insert toggle before the link
+        const link = li.querySelector('a');
+        if (link) {
+          li.insertBefore(toggle, link);
+        }
+      }
+    });
+  }
+
+  // Expand all TOC items
+  function expandAllTOC() {
+    document.querySelectorAll('#TOC li.has-children').forEach(li => {
+      li.classList.add('expanded');
+    });
+    document.querySelectorAll('#TOC ul ul').forEach(ul => {
+      ul.classList.add('expanded');
+    });
+  }
+
+  // Collapse all TOC items
+  function collapseAllTOC() {
+    document.querySelectorAll('#TOC li.has-children').forEach(li => {
+      li.classList.remove('expanded');
+    });
+    document.querySelectorAll('#TOC ul ul').forEach(ul => {
+      ul.classList.remove('expanded');
+    });
+  }
+
+  // Initialize search when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    initCollapsibleTOC();
+    buildSearchIndex();
+
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', (e) => {
+      performSearch(e.target.value);
+    });
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      const searchContainer = document.querySelector('.search-container');
+      if (!searchContainer.contains(e.target)) {
+        document.getElementById('search-results').style.display = 'none';
       }
     });
   });

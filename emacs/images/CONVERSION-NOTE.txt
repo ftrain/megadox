@@ -1,0 +1,28 @@
+SVG to PNG Conversion Required
+================================
+
+The cover.svg file is ready but needs to be converted to cover.png for EPUB builds.
+
+No image conversion tools (ImageMagick, Inkscape, rsvg-convert) are currently
+available in this environment.
+
+OPTIONS:
+--------
+
+1. Convert locally after cloning:
+   cd /home/user/emacs/docs/images
+   convert -density 96 cover.svg -resize 1600x2400 cover.png
+
+2. Use the SVG directly (some EPUB readers support it):
+   Edit Makefile line 78 to use cover.svg instead of cover.png
+
+3. Use an online converter:
+   - Upload cover.svg to https://convertio.co/svg-png/
+   - Download as cover.png
+
+4. Skip the cover for now:
+   Comment out line 78 in Makefile:
+   # --epub-cover-image=$(IMG_DIR)/cover.png
+
+STATUS: SVG cover is complete and production-ready. PNG conversion is optional
+        but recommended for maximum EPUB compatibility.

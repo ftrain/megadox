@@ -63,6 +63,10 @@ Reference</span>
         <input type="text" id="search-input" placeholder="🔍 Search..." class="search-input">
         <div id="search-results" class="search-results"></div>
       </div>
+      <div class="toc-controls">
+        <button class="toc-control-btn" onclick="expandAllTOC()">Expand All</button>
+        <button class="toc-control-btn" onclick="collapseAllTOC()">Collapse All</button>
+      </div>
 <ul>
 <li><a href="#frontmatter" id="toc-frontmatter">Frontmatter</a>
 <ul>
@@ -29062,8 +29066,59 @@ class="header-section-number">12</span> Glossary</h1>
     }
   }
 
+  // Initialize collapsible TOC
+  function initCollapsibleTOC() {
+    const toc = document.getElementById('TOC');
+    if (!toc) return;
+
+    // Find all list items that have children
+    toc.querySelectorAll('li').forEach(li => {
+      const childUl = li.querySelector('ul');
+      if (childUl) {
+        li.classList.add('has-children');
+
+        // Create toggle button
+        const toggle = document.createElement('span');
+        toggle.className = 'toc-toggle';
+        toggle.textContent = '▶';
+        toggle.onclick = function(e) {
+          e.stopPropagation();
+          li.classList.toggle('expanded');
+          childUl.classList.toggle('expanded');
+        };
+
+        // Insert toggle before the link
+        const link = li.querySelector('a');
+        if (link) {
+          li.insertBefore(toggle, link);
+        }
+      }
+    });
+  }
+
+  // Expand all TOC items
+  function expandAllTOC() {
+    document.querySelectorAll('#TOC li.has-children').forEach(li => {
+      li.classList.add('expanded');
+    });
+    document.querySelectorAll('#TOC ul ul').forEach(ul => {
+      ul.classList.add('expanded');
+    });
+  }
+
+  // Collapse all TOC items
+  function collapseAllTOC() {
+    document.querySelectorAll('#TOC li.has-children').forEach(li => {
+      li.classList.remove('expanded');
+    });
+    document.querySelectorAll('#TOC ul ul').forEach(ul => {
+      ul.classList.remove('expanded');
+    });
+  }
+
   // Initialize search when page loads
   document.addEventListener('DOMContentLoaded', () => {
+    initCollapsibleTOC();
     buildSearchIndex();
 
     const searchInput = document.getElementById('search-input');

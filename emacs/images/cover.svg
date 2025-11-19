@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2400" viewBox="0 0 1600 2400">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099cc;stop-opacity:1" />
+    </linearGradient>
+    <pattern id="codePattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse" opacity="0.05">
+      <text x="10" y="20" font-family="monospace" font-size="12" fill="#00d4ff">(defun</text>
+      <text x="10" y="50" font-family="monospace" font-size="12" fill="#00d4ff">lambda</text>
+      <text x="10" y="80" font-family="monospace" font-size="12" fill="#00d4ff">eval</text>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="2400" fill="url(#bgGradient)"/>
+
+  <!-- Code pattern background -->
+  <rect width="1600" height="2400" fill="url(#codePattern)"/>
+
+  <!-- Decorative accent bars -->
+  <rect x="0" y="400" width="1600" height="4" fill="url(#accentGradient)"/>
+  <rect x="0" y="1900" width="1600" height="4" fill="url(#accentGradient)"/>
+
+  <!-- Top accent elements -->
+  <circle cx="200" cy="300" r="60" fill="none" stroke="#00d4ff" stroke-width="3" opacity="0.3"/>
+  <circle cx="1400" cy="350" r="80" fill="none" stroke="#0099cc" stroke-width="2" opacity="0.2"/>
+
+  <!-- Main title -->
+  <text x="800" y="900" font-family="Georgia, serif" font-size="120" font-weight="bold"
+        text-anchor="middle" fill="#ffffff">GNU Emacs</text>
+
+  <!-- Subtitle section background -->
+  <rect x="100" y="1050" width="1400" height="400" fill="#00d4ff" opacity="0.08" rx="10"/>
+
+  <!-- Subtitle -->
+  <text x="800" y="1200" font-family="Georgia, serif" font-size="72" font-style="italic"
+        text-anchor="middle" fill="#00d4ff">An Encyclopedic Guide</text>
+  <text x="800" y="1320" font-family="Georgia, serif" font-size="72" font-style="italic"
+        text-anchor="middle" fill="#00d4ff">to the Codebase</text>
+
+  <!-- Technical tagline -->
+  <text x="800" y="1480" font-family="Courier, monospace" font-size="32"
+        text-anchor="middle" fill="#00d4ff" opacity="0.8">;; Comprehensive Documentation for Developers</text>
+
+  <!-- Decorative code snippets on sides -->
+  <g opacity="0.4">
+    <text x="120" y="1600" font-family="Courier, monospace" font-size="18" fill="#00d4ff">(defun explore</text>
+    <text x="120" y="1650" font-family="Courier, monospace" font-size="18" fill="#00d4ff">  (codebase)</text>
+    <text x="1300" y="1600" font-family="Courier, monospace" font-size="18" fill="#00d4ff" text-anchor="end">M-x customize</text>
+    <text x="1300" y="1650" font-family="Courier, monospace" font-size="18" fill="#00d4ff" text-anchor="end">C-h f describe</text>
+  </g>
+
+  <!-- Bottom accent elements -->
+  <circle cx="400" cy="2200" r="70" fill="none" stroke="#00d4ff" stroke-width="3" opacity="0.25"/>
+  <circle cx="1200" cy="2150" r="90" fill="none" stroke="#0099cc" stroke-width="2" opacity="0.15"/>
+
+  <!-- Bottom footer area -->
+  <text x="800" y="2320" font-family="Georgia, serif" font-size="28"
+        text-anchor="middle" fill="#ffffff" opacity="0.7">Complete Reference | Developer's Guide | Open Source Documentation</text>
+</svg>
