@@ -1,3 +1,82 @@
+#!/usr/bin/env bash
+# Generate index.html dynamically from built documentation
+
+set -euo pipefail
+
+# Output file
+OUTPUT="docs/index.html"
+DOCS_DIR="docs"
+BOOKS_DIR="$DOCS_DIR/books"
+
+# Get file sizes
+get_size() {
+    local file="$1"
+    if [ -f "$file" ]; then
+        du -h "$file" | cut -f1
+    else
+        echo "N/A"
+    fi
+}
+
+# Get PDF pages
+get_pages() {
+    local file="$1"
+    if [ -f "$file" ] && command -v pdfinfo > /dev/null 2>&1; then
+        pdfinfo "$file" 2>/dev/null | grep 'Pages:' | awk '{print $2}' || echo "N/A"
+    else
+        echo "N/A"
+    fi
+}
+
+# Generate a book card
+generate_book_card() {
+    local book_id="$1"
+    local title="$2"
+    local description="$3"
+    local chapters="$4"
+
+    local epub_file="$BOOKS_DIR/${book_id}.epub"
+    local pdf_file="$BOOKS_DIR/${book_id}.pdf"
+    local html_file="$BOOKS_DIR/${book_id}.html"
+
+    local epub_size=$(get_size "$epub_file")
+    local pdf_size=$(get_size "$pdf_file")
+    local pdf_pages=$(get_pages "$pdf_file")
+
+    cat << CARD
+            <div class="book-card">
+                <h3 class="book-title">$title</h3>
+                <p class="book-description">
+                    $description
+                </p>
+                <div class="book-stats">
+                    <span class="stat">📄 $chapters</span>
+CARD
+
+    if [ "$pdf_pages" != "N/A" ]; then
+        echo "                    <span class=\"stat\">📖 $pdf_pages pages</span>"
+    fi
+
+    cat << CARD
+                </div>
+                <div class="download-buttons">
+                    <a href="books/${book_id}.html" class="btn btn-html">Read Online</a>
+                    <a href="books/${book_id}.epub" class="btn btn-epub">EPUB ($epub_size)</a>
+CARD
+
+    if [ -f "$pdf_file" ]; then
+        echo "                    <a href=\"books/${book_id}.pdf\" class=\"btn btn-pdf\">PDF ($pdf_size)</a>"
+    fi
+
+    cat << CARD
+                </div>
+            </div>
+
+CARD
+}
+
+# Start generating HTML
+cat > "$OUTPUT" << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -253,102 +332,41 @@
         </div>
 
         <div class="books-grid">
-            <div class="book-card">
-                <h3 class="book-title">GNU Emacs Internals</h3>
-                <p class="book-description">
-                    An encyclopedic guide to the architecture and implementation of GNU Emacs, covering the C core, Elisp runtime, display engine, and all major subsystems.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 27 Chapters</span>
-                    <span class="stat">📖 884 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/gnu-emacs-internals.html" class="btn btn-html">Read Online</a>
-                    <a href="books/gnu-emacs-internals.epub" class="btn btn-epub">EPUB (700K)</a>
-                    <a href="books/gnu-emacs-internals.pdf" class="btn btn-pdf">PDF (2.2M)</a>
-                </div>
-            </div>
+EOF
 
-            <div class="book-card">
-                <h3 class="book-title">libsignal Encyclopedia</h3>
-                <p class="book-description">
-                    A comprehensive guide to Signal's cryptographic protocol library, documenting the mathematical foundations, protocol specifications, and implementation details.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 14 Chapters</span>
-                    <span class="stat">📖 459 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/libsignal-encyclopedia.html" class="btn btn-html">Read Online</a>
-                    <a href="books/libsignal-encyclopedia.epub" class="btn btn-epub">EPUB (420K)</a>
-                    <a href="books/libsignal-encyclopedia.pdf" class="btn btn-pdf">PDF (1.2M)</a>
-                </div>
-            </div>
+# Generate book cards
+generate_book_card "gnu-emacs-internals" \
+    "GNU Emacs Internals" \
+    "An encyclopedic guide to the architecture and implementation of GNU Emacs, covering the C core, Elisp runtime, display engine, and all major subsystems." \
+    "27 Chapters" >> "$OUTPUT"
 
-            <div class="book-card">
-                <h3 class="book-title">PDP-7 Unix: A Complete Reference</h3>
-                <p class="book-description">
-                    The definitive guide to the original Unix system running on the PDP-7, exploring assembly code, filesystem, and process management.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 13 Chapters</span>
-                    <span class="stat">📖 622 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/pdp7-unix-complete-reference.html" class="btn btn-html">Read Online</a>
-                    <a href="books/pdp7-unix-complete-reference.epub" class="btn btn-epub">EPUB (352K)</a>
-                    <a href="books/pdp7-unix-complete-reference.pdf" class="btn btn-pdf">PDF (1.2M)</a>
-                </div>
-            </div>
+generate_book_card "libsignal-encyclopedia" \
+    "libsignal Encyclopedia" \
+    "A comprehensive guide to Signal's cryptographic protocol library, documenting the mathematical foundations, protocol specifications, and implementation details." \
+    "14 Chapters" >> "$OUTPUT"
 
-            <div class="book-card">
-                <h3 class="book-title">PostgreSQL Internals</h3>
-                <p class="book-description">
-                    An in-depth exploration of PostgreSQL's architecture, from storage layer and query processing to transaction management and replication.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 16 Chapters</span>
-                    <span class="stat">📖 587 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/postgresql-encyclopedia.html" class="btn btn-html">Read Online</a>
-                    <a href="books/postgresql-encyclopedia.epub" class="btn btn-epub">EPUB (492K)</a>
-                    <a href="books/postgresql-encyclopedia.pdf" class="btn btn-pdf">PDF (1.6M)</a>
-                </div>
-            </div>
+generate_book_card "pdp7-unix-complete-reference" \
+    "PDP-7 Unix: A Complete Reference" \
+    "The definitive guide to the original Unix system running on the PDP-7, exploring assembly code, filesystem, and process management." \
+    "13 Chapters" >> "$OUTPUT"
 
-            <div class="book-card">
-                <h3 class="book-title">NetHack Encyclopedia</h3>
-                <p class="book-description">
-                    A complete guide to NetHack, covering the bestiary, item compendium, game mechanics, and codebase architecture.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 15 Chapters</span>
-                    <span class="stat">📖 186 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/nethack-encyclopedia.html" class="btn btn-html">Read Online</a>
-                    <a href="books/nethack-encyclopedia.epub" class="btn btn-epub">EPUB (156K)</a>
-                    <a href="books/nethack-encyclopedia.pdf" class="btn btn-pdf">PDF (540K)</a>
-                </div>
-            </div>
+generate_book_card "postgresql-encyclopedia" \
+    "PostgreSQL Internals" \
+    "An in-depth exploration of PostgreSQL's architecture, from storage layer and query processing to transaction management and replication." \
+    "16 Chapters" >> "$OUTPUT"
 
-            <div class="book-card">
-                <h3 class="book-title">Surge XT Encyclopedia</h3>
-                <p class="book-description">
-                    An encyclopedic guide to the Surge XT synthesizer codebase, covering DSP theory, oscillators, filters, effects, and modulation systems.
-                </p>
-                <div class="book-stats">
-                    <span class="stat">📄 46 Chapters</span>
-                    <span class="stat">📖 1260 pages</span>
-                </div>
-                <div class="download-buttons">
-                    <a href="books/surge-xt-encyclopedia.html" class="btn btn-html">Read Online</a>
-                    <a href="books/surge-xt-encyclopedia.epub" class="btn btn-epub">EPUB (1.1M)</a>
-                    <a href="books/surge-xt-encyclopedia.pdf" class="btn btn-pdf">PDF (3.3M)</a>
-                </div>
-            </div>
+generate_book_card "nethack-encyclopedia" \
+    "NetHack Encyclopedia" \
+    "A complete guide to NetHack, covering the bestiary, item compendium, game mechanics, and codebase architecture." \
+    "15 Chapters" >> "$OUTPUT"
 
+generate_book_card "surge-xt-encyclopedia" \
+    "Surge XT Encyclopedia" \
+    "An encyclopedic guide to the Surge XT synthesizer codebase, covering DSP theory, oscillators, filters, effects, and modulation systems." \
+    "46 Chapters" >> "$OUTPUT"
+
+# Close HTML
+cat >> "$OUTPUT" << 'EOF'
         </div>
 
         <footer>
@@ -361,3 +379,6 @@
     </div>
 </body>
 </html>
+EOF
+
+echo "✓ Generated $OUTPUT"
