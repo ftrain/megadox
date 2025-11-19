@@ -81,10 +81,6 @@ $endif$
         <input type="text" id="search-input" placeholder="🔍 Search..." class="search-input">
         <div id="search-results" class="search-results"></div>
       </div>
-      <div class="toc-controls">
-        <button class="toc-control-btn" onclick="expandAllTOC()">Expand All</button>
-        <button class="toc-control-btn" onclick="collapseAllTOC()">Collapse All</button>
-      </div>
 $if(toc)$
 $toc$
 $endif$
@@ -249,20 +245,6 @@ $body$
       document.getElementById('search-input').value = '';
       document.getElementById('toc-content').classList.remove('active');
     }
-  }
-
-  // Expand all TOC items (now using <details> elements)
-  function expandAllTOC() {
-    document.querySelectorAll('#TOC details').forEach(details => {
-      details.open = true;
-    });
-  }
-
-  // Collapse all TOC items (now using <details> elements)
-  function collapseAllTOC() {
-    document.querySelectorAll('#TOC details').forEach(details => {
-      details.open = false;
-    });
   }
 
   // Initialize search when page loads

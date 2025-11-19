@@ -83,128 +83,50 @@ body {
 
 #TOC {
     font-family: var(--sans);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
 }
 
 #TOC ul {
     list-style: none;
-    padding-left: 0;
+    padding-left: 1rem;
+    margin: 0;
 }
 
-#TOC > ul > li {
-    margin-bottom: 0.75rem;
-}
-
-/* Native details/summary TOC styling */
-#TOC details {
-    margin: 0.5rem 0;
+#TOC li {
+    margin: 0.1rem 0;
 }
 
 #TOC summary {
     cursor: pointer;
     user-select: none;
-    list-style: none; /* Remove default marker */
-    padding: 0.25rem 0;
-    display: flex;
-    align-items: center;
-    transition: color 0.2s ease;
 }
 
-/* Hide default disclosure triangle */
 #TOC summary::-webkit-details-marker {
     display: none;
 }
 
+#TOC summary::marker {
+    content: none;
+}
+
 #TOC summary::before {
-    content: '▶';
-    display: inline-block;
-    width: 1em;
-    margin-right: 0.5rem;
+    content: '▶ ';
     color: var(--accent);
-    font-size: 0.75em;
-    transition: transform 0.2s ease;
+    font-size: 0.7em;
 }
 
 #TOC details[open] > summary::before {
-    transform: rotate(90deg);
-}
-
-#TOC summary:hover {
-    color: var(--accent);
-}
-
-#TOC .toc-nested {
-    padding-left: 1.25rem;
-    margin-top: 0.5rem;
-    border-left: 2px solid rgba(52, 152, 219, 0.15);
-    margin-left: 0.5rem;
-}
-
-#TOC details details .toc-nested {
-    border-left-color: rgba(52, 152, 219, 0.1);
-}
-
-#TOC li {
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-    position: relative;
-}
-
-#TOC li.toc-details-item {
-    list-style: none;
-}
-
-#TOC > ul > li > a {
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-#TOC ul ul li a {
-    font-size: 0.875rem;
-    opacity: 0.9;
-}
-
-#TOC ul ul ul li a {
-    font-size: 0.85rem;
-    opacity: 0.85;
+    content: '▼ ';
 }
 
 #TOC a {
     color: var(--primary);
     text-decoration: none;
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    transition: all 0.2s ease;
 }
 
 #TOC a:hover {
-    background: rgba(52, 152, 219, 0.1);
     color: var(--accent);
-}
-
-/* Expand/collapse all button */
-.toc-controls {
-    margin-bottom: 1rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.toc-control-btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-    border: 1px solid var(--border);
-    background: white;
-    color: var(--primary);
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: var(--sans);
-    transition: all 0.2s ease;
-}
-
-.toc-control-btn:hover {
-    background: var(--light-bg);
-    border-color: var(--accent);
 }
 
 /* Search container */

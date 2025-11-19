@@ -30,14 +30,8 @@ def transform_list_to_details(ul_element, soup, level=0):
             if link:
                 # Create details and summary elements
                 details = soup.new_tag('details')
-                details['class'] = 'toc-details'
-
-                # Top-level items are open by default
-                if level == 0:
-                    details['open'] = None
 
                 summary = soup.new_tag('summary')
-                summary['class'] = 'toc-summary'
 
                 # Move the link into the summary
                 link_copy = link.extract()
@@ -55,7 +49,6 @@ def transform_list_to_details(ul_element, soup, level=0):
 
                 # Clear the li and add the details
                 li.clear()
-                li['class'] = 'toc-details-item'
                 li.append(details)
 
 
@@ -72,14 +65,14 @@ def transform_toc(html_content):
         print("Warning: Could not find toc-content div", file=sys.stderr)
         return html_content
 
-    # Find the first <ul> after toc-controls
-    toc_controls = toc_content.find('div', class_='toc-controls')
-    if not toc_controls:
-        print("Warning: Could not find toc-controls div", file=sys.stderr)
+    # Find the first <ul> in toc-content (after search-container)
+    search_container = toc_content.find('div', class_='search-container')
+    if not search_container:
+        print("Warning: Could not find search-container div", file=sys.stderr)
         return html_content
 
-    # Get the ul that comes after toc-controls
-    toc_ul = toc_controls.find_next_sibling('ul')
+    # Get the ul that comes after search-container
+    toc_ul = search_container.find_next_sibling('ul')
     if not toc_ul:
         print("Warning: Could not find TOC <ul> element", file=sys.stderr)
         return html_content
@@ -92,8 +85,8 @@ def transform_toc(html_content):
     toc_ul_copy = toc_ul.extract()
     toc_nav.append(toc_ul_copy)
 
-    # Insert the nav after toc-controls
-    toc_controls.insert_after(toc_nav)
+    # Insert the nav after search-container
+    search_container.insert_after(toc_nav)
 
     return str(soup)
 
