@@ -288,9 +288,9 @@ re_compile_pattern (const char *pattern, ptrdiff_t length,
 1. **Lexical Analysis**: Parse pattern into tokens
    - Literal characters
    - Special characters (*, +, ?, |, etc.)
-   - Escape sequences (\n, \t, \d, etc.)
+   - Escape sequences (`\n`, `\t`, `\d`, etc.)
    - Character classes ([a-z], [^0-9])
-   - Groups \(...\)
+   - Groups `\(...\)`
 
 2. **Syntax Validation**: Check for errors
    - Unmatched brackets

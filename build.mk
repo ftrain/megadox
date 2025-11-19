@@ -88,7 +88,7 @@ endef
 
 # File size formatting
 define show_size
-	@du -h "$(1)" | cut -f1
+	du -h "$(1)" | cut -f1
 endef
 
 # Check dependencies
