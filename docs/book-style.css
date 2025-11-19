@@ -21,10 +21,12 @@
 
 body {
     font-family: var(--serif);
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--primary);
     background: #fff;
     font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Mobile-first layout */
@@ -301,10 +303,20 @@ body {
 .ai-notice {
     background: #fff3cd;
     border-left: 4px solid #ffc107;
-    padding: 1rem;
+    padding: 1.5rem;
     margin: 2rem 0;
     border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.ai-notice strong {
+    color: #856404;
+}
+
+.ai-notice em {
+    font-style: italic;
+    color: #6c5a00;
 }
 
 /* Typography */
@@ -338,6 +350,12 @@ h4 {
 
 p {
     margin-bottom: 1rem;
+    max-width: 75ch; /* Optimal line length for readability */
+}
+
+/* Allow wider content in lists and tables */
+li > p, td > p, th > p {
+    max-width: none;
 }
 
 a {
@@ -347,6 +365,27 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-to-content:focus {
+    top: 0;
 }
 
 /* Code blocks */

@@ -58,7 +58,12 @@ sudo apt-get install pandoc texlive-xetex texlive-fonts-recommended
 
 ### Building Documentation
 
+**First time?** See [INSTALL-PANDOC.md](INSTALL-PANDOC.md) for setting up pandoc and LaTeX.
+
 ```bash
+# Check if you have the required tools
+make check
+
 # Build all documentation projects
 make all
 
@@ -72,11 +77,8 @@ make unix-history-repo/docs
 # Build specific format
 cd <project-directory>
 make epub    # EPUB only
-make pdf     # PDF only
+make pdf     # PDF only (requires XeLaTeX)
 make html    # Standalone HTML
-
-# Check dependencies
-make check
 
 # View statistics
 make stats
@@ -84,6 +86,8 @@ make stats
 # Clean build artifacts
 make clean
 ```
+
+**Note**: PDF generation requires XeLaTeX. If you only want EPUB/HTML, you can skip the LaTeX installation.
 
 ### Project Structure
 
@@ -120,12 +124,25 @@ All documents are compiled with:
 
 ## 🤝 Contributing
 
-This is a documentation compilation project. To contribute:
+We welcome contributions! You can help by:
+
+- **Reporting errors or inaccuracies** in the documentation
+- **Improving explanations** of complex topics
+- **Adding missing content** or examples
+- **Enhancing the build system** or website
+- **Improving accessibility** and readability
+
+**See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.**
+
+Quick start for contributors:
 
 1. Fork the repository
-2. Add or improve documentation
-3. Ensure builds succeed: `make check && make all`
-4. Submit a pull request
+2. Install dependencies: see [INSTALL-PANDOC.md](INSTALL-PANDOC.md)
+3. Make your changes to Markdown files
+4. Test: `make check && make html`
+5. Submit a pull request
+
+All technical claims should be verifiable against the actual source code.
 
 ## 📄 License
 
@@ -139,9 +156,27 @@ Documentation in this repository follows the licenses of their respective projec
 
 See individual project directories for specific license information.
 
+## 🤖 AI-Generated Documentation
+
+This entire collection—from source code analysis to documentation writing, build system creation, and website design—was generated using **Claude** (Anthropic's AI).
+
+### How It Was Created
+
+Starting from actual codebases, Claude:
+- Examined thousands of source files across multiple programming languages
+- Traced git history to understand architectural evolution
+- Synthesized documentation explaining not just *what* the code does, but *why* it exists and *how* it evolved
+- Designed and implemented the complete build and publishing system
+- Created an elegant web interface with search and navigation features
+
+The result is a deep, systematic exploration of each project compiled with attention to technical accuracy, historical context, and educational value.
+
+**For full details on the AI generation methodology, see [AI-GENERATION.md](AI-GENERATION.md)**
+
 ## 🙏 Acknowledgments
 
 This collection was created using:
+- [Claude](https://www.anthropic.com/claude) (Anthropic's AI) for analysis and writing
 - [Pandoc](https://pandoc.org/) for document conversion
 - [XeLaTeX](https://www.tug.org/xelatex/) for PDF generation
 - [GitHub Pages](https://pages.github.com/) for hosting
