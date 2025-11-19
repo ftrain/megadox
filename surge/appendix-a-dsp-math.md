@@ -6,20 +6,6 @@ Digital Signal Processing (DSP) is the mathematical backbone of software synthes
 
 Whether you're a student learning DSP, a developer implementing new features, or a musician wanting to understand the theory behind your favorite synthesizer, this primer bridges the gap between abstract mathematics and practical audio synthesis.
 
----
-
-## Table of Contents
-
-1. [Signals and Systems](#1-signals-and-systems)
-2. [Fourier Analysis](#2-fourier-analysis)
-3. [Digital Filters](#3-digital-filters)
-4. [Common Functions](#4-common-functions)
-5. [Interpolation](#5-interpolation)
-6. [Windowing Functions](#6-windowing-functions)
-7. [Conversions](#7-conversions)
-
----
-
 ## 1. Signals and Systems
 
 ### 1.1 Continuous vs. Discrete Signals

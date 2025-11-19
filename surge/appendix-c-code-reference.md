@@ -2,18 +2,6 @@
 
 Quick reference guide to the Surge XT codebase for developers.
 
-## Table of Contents
-
-- [File Organization](#file-organization)
-- [Key Classes](#key-classes)
-- [Constants Reference](#constants-reference)
-- [Enums](#enums)
-- [Type System](#type-system)
-- [Utility Functions](#utility-functions)
-- [Module Interface](#module-interface)
-
----
-
 ## File Organization
 
 ### Top-Level Source Structure
