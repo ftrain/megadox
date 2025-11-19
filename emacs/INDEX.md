@@ -6,7 +6,7 @@
 
 ## A
 
-**Address Sanitizer** → Development/01-build-and-testing.md
+**Address Sanitizer** → 17-development/01-build-and-testing.md
 **Advice System** → 01-architecture/02-design-philosophy.md
 **alloc.c** → 03-elisp-runtime/02-memory-management.md
 **Android Port** → 06-platform-support/01-abstraction-layer.md, 19-industry-context/01-technology-trends.md

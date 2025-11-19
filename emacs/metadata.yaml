@@ -83,10 +83,10 @@ geometry:
   - bindingoffset=0.5in
 
 # Fonts (XeLaTeX)
-mainfont: "Palatino"
-sansfont: "Helvetica"
-monofont: "Menlo"
-mathfont: "Palatino"
+mainfont: "Liberation Serif"
+sansfont: "Liberation Sans"
+monofont: "Liberation Mono"
+mathfont: "Liberation Serif"
 mainfontoptions:
   - Ligatures=TeX
   - Numbers=OldStyle
@@ -325,7 +325,7 @@ include-after: |
   \printindex
 
 # HTML Specific Options
-# css: "templates/book.css"
+css: "templates/book.css"
 html-math-method: mathjax
 self-contained: false
 embed-resources: false
@@ -334,7 +334,7 @@ section-divs: true
 html-q-tags: true
 
 # EPUB Specific Options
-# epub-cover-image: "images/cover.png"
+epub-cover-image: "images/cover.png"
 epub-title-page: true
 epub-metadata: |
   <dc:publisher>Free Software Foundation</dc:publisher>
