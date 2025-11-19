@@ -17,7 +17,8 @@ PROJECTS := \
 	libsignal/encyclopedia \
 	unix-history-repo/docs \
 	postgresql \
-	nethack
+	nethack \
+	surge
 
 # Output directory for collected artifacts
 DIST_DIR := dist
