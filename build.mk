@@ -12,6 +12,12 @@ CYAN    := \033[0;36m
 BOLD    := \033[1m
 NC      := \033[0m
 
+# Directory setup (must be defined first)
+COMMON_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
+MEGADOX_ROOT := $(abspath $(COMMON_DIR))
+OUTPUT_DIR ?= output
+BUILD_DIR ?= .build
+
 # Build tools
 PANDOC := pandoc
 PANDOC_VERSION := $(shell $(PANDOC) --version 2>/dev/null | head -n1)
@@ -52,13 +58,8 @@ PANDOC_HTML := \
 	--to html5 \
 	--standalone \
 	--mathjax \
-	--css=$(COMMON_DIR)book-style.css \
-	--template=$(COMMON_DIR)book-template.html
-
-# Directory setup
-COMMON_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
-OUTPUT_DIR ?= output
-BUILD_DIR ?= .build
+	--css=../book-style.css \
+	--template=$(MEGADOX_ROOT)/book-template.html
 
 # Utility functions
 define print_header
