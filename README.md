@@ -2,7 +2,7 @@
 
 > A comprehensive collection of encyclopedic technical documentation
 
-[![GitHub Pages](https://img.shields.io/badge/docs-live-blue)](https://anthropics.github.io/megadox/)
+[![GitHub Pages](https://img.shields.io/badge/docs-live-blue)](https://ftrain.github.io/megadox/)
 
 ## Overview
 
@@ -12,34 +12,34 @@ Megadox is a curated collection of encyclopedic documentation covering some of t
 
 ### Available Encyclopedias
 
-1. **[GNU Emacs Internals](https://anthropics.github.io/megadox/)** (740KB EPUB)
+1. **[GNU Emacs Internals](https://ftrain.github.io/megadox/)** (740KB EPUB)
    - Comprehensive guide to Emacs architecture and implementation
    - Covers C core, Elisp runtime, display engine, and major subsystems
    - 31 chapters spanning the entire codebase
 
-2. **[libsignal Encyclopedia](https://anthropics.github.io/megadox/)** (416KB EPUB)
+2. **[libsignal Encyclopedia](https://ftrain.github.io/megadox/)** (416KB EPUB)
    - Complete guide to Signal's cryptographic protocol library
    - Cryptographic primitives, protocol specifications, and implementation details
    - Architectural evolution from 2013-2025
 
-3. **[PDP-7 Unix: A Complete Reference](https://anthropics.github.io/megadox/)** (350KB EPUB)
+3. **[PDP-7 Unix: A Complete Reference](https://ftrain.github.io/megadox/)** (350KB EPUB)
    - Definitive guide to the original Unix system
    - Assembly code, filesystem, process management, and development tools
    - Historical context and the birth of the Unix philosophy
 
-4. **[PostgreSQL Internals](https://anthropics.github.io/megadox/)** (489KB EPUB)
+4. **[PostgreSQL Internals](https://ftrain.github.io/megadox/)** (489KB EPUB)
    - In-depth exploration of PostgreSQL's architecture
    - Storage layer, query processing, transaction management, and replication
    - Extension system and community culture
 
-5. **[NetHack Encyclopedia](https://anthropics.github.io/megadox/)** (153KB EPUB)
+5. **[NetHack Encyclopedia](https://ftrain.github.io/megadox/)** (153KB EPUB)
    - Complete guide to the legendary roguelike game
    - Bestiary, item compendium, game mechanics, and dungeon generation
    - Codebase architecture and cultural history
 
 ## 🌐 Live Website
 
-Visit the **[Megadox GitHub Pages site](https://anthropics.github.io/megadox/)** to browse and download all documentation.
+Visit the **[Megadox GitHub Pages site](https://ftrain.github.io/megadox/)** to browse and download all documentation.
 
 ## 🛠️ Build System
 
@@ -149,8 +149,8 @@ This collection was created using:
 
 ## 🔗 Links
 
-- **Website**: [https://anthropics.github.io/megadox/](https://anthropics.github.io/megadox/)
-- **Repository**: [https://github.com/anthropics/megadox](https://github.com/anthropics/megadox)
+- **Website**: [https://ftrain.github.io/megadox/](https://ftrain.github.io/megadox/)
+- **Repository**: [https://github.com/ftrain/megadox](https://github.com/ftrain/megadox)
 
 ---
 

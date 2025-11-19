@@ -173,6 +173,16 @@
             transform: translateY(-2px);
         }
 
+        .btn-html {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-html:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
         footer {
             text-align: center;
             padding: 3rem 0 2rem;
@@ -244,7 +254,13 @@
             <p>
                 Megadox is a curated collection of encyclopedic documentation covering some of the most influential
                 software projects in computing history. Each volume has been meticulously researched, analyzed, and
-                compiled into elegant EPUB and PDF formats, perfect for deep technical reading and reference.
+                compiled into elegant EPUB, PDF, and HTML formats, perfect for deep technical reading and reference.
+            </p>
+            <p style="margin-top: 1rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                <strong>📝 AI-Generated Documentation:</strong> This entire collection—from source code analysis to
+                documentation writing, build system creation, and website design—was generated using Claude (Anthropic's AI).
+                These encyclopedias represent comprehensive explorations of each codebase, compiled with attention to
+                technical accuracy, historical context, and educational value.
             </p>
         </div>
 
@@ -261,7 +277,8 @@
                     <span class="stat"><span class="stat-icon">💾</span> <span id="emacs-size">Multiple MB</span></span>
                 </div>
                 <div class="download-buttons">
-                    <a href="books/gnu-emacs-internals.epub" class="btn btn-epub">Download EPUB (740KB)</a>
+                    <a href="books/gnu-emacs-internals.html" class="btn btn-html">Read Online</a>
+                    <a href="books/gnu-emacs-internals.epub" class="btn btn-epub">EPUB (740KB)</a>
                 </div>
             </div>
 
@@ -277,7 +294,8 @@
                     <span class="stat"><span class="stat-icon">💾</span> <span id="libsignal-size">Multiple MB</span></span>
                 </div>
                 <div class="download-buttons">
-                    <a href="books/libsignal-encyclopedia.epub" class="btn btn-epub">Download EPUB (416KB)</a>
+                    <a href="books/libsignal-encyclopedia.html" class="btn btn-html">Read Online</a>
+                    <a href="books/libsignal-encyclopedia.epub" class="btn btn-epub">EPUB (416KB)</a>
                 </div>
             </div>
 
@@ -293,7 +311,8 @@
                     <span class="stat"><span class="stat-icon">💾</span> <span id="unix-size">Multiple MB</span></span>
                 </div>
                 <div class="download-buttons">
-                    <a href="books/pdp7-unix-complete-reference.epub" class="btn btn-epub">Download EPUB (350KB)</a>
+                    <a href="books/pdp7-unix-complete-reference.html" class="btn btn-html">Read Online</a>
+                    <a href="books/pdp7-unix-complete-reference.epub" class="btn btn-epub">EPUB (350KB)</a>
                 </div>
             </div>
 
@@ -309,7 +328,8 @@
                     <span class="stat"><span class="stat-icon">💾</span> <span id="postgres-size">Multiple MB</span></span>
                 </div>
                 <div class="download-buttons">
-                    <a href="books/postgresql-encyclopedia.epub" class="btn btn-epub">Download EPUB (489KB)</a>
+                    <a href="books/postgresql-encyclopedia.html" class="btn btn-html">Read Online</a>
+                    <a href="books/postgresql-encyclopedia.epub" class="btn btn-epub">EPUB (489KB)</a>
                 </div>
             </div>
 
@@ -325,7 +345,8 @@
                     <span class="stat"><span class="stat-icon">💾</span> <span id="nethack-size">Multiple MB</span></span>
                 </div>
                 <div class="download-buttons">
-                    <a href="books/nethack-encyclopedia.epub" class="btn btn-epub">Download EPUB (153KB)</a>
+                    <a href="books/nethack-encyclopedia.html" class="btn btn-html">Read Online</a>
+                    <a href="books/nethack-encyclopedia.epub" class="btn btn-epub">EPUB (153KB)</a>
                 </div>
             </div>
         </div>
@@ -334,7 +355,7 @@
             <p>
                 Built with <a href="https://pandoc.org/">Pandoc</a> and meticulous care.<br>
                 All documentation compiled using XeLaTeX with elegant typography.<br>
-                <a href="https://github.com/anthropics/megadox">View on GitHub</a>
+                <a href="https://github.com/ftrain/megadox">View on GitHub</a>
             </p>
         </footer>
     </div>

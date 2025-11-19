@@ -50,8 +50,10 @@ PANDOC_PDF := \
 # HTML-specific options
 PANDOC_HTML := \
 	--to html5 \
-	--self-contained \
-	--mathjax
+	--standalone \
+	--mathjax \
+	--css=$(COMMON_DIR)book-style.css \
+	--template=$(COMMON_DIR)book-template.html
 
 # Directory setup
 COMMON_DIR := $(dir $(lastword $(MAKEFILE_LIST)))
