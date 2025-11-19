@@ -1,0 +1,156 @@
+---
+# Cross-Reference Configuration for pandoc-crossref
+# This file configures how cross-references appear in the compiled document
+
+# Chapter settings
+chapters: true
+chaptersDepth: 1
+chapDelim: "."
+
+# Numbering settings
+numberSections: true
+sectionsDepth: 3
+sectionDepth: 3
+
+# Reference prefix settings
+chapPrefix: "Chapter"
+secPrefix: "Section"
+figPrefix: "Figure"
+eqnPrefix: "Equation"
+tblPrefix: "Table"
+lstPrefix: "Listing"
+
+# Plural forms
+chapPrefixPlural: "Chapters"
+secPrefixPlural: "Sections"
+figPrefixPlural: "Figures"
+eqnPrefixPlural: "Equations"
+tblPrefixPlural: "Tables"
+lstPrefixPlural: "Listings"
+
+# Reference templates
+chapTemplate: "$$chapPrefix$$ $$i$$"
+secTemplate: "$$secPrefix$$ $$i$$"
+figTemplate: "$$figPrefix$$ $$i$$"
+eqnTemplate: "$$eqnPrefix$$ $$i$$"
+tblTemplate: "$$tblPrefix$$ $$i$$"
+lstTemplate: "$$lstPrefix$$ $$i$$"
+
+# Title settings
+figureTitle: "Figure"
+tableTitle: "Table"
+listingTitle: "Listing"
+
+# List settings
+lofTitle: "List of Figures"
+lotTitle: "List of Tables"
+lolTitle: "List of Listings"
+
+# Link settings
+linkReferences: true
+nameInLink: true
+
+# Code listing settings
+codeBlockCaptions: true
+listings: true
+
+# Figure settings
+autoSectionLabels: true
+subfigGrid: false
+
+# Table settings
+tableCaptions: true
+
+# Reference ranges
+rangeDelim: "-"
+pairDelim: ", "
+lastDelim: ", and "
+refDelim: ", "
+
+# Cleveref-like behavior
+cref: true
+
+# Custom reference types
+customReferenceTypes:
+  # Source code references
+  - type: "src"
+    prefix: "Source"
+    prefixPlural: "Sources"
+    template: "$$prefix$$ $$i$$"
+
+  # Function references
+  - type: "func"
+    prefix: "Function"
+    prefixPlural: "Functions"
+    template: "$$prefix$$ $$i$$"
+
+  # Variable references
+  - type: "var"
+    prefix: "Variable"
+    prefixPlural: "Variables"
+    template: "$$prefix$$ $$i$$"
+
+  # Macro references
+  - type: "macro"
+    prefix: "Macro"
+    prefixPlural: "Macros"
+    template: "$$prefix$$ $$i$$"
+
+  # Structure references
+  - type: "struct"
+    prefix: "Structure"
+    prefixPlural: "Structures"
+    template: "$$prefix$$ $$i$$"
+
+  # Algorithm references
+  - type: "alg"
+    prefix: "Algorithm"
+    prefixPlural: "Algorithms"
+    template: "$$prefix$$ $$i$$"
+
+  # Example references
+  - type: "ex"
+    prefix: "Example"
+    prefixPlural: "Examples"
+    template: "$$prefix$$ $$i$$"
+
+  # Exercise references
+  - type: "exercise"
+    prefix: "Exercise"
+    prefixPlural: "Exercises"
+    template: "$$prefix$$ $$i$$"
+
+  # Box references (performance tips, etc.)
+  - type: "box"
+    prefix: "Box"
+    prefixPlural: "Boxes"
+    template: "$$prefix$$ $$i$$"
+
+# External reference types (for linking to other documentation)
+externalReferenceTypes:
+  # Emacs Lisp Manual references
+  - type: "elisp-manual"
+    prefix: "Emacs Lisp Manual"
+    template: "$$prefix$$: $$i$$"
+
+  # Emacs Manual references
+  - type: "emacs-manual"
+    prefix: "Emacs Manual"
+    template: "$$prefix$$: $$i$$"
+
+  # Git commit references
+  - type: "git"
+    prefix: "Commit"
+    template: "$$prefix$$ $$i$$"
+
+  # Bug tracker references
+  - type: "bug"
+    prefix: "Bug"
+    template: "Bug #$$i$$"
+
+  # GNU Coding Standards references
+  - type: "gnu-standards"
+    prefix: "GNU Coding Standards"
+    template: "$$prefix$$: $$i$$"
+
+---

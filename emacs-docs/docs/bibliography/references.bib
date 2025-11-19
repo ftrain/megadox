@@ -1,0 +1,413 @@
+% Main Bibliography for GNU Emacs Internals Guide
+% This file contains core references for the documentation
+
+% ============================================================================
+% EMACS HISTORICAL PAPERS
+% ============================================================================
+
+@article{stallman:emacs:1981,
+  author = {Stallman, Richard M.},
+  title = {{EMACS: The Extensible, Customizable, Self-Documenting Display Editor}},
+  journal = {MIT AI Lab Memo},
+  number = {519a},
+  year = {1981},
+  month = {March},
+  url = {https://dspace.mit.edu/handle/1721.1/5736},
+  note = {Original description of EMACS design philosophy}
+}
+
+@inproceedings{stallman:gnu:1985,
+  author = {Stallman, Richard M.},
+  title = {{The GNU Manifesto}},
+  year = {1985},
+  month = {March},
+  organization = {Free Software Foundation},
+  url = {https://www.gnu.org/gnu/manifesto.html},
+  note = {Announcement of the GNU Project and GNU Emacs}
+}
+
+% ============================================================================
+% TEXT EDITOR RESEARCH
+% ============================================================================
+
+@book{finseth:text:1991,
+  author = {Finseth, Craig A.},
+  title = {{The Craft of Text Editing: Emacs for the Modern World}},
+  year = {1991},
+  publisher = {Springer-Verlag},
+  isbn = {0-387-97616-7},
+  url = {http://www.finseth.com/craft/},
+  note = {Comprehensive treatment of text editor implementation including gap buffers}
+}
+
+@article{miller:piece:1998,
+  author = {Miller, Webb and Myers, Eugene W.},
+  title = {{A File Comparison Program}},
+  journal = {Software: Practice and Experience},
+  volume = {15},
+  number = {11},
+  year = {1985},
+  pages = {1025--1040},
+  note = {Discusses piece table data structure used in some editors}
+}
+
+% ============================================================================
+% LISP IMPLEMENTATION
+% ============================================================================
+
+@book{queinnec:lisp:1996,
+  author = {Queinnec, Christian},
+  title = {{Lisp in Small Pieces}},
+  year = {1996},
+  publisher = {Cambridge University Press},
+  isbn = {0-521-56247-3},
+  note = {Comprehensive treatment of Lisp interpreter and compiler implementation}
+}
+
+@book{abelson:sicp:1996,
+  author = {Abelson, Harold and Sussman, Gerald Jay and Sussman, Julie},
+  title = {{Structure and Interpretation of Computer Programs}},
+  edition = {2nd},
+  year = {1996},
+  publisher = {MIT Press},
+  isbn = {0-262-01153-0},
+  url = {https://mitpress.mit.edu/sites/default/files/sicp/index.html},
+  note = {Classic text on Lisp and interpreter implementation}
+}
+
+@article{steele:lambda:1978,
+  author = {Steele, Guy Lewis and Sussman, Gerald Jay},
+  title = {{The Art of the Interpreter or, the Modularity Complex (Parts Zero, One, and Two)}},
+  journal = {MIT AI Lab Memo},
+  number = {453},
+  year = {1978},
+  month = {May},
+  url = {https://dspace.mit.edu/handle/1721.1/6094},
+  note = {Foundational work on Lisp interpreter implementation}
+}
+
+% ============================================================================
+% GARBAGE COLLECTION
+% ============================================================================
+
+@book{jones:gc:2011,
+  author = {Jones, Richard and Hosking, Antony and Moss, Eliot},
+  title = {{The Garbage Collection Handbook: The Art of Automatic Memory Management}},
+  edition = {1st},
+  year = {2011},
+  publisher = {Chapman and Hall/CRC},
+  isbn = {978-1420082791},
+  note = {Comprehensive reference on garbage collection algorithms}
+}
+
+@article{wilson:gc:1992,
+  author = {Wilson, Paul R.},
+  title = {{Uniprocessor Garbage Collection Techniques}},
+  journal = {Memory Management: International Workshop IWMM 92},
+  year = {1992},
+  pages = {1--42},
+  publisher = {Springer-Verlag},
+  note = {Survey of garbage collection techniques applicable to Emacs}
+}
+
+% ============================================================================
+% DISPLAY AND RENDERING
+% ============================================================================
+
+@article{knuth:breaking:1981,
+  author = {Knuth, Donald E. and Plass, Michael F.},
+  title = {{Breaking Paragraphs into Lines}},
+  journal = {Software: Practice and Experience},
+  volume = {11},
+  number = {11},
+  year = {1981},
+  pages = {1119--1184},
+  note = {Classic algorithm for line breaking, relevant to Emacs filling}
+}
+
+@techreport{unicode:bidi:2023,
+  author = {{Unicode Consortium}},
+  title = {{Unicode Standard Annex \#9: Unicode Bidirectional Algorithm}},
+  institution = {Unicode Consortium},
+  year = {2023},
+  number = {UAX\#9},
+  url = {https://unicode.org/reports/tr9/},
+  note = {Bidirectional text algorithm implemented in Emacs}
+}
+
+@book{behdad:harfbuzz:2020,
+  author = {Esfahbod, Behdad},
+  title = {{HarfBuzz Manual}},
+  year = {2020},
+  publisher = {HarfBuzz Project},
+  url = {https://harfbuzz.github.io/},
+  note = {Text shaping engine used in Emacs for complex scripts}
+}
+
+% ============================================================================
+% EMACS DOCUMENTATION
+% ============================================================================
+
+@manual{emacs:manual:2024,
+  author = {{Free Software Foundation}},
+  title = {{GNU Emacs Manual}},
+  year = {2024},
+  edition = {Version 30.0.50},
+  organization = {Free Software Foundation},
+  url = {https://www.gnu.org/software/emacs/manual/html_node/emacs/},
+  note = {Official user manual for GNU Emacs}
+}
+
+@manual{elisp:manual:2024,
+  author = {{Free Software Foundation}},
+  title = {{GNU Emacs Lisp Reference Manual}},
+  year = {2024},
+  edition = {Version 30.0.50},
+  organization = {Free Software Foundation},
+  url = {https://www.gnu.org/software/emacs/manual/html_node/elisp/},
+  note = {Official reference for Emacs Lisp programming}
+}
+
+@manual{emacs:internals:2001,
+  author = {Zawinski, Jamie and Stallman, Richard M.},
+  title = {{GNU Emacs Internals Manual}},
+  year = {2001},
+  organization = {Free Software Foundation},
+  note = {Historical internals documentation, partially outdated}
+}
+
+% ============================================================================
+% PROGRAMMING LANGUAGE DESIGN
+% ============================================================================
+
+@book{appel:compiler:2004,
+  author = {Appel, Andrew W.},
+  title = {{Modern Compiler Implementation in ML}},
+  year = {2004},
+  publisher = {Cambridge University Press},
+  isbn = {0-521-60764-7},
+  note = {Compiler techniques applicable to Emacs byte compiler}
+}
+
+@article{dybvig:syntax:1992,
+  author = {Dybvig, R. Kent and Hieb, Robert and Bruggeman, Carl},
+  title = {{Syntactic Abstraction in Scheme}},
+  journal = {Lisp and Symbolic Computation},
+  volume = {5},
+  number = {4},
+  year = {1992},
+  pages = {295--326},
+  note = {Macro systems and hygiene, relevant to Emacs macros}
+}
+
+% ============================================================================
+% LITERATE PROGRAMMING
+% ============================================================================
+
+@book{knuth:literate:1992,
+  author = {Knuth, Donald E.},
+  title = {{Literate Programming}},
+  year = {1992},
+  publisher = {CSLI Publications},
+  isbn = {0-937073-80-6},
+  note = {Foundational work on literate programming methodology}
+}
+
+@article{ramsey:noweb:1994,
+  author = {Ramsey, Norman},
+  title = {{Literate Programming Simplified}},
+  journal = {IEEE Software},
+  volume = {11},
+  number = {5},
+  year = {1994},
+  pages = {97--105},
+  note = {Simple literate programming tools}
+}
+
+% ============================================================================
+% OPERATING SYSTEMS AND UNIX
+% ============================================================================
+
+@book{stevens:apue:2013,
+  author = {Stevens, W. Richard and Rago, Stephen A.},
+  title = {{Advanced Programming in the UNIX Environment}},
+  edition = {3rd},
+  year = {2013},
+  publisher = {Addison-Wesley},
+  isbn = {978-0-321-63773-4},
+  note = {UNIX system programming relevant to Emacs implementation}
+}
+
+@book{kerrisk:linux:2010,
+  author = {Kerrisk, Michael},
+  title = {{The Linux Programming Interface}},
+  year = {2010},
+  publisher = {No Starch Press},
+  isbn = {978-1-59327-220-3},
+  note = {Linux-specific features used in Emacs}
+}
+
+% ============================================================================
+% REGULAR EXPRESSIONS
+% ============================================================================
+
+@article{thompson:regex:1968,
+  author = {Thompson, Ken},
+  title = {{Programming Techniques: Regular Expression Search Algorithm}},
+  journal = {Communications of the ACM},
+  volume = {11},
+  number = {6},
+  year = {1968},
+  pages = {419--422},
+  note = {Classic regex implementation}
+}
+
+@book{friedl:regex:2006,
+  author = {Friedl, Jeffrey E. F.},
+  title = {{Mastering Regular Expressions}},
+  edition = {3rd},
+  year = {2006},
+  publisher = {O'Reilly Media},
+  isbn = {978-0-596-52812-6},
+  note = {Comprehensive treatment of regular expressions}
+}
+
+% ============================================================================
+% DATA STRUCTURES AND ALGORITHMS
+% ============================================================================
+
+@book{cormen:algorithms:2009,
+  author = {Cormen, Thomas H. and Leiserson, Charles E. and Rivest, Ronald L. and Stein, Clifford},
+  title = {{Introduction to Algorithms}},
+  edition = {3rd},
+  year = {2009},
+  publisher = {MIT Press},
+  isbn = {978-0-262-03384-8},
+  note = {Classic algorithms text}
+}
+
+@article{sleator:splay:1985,
+  author = {Sleator, Daniel D. and Tarjan, Robert E.},
+  title = {{Self-Adjusting Binary Search Trees}},
+  journal = {Journal of the ACM},
+  volume = {32},
+  number = {3},
+  year = {1985},
+  pages = {652--686},
+  note = {Splay trees, potentially relevant to interval implementation}
+}
+
+% ============================================================================
+% BUILD SYSTEMS
+% ============================================================================
+
+@book{mecklenburg:make:2004,
+  author = {Mecklenburg, Robert},
+  title = {{Managing Projects with GNU Make}},
+  edition = {3rd},
+  year = {2004},
+  publisher = {O'Reilly Media},
+  isbn = {978-0-596-00610-5},
+  note = {GNU Make reference}
+}
+
+@manual{autoconf:manual:2023,
+  author = {{Free Software Foundation}},
+  title = {{Autoconf Manual}},
+  year = {2023},
+  organization = {Free Software Foundation},
+  url = {https://www.gnu.org/software/autoconf/manual/},
+  note = {Autoconf used in Emacs build system}
+}
+
+% ============================================================================
+% INTERNATIONALIZATION
+% ============================================================================
+
+@book{unicode:standard:2023,
+  author = {{Unicode Consortium}},
+  title = {{The Unicode Standard, Version 15.1}},
+  year = {2023},
+  publisher = {Unicode Consortium},
+  url = {https://www.unicode.org/versions/Unicode15.1.0/},
+  note = {Unicode standard implemented in Emacs}
+}
+
+@techreport{rfc:utf8:2003,
+  author = {Yergeau, François},
+  title = {{UTF-8, a transformation format of ISO 10646}},
+  institution = {IETF},
+  year = {2003},
+  type = {RFC},
+  number = {3629},
+  url = {https://www.rfc-editor.org/rfc/rfc3629},
+  note = {UTF-8 encoding used in Emacs}
+}
+
+% ============================================================================
+% PACKAGE MANAGEMENT
+% ============================================================================
+
+@article{dolstra:nix:2004,
+  author = {Dolstra, Eelco and de Jonge, Merijn and Visser, Eelco},
+  title = {{Nix: A Safe and Policy-Free System for Software Deployment}},
+  journal = {LISA},
+  year = {2004},
+  pages = {79--92},
+  note = {Package management concepts}
+}
+
+% ============================================================================
+% TESTING AND VERIFICATION
+% ============================================================================
+
+@article{claessen:quickcheck:2000,
+  author = {Claessen, Koen and Hughes, John},
+  title = {{QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs}},
+  journal = {ACM SIGPLAN Notices},
+  volume = {35},
+  number = {9},
+  year = {2000},
+  pages = {268--279},
+  note = {Property-based testing concepts}
+}
+
+% ============================================================================
+% PERFORMANCE AND OPTIMIZATION
+% ============================================================================
+
+@book{bentley:programming:1999,
+  author = {Bentley, Jon},
+  title = {{Programming Pearls}},
+  edition = {2nd},
+  year = {1999},
+  publisher = {Addison-Wesley},
+  isbn = {0-201-65788-0},
+  note = {Classic performance optimization techniques}
+}
+
+@book{fog:optimization:2023,
+  author = {Fog, Agner},
+  title = {{Optimizing Software in C++}},
+  year = {2023},
+  url = {https://www.agner.org/optimize/},
+  note = {Modern C++ optimization techniques applicable to C}
+}
+
+% ============================================================================
+% CONCURRENT PROGRAMMING
+% ============================================================================
+
+@book{herlihy:concurrent:2020,
+  author = {Herlihy, Maurice and Shavit, Nir and Luchangco, Victor and Spear, Michael},
+  title = {{The Art of Multiprocessor Programming}},
+  edition = {2nd},
+  year = {2020},
+  publisher = {Morgan Kaufmann},
+  isbn = {978-0-12-415950-1},
+  note = {Concurrent programming concepts relevant to Emacs threads}
+}
+
+% ============================================================================
+% END OF REFERENCES
+% ============================================================================

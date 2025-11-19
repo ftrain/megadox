@@ -1,0 +1,84 @@
+# Citation Style Language (CSL) File
+
+The `acm.csl` file should contain the ACM (Association for Computing Machinery) citation style definition in CSL format.
+
+## How to Obtain
+
+Download the official ACM CSL file from:
+
+**Option 1: Zotero Style Repository**
+https://www.zotero.org/styles/association-for-computing-machinery
+
+**Option 2: CSL GitHub Repository**
+https://github.com/citation-style-language/styles/blob/master/acm-sig-proceedings.csl
+
+**Option 3: Direct Download**
+```bash
+cd /home/user/emacs/docs/bibliography
+wget https://raw.githubusercontent.com/citation-style-language/styles/master/acm-sig-proceedings.csl -O acm.csl
+```
+
+## Alternative Citation Styles
+
+If you prefer a different citation style, download one of these:
+
+### Chicago Manual of Style
+```bash
+wget https://raw.githubusercontent.com/citation-style-language/styles/master/chicago-author-date.csl
+```
+
+### IEEE
+```bash
+wget https://raw.githubusercontent.com/citation-style-language/styles/master/ieee.csl
+```
+
+### APA
+```bash
+wget https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+```
+
+Then update `metadata.yaml`:
+```yaml
+csl: "bibliography/chicago-author-date.csl"  # or your chosen style
+```
+
+## CSL File Structure
+
+A CSL file is an XML document that defines:
+- How citations appear in-text
+- How the bibliography is formatted
+- Sort order for references
+- Formatting rules (italics, bold, etc.)
+- Punctuation and separators
+
+## For Now
+
+Until you download the actual CSL file, the build will use Pandoc's default citation style. The documentation will still build successfully, but citations will use the default format.
+
+## Verification
+
+After downloading, verify the file:
+
+```bash
+# Check file exists
+ls -lh bibliography/acm.csl
+
+# Verify it's valid XML
+xmllint --noout bibliography/acm.csl 2>&1 && echo "Valid CSL file" || echo "Invalid CSL file"
+```
+
+## Usage in Build
+
+Pandoc uses the CSL file automatically via the metadata.yaml setting:
+
+```yaml
+csl: "bibliography/acm.csl"
+```
+
+Citations in markdown:
+```markdown
+According to Knuth [@knuth:literate:1992], literate programming...
+Multiple sources [@knuth:literate:1992; @finseth:text:1991] show...
+```
+
+Will be formatted according to the ACM style guidelines.

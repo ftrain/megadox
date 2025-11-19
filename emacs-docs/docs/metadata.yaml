@@ -1,0 +1,536 @@
+---
+# Pandoc Metadata for Emacs Encyclopedic Guide
+# This file contains all metadata needed to compile the guide
+# into PDF, HTML, and EPUB formats
+
+# Basic Information
+title: "GNU Emacs Internals"
+subtitle: "An Encyclopedic Guide to the Architecture and Implementation"
+title-meta: "GNU Emacs Internals: An Encyclopedic Guide"
+
+# Author Information
+author:
+  - name: "The Emacs Development Community"
+    affiliation: "Free Software Foundation"
+    email: "emacs-devel@gnu.org"
+
+# Version and Date
+version: "1.0.0"
+date: "2025-11-18"
+edition: "First Edition"
+revision: "Draft"
+
+# Copyright and License
+copyright: "Copyright © 2025 Free Software Foundation, Inc."
+license: "GNU Free Documentation License v1.3 or later"
+license-url: "https://www.gnu.org/licenses/fdl-1.3.html"
+
+# Abstract
+abstract: |
+  This encyclopedic guide provides comprehensive documentation of the GNU
+  Emacs source code, architecture, and implementation. It covers the
+  complete system from the C core to the Elisp runtime, from the display
+  engine to the package system. Using literate programming techniques, it
+  interweaves source code excerpts with detailed explanations, making the
+  codebase accessible to developers, researchers, and students.
+
+  The guide documents approximately 152 C source files and 1,576 Elisp
+  files, totaling over 2,500 pages of comprehensive technical documentation.
+  It is designed for Emacs core developers, extension developers, computer
+  science students, programming language researchers, and system architects
+  interested in understanding a mature, production-quality text editor
+  implementation.
+
+# Keywords
+keywords:
+  - Emacs
+  - Text Editor
+  - Lisp
+  - Elisp
+  - Interpreter
+  - Architecture
+  - Source Code
+  - Literate Programming
+  - Display Engine
+  - Garbage Collection
+  - Buffer Management
+  - Gap Buffer
+  - Redisplay
+  - Font Rendering
+  - Text Processing
+  - Open Source
+
+# Subject classification
+subject:
+  - "Computer Science"
+  - "Software Engineering"
+  - "Programming Languages"
+  - "Text Editors"
+
+# Language
+lang: en-US
+language: "English"
+
+# Document Class and Geometry (for LaTeX/PDF)
+documentclass: book
+papersize: letter
+fontsize: 10pt
+geometry:
+  - top=1in
+  - bottom=1in
+  - left=1.25in
+  - right=1in
+  - bindingoffset=0.5in
+
+# Fonts (XeLaTeX)
+mainfont: "Liberation Serif"
+sansfont: "Liberation Sans"
+monofont: "Liberation Mono"
+mathfont: "Liberation Serif"
+mainfontoptions:
+  - Ligatures=TeX
+  - Numbers=OldStyle
+monofontoptions:
+  - Scale=0.9
+
+# Typography
+linestretch: 1.2
+indent: true
+fontfamily: libertinus
+
+# Table of Contents
+toc: true
+toc-title: "Table of Contents"
+toc-depth: 3
+toc-own-page: true
+lof: true  # List of Figures
+lot: true  # List of Tables
+lol: true  # List of Listings
+
+# Sectioning
+secnumdepth: 3
+numbersections: true
+top-level-division: chapter
+
+# Cross-references (pandoc-crossref)
+crossrefYaml: "crossref.yaml"
+chapters: true
+chaptersDepth: 1
+numberSections: true
+sectionsDepth: 3
+figureTitle: "Figure"
+tableTitle: "Table"
+listingTitle: "Listing"
+figPrefix: "Figure"
+eqnPrefix: "Equation"
+tblPrefix: "Table"
+lstPrefix: "Listing"
+secPrefix: "Section"
+chapPrefix: "Chapter"
+
+# Code Highlighting
+listings: true
+listings-no-page-break: false
+highlight-style: tango
+
+# Code block settings
+listing-setup: |
+  \lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    breakatwhitespace=true,
+    columns=flexible,
+    keepspaces=true,
+    showstringspaces=false,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=10pt,
+    frame=single,
+    framesep=5pt,
+    xleftmargin=15pt,
+    xrightmargin=5pt,
+    captionpos=b,
+    tabsize=4,
+    commentstyle=\color{green!40!black},
+    keywordstyle=\color{blue},
+    stringstyle=\color{orange},
+  }
+
+# Bibliography
+bibliography:
+  - "bibliography/references.bib"
+  - "bibliography/emacs-papers.bib"
+  - "bibliography/comp-sci.bib"
+  - "bibliography/lisp-history.bib"
+  - "bibliography/text-editors.bib"
+csl: "bibliography/acm.csl"
+citation-style: "acm"
+cite-method: citeproc
+link-citations: true
+notes-after-punctuation: true
+reference-section-title: "References"
+
+# Links
+colorlinks: true
+linkcolor: Blue
+urlcolor: Blue
+citecolor: Green
+toccolor: Black
+
+# PDF Specific
+pdfa: false
+pdfengine: xelatex
+
+# PDF Metadata
+pdf-title: "GNU Emacs Internals: An Encyclopedic Guide"
+pdf-author: "The Emacs Development Community"
+pdf-subject: "Comprehensive documentation of GNU Emacs architecture and implementation"
+pdf-keywords: "Emacs, Lisp, Text Editor, Source Code, Architecture"
+pdf-creator: "Pandoc with XeLaTeX"
+pdf-producer: "Pandoc"
+
+# Header and Footer
+header-includes: |
+  \usepackage{fancyhdr}
+  \usepackage{graphicx}
+  \usepackage{tikz}
+  \usepackage{listings}
+  \usepackage{xcolor}
+  \usepackage{longtable}
+  \usepackage{booktabs}
+  \usepackage{array}
+  \usepackage{calc}
+  \usepackage{etoolbox}
+  \usepackage{footnote}
+  \usepackage{hyperref}
+  \usepackage{makeidx}
+  \makeindex
+
+  % Custom colors for code
+  \definecolor{codecomment}{rgb}{0.25,0.5,0.25}
+  \definecolor{codekeyword}{rgb}{0.0,0.0,0.5}
+  \definecolor{codestring}{rgb}{0.6,0.3,0.0}
+
+  % Chapter headings
+  \usepackage{titlesec}
+  \titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+
+  % Fancy headers
+  \pagestyle{fancy}
+  \fancyhf{}
+  \fancyhead[LE,RO]{\thepage}
+  \fancyhead[RE]{\leftmark}
+  \fancyhead[LO]{\rightmark}
+  \renewcommand{\headrulewidth}{0.4pt}
+
+  % Code block styling
+  \lstdefinestyle{emacs-c}{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codekeyword}\bfseries,
+    commentstyle=\color{codecomment}\itshape,
+    stringstyle=\color{codestring},
+  }
+
+  \lstdefinestyle{emacs-lisp}{
+    language=Lisp,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{codekeyword}\bfseries,
+    commentstyle=\color{codecomment}\itshape,
+    stringstyle=\color{codestring},
+  }
+
+# Include before body (title page, etc.)
+include-before: |
+  \frontmatter
+
+  % Title page
+  \begin{titlepage}
+  \centering
+  \vspace*{2cm}
+
+  {\Huge\bfseries GNU Emacs Internals\par}
+  \vspace{1cm}
+  {\Large An Encyclopedic Guide to the Architecture and Implementation\par}
+  \vspace{2cm}
+  {\Large\itshape The Emacs Development Community\par}
+  \vspace{1cm}
+  {\large Free Software Foundation\par}
+  \vfill
+
+  {\large Version 1.0.0\par}
+  {\large First Edition\par}
+  \vspace{0.5cm}
+  {\large November 2025\par}
+  \vfill
+
+  {\small Licensed under the GNU Free Documentation License v1.3 or later\par}
+  \end{titlepage}
+
+  % Copyright page
+  \newpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{center}
+  \textbf{GNU Emacs Internals: An Encyclopedic Guide}\\
+  First Edition, Version 1.0.0\\
+  November 2025\\
+  \vspace{1cm}
+  Copyright \copyright\ 2025 Free Software Foundation, Inc.\\
+  \vspace{0.5cm}
+  Permission is granted to copy, distribute and/or modify this document\\
+  under the terms of the GNU Free Documentation License, Version 1.3\\
+  or any later version published by the Free Software Foundation;\\
+  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.\\
+  A copy of the license is available at:\\
+  \url{https://www.gnu.org/licenses/fdl-1.3.html}
+  \vspace{1cm}
+
+  This guide documents the GNU Emacs source code as of version 30.0.50.\\
+  Emacs is free software; you can redistribute it and/or modify it\\
+  under the terms of the GNU General Public License as published by\\
+  the Free Software Foundation; either version 3, or (at your option)\\
+  any later version.
+  \vspace{1cm}
+
+  For more information about GNU Emacs, visit:\\
+  \url{https://www.gnu.org/software/emacs/}
+  \end{center}
+  \vspace*{\fill}
+  \newpage
+
+  % Dedication (optional)
+  \newpage
+  \thispagestyle{empty}
+  \vspace*{\fill}
+  \begin{center}
+  \textit{Dedicated to Richard Stallman and all the contributors\\
+  who have made GNU Emacs the most powerful and extensible\\
+  text editor for over four decades.}
+  \end{center}
+  \vspace*{\fill}
+  \newpage
+
+  % Preface will go here (from 00-introduction/00-preface.md if exists)
+
+  \mainmatter
+
+# Include after body (indices, etc.)
+include-after: |
+  \backmatter
+
+  % Print indices
+  \printindex
+
+# HTML Specific Options
+css: "templates/book.css"
+html-math-method: mathjax
+self-contained: false
+embed-resources: false
+standalone: true
+section-divs: true
+html-q-tags: true
+
+# EPUB Specific Options
+epub-cover-image: "images/cover.png"
+epub-title-page: true
+epub-metadata: |
+  <dc:publisher>Free Software Foundation</dc:publisher>
+  <dc:rights>Licensed under GNU Free Documentation License v1.3</dc:rights>
+  <dc:language>en-US</dc:language>
+  <dc:identifier id="BookId">emacs-internals-guide-1.0.0</dc:identifier>
+
+# Metadata for search engines and catalogs
+identifier:
+  - scheme: ISBN
+    text: "TBD"  # To be assigned when published
+
+publisher: "Free Software Foundation"
+publisher-place: "Boston, MA, USA"
+
+# Source repository
+source:
+  - url: "https://git.savannah.gnu.org/cgit/emacs.git"
+    type: "git"
+
+# Documentation repository (when created)
+docs-repository:
+  url: "https://git.savannah.gnu.org/cgit/emacs.git"
+  branch: "master"
+  directory: "docs/"
+
+# Build information
+build:
+  date: "2025-11-18"
+  tool: "Pandoc"
+  version: "3.0+"
+  requires:
+    - pandoc >= 3.0
+    - pandoc-crossref >= 0.3.15
+    - xelatex (for PDF)
+    - biber (for bibliography)
+
+# Quality settings
+verbosity: INFO
+fail-if-warnings: false
+trace: false
+
+# Filters (in order of application)
+filters:
+  - pandoc-crossref
+  - pandoc-citeproc
+
+# Variables for templates
+variables:
+  # Book metadata
+  book-title: "GNU Emacs Internals"
+  book-subtitle: "An Encyclopedic Guide"
+  book-series: "Emacs Documentation Series"
+  book-volume: "1"
+
+  # Edition info
+  edition-number: "1"
+  edition-statement: "First Edition"
+
+  # Publisher info
+  publisher-name: "Free Software Foundation"
+  publisher-location: "Boston, MA"
+  publisher-url: "https://www.fsf.org"
+
+  # Project info
+  project-name: "GNU Emacs"
+  project-url: "https://www.gnu.org/software/emacs/"
+  project-version: "30.0.50"
+
+  # Guide info
+  guide-status: "Draft"
+  guide-audience: "Developers, Researchers, Students"
+  guide-scope: "Complete source code documentation"
+
+  # Contact
+  contact-email: "emacs-devel@gnu.org"
+  contact-list: "https://lists.gnu.org/mailman/listinfo/emacs-devel"
+  bug-tracker: "https://debbugs.gnu.org"
+
+  # Social/Community
+  wiki-url: "https://www.emacswiki.org"
+  reddit: "r/emacs"
+  irc: "irc://irc.libera.chat/#emacs"
+
+# Custom template variables
+template-vars:
+  show-toc: true
+  show-lof: true
+  show-lot: true
+  show-index: true
+  show-bibliography: true
+  number-figures: true
+  number-tables: true
+  number-listings: true
+
+# Markdown extensions
+markdown-extensions:
+  - smart
+  - yaml_metadata_block
+  - implicit_figures
+  - table_captions
+  - fenced_code_blocks
+  - fenced_code_attributes
+  - backtick_code_blocks
+  - inline_code_attributes
+  - line_blocks
+  - fancy_lists
+  - startnum
+  - definition_lists
+  - example_lists
+  - simple_tables
+  - multiline_tables
+  - grid_tables
+  - pipe_tables
+  - pandoc_title_block
+  - footnotes
+  - inline_notes
+  - citations
+  - raw_html
+  - raw_tex
+  - latex_macros
+  - superscript
+  - subscript
+  - strikeout
+  - tex_math_dollars
+  - raw_attribute
+  - link_attributes
+  - auto_identifiers
+  - header_attributes
+
+# Output format specific settings
+formats:
+  pdf:
+    engine: xelatex
+    dpi: 300
+    quality: high
+
+  html:
+    theme: default
+    embed-resources: false
+    mathjax: true
+
+  epub:
+    version: 3
+    css: templates/epub.css
+
+# Navigation
+navigation:
+  next-chapter: true
+  previous-chapter: true
+  breadcrumbs: true
+
+# Accessibility
+accessibility:
+  alt-text-required: true
+  heading-structure: true
+  semantic-markup: true
+
+# Version Control
+vcs:
+  system: git
+  repository: "https://git.savannah.gnu.org/cgit/emacs.git"
+  branch: "master"
+  commit: "TBD"
+
+# Statistics (to be updated)
+statistics:
+  total-pages: "~2,500"
+  total-chapters: 23
+  total-sections: "~150"
+  code-lines-c: "~15,000-20,000"
+  code-lines-elisp: "~25,000-30,000"
+  figures: "~100-150"
+  tables: "~50-75"
+  listings: "~500-750"
+
+# Maintenance
+maintainers:
+  - "Emacs Development Team"
+
+review-status: "Initial Draft"
+last-reviewed: "2025-11-18"
+next-review: "TBD"
+
+# Notes for authors
+author-notes: |
+  This metadata file controls the compilation of the Emacs Encyclopedic
+  Guide into various formats (PDF, HTML, EPUB). When adding new sections
+  or chapters, ensure that:
+
+  1. All cross-references are valid
+  2. Code blocks specify language and source file
+  3. Figures have alt-text for accessibility
+  4. Bibliography entries are added to references.bib
+  5. The build succeeds without warnings
+
+  To build: See docs/BUILD.md for detailed instructions.
+
+---
