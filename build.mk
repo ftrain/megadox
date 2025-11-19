@@ -61,6 +61,9 @@ PANDOC_HTML := \
 	--css=../book-style.css \
 	--template=$(MEGADOX_ROOT)/book-template.html
 
+# TOC transformation script
+TRANSFORM_TOC := $(MEGADOX_ROOT)/transform-toc.py
+
 # Utility functions
 define print_header
 	echo ""

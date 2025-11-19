@@ -95,6 +95,8 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
 		$(SOURCES)
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))
 	@echo ""
 

@@ -84,6 +84,8 @@ $(EPUB_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata=author:"Surge Synth Team" \
 		--metadata=rights:"GPL-3.0" \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,EPUB created: $@ ($$($(call show_size,$@))))
 	@echo ""
@@ -97,6 +99,8 @@ $(PDF_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata=title:"$(TITLE)" \
 		--metadata=author:"Surge Synth Team" \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,PDF created: $@ ($$($(call show_size,$@))))
 	@if command -v pdfinfo > /dev/null 2>&1; then \
@@ -116,6 +120,8 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata subtitle:"A Deep Dive into Software Synthesis" \
 		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))
 	@echo ""

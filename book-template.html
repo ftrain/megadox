@@ -251,59 +251,22 @@ $body$
     }
   }
 
-  // Initialize collapsible TOC
-  function initCollapsibleTOC() {
-    const toc = document.getElementById('TOC');
-    if (!toc) return;
-
-    // Find all list items that have children
-    toc.querySelectorAll('li').forEach(li => {
-      const childUl = li.querySelector('ul');
-      if (childUl) {
-        li.classList.add('has-children');
-
-        // Create toggle button
-        const toggle = document.createElement('span');
-        toggle.className = 'toc-toggle';
-        toggle.textContent = '▶';
-        toggle.onclick = function(e) {
-          e.stopPropagation();
-          li.classList.toggle('expanded');
-          childUl.classList.toggle('expanded');
-        };
-
-        // Insert toggle before the link
-        const link = li.querySelector('a');
-        if (link) {
-          li.insertBefore(toggle, link);
-        }
-      }
-    });
-  }
-
-  // Expand all TOC items
+  // Expand all TOC items (now using <details> elements)
   function expandAllTOC() {
-    document.querySelectorAll('#TOC li.has-children').forEach(li => {
-      li.classList.add('expanded');
-    });
-    document.querySelectorAll('#TOC ul ul').forEach(ul => {
-      ul.classList.add('expanded');
+    document.querySelectorAll('#TOC details').forEach(details => {
+      details.open = true;
     });
   }
 
-  // Collapse all TOC items
+  // Collapse all TOC items (now using <details> elements)
   function collapseAllTOC() {
-    document.querySelectorAll('#TOC li.has-children').forEach(li => {
-      li.classList.remove('expanded');
-    });
-    document.querySelectorAll('#TOC ul ul').forEach(ul => {
-      ul.classList.remove('expanded');
+    document.querySelectorAll('#TOC details').forEach(details => {
+      details.open = false;
     });
   }
 
   // Initialize search when page loads
   document.addEventListener('DOMContentLoaded', () => {
-    initCollapsibleTOC();
     buildSearchIndex();
 
     const searchInput = document.getElementById('search-input');

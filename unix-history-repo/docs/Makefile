@@ -55,6 +55,8 @@ $(EPUB_FILE): $(SOURCES) $(METADATA) | $(OUTPUT_DIR)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_EPUB) \
 		--metadata-file=$(METADATA) \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,EPUB created: $@ ($$($(call show_size,$@))))
 	@echo ""
@@ -67,6 +69,8 @@ $(PDF_FILE): $(SOURCES) $(METADATA) | $(OUTPUT_DIR)
 	@$(PANDOC) $(PANDOC_COMMON) $(PANDOC_PDF) \
 		--metadata-file=$(METADATA) \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,PDF created: $@ ($$($(call show_size,$@))))
 	@if command -v pdfinfo > /dev/null 2>&1; then \
@@ -86,6 +90,8 @@ $(HTML_FILE): $(SOURCES) | $(OUTPUT_DIR)
 		--metadata subtitle:"The Original Unix System on the PDP-7" \
 		--metadata pdf-url:"$(PROJECT_NAME).pdf" \
 		--output=$@ \
+	$(call print_info,Transforming TOC to use native <details> elements...)
+	@$(TRANSFORM_TOC) $@
 		$(SOURCES)
 	$(call print_success,HTML created: $@ ($$($(call show_size,$@))))
 	@echo ""
